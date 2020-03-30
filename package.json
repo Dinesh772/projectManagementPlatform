@@ -8,16 +8,23 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "autoprefixer": "^9.7.5",
+    "babel-plugin-macros": "^2.8.0",
+    "postcss-cli": "^7.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "tailwind.macro": "^1.0.0-alpha.10"
   },
   "scripts": {
-    "build:style": "tailwind build src/index.css -o src/styles/tailwind.css",
-    "start": "npm run build:style && react-scripts start",
-    "build": "npm run build:style && react-scripts build",
+    "build:css": "postcss src/index.css -o src/styles/tailwind.css",
+    "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
+    "start": "npm run watch:css & react-scripts start",
+    "build": "npm run build:css react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
