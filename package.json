@@ -8,6 +8,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "25.2.1",
+    "@types/node": "13.11.0",
+    "@types/react": "16.9.32",
+    "@types/react-dom": "16.9.6",
     "autoprefixer": "^9.7.5",
     "babel-plugin-macros": "^2.8.0",
     "mobx": "5.15.0",
@@ -17,15 +21,16 @@
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "tailwind.macro": "^1.0.0-alpha.10"
+    "tailwind.macro": "^1.0.0-alpha.10",
+    "typescript": "3.8.3"
   },
   "scripts": {
     "build:css": "postcss src/index.css -o src/styles/tailwind.css",
     "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
-    "start": "npm run watch:css & react-app-rewired start",
-    "build": "npm run build:css react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject",
+    "start": "npm run watch:css & react-scripts start",
+    "build": "npm run build:css react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh"
   },
   "eslintConfig": {
@@ -49,8 +54,6 @@
     "@babel/plugin-syntax-jsx": "7.2.0",
     "@babel/preset-env": "7.7.1",
     "babel-eslint": "10.0.3",
-    "customize-cra": "0.9.1",
-    "react-app-rewired": "2.1.5",
     "tailwindcss": "^1.2.0"
   }
 }
