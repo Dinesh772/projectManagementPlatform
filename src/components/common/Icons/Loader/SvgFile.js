@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 class Loader extends Component {
+  static defaultProps = {
+    width: 100,
+    height: 100,
+    fill: "#00BFFF"
+  };
+
   render() {
     const { width, height, fill } = this.props;
     return (
@@ -89,11 +95,5 @@ class Loader extends Component {
     );
   }
 }
-
-Loader.defaultProps = {
-  width: 100,
-  height: 100,
-  fill: "#00BFFF"
-};
 
 export default Loader;

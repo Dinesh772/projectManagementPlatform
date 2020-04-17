@@ -24,12 +24,7 @@ class FailureView extends React.Component {
         <FailureViewMessage>
           {this.renderErrorMessage(error)}
         </FailureViewMessage>
-        <RetryButton
-          onClick={onRetryClick}
-          className="px-8 py-2 bg-blue-500 text-white text-2xl rounded"
-        >
-          Retry
-        </RetryButton>
+        <RetryButton onClick={onRetryClick}>Retry</RetryButton>
       </FailureViewContainer>
     );
   }
