@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NoDataViewContainer, NoDataViewText } from "./StyledComponents";
+import { NoDataViewContainer, NoDataViewText } from "./styledComponents";
 
 class NoDataView extends React.Component {
   render() {

@@ -2,7 +2,7 @@ import React from "react";
 
 import Loader from "../Icons/Loader";
 
-import { LoadingViewContainer } from "./StyledComponents";
+import { LoadingViewContainer } from "./styledComponents";
 
 class LoadingView extends React.Component {
   render() {
