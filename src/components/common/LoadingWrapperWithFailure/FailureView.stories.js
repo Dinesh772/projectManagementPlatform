@@ -5,7 +5,7 @@ import FailureView from './FailureView'
 
 export default {
    component: FailureView,
-   title: 'FailureView'
+   title: 'Common/FailureView'
 }
 
 export const defaultFailureView = () => <FailureView />
