@@ -8,9 +8,9 @@ export default {
    title: 'Common/FailureView'
 }
 
-export const defaultFailureView = () => <FailureView />
+export const default = () => <FailureView />
 
-export const failureViewWithOnRetry = () => (
+export const withOnRetryProp = () => (
    <FailureView
       onRetryClick={action('retry clicked')}
       errorMessage={'Failed'}
