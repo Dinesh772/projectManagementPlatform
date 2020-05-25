@@ -29,14 +29,14 @@
    "scripts": {
       "build:css": "postcss src/index.css -o src/styles/tailwind.css",
       "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
-      "start": "npm run watch:css & react-scripts start",
-      "build": "npm run build:css react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject",
-      "js:start": "npm run watch:css & react-app-rewired start",
-      "js:build": "npm run build:css react-app-rewired build",
-      "js:test": "react-app-rewired test --env=jest-environment-jsdom-sixteen",
-      "js:eject": "react-app-rewired eject",
+      "start": "npm run watch:css & react-app-rewired start",
+      "build": "npm run build:css & react-app-rewired build",
+      "test": "react-app-rewired test",
+      "eject": "react-app-rewired eject",
+      "ts:start": "npm run watch:css & react-scripts start",
+      "ts:build": "npm run build:css & react-scripts build",
+      "ts:test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+      "ts:eject": "react-scripts eject",
       "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh",
       "storybook": "start-storybook -p 8080 -s public",
       "build-storybook": "build-storybook -s public"
@@ -45,7 +45,11 @@
       "extends": "react-app"
    },
    "browserslist": {
-      "production": [">0.2%", "not dead", "not op_mini all"],
+      "production": [
+         ">0.2%",
+         "not dead",
+         "not op_mini all"
+      ],
       "development": [
          "last 1 chrome version",
          "last 1 firefox version",
