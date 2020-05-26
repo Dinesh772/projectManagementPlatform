@@ -1,4 +1,23 @@
 import React from 'react'
-// import { observer } from 'mobx-react'
+import { Route } from 'react-router-dom'
+import { inject, observer } from 'mobx-react'
+import ProjectManagementPlatform from '../../projectManagementPlatform/components/ProjectManagementPlatform/index'
 
-// const ProtectedRoute = inject('authStore')(observer({ compo }))
+const ProtectedRoute = inject('authStore')(
+   observer(({ component: Component, path, authStore, ...others }) => {
+      console.log(path, authStore.access_token)
+      return (
+         <Route
+            render={props =>
+               authStore.access_token === undefined ? (
+                  <Component />
+               ) : (
+                  <Route path='' component={ProjectManagementPlatform} />
+               )
+            }
+         />
+      )
+   })
+)
+
+export default ProtectedRoute
