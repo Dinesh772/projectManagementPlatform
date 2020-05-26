@@ -1,0 +1,13 @@
+{
+     "userGreetText":"Hi there,",
+     "pleaseSignIn":"Please Sign Up",
+     "usernameLabel":"Username",
+     "passwordLabel":"Password",
+     "invalidUsernameErrorText":"invalid Username",
+     "login":"Login",
+     "mockUsername":"username@xyz.com",
+     "mockErrorText":"Invalid field",
+     "noDataText":"No Data Found!!",
+     "invalidPasswordErrorText":"Invalid Password"
+     
+}
