@@ -1,13 +1,14 @@
 {
    "userGreetText": "Hi there,",
-   "pleaseSignIn": "Please Sign Up",
-   "usernameLabel": "Username",
-   "passwordLabel": "Password",
-   "invalidUsernameErrorText": "invalid Username",
-   "login": "Login",
+   "pleaseSignIn": "please sign up",
+   "usernameLabel": "USERNAME",
+   "passwordLabel": "PASSWORD",
+   "invalidUsernameErrorText": "Invalid Username",
+   "login": "LOGIN",
    "mockUsername": "username@xyz.com",
    "mockErrorText": "Invalid field",
    "noDataText": "No Data Found!!",
    "invalidPasswordErrorText": "Invalid Password",
-   "text": "text"
+   "textType": "text",
+   "passwordType": "password"
 }

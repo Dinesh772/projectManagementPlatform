@@ -1,12 +1,12 @@
 import React from 'react'
 import UserTextInputField from '../../../components/UserTextInputField/UserTextInputField'
-import { Typo32DarkBlueGreyRubikRegular } from '../../../styleGuide/Typos/index'
+import { Typo26DarkBlueGreyRubikRegular } from '../../../styleGuide/Typos/index'
 import LoginButton from '../../../components/CommonButton/CommonButton'
 import {
    SignInWrapper,
    IbHubsLogo,
-   Username,
-   Password
+   UsernameWrapper,
+   PasswordWrapper
 } from './styledComponents'
 
 type PropsType = {
@@ -20,6 +20,7 @@ type PropsType = {
    isUsernameHasError: boolean
    validate: Function
    i18n: any
+   handleSubmit: any
 }
 
 class SignInComponent extends React.Component<PropsType> {
@@ -29,7 +30,8 @@ class SignInComponent extends React.Component<PropsType> {
          pleaseSignIn,
          usernameLabel,
          passwordLabel,
-         login
+         login,
+         passwordType
       } = this.props.i18n
       const {
          username,
@@ -40,21 +42,22 @@ class SignInComponent extends React.Component<PropsType> {
          validate,
          passwordErrorMessage,
          isPasswordHasError,
-         isUsernameHasError
+         isUsernameHasError,
+         handleSubmit
       } = this.props
       return (
-         <SignInWrapper>
+         <SignInWrapper onSubmit={handleSubmit}>
             <IbHubsLogo
                src='https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/9837b0f6-9165-49b3-995e-c6ac4ed19c55.svg'
                alt='logo'
             />
-            <Typo32DarkBlueGreyRubikRegular>
+            <Typo26DarkBlueGreyRubikRegular>
                {userGreetText}
                <br></br>
                {pleaseSignIn}
-            </Typo32DarkBlueGreyRubikRegular>
+            </Typo26DarkBlueGreyRubikRegular>
 
-            <Username>
+            <UsernameWrapper>
                <UserTextInputField
                   labelText={usernameLabel}
                   errorMessage={usernameErrorMessage}
@@ -63,19 +66,23 @@ class SignInComponent extends React.Component<PropsType> {
                   onChange={handleUsername}
                   validate={validate}
                />
-            </Username>
-            <Password>
+            </UsernameWrapper>
+            <PasswordWrapper>
                <UserTextInputField
                   labelText={passwordLabel}
                   errorMessage={passwordErrorMessage}
                   value={password}
-                  type='password'
+                  type={passwordType}
                   hasError={isPasswordHasError}
                   onChange={handlePassword}
                   validate={validate}
                />
-            </Password>
-            <LoginButton buttonValue={login} isDisabled={false} />
+            </PasswordWrapper>
+            <LoginButton
+               handleClick={handleSubmit}
+               buttonValue={login}
+               isDisabled={false}
+            />
          </SignInWrapper>
       )
    }

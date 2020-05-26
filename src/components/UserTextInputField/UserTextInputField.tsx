@@ -4,7 +4,7 @@ import {
    Typo12NeonRedHKGroteskRegular
 } from '../../styleGuide/Typos/index'
 import { InputField, InputWrapper } from './styledComponent'
-import i18n from '../../i18n/strings.json'
+
 const UserTextInputField = props => (
    <InputWrapper>
       <Typo12SteelHKGroteskSemiBold>
@@ -12,7 +12,7 @@ const UserTextInputField = props => (
       </Typo12SteelHKGroteskSemiBold>
       <InputField
          ref={props.setRef}
-         type={props.type ?? i18n.text}
+         type={props.type}
          value={props.value}
          onChange={props.onChange}
          onBlur={props.validate}

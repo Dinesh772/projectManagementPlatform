@@ -7,9 +7,6 @@ const InputField = styled.input<{ hasError: boolean }>`
    border: solid 1px
       ${props => (props.hasError ? Colors.neonRed : Colors.steel)};
    background-color: ${Colors.white};
-   :focus {
-      outline: none;
-   }
 `
 const InputWrapper = styled.div`
    display: flex;
