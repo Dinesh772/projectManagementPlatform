@@ -23,4 +23,13 @@ const PasswordWrapper = styled.div`
    padding-top: 10px;
    padding-bottom: 10px;
 `
-export { SignInWrapper, IbHubsLogo, UsernameWrapper, PasswordWrapper }
+const LoginFailure = styled.div<{ hide: boolean }>`
+   display: ${props => (props.hide ? 'block' : 'none')};
+`
+export {
+   SignInWrapper,
+   IbHubsLogo,
+   UsernameWrapper,
+   PasswordWrapper,
+   LoginFailure
+}

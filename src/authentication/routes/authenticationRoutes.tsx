@@ -12,7 +12,10 @@ const ProtectedRoute = inject('authStore')(
                authStore.access_token === undefined ? (
                   <Component />
                ) : (
-                  <Route path='' component={ProjectManagementPlatform} />
+                  <Route
+                     path='/project-management-platform/dashboard'
+                     component={ProjectManagementPlatform}
+                  />
                )
             }
          />

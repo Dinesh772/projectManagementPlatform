@@ -33,6 +33,7 @@
       "start": "npm run watch:css & react-app-rewired start",
       "build": "npm run build:css & react-app-rewired build",
       "test": "react-app-rewired test",
+      "coverage": "react-app-rewired test --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
       "eject": "react-app-rewired eject",
       "ts:start": "npm run watch:css & react-scripts start",
       "ts:build": "npm run build:css & react-scripts build",

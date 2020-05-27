@@ -18,6 +18,7 @@ const UserTextInputField = props => (
          onBlur={props.validate}
          hasError={props.hasError}
          placeholder={props.placeholder ?? ''}
+         data-testid={props.testId}
       />
       <Typo12NeonRedHKGroteskRegular>
          {props.errorMessage}

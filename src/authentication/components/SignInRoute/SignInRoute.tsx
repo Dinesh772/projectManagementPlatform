@@ -1,14 +1,20 @@
 import React from 'react'
 import { observable, action } from 'mobx'
 import { observer, inject } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
+import { History } from 'history'
 
 import i18n from '../../../i18n/strings.json'
 import SignInComponent from '../SignInComponent'
 import { SignInComponentWrapper } from './styledComponents'
 
+type propsType = {
+   history: History
+   authStore: any
+}
 @inject('authStore')
 @observer
-class SignInRoute extends React.Component<{ authStore: any }> {
+class SignInRoute extends React.Component<propsType> {
    @observable username = ''
    @observable password = ''
    @observable isUsernameHasError = false
@@ -62,16 +68,27 @@ class SignInRoute extends React.Component<{ authStore: any }> {
    }
    @action.bound
    doNetworkCalls() {
-      // const { authStore } = this.props
-      // const loginCredentials = {
-      //    username: this.username,
-      //    password: this.password
-      // }
+      const { authStore } = this.props
+      const loginCredentials = {
+         username: this.username,
+         password: this.password
+      }
+      authStore.getSignInAPI(
+         loginCredentials,
+         this.onLoginSuccess,
+         this.onLoginFailure
+      )
    }
    @action.bound
-   onLoginSuccess() {}
+   onLoginSuccess() {
+      const { history } = this.props
+      history.replace('/project-management-platform/dashboard')
+   }
    @action.bound
-   onLoginFailure() {}
+   onLoginFailure() {
+      this.username = ''
+      this.password = ''
+   }
 
    render() {
       const {
@@ -86,6 +103,10 @@ class SignInRoute extends React.Component<{ authStore: any }> {
          onValidation,
          handleSubmit
       } = this
+      const { access_token, getSignInApiStatus } = this.props.authStore
+      if (access_token !== undefined) {
+         this.onLoginSuccess()
+      }
       return (
          <SignInComponentWrapper>
             <SignInComponent
@@ -100,9 +121,10 @@ class SignInRoute extends React.Component<{ authStore: any }> {
                validate={onValidation}
                i18n={i18n}
                handleSubmit={handleSubmit}
+               getSignInApiStatus={getSignInApiStatus}
             />
          </SignInComponentWrapper>
       )
    }
 }
-export { SignInRoute }
+export default withRouter(SignInRoute)

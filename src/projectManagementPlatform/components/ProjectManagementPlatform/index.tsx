@@ -1,2 +1,2 @@
-import { ProjectManagementPlatform } from './ProjectManagementPlatform'
+import ProjectManagementPlatform from './ProjectManagementPlatform'
 export default ProjectManagementPlatform

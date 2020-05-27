@@ -5,19 +5,23 @@ import './App.css'
 import SignInRoute from './authentication/components/SignInRoute'
 import { Provider } from 'mobx-react'
 import stores from './projectManagementPlatform/stores/index'
+import projectManagementPlatformRoutes from './projectManagementPlatform/routes/projectManagementPlatformRoutes'
 
-const App = () => {
-   return (
-      <Provider {...stores}>
-         <HashRouter basename={process.env.PUBLIC_URL}>
-            <Switch>
-               <Route path='/'>
-                  <SignInRoute authStore={stores.authStore} />
-               </Route>
-            </Switch>
-         </HashRouter>
-      </Provider>
-   )
+class App extends React.Component {
+   render() {
+      return (
+         <Provider {...stores}>
+            <HashRouter basename={process.env.PUBLIC_URL}>
+               <Switch>
+                  {projectManagementPlatformRoutes}
+                  <Route path='/'>
+                     <SignInRoute />
+                  </Route>
+               </Switch>
+            </HashRouter>
+         </Provider>
+      )
+   }
 }
 
 export default App

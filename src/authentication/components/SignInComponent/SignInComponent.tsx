@@ -1,13 +1,19 @@
 import React from 'react'
 import UserTextInputField from '../../../components/UserTextInputField/UserTextInputField'
-import { Typo26DarkBlueGreyRubikRegular } from '../../../styleGuide/Typos/index'
+import {
+   Typo26DarkBlueGreyRubikRegular,
+   Typo12NeonRedHKGroteskRegular
+} from '../../../styleGuide/Typos/index'
 import LoginButton from '../../../components/CommonButton/CommonButton'
+import FetchingButton from '../../../components/CommonFetchingButton/CommonFetchingButton'
 import {
    SignInWrapper,
    IbHubsLogo,
    UsernameWrapper,
-   PasswordWrapper
+   PasswordWrapper,
+   LoginFailure
 } from './styledComponents'
+import { observer } from 'mobx-react'
 
 type PropsType = {
    username: string
@@ -20,9 +26,11 @@ type PropsType = {
    isUsernameHasError: boolean
    validate: Function
    i18n: any
+   getSignInApiStatus: any
    handleSubmit: any
 }
 
+@observer
 class SignInComponent extends React.Component<PropsType> {
    render() {
       const {
@@ -31,7 +39,10 @@ class SignInComponent extends React.Component<PropsType> {
          usernameLabel,
          passwordLabel,
          login,
-         passwordType
+         passwordType,
+         loginError,
+         usernameTestId,
+         passwordTestId
       } = this.props.i18n
       const {
          username,
@@ -43,7 +54,8 @@ class SignInComponent extends React.Component<PropsType> {
          passwordErrorMessage,
          isPasswordHasError,
          isUsernameHasError,
-         handleSubmit
+         handleSubmit,
+         getSignInApiStatus
       } = this.props
       return (
          <SignInWrapper onSubmit={handleSubmit}>
@@ -65,6 +77,7 @@ class SignInComponent extends React.Component<PropsType> {
                   value={username}
                   onChange={handleUsername}
                   validate={validate}
+                  testId={usernameTestId}
                />
             </UsernameWrapper>
             <PasswordWrapper>
@@ -76,13 +89,23 @@ class SignInComponent extends React.Component<PropsType> {
                   hasError={isPasswordHasError}
                   onChange={handlePassword}
                   validate={validate}
+                  testId={passwordTestId}
                />
             </PasswordWrapper>
-            <LoginButton
-               handleClick={handleSubmit}
-               buttonValue={login}
-               isDisabled={false}
-            />
+            {getSignInApiStatus === 100 ? (
+               <FetchingButton />
+            ) : (
+               <LoginButton
+                  handleClick={handleSubmit}
+                  buttonValue={login}
+                  isDisabled={false}
+               />
+            )}
+            <LoginFailure hide={getSignInApiStatus === 400}>
+               <Typo12NeonRedHKGroteskRegular>
+                  {loginError}
+               </Typo12NeonRedHKGroteskRegular>
+            </LoginFailure>
          </SignInWrapper>
       )
    }

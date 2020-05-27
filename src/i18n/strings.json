@@ -10,5 +10,9 @@
    "noDataText": "No Data Found!!",
    "invalidPasswordErrorText": "Invalid Password",
    "textType": "text",
-   "passwordType": "password"
+   "passwordType": "password",
+   "loginError": "Unable to login please retry again!!",
+   "usernameTestId": "test-username",
+   "passwordTestId": "test-password",
+   "error": "error"
 }

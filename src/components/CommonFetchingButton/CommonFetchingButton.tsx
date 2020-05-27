@@ -9,6 +9,7 @@ const CommonButton = props => (
          width={25}
          color={'white'}
          data-testid='loader'
+         disabled={true}
       />
    </Button>
 )
