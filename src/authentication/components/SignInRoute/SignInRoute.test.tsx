@@ -20,6 +20,10 @@ describe('SignInRoute component tests', () => {
       authApi = new AuthApi()
       authStore = new AuthStore(authApi)
    })
+   afterEach(() => {
+      jest.resetAllMocks()
+   })
+
    it('should test component should render', () => {
       const { getByText } = render(
          <Router history={createMemoryHistory()}>
@@ -78,6 +82,33 @@ describe('SignInRoute component tests', () => {
       getByLabelText('audio-loading')
    })
 
+   it('should test login failure state', async () => {
+      const { getByRole, getByTestId, getByText } = render(
+         <Router history={createMemoryHistory()}>
+            <SignInRoute authStore={authStore} />
+         </Router>
+      )
+      const loginButton = getByRole('button', { name: i18n.login })
+      const username = 'test-user'
+      const password = 'test-password'
+      const usernameField = getByTestId(i18n.usernameTestId)
+      const passwordField = getByTestId(i18n.passwordTestId)
+
+      const mockFailurePromise = new Promise(function(resolve, reject) {
+         reject(new Error('error'))
+      }).catch(() => {})
+      const mockSignInAPI = jest.fn()
+      mockSignInAPI.mockReturnValue(mockFailurePromise)
+      authApi.signInAPI = mockSignInAPI
+
+      fireEvent.change(usernameField, { target: { value: username } })
+      fireEvent.change(passwordField, { target: { value: password } })
+      fireEvent.click(loginButton)
+
+      await waitFor(() => {
+         getByText(i18n.loginError)
+      })
+   })
    it('should test login success state', async () => {
       const history = createMemoryHistory()
       const route = '/'
@@ -118,33 +149,6 @@ describe('SignInRoute component tests', () => {
          expect(getByTestId('location-display')).toHaveTextContent(
             '/project-management-platform/dashboard'
          )
-      })
-   })
-   it('should test login failure state', async () => {
-      const { getByRole, getByTestId, getByText } = render(
-         <Router history={createMemoryHistory()}>
-            <SignInRoute authStore={authStore} />
-         </Router>
-      )
-      const loginButton = getByRole('button', { name: i18n.login })
-      const username = 'test-user'
-      const password = 'test-password'
-      const usernameField = getByTestId(i18n.usernameTestId)
-      const passwordField = getByTestId(i18n.passwordTestId)
-
-      const mockFailurePromise = new Promise(function(resolve, reject) {
-         reject(new Error(i18n.error))
-      }).catch(() => {})
-      const mockSignInAPI = jest.fn()
-      mockSignInAPI.mockReturnValue(mockFailurePromise)
-      authApi.signInAPI = mockSignInAPI
-
-      fireEvent.change(usernameField, { target: { value: username } })
-      fireEvent.change(passwordField, { target: { value: password } })
-      fireEvent.click(loginButton)
-
-      await waitFor(() => {
-         getByText(i18n.loginError)
       })
    })
 })

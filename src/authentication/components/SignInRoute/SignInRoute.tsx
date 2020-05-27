@@ -82,7 +82,7 @@ class SignInRoute extends React.Component<propsType> {
    @action.bound
    onLoginSuccess() {
       const { history } = this.props
-      history.replace('/project-management-platform/dashboard')
+      history.push('/project-management-platform/dashboard')
    }
    @action.bound
    onLoginFailure() {

@@ -21,6 +21,5 @@ export function setAccessToken(accessToken) {
 }
 
 export function clearUserSession() {
-   alert(2)
    Cookie.remove(ACCESS_TOKEN, { path: '/' })
 }

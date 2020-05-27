@@ -53,7 +53,6 @@ class AuthStore {
    }
    @action.bound
    clearUserSession() {
-      alert(1)
       clearUserSession()
       this.clearStore()
    }
