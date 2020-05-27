@@ -21,8 +21,20 @@ class ProjectManagementPlatform extends React.Component<propsType> {
    render() {
       return (
          <div>
-            ProjectManagementPlatform component
-            <button onClick={this.handleLogout}>logout</button>
+            <p>ProjectManagementPlatform component</p>
+            <button
+               style={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  fontWeight: 600,
+                  padding: '4px',
+                  margin: '20px'
+               }}
+               onClick={this.handleLogout}
+            >
+               {' '}
+               logout
+            </button>
          </div>
       )
    }
