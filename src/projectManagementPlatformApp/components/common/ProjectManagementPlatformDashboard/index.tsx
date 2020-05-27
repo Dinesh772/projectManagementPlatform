@@ -1,0 +1,2 @@
+import ProjectManagementPlatformDashboard from './ProjectManagementPlatformDashboard'
+export default ProjectManagementPlatformDashboard

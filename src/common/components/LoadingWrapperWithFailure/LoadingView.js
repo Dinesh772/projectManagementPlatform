@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 
-import Loader from "../Icons/Loader";
+import Loader from '../Icons/Loader'
 
-import { LoadingViewContainer } from "./styledComponents";
+import { LoadingViewContainer } from './styledComponents'
 
 class LoadingView extends React.Component {
-  render() {
-    return (
-      <LoadingViewContainer>
-        <Loader />
-      </LoadingViewContainer>
-    );
-  }
+   render() {
+      return (
+         <LoadingViewContainer>
+            <Loader />
+         </LoadingViewContainer>
+      )
+   }
 }
 
-export default LoadingView;
+export default LoadingView

@@ -23,6 +23,7 @@ class SignInRoute extends React.Component<propsType> {
    @observable usernameErrorMessage = ''
    @observable passwordErrorMessage = ''
    @observable loginFailureErrorMessage = ''
+   @observable isValidated = false
    @action.bound
    handleUsername(event) {
       const usernameValue = event.target.value
@@ -53,19 +54,25 @@ class SignInRoute extends React.Component<propsType> {
       if (!stringValidator(username)) {
          this.usernameErrorMessage = i18n.invalidUsernameErrorText
          this.isUsernameHasError = true
+         this.isValidated = false
       }
       if (!stringValidator(password)) {
          this.passwordErrorMessage = i18n.invalidPasswordErrorText
          this.isPasswordHasError = true
+         this.isValidated = false
       }
-      return true
+      if (stringValidator(username) && stringValidator(password)) {
+         this.isValidated = true
+         this.doNetworkCalls()
+      }
    }
    @action.bound
    handleSubmit(event) {
       event.preventDefault()
-      const isValidated = this.onValidation()
-      if (isValidated) {
+      if (this.isValidated) {
          this.doNetworkCalls()
+      } else {
+         this.onValidation()
       }
    }
    @action.bound

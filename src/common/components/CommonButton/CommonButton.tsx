@@ -6,7 +6,13 @@ import { Typo14WhiteRubikMedium } from '../../../styleGuide/Typos'
 import { API_FETCHING } from '@ib/api-constants'
 
 const CommonButton = props => (
-   <Button disabled={props.isDisabled} onClick={props.handleClick}>
+   <Button
+      disabled={props.isDisabled}
+      onClick={props.handleClick}
+      bgColor={props.bgColor}
+      width={props.width}
+      height={props.height}
+   >
       {props.apiStatus === API_FETCHING ? (
          <Loader
             type='Oval'

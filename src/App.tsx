@@ -4,8 +4,8 @@ import { HashRouter, Switch, Route } from 'react-router-dom'
 import './App.css'
 import SignInRoute from './authentication/components/SignInRoute'
 import { Provider } from 'mobx-react'
-import stores from './projectManagementPlatform/stores/index'
-import projectManagementPlatformRoutes from './projectManagementPlatform/routes/projectManagementPlatformRoutes'
+import stores from './projectManagementPlatformApp/stores/index'
+import projectManagementPlatformRoutes from './projectManagementPlatformApp/routes/projectManagementPlatformRoutes'
 
 class App extends React.Component {
    render() {

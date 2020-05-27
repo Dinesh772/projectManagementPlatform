@@ -15,7 +15,18 @@
    "usernameTestId": "test-username",
    "passwordTestId": "test-password",
    "error": "error",
+   "avatarImageSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/1ec9402e-dcea-4cb3-8ced-99548f1cf992.svg",
    "logoSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/9837b0f6-9165-49b3-995e-c6ac4ed19c55.svg",
+   "logoSrcWithText": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/16939af5-b23f-4244-8bc7-36e1f72013e8.svg",
    "logoAlt": "logo",
-   "iBhubsLogoAlt": "iBHubs-logo"
+   "iBhubsLogoAlt": "iBHubs-logo",
+   "logout": "LOGOUT",
+   "projectTitle": "Project Management Platform",
+   "profile": "Profile",
+   "listOfProjects": "List of Projects",
+   "create": "+ Create",
+   "projectName": "Project Name",
+   "type": "Type",
+   "createdBy": "Created By",
+   "createdAt": "Created At"
 }

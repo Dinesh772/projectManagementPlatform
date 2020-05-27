@@ -46,7 +46,8 @@ class SignInComponent extends React.Component<PropsType> {
          loginFailureErrorMessage,
          usernameTestId,
          passwordTestId,
-         iBhubsLogoAlt
+         iBhubsLogoAlt,
+         logoSrc
       } = this.props.i18n
       const {
          username,
@@ -66,7 +67,7 @@ class SignInComponent extends React.Component<PropsType> {
       return (
          <SignInWrapper>
             <IbHubsLogo>
-               <Logo alt={iBhubsLogoAlt} />
+               <Logo alt={iBhubsLogoAlt} src={logoSrc} />
             </IbHubsLogo>
             <Typo26DarkBlueGreyRubikRegular>
                {userGreetText}

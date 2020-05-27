@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
-import ProjectManagementPlatform from '../../projectManagementPlatform/components/ProjectManagementPlatform/index'
+import ProjectManagementPlatform from '../../projectManagementPlatformApp/components/common/ProjectManagementPlatformDashboard/index'
+import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../common/constants/RouteConstants'
 
 const ProtectedRoute = inject('authStore')(
    observer(({ component: Component, path, authStore, ...others }) => {
@@ -12,7 +13,7 @@ const ProtectedRoute = inject('authStore')(
                   <Component />
                ) : (
                   <Route
-                     path='/project-management-platform/dashboard'
+                     path={PROJECT_MANAGEMENT_PLATFORM_DASHBOARD}
                      component={ProjectManagementPlatform}
                   />
                )

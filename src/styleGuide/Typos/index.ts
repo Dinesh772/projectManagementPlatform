@@ -40,3 +40,51 @@ export const Typo12NeonRedHKGroteskRegular = styled.span`
    letter-spacing: 0.12px;
    color: ${Colors.neonRed};
 `
+export const Typo24DarkBlueGreyHKGroteskMedium = styled.h2`
+   height: 32px;
+   font-family: 'HKGroteskRegular';
+   font-size: 24px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.33;
+   letter-spacing: normal;
+   padding: 14px;
+   color: ${Colors.darkBlueGrey};
+`
+export const Typo18HKGroteskMedium = styled.p`
+   height: 24px;
+   width: 300px;
+   font-family: 'HKGroteskRegular';
+   font-size: 18px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.2;
+   letter-spacing: normal;
+   color: ${Colors.darkBlueGrey};
+`
+export const Typo26BrightBlueHKGroteskRegular = styled.h2`
+   width: 288px;
+   height: 40px;
+   font-family: 'HKGroteskRegular';
+   font-size: 26px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.25;
+   letter-spacing: normal;
+   color: ${Colors.brightBlue};
+`
+export const Typo18HKGroteskRegular = styled.p`
+   height: 24px;
+   width: 300px;
+   font-family: 'HKGroteskRegular';
+   font-size: 18px;
+   font-weight: 500;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.2;
+   letter-spacing: normal;
+   color: ${Colors.darkBlueGrey};
+`

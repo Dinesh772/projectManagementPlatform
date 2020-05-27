@@ -5,5 +5,7 @@ export const Colors = {
    neonRed: '#ff0b37',
    steel: '#7e858e',
    brightBlue: '#0b69ff',
-   neonRed5: 'rgba(255, 11, 55, 0.05)'
+   neonRed5: 'rgba(255, 11, 55, 0.05)',
+   lightBlueGrey: '#d7dfe9',
+   whiteTwo: '#fbfbfb'
 }
