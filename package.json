@@ -31,7 +31,7 @@
       "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
       "start": "npm run watch:css & react-app-rewired start",
       "build": "npm run build:css & react-app-rewired build",
-      "test": "react-app-rewired test",
+      "test": "react-app-rewired test --env=jest-environment-jsdom-sixteen",
       "eject": "react-app-rewired eject",
       "ts:start": "npm run watch:css & react-scripts start",
       "ts:build": "npm run build:css & react-scripts build",
@@ -39,7 +39,19 @@
       "ts:eject": "react-scripts eject",
       "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh",
       "storybook": "start-storybook -p 8080 -s public",
-      "build-storybook": "build-storybook -s public"
+      "build-storybook": "build-storybook -s public",
+      "pretty": "npx prettier --write \"src/**/*.js\""
+   },
+   "husky": {
+      "hooks": {
+         "pre-commit": "lint-staged"
+      }
+   },
+   "lint-staged": {
+      "./src/*.{js,jsx,ts,tsx}": [
+         "npx prettier --write",
+         "eslint src/*.js --fix-dry-run"
+      ]
    },
    "eslintConfig": {
       "extends": "react-app"
@@ -73,7 +85,10 @@
       "@testing-library/react": "10.0.3",
       "babel-eslint": "10.0.3",
       "customize-cra": "0.9.1",
+      "eslint": "7.1.0",
+      "husky": "4.2.5",
       "jest-environment-jsdom-sixteen": "1.0.3",
+      "lint-staged": "10.2.6",
       "react-app-rewired": "2.1.5",
       "tailwindcss": "^1.2.0"
    }
