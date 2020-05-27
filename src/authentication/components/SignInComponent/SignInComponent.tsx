@@ -14,6 +14,7 @@ import {
    LoginFailure
 } from './styledComponents'
 import { observer } from 'mobx-react'
+import Logo from '../../../components/Logo/Logo'
 
 type PropsType = {
    username: string
@@ -28,6 +29,7 @@ type PropsType = {
    i18n: any
    getSignInApiStatus: any
    handleSubmit: any
+   loginFailureErrorMessage: string
 }
 
 @observer
@@ -42,7 +44,8 @@ class SignInComponent extends React.Component<PropsType> {
          passwordType,
          loginError,
          usernameTestId,
-         passwordTestId
+         passwordTestId,
+         iBhubsLogoAlt
       } = this.props.i18n
       const {
          username,
@@ -55,14 +58,15 @@ class SignInComponent extends React.Component<PropsType> {
          isPasswordHasError,
          isUsernameHasError,
          handleSubmit,
-         getSignInApiStatus
+         getSignInApiStatus,
+         loginFailureErrorMessage
       } = this.props
+      console.log(loginFailureErrorMessage)
       return (
          <SignInWrapper onSubmit={handleSubmit}>
-            <IbHubsLogo
-               src='https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/9837b0f6-9165-49b3-995e-c6ac4ed19c55.svg'
-               alt='logo'
-            />
+            <IbHubsLogo>
+               <Logo alt={iBhubsLogoAlt} />
+            </IbHubsLogo>
             <Typo26DarkBlueGreyRubikRegular>
                {userGreetText}
                <br></br>
@@ -103,7 +107,9 @@ class SignInComponent extends React.Component<PropsType> {
             )}
             <LoginFailure hide={getSignInApiStatus === 400}>
                <Typo12NeonRedHKGroteskRegular>
-                  {loginError}
+                  {loginFailureErrorMessage !== undefined
+                     ? loginFailureErrorMessage
+                     : loginError}
                </Typo12NeonRedHKGroteskRegular>
             </LoginFailure>
          </SignInWrapper>

@@ -6,14 +6,11 @@ const SignInWrapper = styled.form`
    flex-direction: column;
    background-color: ${Colors.white};
    align-items: center;
-   width: 30%;
-   height: 70%;
+   width: 436px;
+   height: 550px;
    border-radius: 8px;
 `
-const IbHubsLogo = styled.img`
-   width: 90px;
-   height: 90px;
-   object-fit: contain;
+const IbHubsLogo = styled.div`
    margin-top: 10%;
 `
 const UsernameWrapper = styled.div`

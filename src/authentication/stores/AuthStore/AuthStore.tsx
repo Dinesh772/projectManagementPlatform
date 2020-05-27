@@ -34,7 +34,7 @@ class AuthStore {
          })
          .catch(error => {
             this.setSignInAPIError(error)
-            onFailure()
+            onFailure(error)
          })
    }
    @action.bound

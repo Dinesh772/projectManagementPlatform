@@ -21,7 +21,7 @@ class SignInRoute extends React.Component<propsType> {
    @observable isPasswordHasError = false
    @observable usernameErrorMessage = ''
    @observable passwordErrorMessage = ''
-
+   @observable loginFailureErrorMessage = ''
    @action.bound
    handleUsername(event) {
       const usernameValue = event.target.value
@@ -85,9 +85,8 @@ class SignInRoute extends React.Component<propsType> {
       history.push('/project-management-platform/dashboard')
    }
    @action.bound
-   onLoginFailure() {
-      this.username = ''
-      this.password = ''
+   onLoginFailure(error) {
+      this.loginFailureErrorMessage = error.message
    }
 
    render() {
@@ -98,6 +97,7 @@ class SignInRoute extends React.Component<propsType> {
          passwordErrorMessage,
          isPasswordHasError,
          isUsernameHasError,
+         loginFailureErrorMessage,
          handleUsername,
          handlePassword,
          onValidation,
@@ -122,6 +122,7 @@ class SignInRoute extends React.Component<propsType> {
                i18n={i18n}
                handleSubmit={handleSubmit}
                getSignInApiStatus={getSignInApiStatus}
+               loginFailureErrorMessage={loginFailureErrorMessage}
             />
          </SignInComponentWrapper>
       )
