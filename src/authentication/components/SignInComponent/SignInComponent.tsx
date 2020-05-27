@@ -1,11 +1,14 @@
 import React from 'react'
-import UserTextInputField from '../../../components/UserTextInputField/UserTextInputField'
+import { observer } from 'mobx-react'
+import { API_FAILED } from '@ib/api-constants'
+
+import UserTextInputField from '../../../common/components/UserTextInputField/UserTextInputField'
 import {
    Typo26DarkBlueGreyRubikRegular,
    Typo12NeonRedHKGroteskRegular
 } from '../../../styleGuide/Typos/index'
-import LoginButton from '../../../components/CommonButton/CommonButton'
-import FetchingButton from '../../../components/CommonFetchingButton/CommonFetchingButton'
+import LoginButton from '../../../common/components/CommonButton/CommonButton'
+import Logo from '../../../common/components/Logo/Logo'
 import {
    SignInWrapper,
    IbHubsLogo,
@@ -13,8 +16,6 @@ import {
    PasswordWrapper,
    LoginFailure
 } from './styledComponents'
-import { observer } from 'mobx-react'
-import Logo from '../../../components/Logo/Logo'
 
 type PropsType = {
    username: string
@@ -29,7 +30,7 @@ type PropsType = {
    i18n: any
    getSignInApiStatus: any
    handleSubmit: any
-   loginFailureErrorMessage: string
+   loginApiFailureMessage: string
 }
 
 @observer
@@ -42,7 +43,7 @@ class SignInComponent extends React.Component<PropsType> {
          passwordLabel,
          login,
          passwordType,
-         loginError,
+         loginFailureErrorMessage,
          usernameTestId,
          passwordTestId,
          iBhubsLogoAlt
@@ -59,11 +60,11 @@ class SignInComponent extends React.Component<PropsType> {
          isUsernameHasError,
          handleSubmit,
          getSignInApiStatus,
-         loginFailureErrorMessage
+         loginApiFailureMessage
       } = this.props
-      console.log(loginFailureErrorMessage)
+
       return (
-         <SignInWrapper onSubmit={handleSubmit}>
+         <SignInWrapper>
             <IbHubsLogo>
                <Logo alt={iBhubsLogoAlt} />
             </IbHubsLogo>
@@ -96,20 +97,17 @@ class SignInComponent extends React.Component<PropsType> {
                   testId={passwordTestId}
                />
             </PasswordWrapper>
-            {getSignInApiStatus === 100 ? (
-               <FetchingButton />
-            ) : (
-               <LoginButton
-                  handleClick={handleSubmit}
-                  buttonValue={login}
-                  isDisabled={false}
-               />
-            )}
-            <LoginFailure hide={getSignInApiStatus === 400}>
+            <LoginButton
+               handleClick={handleSubmit}
+               buttonValue={login}
+               isDisabled={false}
+               apiStatus={getSignInApiStatus}
+            />
+            <LoginFailure hide={getSignInApiStatus === API_FAILED}>
                <Typo12NeonRedHKGroteskRegular>
-                  {loginFailureErrorMessage !== undefined
-                     ? loginFailureErrorMessage
-                     : loginError}
+                  {loginApiFailureMessage !== undefined
+                     ? loginApiFailureMessage
+                     : loginFailureErrorMessage}
                </Typo12NeonRedHKGroteskRegular>
             </LoginFailure>
          </SignInWrapper>

@@ -25,7 +25,6 @@ describe('Auth Store tests', () => {
    it('should test initial values of authStore', () => {
       expect(authStore.getSignInApiStatus).toBe(API_INITIAL)
       expect(authStore.getSignInError).toBeNull()
-      expect(authStore.access_token).toBeUndefined()
    })
 
    it('should test user signin fetching state', () => {

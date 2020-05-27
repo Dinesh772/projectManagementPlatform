@@ -2,7 +2,7 @@ import React from 'react'
 import {
    Typo12SteelHKGroteskSemiBold,
    Typo12NeonRedHKGroteskRegular
-} from '../../styleGuide/Typos/index'
+} from '../../../styleGuide/Typos/index'
 import { InputField, InputWrapper } from './styledComponent'
 
 const UserTextInputField = props => (

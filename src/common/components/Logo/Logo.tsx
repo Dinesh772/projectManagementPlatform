@@ -1,5 +1,5 @@
 import React from 'react'
-import i18n from '../../i18n/strings.json'
+import i18n from '../../../i18n/strings.json'
 import { ImageEl } from './styledComponent'
 const Logo = props => (
    <ImageEl

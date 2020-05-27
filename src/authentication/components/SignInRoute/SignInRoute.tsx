@@ -7,7 +7,8 @@ import { History } from 'history'
 import i18n from '../../../i18n/strings.json'
 import SignInComponent from '../SignInComponent'
 import { SignInComponentWrapper } from './styledComponents'
-
+import { stringValidator } from '../../utils/ValidationUtils/ValidationUtils'
+import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../common/constants/RouteConstants'
 type propsType = {
    history: History
    authStore: any
@@ -49,22 +50,23 @@ class SignInRoute extends React.Component<propsType> {
    @action.bound
    onValidation() {
       const { username, password } = this
-      if (username.length !== 0) {
-         if (password.length !== 0) {
-            this.doNetworkCalls()
-         } else {
-            this.passwordErrorMessage = i18n.invalidPasswordErrorText
-            this.isPasswordHasError = true
-         }
-      } else {
+      if (!stringValidator(username)) {
          this.usernameErrorMessage = i18n.invalidUsernameErrorText
          this.isUsernameHasError = true
       }
+      if (!stringValidator(password)) {
+         this.passwordErrorMessage = i18n.invalidPasswordErrorText
+         this.isPasswordHasError = true
+      }
+      return true
    }
    @action.bound
    handleSubmit(event) {
       event.preventDefault()
-      this.onValidation()
+      const isValidated = this.onValidation()
+      if (isValidated) {
+         this.doNetworkCalls()
+      }
    }
    @action.bound
    doNetworkCalls() {
@@ -82,7 +84,8 @@ class SignInRoute extends React.Component<propsType> {
    @action.bound
    onLoginSuccess() {
       const { history } = this.props
-      history.push('/project-management-platform/dashboard')
+      const path = PROJECT_MANAGEMENT_PLATFORM_DASHBOARD
+      history.push(path)
    }
    @action.bound
    onLoginFailure(error) {
@@ -103,8 +106,8 @@ class SignInRoute extends React.Component<propsType> {
          onValidation,
          handleSubmit
       } = this
-      const { access_token, getSignInApiStatus } = this.props.authStore
-      if (access_token !== undefined) {
+      const { accessToken, getSignInApiStatus } = this.props.authStore
+      if (accessToken) {
          this.onLoginSuccess()
       }
       return (
@@ -122,7 +125,7 @@ class SignInRoute extends React.Component<propsType> {
                i18n={i18n}
                handleSubmit={handleSubmit}
                getSignInApiStatus={getSignInApiStatus}
-               loginFailureErrorMessage={loginFailureErrorMessage}
+               loginApiFailureMessage={loginFailureErrorMessage}
             />
          </SignInComponentWrapper>
       )

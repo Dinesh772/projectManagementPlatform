@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import i18n from '../../i18n/strings.json'
+import i18n from '../../../i18n/strings.json'
 import UserTextInputField from './UserTextInputField'
 describe('userTextInputField component tests', () => {
    it('should check component should render with lable text', () => {

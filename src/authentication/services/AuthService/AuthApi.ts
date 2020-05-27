@@ -1,11 +1,11 @@
 import { create } from 'apisauce'
 
-import { apiMethods } from '../../../constants/APIConstants'
-import { networkCallWithApisauce } from '../../../utils/APIUtils'
-import endPoints from '../endPoints'
+import { apiMethods } from '../../../common/constants/APIConstants'
+import { networkCallWithApisauce } from '../../../common/utils/APIUtils'
+//import endPoints from '../endPoints'
 
 const AUTH_URL = 'https://5ea1a14db9f5ca00166c1f27.mockapi.io/api/'
-const endPoint = endPoints.login
+//const endPoint = endPoints.login
 
 class AuthApi {
    api

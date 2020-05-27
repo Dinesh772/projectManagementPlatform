@@ -5,11 +5,10 @@ import ProjectManagementPlatform from '../../projectManagementPlatform/component
 
 const ProtectedRoute = inject('authStore')(
    observer(({ component: Component, path, authStore, ...others }) => {
-      console.log(path, authStore.access_token)
       return (
          <Route
             render={props =>
-               authStore.access_token === undefined ? (
+               authStore.accessToken ? (
                   <Component />
                ) : (
                   <Route

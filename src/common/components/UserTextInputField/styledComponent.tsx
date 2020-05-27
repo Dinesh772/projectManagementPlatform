@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Colors } from '../../themes/Colors'
+import { Colors } from '../../../themes/Colors'
 const InputField = styled.input<{ hasError: boolean }>`
    width: 320px;
    height: 40px;
