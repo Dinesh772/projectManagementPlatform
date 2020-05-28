@@ -27,7 +27,6 @@ export const Typo14WhiteRubikMedium = styled.span`
    font-style: normal;
    line-height: 1.71;
    letter-spacing: normal;
-   color: ${Colors.white};
 `
 export const Typo12NeonRedHKGroteskRegular = styled.span`
    height: 16px;
@@ -52,12 +51,12 @@ export const Typo24DarkBlueGreyHKGroteskMedium = styled.h2`
    padding: 14px;
    color: ${Colors.darkBlueGrey};
 `
-export const Typo18HKGroteskMedium = styled.p`
+export const Typo16HKGroteskMedium = styled.p`
    height: 24px;
    width: 300px;
    font-family: 'HKGroteskRegular';
-   font-size: 18px;
-   font-weight: 500;
+   font-size: 16px;
+   font-weight: 600;
    font-stretch: normal;
    font-style: normal;
    line-height: 1.2;
@@ -80,7 +79,7 @@ export const Typo18HKGroteskRegular = styled.p`
    height: 24px;
    width: 300px;
    font-family: 'HKGroteskRegular';
-   font-size: 18px;
+   font-size: 16px;
    font-weight: 500;
    font-stretch: normal;
    font-style: normal;

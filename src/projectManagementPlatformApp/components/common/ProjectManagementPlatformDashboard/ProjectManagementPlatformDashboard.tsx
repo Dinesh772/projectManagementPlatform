@@ -2,17 +2,16 @@ import React from 'react'
 import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { History } from 'history'
-import { action } from 'mobx'
-import Logout from '../Logout/Logout'
+import { action, observable } from 'mobx'
 import Header from '../Header'
-import Projects from '../Projects'
 import {
    ProjectManagementDashboardWrapper,
-   ProjectsWrapper
+   ProfileCardWrapper
 } from './styledComponent'
 import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
 import MemberDashboard from '../../memberComponents/MemberDashboard'
 import AdminDashboard from '../../adminComponents/AdminDashboard'
+import ProfileCard from '../ProfileCard'
 type propsType = {
    authStore: any
    history: History
@@ -22,6 +21,7 @@ type propsType = {
 @inject('authStore', 'projectStore')
 @observer
 class ProjectManagementPlatformDashboard extends React.Component<propsType> {
+   @observable isProfileClicked = false
    @action.bound
    handleLogout() {
       const { clearUserSession } = this.props.authStore
@@ -50,18 +50,26 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
          <MemberDashboard projectStore={projectStore} />
       )
    }
+   handleProfile = (event, value) => {
+      this.isProfileClicked = !this.isProfileClicked
+   }
    render() {
       const { projectsAPIStatus, projectsAPIError } = this.props.projectStore
       return (
          <ProjectManagementDashboardWrapper>
-            <Header />
+            <Header handleProfileClick={this.handleProfile} />
             <LoadingWrapperWithFailure
                apiStatus={projectsAPIStatus}
                apiError={projectsAPIError}
                onRetryClick={this.doNetworkCalls}
                renderSuccessUI={this.renderSuccessUI}
             />
-            <Logout handleClick={this.handleLogout} />
+            <ProfileCardWrapper hide={this.isProfileClicked}>
+               <ProfileCard
+                  handleProfile={this.handleProfile}
+                  handleLogout={this.handleLogout}
+               />
+            </ProfileCardWrapper>
          </ProjectManagementDashboardWrapper>
       )
    }

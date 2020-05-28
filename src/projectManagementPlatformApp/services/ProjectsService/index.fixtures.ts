@@ -1,10 +1,14 @@
 import projectsResponse from '../../fixtures/projectFixtures.json'
-
+import workflowFixtures from '../../fixtures/workflowFixtures.json'
 class ProjectsFixtureService {
-   getProjectsAPI = () => {
+   getProjectsAPI = index => {
       return new Promise((resolve, reject) => {
          resolve(projectsResponse)
-         //reject(new Error('error'))
+      })
+   }
+   getWorkflowsAPI = () => {
+      return new Promise((resolve, reject) => {
+         resolve(workflowFixtures)
       })
    }
 }

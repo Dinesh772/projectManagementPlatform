@@ -63,7 +63,6 @@ class SignInRoute extends React.Component<propsType> {
       }
       if (stringValidator(username) && stringValidator(password)) {
          this.isValidated = true
-         this.doNetworkCalls()
       }
    }
    @action.bound
@@ -71,8 +70,6 @@ class SignInRoute extends React.Component<propsType> {
       event.preventDefault()
       if (this.isValidated) {
          this.doNetworkCalls()
-      } else {
-         this.onValidation()
       }
    }
    @action.bound

@@ -9,8 +9,11 @@ import {
    ProfileWrapper
 } from './styledComponent'
 import UserProfile from '../UserProfile'
-class Header extends React.Component {
+class Header extends React.Component<{
+   handleProfileClick: any
+}> {
    render() {
+      const { handleProfileClick } = this.props
       return (
          <HeaderWrapper>
             <ChildWrapper>
@@ -21,7 +24,7 @@ class Header extends React.Component {
                   {i18n.projectTitle}
                </Typo24DarkBlueGreyHKGroteskMedium>
             </ChildWrapper>
-            <ProfileWrapper>
+            <ProfileWrapper onClick={handleProfileClick}>
                <UserProfile />
             </ProfileWrapper>
          </HeaderWrapper>

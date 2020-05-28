@@ -14,5 +14,14 @@ const ChildWrapper = styled.div`
 const ProfileWrapper = styled.div`
    margin-right: 30px;
 `
+const LogoutButtonWrapper = styled.div`
+   margin-top: 15px;
+`
 const IbHubsLogo = styled.div``
-export { HeaderWrapper, IbHubsLogo, ChildWrapper, ProfileWrapper }
+export {
+   HeaderWrapper,
+   IbHubsLogo,
+   ChildWrapper,
+   ProfileWrapper,
+   LogoutButtonWrapper
+}

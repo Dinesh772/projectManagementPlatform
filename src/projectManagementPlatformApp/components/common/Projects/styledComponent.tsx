@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const ProjectsListWrapper = styled.div`
+const ProjectsWrapper = styled.div`
    display: flex;
    flex-direction: column;
    width: 100%;
@@ -20,4 +20,4 @@ const ChildWrapper = styled.div`
    height: 500px;
    justify-content: center;
 `
-export { ProjectsListWrapper, ProjectsListHeader, ChildWrapper }
+export { ProjectsWrapper, ProjectsListHeader, ChildWrapper }

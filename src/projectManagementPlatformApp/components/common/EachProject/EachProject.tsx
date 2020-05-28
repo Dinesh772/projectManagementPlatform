@@ -2,12 +2,12 @@ import React from 'react'
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 
 import { EachProjectWrapper } from './styledComponent'
-class EachProject extends React.Component<{ project: any }> {
+class EachProject extends React.Component<{ project: any; bgColor: any }> {
    render() {
-      const { project } = this.props
+      const { project, bgColor } = this.props
 
       return (
-         <EachProjectWrapper>
+         <EachProjectWrapper bgColor={bgColor}>
             <Typo18HKGroteskRegular>{project.name}</Typo18HKGroteskRegular>
             <Typo18HKGroteskRegular>
                {project.projectType}
@@ -21,10 +21,3 @@ class EachProject extends React.Component<{ project: any }> {
    }
 }
 export { EachProject }
-// name": "Project management platform",
-//    "workflowType": 123,
-//    "whoCreated": "admin",
-//    "createdAt": "27-05-2020 03:30pm",
-//    "description": "this is description of the project",
-//    "projectType": "software"
-// }

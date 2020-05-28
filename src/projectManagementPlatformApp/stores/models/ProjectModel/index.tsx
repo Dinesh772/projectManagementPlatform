@@ -1,2 +1,2 @@
 import { ProjectModel } from './ProjectModel'
-export default { ProjectModel }
+export default ProjectModel

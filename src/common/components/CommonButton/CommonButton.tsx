@@ -8,10 +8,12 @@ import { API_FETCHING } from '@ib/api-constants'
 const CommonButton = props => (
    <Button
       disabled={props.isDisabled}
-      onClick={props.handleClick}
+      onClick={event => props.handleClick(event, props.buttonValue)}
       bgColor={props.bgColor}
       width={props.width}
       height={props.height}
+      borderColor={props.borderColor}
+      textColor={props.textColor}
    >
       {props.apiStatus === API_FETCHING ? (
          <Loader
