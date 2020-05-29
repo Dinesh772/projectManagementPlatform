@@ -1,4 +1,4 @@
-import { observable, action, computed, toJS } from 'mobx'
+import { observable, action, computed } from 'mobx'
 import { API_INITIAL } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import TaskModel from '../models/TaskModel'
@@ -6,6 +6,8 @@ import TaskModel from '../models/TaskModel'
 class TaskStore {
    @observable tasksList
    @observable tasksAPIStatus
+   @observable createTaskAPIStatus
+   @observable createTaskAPIError
    @observable tasksAPIError
    @observable tasksLimitPerPage = 10
    @observable totalTasks = 0
@@ -20,6 +22,8 @@ class TaskStore {
    init() {
       this.tasksList = []
       this.tasksAPIStatus = API_INITIAL
+      this.createTaskAPIStatus = API_INITIAL
+      this.createTaskAPIError = null
       this.tasksAPIError = null
       this.tasksLimitPerPage = 10
       this.totalTasks = 0
@@ -33,7 +37,6 @@ class TaskStore {
    }
    @action.bound
    getTasksAPI() {
-      console.log(toJS(this.tasksList))
       if (
          this.tasksList[this.currentPageIndex] === undefined ||
          this.tasksList[this.currentPageIndex].length === 0
@@ -47,6 +50,29 @@ class TaskStore {
                this.setTasksAPIError(error)
             })
       }
+   }
+   @action.bound
+   createTaskAPI() {
+      const createTaslPromise = this.taskService.createTaskAPI()
+      return bindPromiseWithOnSuccess(createTaslPromise)
+         .to(this.setCreateTaskAPIStatus, response => {
+            this.setCreateTaskAPIResponse(response)
+         })
+         .catch(error => {
+            this.setCreateTaskAPIError(error)
+         })
+   }
+   @action.bound
+   setCreateTaskAPIStatus(apiStatus) {
+      this.createTaskAPIStatus = apiStatus
+   }
+   @action.bound
+   setCreateTaskAPIError(error) {
+      this.createTaskAPIError = error
+   }
+   @action.bound
+   setCreateTaskAPIResponse(response) {
+      console.log(response)
    }
    @computed
    get currentPageIndex() {

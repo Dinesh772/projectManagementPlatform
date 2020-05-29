@@ -152,6 +152,7 @@ class CreateProject extends React.Component<{
                   validate={this.handleValidation}
                   value={this.projectData.projectName}
                   testId={i18n.createProjectNameTestId}
+                  width={'380px'}
                />
 
                <UserTextareaInput

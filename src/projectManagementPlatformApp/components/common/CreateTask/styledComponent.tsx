@@ -22,9 +22,25 @@ const CreateTaskHeader = styled.div`
    padding-bottom: 40px;
    border-bottom: 0.8px solid ${Colors.lightBlueGrey};
 `
-const TaskDetails = styled.div`
+const TaskDetails = styled.form`
    display: flex;
    flex-direction: column;
    padding: 10px;
 `
-export { CreateTaskWrapper, CreateTaskHeader, TaskDetails }
+const DropdownWrapper = styled.div`
+   margin-top: 8px;
+   margin-bottom: 6px;
+`
+const CreateButtonWrapper = styled.div`
+   display: flex;
+   margin-top: 20px;
+   height: 100%;
+   justify-content: center;
+`
+export {
+   CreateTaskWrapper,
+   CreateButtonWrapper,
+   CreateTaskHeader,
+   TaskDetails,
+   DropdownWrapper
+}

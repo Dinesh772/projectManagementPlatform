@@ -5,5 +5,10 @@ class TasksFixturesAPI {
          setTimeout(() => resolve(tasksFixtures), 1000)
       })
    }
+   createTaskAPI = () => {
+      return new Promise((resolve, reject) => {
+         setTimeout(() => resolve([]), 1000)
+      })
+   }
 }
 export default TasksFixturesAPI

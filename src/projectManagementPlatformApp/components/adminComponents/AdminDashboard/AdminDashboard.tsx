@@ -116,7 +116,11 @@ class AdminDashboard extends React.Component<{
                   />
                </PaginationWrapper>
                <CreateTaskWrapper hide={this.isAddTaskClicked}>
-                  <CreateTask handleClose={this.handleCreateTask} />
+                  <CreateTask
+                     handleClose={this.handleCreateTask}
+                     taskStore={taskStore}
+                     projectsData={projectStore.projectsList}
+                  />
                </CreateTaskWrapper>
             </AdminWrapper>
          )

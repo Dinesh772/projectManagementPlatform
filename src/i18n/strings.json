@@ -55,5 +55,8 @@
    "addTask": "+ Add New Task",
    "summary": "SUMMARY",
    "status": "STATUS",
-   "createTask": "Create new Task"
+   "createTask": "Create new Task",
+   "selectProject": "SELECT PROJECT*",
+   "issueType": "ISSUE TYPE",
+   "title": "TITLE"
 }

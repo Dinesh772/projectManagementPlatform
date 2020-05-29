@@ -16,6 +16,7 @@ const UserTextInputField = props => (
          value={props.value}
          onChange={props.onChange}
          onBlur={props.validate}
+         width={props.width}
          hasError={props.hasError}
          placeholder={props.placeholder ?? ''}
          data-testid={props.testId}
