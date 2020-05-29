@@ -151,7 +151,6 @@ class ProjectStore {
       this.projectsList[this.currentPageIndex] = projectsList
    }
    @action.bound
-   @action.bound
    handlePaginationButtons(value) {
       if (value === '<') {
          this.currentPageNumber = this.currentPageNumber - 1

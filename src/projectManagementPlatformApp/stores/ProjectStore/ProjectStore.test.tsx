@@ -2,14 +2,9 @@ import { ProjectStore } from './ProjectStore'
 import ProjectsFixtureService from '../../services/ProjectsService/index.fixtures'
 import workflowData from '../../fixtures/workflowFixtures.json'
 
-import {
-   API_INITIAL,
-   API_FETCHING,
-   API_SUCCESS,
-   API_FAILED
-} from '@ib/api-constants'
+import { API_INITIAL, API_FETCHING, API_SUCCESS } from '@ib/api-constants'
 import projectsData from '../../fixtures/projectFixtures.json'
-import { waitFor } from '@testing-library/react'
+
 describe('ProjectStore testing', () => {
    let projectStore
    let projectService

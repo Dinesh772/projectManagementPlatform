@@ -16,9 +16,10 @@ type propsType = {
    authStore: any
    history: History
    projectStore: any
+   taskStore: any
 }
 
-@inject('authStore', 'projectStore')
+@inject('authStore', 'projectStore', 'taskStore')
 @observer
 class ProjectManagementPlatformDashboard extends React.Component<propsType> {
    @observable isProfileClicked = false
@@ -43,9 +44,9 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
    }
    @action.bound
    renderSuccessUI() {
-      const { projectStore } = this.props
+      const { projectStore, taskStore } = this.props
       return projectStore.isAdmin ? (
-         <AdminDashboard projectStore={projectStore} />
+         <AdminDashboard projectStore={projectStore} taskStore={taskStore} />
       ) : (
          <MemberDashboard projectStore={projectStore} />
       )

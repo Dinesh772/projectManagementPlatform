@@ -46,5 +46,14 @@
    "thisFieldIsRequired": "  * This field is required..",
    "selectWorkflow": "Select workflow",
    "selectType": "Select type",
-   "closeButtonSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/79133ebe-d88d-4519-8ab0-d5b3c4746382.svg"
+   "closeButtonSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/79133ebe-d88d-4519-8ab0-d5b3c4746382.svg",
+   "paginationTestId": "pagination",
+   "createProjectNameTestId": "createProjectName-test",
+   "projectNameTestId": "project-name",
+   "projectDescriptionTestId": "project-description",
+   "listOfTasks": "List of Tasks",
+   "addTask": "+ Add New Task",
+   "summary": "SUMMARY",
+   "status": "STATUS",
+   "createTask": "Create new Task"
 }

@@ -1,2 +1,2 @@
 import { TaskModel } from './TaskModel'
-export default { TaskModel }
+export default TaskModel

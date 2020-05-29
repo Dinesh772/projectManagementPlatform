@@ -8,7 +8,10 @@ import {
 } from './styledComponents'
 
 @observer
-class FailureView extends React.Component {
+class FailureView extends React.Component<{
+   onRetryClick: any
+   errorMessage: any
+}> {
    render() {
       const { onRetryClick, errorMessage } = this.props
 

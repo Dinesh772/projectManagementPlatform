@@ -7,22 +7,23 @@ import {
 import PageNumberButton from '../../../../common/components/CommonButton/CommonButton'
 import { Colors } from '../../../../themes/Colors'
 import { observer } from 'mobx-react'
+import i18n from '../../../../i18n/strings.json'
 @observer
-class Pagination extends React.Component<{ projectStore: any; hide: any }> {
+class Pagination extends React.Component<{ store: any; hide: any }> {
    handleClick = (event, value) => {
-      const { projectStore } = this.props
+      const { store } = this.props
       if (value === '<') {
-         projectStore.handlePaginationButtons(value)
+         store.handlePaginationButtons(value)
       } else if (value === '>') {
-         projectStore.handlePaginationButtons(value)
+         store.handlePaginationButtons(value)
       } else {
-         projectStore.handlePaginationButtons(value)
+         store.handlePaginationButtons(value)
       }
    }
    render() {
-      const { projectStore, hide } = this.props
-      const totalPages = projectStore.totalPaginationLimit
-      const currentPageNumber = projectStore.currentPageNumber
+      const { store, hide } = this.props
+      const totalPages = store.totalPaginationLimit
+      const currentPageNumber = store.currentPageNumber
       const pageNumbers = paginationPages(totalPages, currentPageNumber)
       const pageButtons = pageNumbers.map(each =>
          each !== '....' ? (
@@ -45,7 +46,11 @@ class Pagination extends React.Component<{ projectStore: any; hide: any }> {
             each
          )
       )
-      return <PaginationWrapper hide={hide}>{pageButtons}</PaginationWrapper>
+      return (
+         <PaginationWrapper data-testid={i18n.paginationTestId} hide={hide}>
+            {pageButtons}
+         </PaginationWrapper>
+      )
    }
 }
 export { Pagination }

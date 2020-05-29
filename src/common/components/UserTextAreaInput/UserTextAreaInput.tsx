@@ -14,6 +14,7 @@ export const UserTextareaInput = props => (
          onChange={props.onChange}
          hasError={props.hasError}
          onBlur={props.validate}
+         data-testid={props.testId}
       >
          {props.value}
       </TextareaWrapper>

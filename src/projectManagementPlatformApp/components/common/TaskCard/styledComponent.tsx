@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
-const EachProjectWrapper = styled.div<{ bgColor: any }>`
+
+const TaskCardWrapper = styled.div<{ bgColor: any }>`
    display: flex;
    height: 50px;
    width: 100%;
@@ -10,4 +11,4 @@ const EachProjectWrapper = styled.div<{ bgColor: any }>`
    background-color: ${props => props.bgColor};
    cursor: pointer;
 `
-export { EachProjectWrapper }
+export { TaskCardWrapper }

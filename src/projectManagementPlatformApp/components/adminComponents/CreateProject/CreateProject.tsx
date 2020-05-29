@@ -8,7 +8,6 @@ import {
 } from './styledComponent'
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
 import i18n from '../../../../i18n/strings.json'
-import { Colors } from '../../../../themes/Colors'
 import UserTextInputField from '../../../../common/components/UserTextInputField/UserTextInputField'
 import { UserTextareaInput } from '../../../../common/components/UserTextAreaInput/UserTextAreaInput'
 import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
@@ -123,7 +122,6 @@ class CreateProject extends React.Component<{
       handleClick()
    }
    render() {
-      console.log('render call')
       const { workflows, fetchingStatus } = this.props
       const workflowValues = workflows
       const projectTypeValues = [
@@ -153,6 +151,7 @@ class CreateProject extends React.Component<{
                   errorMessage={this.projectNameErrorMessage}
                   validate={this.handleValidation}
                   value={this.projectData.projectName}
+                  testId={i18n.createProjectNameTestId}
                />
 
                <UserTextareaInput
@@ -162,6 +161,7 @@ class CreateProject extends React.Component<{
                   errorMessage={this.projectDescriptionErrorMessage}
                   validate={this.handleValidation}
                   value={this.projectData.description}
+                  testId={i18n.projectDescriptionTestId}
                />
                <DropdownWrapper>
                   <Dropdown

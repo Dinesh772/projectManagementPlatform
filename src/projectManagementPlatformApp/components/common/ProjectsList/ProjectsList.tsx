@@ -7,14 +7,19 @@ import { Colors } from '../../../../themes/Colors'
 import { observer } from 'mobx-react'
 
 @observer
-class ProjectsList extends React.Component<{ projectsData: any }> {
+class ProjectsList extends React.Component<{
+   projectsData: any
+   handleProjectClick: any
+}> {
    render() {
       const projectsData = this.props.projectsData
+      const { handleProjectClick } = this.props
       const listOfProjects = projectsData.map((eachProject, index) => (
          <EachProject
             key={eachProject.id}
             project={eachProject}
             bgColor={index % 2 === 0 ? Colors.lightBlueGrey24 : Colors.white}
+            handleProjectClick={handleProjectClick}
          />
       ))
       return (
