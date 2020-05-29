@@ -1,3 +1,3 @@
 {
-   "workflows": ["TODO", "IN Progress", "To be reviewed", "Backlog"]
+   "workflows": ["Todo", "Work in progress", "To be reviewed", "Issue/Backlog"]
 }

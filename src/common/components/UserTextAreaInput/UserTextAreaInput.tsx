@@ -11,6 +11,9 @@ export const UserTextareaInput = props => (
          rows={props.rows ?? '4'}
          cols={props.cols ?? '5'}
          width={props.width}
+         onChange={props.onChange}
+         hasError={props.hasError}
+         onBlur={props.validate}
       >
          {props.value}
       </TextareaWrapper>

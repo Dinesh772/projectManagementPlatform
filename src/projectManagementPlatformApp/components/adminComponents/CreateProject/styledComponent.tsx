@@ -4,19 +4,23 @@ import { Colors } from '../../../../themes/Colors'
 const CreateProjectWrapper = styled.div`
    display: flex;
    flex-direction: column;
-   width: 28%;
-   height: 60vh;
+   width: 30%;
+   min-height: 70vh;
    border: 1px solid ${Colors.lightBlueGrey};
    border-radius: 6px;
+   padding-left: 30px;
+   padding-right: 30px;
    background-color: ${Colors.white};
 `
 const CreateProjectHeader = styled.div`
    display: flex;
    height: 40px;
-   justify-content: flex-end;
+   justify-content: space-between;
    background-color: ${Colors.white};
    color: ${Colors.steel};
    padding: 10px;
+   padding-bottom: 40px;
+   border-bottom: 0.8px solid ${Colors.lightBlueGrey};
 `
 const ProjectDetails = styled.form`
    display: flex;
@@ -28,11 +32,18 @@ const TextareaElement = styled.textarea`
 `
 const DropdownWrapper = styled.div`
    margin-top: 8px;
+   margin-bottom: 12px;
 `
 const CreateWorkflowWrapper = styled.div<{ hide: any }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    background-color: ${props =>
       props.hide ? Colors.black60 : Colors.whiteTwo};
+`
+const CreateButtonWrapper = styled.div`
+   display: flex;
+   margin-top: 20px;
+   height: 100%;
+   justify-content: center;
 `
 export {
    CreateProjectWrapper,
@@ -40,5 +51,6 @@ export {
    ProjectDetails,
    TextareaElement,
    DropdownWrapper,
-   CreateWorkflowWrapper
+   CreateWorkflowWrapper,
+   CreateButtonWrapper
 }

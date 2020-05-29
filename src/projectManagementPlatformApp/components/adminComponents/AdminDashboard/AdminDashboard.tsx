@@ -21,9 +21,13 @@ class AdminDashboard extends React.Component<{ projectStore: any }> {
    handleClick = () => {
       this.isCreateClicked = !this.isCreateClicked
    }
+   handleDropdown = () => {
+      const { projectStore } = this.props
+      projectStore.getWorkflowsAPI()
+   }
    render() {
       const { projectStore } = this.props
-
+      const { createProjectAPIStatus, createProjectAPI } = projectStore
       return (
          <AdminWrapper>
             <AdminHeader backgroundColor={this.isCreateClicked}>
@@ -47,7 +51,13 @@ class AdminDashboard extends React.Component<{ projectStore: any }> {
                />
             </PaginationWrapper>
             <CreateProjectWrapper hide={this.isCreateClicked}>
-               <CreateProject handleClick={this.handleClick} />
+               <CreateProject
+                  handleClick={this.handleClick}
+                  workflows={projectStore.workflows}
+                  handleDropdown={this.handleDropdown}
+                  fetchingStatus={createProjectAPIStatus}
+                  createProject={createProjectAPI}
+               />
             </CreateProjectWrapper>
          </AdminWrapper>
       )

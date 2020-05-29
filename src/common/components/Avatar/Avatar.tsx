@@ -6,6 +6,7 @@ const Avatar = props => (
       width={props.width}
       src={props.path}
       alt={props.altText}
+      onClick={props.handleClick}
    />
 )
 export default Avatar

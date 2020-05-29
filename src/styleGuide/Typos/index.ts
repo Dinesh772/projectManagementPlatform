@@ -87,3 +87,26 @@ export const Typo18HKGroteskRegular = styled.p`
    letter-spacing: normal;
    color: ${Colors.darkBlueGrey};
 `
+export const Typo18BoldHKGroteskRegular = styled.p`
+   height: 24px;
+   width: 300px;
+   font-family: 'HKGroteskRegular';
+   font-size: 18px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.2;
+   letter-spacing: normal;
+   color: ${Colors.darkBlueGrey};
+`
+export const Typo14SteelHKGroteskRegular = styled.p`
+   height: 24px;
+   font-family: HKGrotesk;
+   font-size: 14px;
+   font-weight: normal;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.71;
+   letter-spacing: normal;
+   color: ${Colors.lightBlueGrey};
+`

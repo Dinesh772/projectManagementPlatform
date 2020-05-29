@@ -29,7 +29,7 @@
    "type": "TYPE",
    "createdBy": "CREATED BY",
    "createdAt": "CREATED AT",
-   "createHeading": "Create Project",
+   "createHeading": "Create New Project",
    "backToProjects": "< Back to projects",
    "close": "CLOSE",
    "name": "Name",
@@ -38,9 +38,13 @@
    "admin": "Admin",
    "member": "Member",
    "addWorkflow": "+ Add Workflow",
-   "nameOfProject": "Name of Project",
-   "description": "Description",
-   "projectType": "Project Type",
-   "workflowType": "Workflow Type",
-   "createFinal": "Create"
+   "nameOfProject": "NAME OF PROJECT*",
+   "description": "DESCRIPTION*",
+   "projectType": "PROJECT TYPE*",
+   "workflowType": "WORKFLOW TYPE*",
+   "createFinal": "Create",
+   "thisFieldIsRequired": "  * This field is required..",
+   "selectWorkflow": "Select workflow",
+   "selectType": "Select type",
+   "closeButtonSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/79133ebe-d88d-4519-8ab0-d5b3c4746382.svg"
 }
