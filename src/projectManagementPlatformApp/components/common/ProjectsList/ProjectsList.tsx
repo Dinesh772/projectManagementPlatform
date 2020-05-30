@@ -1,10 +1,12 @@
 import React from 'react'
-import EachProject from '../EachProject'
+import { observer } from 'mobx-react'
+
 import { Typo16HKGroteskMedium } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
 import { ProjectsListWrapper, ProjectsListHeader } from './styledComponent'
 import { Colors } from '../../../../themes/Colors'
-import { observer } from 'mobx-react'
+
+import EachProject from '../EachProject'
 
 @observer
 class ProjectsList extends React.Component<{

@@ -1,13 +1,15 @@
 import React from 'react'
-import { PaginationWrapper } from './styledComponent'
+import { observer } from 'mobx-react'
+
 import {
    paginationPages,
    disableArrowControlButton
 } from '../../../utils/PaginationUtils'
 import PageNumberButton from '../../../../common/components/CommonButton/CommonButton'
 import { Colors } from '../../../../themes/Colors'
-import { observer } from 'mobx-react'
 import i18n from '../../../../i18n/strings.json'
+
+import { PaginationWrapper } from './styledComponent'
 @observer
 class Pagination extends React.Component<{ store: any; hide: any }> {
    handleClick = (event, value) => {

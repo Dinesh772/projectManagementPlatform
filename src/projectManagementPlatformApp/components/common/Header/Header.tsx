@@ -1,7 +1,9 @@
 import React from 'react'
+
 import Logo from '../../../../common/components/Logo/Logo'
 import i18n from '../../../../i18n/strings.json'
 import { Typo24DarkBlueGreyHKGroteskMedium } from '../../../../styleGuide/Typos'
+
 import {
    HeaderWrapper,
    IbHubsLogo,

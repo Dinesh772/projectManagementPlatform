@@ -1,8 +1,10 @@
 import React from 'react'
-import { UserProfileWrapper } from './styledComponent'
+
 import Avatar from '../../../../common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
 import { Typo16HKGroteskMedium } from '../../../../styleGuide/Typos'
+
+import { UserProfileWrapper } from './styledComponent'
 class UserProfile extends React.Component {
    render() {
       return (

@@ -42,6 +42,10 @@ class Tasks extends React.Component<PropsType> {
 
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
+      if (!this.isCreateClicked) {
+         window.location.reload()
+         this.doNetworkCalls()
+      }
    }
    componentWillMount() {
       this.doNetworkCalls()
@@ -113,8 +117,10 @@ class Tasks extends React.Component<PropsType> {
       )
    })
    doNetworkCalls = () => {
-      const { taskStore } = this.props
+      const { taskStore, projectStore } = this.props
+
       taskStore.getTasksAPI()
+      projectStore.getProjectsAPI()
    }
    handleLogout() {
       const { clearUserSession } = this.props.authStore
