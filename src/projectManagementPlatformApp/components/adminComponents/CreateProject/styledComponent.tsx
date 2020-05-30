@@ -5,7 +5,7 @@ const CreateProjectWrapper = styled.div`
    display: flex;
    flex-direction: column;
    width: 30%;
-   min-height: 70vh;
+   min-height: 72vh;
    border: 1px solid ${Colors.lightBlueGrey};
    border-radius: 6px;
    padding-left: 30px;

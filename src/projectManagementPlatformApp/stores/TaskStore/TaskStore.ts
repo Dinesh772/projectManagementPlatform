@@ -74,7 +74,7 @@ class TaskStore {
    }
    @action.bound
    setCreateTaskAPIResponse(response) {
-      console.log(response)
+      this.getTasksAPI()
    }
    @computed
    get currentPageIndex() {

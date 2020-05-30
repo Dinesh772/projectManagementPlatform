@@ -154,11 +154,12 @@ class CreateProject extends React.Component<{
                   validate={this.handleValidation}
                   value={this.projectData.projectName}
                   testId={i18n.createProjectNameTestId}
-                  width={'380px'}
+                  width={'100%'}
                />
 
                <UserTextareaInput
                   label={i18n.description}
+                  width={'100%'}
                   onChange={this.handleDescriptionChange}
                   hasError={this.projectDescriptionHasError}
                   errorMessage={this.projectDescriptionErrorMessage}

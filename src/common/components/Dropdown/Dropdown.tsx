@@ -17,7 +17,7 @@ export const Dropdown = props => (
          onChange={props.handleChange}
          width={props.width}
       >
-         <OptionElement value={props.placeholder} hidden>
+         <OptionElement value='' hidden>
             {props.placeholder}
          </OptionElement>
          {props.values.map(eachValue => (

@@ -167,7 +167,7 @@ class CreateTask extends React.Component<{
                   />
                </DropdownWrapper>
                <UserTextInputField
-                  width={'380px'}
+                  width={'100%'}
                   labelText={i18n.title}
                   value={this.createTaskDetails.title}
                   hasError={this.taskTitleFieldHasError}
@@ -177,6 +177,7 @@ class CreateTask extends React.Component<{
                />
                <UserTextareaInput
                   label={i18n.description}
+                  width={'100%'}
                   hasError={this.taskDescriptionHasError}
                   errorMessage={this.taskDescriptionErrorMessage}
                   value={this.createTaskDetails.description}

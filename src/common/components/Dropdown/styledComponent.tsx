@@ -8,10 +8,10 @@ const DropDownWrapper = styled.select<{ width: any }>`
    cursor: pointer;
    width: ${props => props.width ?? '100%'};
    :hover {
-      border: 1px solid ${Colors.darkBlueGrey};
+      outline: none;
    }
    :active {
-      border: 1px solid ${Colors.darkBlueGrey};
+      outline: none;
    }
 `
 const OptionElement = styled.option`
@@ -24,26 +24,19 @@ const OptionElement = styled.option`
    :hover {
       background-color: #fff;
       outline: none;
-      border: none;
-      box-shadow: none;
    }
+
    :active {
       background-color: #fff;
       outline: none;
-      border: none;
-      box-shadow: none;
    }
    :focus {
       background-color: #fff;
       outline: none;
-      border: none;
-      box-shadow: none;
    }
    :checked {
       background-color: #fff;
       outline: none;
-      border: none;
-      box-shadow: none;
    }
 `
 export const ErrorMessageWrapper = styled.div`
