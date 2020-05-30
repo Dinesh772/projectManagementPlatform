@@ -3,15 +3,19 @@ import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { History } from 'history'
 import { action, observable } from 'mobx'
+
+import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
+import MemberDashboard from '../../memberComponents/MemberDashboard'
+import AdminDashboard from '../../adminComponents/AdminDashboard'
+
 import Header from '../Header'
+import ProfileCard from '../ProfileCard'
+
 import {
    ProjectManagementDashboardWrapper,
    ProfileCardWrapper
 } from './styledComponent'
-import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
-import MemberDashboard from '../../memberComponents/MemberDashboard'
-import AdminDashboard from '../../adminComponents/AdminDashboard'
-import ProfileCard from '../ProfileCard'
+
 type propsType = {
    authStore: any
    history: History
@@ -33,10 +37,7 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
    componentDidMount() {
       this.doNetworkCalls()
    }
-   componentWillUnmount() {
-      const { projectStore } = this.props
-      projectStore.clearStore()
-   }
+
    @action.bound
    doNetworkCalls() {
       const { projectStore } = this.props
@@ -48,7 +49,7 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
       return projectStore.isAdmin ? (
          <AdminDashboard projectStore={projectStore} taskStore={taskStore} />
       ) : (
-         <MemberDashboard projectStore={projectStore} />
+         <MemberDashboard projectStore={projectStore} taskStore={taskStore} />
       )
    }
    handleProfile = (event, value) => {

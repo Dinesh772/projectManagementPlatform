@@ -1,6 +1,7 @@
 import React from 'react'
 import { Router, Route, withRouter } from 'react-router-dom'
-import { render, fireEvent } from '@testing-library/react'
+import { Provider } from 'mobx-react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 import i18n from '../../../../i18n/strings.json'
 import ProjectManagementPlatformDashboard from '.'
@@ -8,12 +9,16 @@ import ProjectsFixtureService from '../../../services/ProjectsService/index.fixt
 import ProjectStore from '../../../stores/ProjectStore'
 import AuthApi from '../../../../authentication/services/AuthService'
 import AuthStore from '../../../../authentication/stores/AuthStore'
-import { Provider } from 'mobx-react'
 import projectsData from '../../../fixtures/projectFixtures.json'
-import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../common/constants/RouteConstants'
+import {
+   PROJECT_MANAGEMENT_PLATFORM_DASHBOARD,
+   PROJECT_MANAGEMENT_PLATFORM_TASKS
+} from '../../../../common/constants/RouteConstants'
 import workflowdata from '../../../fixtures/workflowFixtures.json'
 import TasksFixturesAPI from '../../../services/TaskService/index.fixtures'
 import TaskStore from '../../../stores/TaskStore'
+import tasksData from '../../../fixtures/taskFixtures.json'
+import Tasks from '../Tasks'
 
 const LocationDisplay = withRouter(({ location }) => (
    <div data-testid='location-display'> {location.pathname}</div>
@@ -249,5 +254,88 @@ describe('ProjectManagementPlatformDashboard', () => {
       await projectStore.getProjectsAPI()
 
       getByText(i18n.listOfProjects)
+   })
+   it('should render list of tasks screen onProject card click', async () => {
+      const { getByText } = render(
+         <Provider
+            projectStore={projectStore}
+            taskStore={taskStore}
+            authStore={authStore}
+         >
+            <Router history={createMemoryHistory()}>
+               <ProjectManagementPlatformDashboard />
+            </Router>
+         </Provider>
+      )
+      const mockSuccessPromise = Promise.resolve(projectsData)
+      const mockProjectsAPI = jest.fn()
+      mockProjectsAPI.mockReturnValue(mockSuccessPromise)
+      projectService.productsAPI = mockProjectsAPI
+      await projectStore.getProjectsAPI()
+      fireEvent.click(getByText('Chastity Hutchinson'))
+      //getByText(i18n.addTask)
+   })
+   it('should able to open createTask card on click addTask', async () => {
+      const history = createMemoryHistory()
+      history.replace(PROJECT_MANAGEMENT_PLATFORM_DASHBOARD)
+      const { getByText } = render(
+         <Provider
+            projectStore={projectStore}
+            taskStore={taskStore}
+            authStore={authStore}
+         >
+            <Router history={history}>
+               <Route path={PROJECT_MANAGEMENT_PLATFORM_DASHBOARD}>
+                  <ProjectManagementPlatformDashboard />
+               </Route>
+
+               <Route path={PROJECT_MANAGEMENT_PLATFORM_TASKS}>
+                  <Tasks />
+               </Route>
+            </Router>
+         </Provider>
+      )
+      const mockSuccessPromise = Promise.resolve(projectsData)
+      const mockProjectsAPI = jest.fn()
+      mockProjectsAPI.mockReturnValue(mockSuccessPromise)
+      projectService.productsAPI = mockProjectsAPI
+      await projectStore.getProjectsAPI()
+      fireEvent.click(getByText('Chastity Hutchinson'))
+      const mockTasksPromise = Promise.resolve(tasksData)
+      const mockTasksAPI = jest.fn()
+      mockTasksAPI.mockReturnValue(mockTasksPromise)
+      taskService.getTasksAPI = mockTasksAPI
+      await taskStore.getTasksAPI()
+
+      fireEvent.click(getByText(i18n.addTask))
+      getByText(i18n.createTask)
+   })
+   it('should display  tasks on the list of tasks compoment', async () => {
+      const { getByText } = render(
+         <Provider
+            projectStore={projectStore}
+            taskStore={taskStore}
+            authStore={authStore}
+         >
+            <Router history={createMemoryHistory()}>
+               <ProjectManagementPlatformDashboard />
+            </Router>
+         </Provider>
+      )
+      const mockSuccessPromise = Promise.resolve(projectsData)
+      const mockProjectsAPI = jest.fn()
+      mockProjectsAPI.mockReturnValue(mockSuccessPromise)
+      projectService.productsAPI = mockProjectsAPI
+      await projectStore.getProjectsAPI()
+      fireEvent.click(getByText('Chastity Hutchinson'))
+
+      const mockTasksPromise = Promise.resolve(tasksData)
+      const mockTasksAPI = jest.fn()
+      mockTasksAPI.mockReturnValue(mockTasksPromise)
+      taskService.getTasksAPI = mockTasksAPI
+      await taskStore.getTasksAPI()
+      waitFor(() => {
+         getByText('ut erat.')
+      })
    })
 })

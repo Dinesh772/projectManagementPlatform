@@ -52,14 +52,16 @@ class TaskStore {
       }
    }
    @action.bound
-   createTaskAPI() {
+   createTaskAPI(taskDetailsObject, onSuccess, onFailure) {
       const createTaslPromise = this.taskService.createTaskAPI()
       return bindPromiseWithOnSuccess(createTaslPromise)
          .to(this.setCreateTaskAPIStatus, response => {
             this.setCreateTaskAPIResponse(response)
+            onSuccess()
          })
          .catch(error => {
             this.setCreateTaskAPIError(error)
+            onFailure()
          })
    }
    @action.bound

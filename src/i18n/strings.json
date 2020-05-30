@@ -18,6 +18,8 @@
    "avatarImageSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/1ec9402e-dcea-4cb3-8ced-99548f1cf992.svg",
    "logoSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/9837b0f6-9165-49b3-995e-c6ac4ed19c55.svg",
    "logoSrcWithText": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/16939af5-b23f-4244-8bc7-36e1f72013e8.svg",
+   "somethingWentWrongSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/b874fa48-bdc7-4992-8944-436a3b309904.png",
+   "somethingWentWrongAlt": "Something-went wrong Image",
    "logoAlt": "logo",
    "iBhubsLogoAlt": "iBHubs-logo",
    "logout": "LOGOUT",
@@ -58,5 +60,9 @@
    "createTask": "Create new Task",
    "selectProject": "SELECT PROJECT*",
    "issueType": "ISSUE TYPE",
-   "title": "TITLE"
+   "title": "TITLE",
+   "classicSoftware": "Classic software",
+   "softwareProject": "Software project",
+   "financialSoftware": "Financial software",
+   "crmSoftware": "CRM software"
 }

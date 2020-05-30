@@ -1,2 +1,2 @@
-import { MemberDashboard } from './MemberDashboard'
+import MemberDashboard from './MemberDashboard'
 export default MemberDashboard

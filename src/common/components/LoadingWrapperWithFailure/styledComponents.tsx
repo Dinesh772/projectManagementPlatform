@@ -1,13 +1,16 @@
 import styled from '@emotion/styled'
 import tw from 'tailwind.macro'
+import { Colors } from '../../../themes/Colors'
 
 export const LoadingViewContainer = styled.div`
-   ${tw`flex flex-col justify-center w-full items-center bg-gray-200`}
+   ${tw`flex flex-col justify-center w-full items-center `}
+   background-color:${Colors.whiteTwo};
    min-height:90vh;
 `
 
 export const FailureViewContainer = styled.div`
-   ${tw`flex flex-col justify-center items-center  bg-gray-200`}
+   ${tw`flex flex-col justify-center items-center `}
+   background-color:${Colors.whiteTwo};
    min-height:90vh;
 `
 
@@ -16,5 +19,6 @@ export const FailureViewMessage = styled.p`
 `
 
 export const RetryButton = styled.button`
-   ${tw`px-8 py-2 bg-blue-500 text-white text-2xl rounded`}
+   ${tw`px-8 py-2  text-white text-lg rounded`}
+   background-color:${Colors.brightBlue}
 `

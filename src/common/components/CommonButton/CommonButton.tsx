@@ -1,9 +1,11 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
 
-import { Button } from './styledComponent'
-import { Typo14WhiteRubikMedium } from '../../../styleGuide/Typos'
 import { API_FETCHING } from '@ib/api-constants'
+
+import { Typo14WhiteRubikMedium } from '../../../styleGuide/Typos'
+
+import { Button } from './styledComponent'
 
 const CommonButton = props => (
    <Button

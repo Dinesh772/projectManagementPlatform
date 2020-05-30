@@ -1,7 +1,10 @@
 import React from 'react'
-import { TaskCardWrapper } from './styledComponent'
-import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
+
 import { observer } from 'mobx-react'
+
+import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
+
+import { TaskCardWrapper } from './styledComponent'
 @observer
 class TaskCard extends React.Component<{ task: any; bgColor: any }> {
    render() {

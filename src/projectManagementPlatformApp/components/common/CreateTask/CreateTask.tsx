@@ -1,11 +1,8 @@
 import React from 'react'
-import {
-   CreateTaskWrapper,
-   CreateTaskHeader,
-   TaskDetails,
-   DropdownWrapper,
-   CreateButtonWrapper
-} from './styledComponent'
+
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
+
 import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
 import CloseButton from '../../../../common/components/Avatar/Avatar'
@@ -13,9 +10,15 @@ import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
 import { UserTextareaInput } from '../../../../common/components/UserTextAreaInput/UserTextAreaInput'
 import UserTextInputField from '../../../../common/components/UserTextInputField/UserTextInputField'
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
-import { observer } from 'mobx-react'
-import { observable } from 'mobx'
 import { stringValidator } from '../../../../authentication/utils/ValidationUtils/ValidationUtils'
+
+import {
+   CreateTaskWrapper,
+   CreateTaskHeader,
+   TaskDetails,
+   DropdownWrapper,
+   CreateButtonWrapper
+} from './styledComponent'
 
 @observer
 class CreateTask extends React.Component<{
@@ -93,12 +96,21 @@ class CreateTask extends React.Component<{
          }
       }
    }
-
+   onSuccess = () => {
+      setTimeout(() => window.location.reload(), 1000)
+   }
+   onFailure = () => {
+      alert(1)
+   }
    handleCreateButton = () => {
       if (this.isValidated) {
          const { taskStore } = this.props
-         taskStore.createTaskAPI()
-         console.log(this.createTaskDetails)
+
+         taskStore.createTaskAPI(
+            this.createTaskDetails,
+            this.onSuccess,
+            this.onFailure
+         )
       } else {
          this.handleValidationChange()
       }
@@ -114,7 +126,12 @@ class CreateTask extends React.Component<{
          'story',
          'Enhancement'
       ]
-      const projectsNames = projectsData[0].map(each => each.name)
+      let projectsNames
+      if (projectsData[0] !== undefined) {
+         projectsNames = projectsData[0].map(each => each.name)
+      } else {
+         projectsNames = []
+      }
       return (
          <CreateTaskWrapper>
             <CreateTaskHeader>

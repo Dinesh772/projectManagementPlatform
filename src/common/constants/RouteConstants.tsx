@@ -8,3 +8,5 @@ export const PROJECT_MANAGEMENT_PLATFORM_CREATE =
    '/project-management-platform/dashboard/creaate-project'
 export const PROJECT_MANAGEMENT_PLATFORM_PROJECTS =
    '/project-management-platform/dashboard/project'
+export const PROJECT_MANAGEMENT_PLATFORM_TASKS =
+   '/project-management-platform/dashboard/project/tasks'

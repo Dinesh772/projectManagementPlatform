@@ -1,25 +1,19 @@
 import React from 'react'
-import { TasksListWrapper, TasksListHeader } from './styledComponent'
+import { observer } from 'mobx-react'
+
+import { Colors } from '../../../../themes/Colors'
 import { Typo16HKGroteskMedium } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
+
 import TaskCard from '../TaskCard'
-import { Colors } from '../../../../themes/Colors'
-import { observer } from 'mobx-react'
-//import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
+
+import { TasksListWrapper, TasksListHeader } from './styledComponent'
 
 @observer
 class TasksList extends React.Component<{ taskStore: any }> {
-   componentDidMount() {
-      this.doNetworkCalls()
-   }
    componentWillUnmount() {
       const { taskStore } = this.props
       taskStore.clearStore()
-   }
-
-   doNetworkCalls = () => {
-      const { taskStore } = this.props
-      taskStore.getTasksAPI()
    }
    render() {
       const { taskStore } = this.props

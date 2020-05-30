@@ -1,4 +1,16 @@
 import React from 'react'
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
+
+import CommonButton from '../../../../common/components/CommonButton/CommonButton'
+import i18n from '../../../../i18n/strings.json'
+import UserTextInputField from '../../../../common/components/UserTextInputField/UserTextInputField'
+import { UserTextareaInput } from '../../../../common/components/UserTextAreaInput/UserTextAreaInput'
+import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
+import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
+import { stringValidator } from '../../../../authentication/utils/ValidationUtils/ValidationUtils'
+import CloseButton from '../../../../common/components/Avatar/Avatar'
+
 import {
    CreateProjectWrapper,
    CreateProjectHeader,
@@ -6,16 +18,6 @@ import {
    DropdownWrapper,
    CreateButtonWrapper
 } from './styledComponent'
-import CommonButton from '../../../../common/components/CommonButton/CommonButton'
-import i18n from '../../../../i18n/strings.json'
-import UserTextInputField from '../../../../common/components/UserTextInputField/UserTextInputField'
-import { UserTextareaInput } from '../../../../common/components/UserTextAreaInput/UserTextAreaInput'
-import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
-import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
-import { observable } from 'mobx'
-import { stringValidator } from '../../../../authentication/utils/ValidationUtils/ValidationUtils'
-import { observer } from 'mobx-react'
-import CloseButton from '../../../../common/components/Avatar/Avatar'
 @observer
 class CreateProject extends React.Component<{
    handleClick: any
@@ -125,10 +127,10 @@ class CreateProject extends React.Component<{
       const { workflows, fetchingStatus } = this.props
       const workflowValues = workflows
       const projectTypeValues = [
-         'Classic software',
-         'Software project',
-         'Financial software',
-         'CRM software'
+         i18n.classicSoftware,
+         i18n.softwareProject,
+         i18n.financialSoftware,
+         i18n.crmSoftware
       ]
       return (
          <CreateProjectWrapper>

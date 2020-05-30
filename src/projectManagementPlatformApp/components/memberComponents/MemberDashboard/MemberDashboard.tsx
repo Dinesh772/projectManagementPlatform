@@ -1,20 +1,29 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import Projects from '../../common/Projects'
-import { MemberWrapper, MemberHeader } from './styledComponent'
-import Pagination from '../../common/Pagination'
+import { History } from 'history'
+import { withRouter } from 'react-router-dom'
+
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
-import { observable } from 'mobx'
-@observer
-class MemberDashboard extends React.Component<{ projectStore: any }> {
-   @observable isProjectCardClicked = false
+import { PROJECT_MANAGEMENT_PLATFORM_TASKS } from '../../../../common/constants/RouteConstants'
 
+import Projects from '../../common/Projects'
+import Pagination from '../../common/Pagination'
+
+import { MemberWrapper, MemberHeader } from './styledComponent'
+@observer
+class MemberDashboard extends React.Component<{
+   taskStore: any
+   projectStore: any
+   history: History
+}> {
    handleProjectCardTriggred = () => {
-      this.isProjectCardClicked = !this.isProjectCardClicked
+      const { history } = this.props
+      history.replace(PROJECT_MANAGEMENT_PLATFORM_TASKS)
    }
-   handleCreateTask = () => {
-      alert(1)
+   handleDropdown = () => {
+      const { projectStore } = this.props
+      projectStore.getWorkflowsAPI()
    }
    render() {
       const { projectStore } = this.props
@@ -38,4 +47,4 @@ class MemberDashboard extends React.Component<{ projectStore: any }> {
    }
 }
 
-export { MemberDashboard }
+export default withRouter(MemberDashboard)

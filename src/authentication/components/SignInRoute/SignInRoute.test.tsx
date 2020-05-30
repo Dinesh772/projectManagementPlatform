@@ -24,26 +24,26 @@ describe('SignInRoute component tests', () => {
       jest.resetAllMocks()
    })
 
-   // it('should test component should render', () => {
-   //    const { getByText } = render(
-   //       <Router history={createMemoryHistory()}>
-   //          <SignInRoute authStore={authStore} />
-   //       </Router>
-   //    )
-   //    getByText(i18n.usernameLabel)
-   //    getByText(i18n.passwordLabel)
-   //    getByText(i18n.login)
-   // })
+   it('should test component should render', () => {
+      const { getByText } = render(
+         <Router history={createMemoryHistory()}>
+            <SignInRoute authStore={authStore} />
+         </Router>
+      )
+      expect(getByText(i18n.usernameLabel)).toBeVisible()
+      expect(getByText(i18n.passwordLabel)).toBeVisible()
+      expect(getByText(i18n.login)).toBeVisible()
+   })
    // it('should show username error message onLogin click', () => {
    //    const { getByRole, getByText } = render(
    //       <Router history={createMemoryHistory()}>
    //          <SignInRoute authStore={authStore} />
    //       </Router>
    //    )
-   //    const loginButton = getByRole('button', { name: i18n.login })
+   //    const loginButton = getByText(i18n.login)
 
    //    fireEvent.click(loginButton)
-   //    getByText(i18n.invalidUsernameErrorText)
+   //    expect(getByText(i18n.invalidUsernameErrorText)).toBeVisible()
    // })
    // it('should test password error message onClick login without entering password', () => {
    //    const { getByTestId, getByRole, getByText } = render(

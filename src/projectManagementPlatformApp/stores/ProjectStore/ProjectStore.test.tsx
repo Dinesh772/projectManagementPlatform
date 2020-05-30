@@ -2,7 +2,12 @@ import { ProjectStore } from './ProjectStore'
 import ProjectsFixtureService from '../../services/ProjectsService/index.fixtures'
 import workflowData from '../../fixtures/workflowFixtures.json'
 
-import { API_INITIAL, API_FETCHING, API_SUCCESS } from '@ib/api-constants'
+import {
+   API_INITIAL,
+   API_FETCHING,
+   API_SUCCESS,
+   API_FAILED
+} from '@ib/api-constants'
 import projectsData from '../../fixtures/projectFixtures.json'
 
 describe('ProjectStore testing', () => {
@@ -66,6 +71,14 @@ describe('ProjectStore testing', () => {
       projectService.getWorkflowsAPI = mockWorkflowProjectsAPI
       await projectStore.getWorkflowsAPI()
       expect(projectStore.workflowsAPIStatus).toBe(API_SUCCESS)
+   })
+   it('should test workflow API failure Status', async () => {
+      const mockSuccessPromise = Promise.reject(new Error('error'))
+      const mockWorkflowProjectsAPI = jest.fn()
+      mockWorkflowProjectsAPI.mockReturnValue(mockSuccessPromise)
+      projectService.getWorkflowsAPI = mockWorkflowProjectsAPI
+      await projectStore.getWorkflowsAPI()
+      expect(projectStore.workflowsAPIStatus).toBe(API_FAILED)
    })
 
    it('should test clear store ', () => {

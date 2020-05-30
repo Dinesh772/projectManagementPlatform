@@ -1,6 +1,8 @@
 import { observable, action, computed } from 'mobx'
+
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { API_INITIAL } from '@ib/api-constants'
+
 import ProjectModel from '../models/ProjectModel'
 
 class ProjectStore {
