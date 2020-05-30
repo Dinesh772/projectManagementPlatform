@@ -54,6 +54,12 @@ const CreateTaskWrapper = styled.div<{ hide: any }>`
    height: 100vh;
    background-color: ${props => (props.hide ? Colors.black60 : 'inherit')};
 `
+const ToasterWrapper = styled.div`
+   position: fixed;
+   z-index: 10;
+   bottom: 0;
+   left: 40%;
+`
 export {
    AdminWrapper,
    AdminHeader,
@@ -62,5 +68,6 @@ export {
    PaginationWrapper,
    ProjectTaskHeader,
    TasksWrapper,
-   CreateTaskWrapper
+   CreateTaskWrapper,
+   ToasterWrapper
 }

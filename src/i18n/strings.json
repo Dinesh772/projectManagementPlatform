@@ -64,5 +64,6 @@
    "classicSoftware": "Classic software",
    "softwareProject": "Software project",
    "financialSoftware": "Financial software",
-   "crmSoftware": "CRM software"
+   "crmSoftware": "CRM software",
+   "projectSuccessfullyCreated": "Project Successfully created.."
 }

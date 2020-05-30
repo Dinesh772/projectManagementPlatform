@@ -45,6 +45,9 @@ const CreateButtonWrapper = styled.div`
    height: 100%;
    justify-content: center;
 `
+const ToasterWrapper = styled.div`
+   display: flex;
+`
 export {
    CreateProjectWrapper,
    CreateProjectHeader,
@@ -52,5 +55,6 @@ export {
    TextareaElement,
    DropdownWrapper,
    CreateWorkflowWrapper,
-   CreateButtonWrapper
+   CreateButtonWrapper,
+   ToasterWrapper
 }

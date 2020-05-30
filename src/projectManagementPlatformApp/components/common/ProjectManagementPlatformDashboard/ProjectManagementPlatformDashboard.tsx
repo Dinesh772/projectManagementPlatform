@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { History } from 'history'
 import { action, observable } from 'mobx'
+import CookieConsent from 'react-cookie-consent'
 
 import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
 import MemberDashboard from '../../memberComponents/MemberDashboard'
@@ -72,6 +73,23 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
                   handleLogout={this.handleLogout}
                />
             </ProfileCardWrapper>
+            <CookieConsent
+               location='bottom'
+               buttonText='I understand'
+               cookieName='ShoppingApp'
+               style={{ background: '#2B373B' }}
+               buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
+               expires={150}
+            >
+               We use cookies to improve your website experience, and for
+               analytical and advertising purposes as described in our
+               <a href='https://www.makeinindia.com/cookies-policy'>
+                  <u>Cookie Policy</u>
+               </a>{' '}
+               . By continuing to use our website, you accept our use of
+               cookies. For more information, please refer to our Privacy
+               Policy.
+            </CookieConsent>
          </ProjectManagementDashboardWrapper>
       )
    }

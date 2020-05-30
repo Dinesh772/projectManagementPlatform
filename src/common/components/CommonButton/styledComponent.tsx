@@ -21,5 +21,9 @@ const Button = styled.button<{
    :focus {
       outline: none;
    }
+   :hover {
+      outline: none;
+      transform: translateY(1.5px);
+   }
 `
 export { Button }
