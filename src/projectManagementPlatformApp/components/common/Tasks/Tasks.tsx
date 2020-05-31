@@ -57,15 +57,21 @@ class Tasks extends React.Component<PropsType> {
    handleProfile = () => {
       this.isProfileClicked = !this.isProfileClicked
    }
+   componentWillUnmount() {
+      const { taskStore } = this.props
+      taskStore.clearStore()
+   }
    renderSuccessUI = observer(() => {
       const { projectStore, taskStore } = this.props
+      const tasksData = taskStore.renderedTasksList
+
       return (
          <TasksPageWrapper>
             <ProjectTaskHeader>
                <CommonButton
                   buttonValue={i18n.backToProjects}
                   handleClick={this.handleBackButton}
-                  bgColor={Colors.white}
+                  bgColor={Colors.whiteTwo}
                   textColor={Colors.steel}
                   height={'30px'}
                   width={'180px'}
@@ -81,7 +87,7 @@ class Tasks extends React.Component<PropsType> {
                />
             </ProjectTaskHeader>
             <TasksWrapper>
-               <TasksList taskStore={taskStore} />
+               <TasksList tasksData={tasksData} />
             </TasksWrapper>
             <PaginationWrapper backgroundColor={this.isCreateClicked}>
                <Pagination
@@ -122,10 +128,8 @@ class Tasks extends React.Component<PropsType> {
       taskStore.getTasksAPI()
       projectStore.getProjectsAPI()
    }
-   handleLogout() {
-      const { clearUserSession } = this.props.authStore
+   handleLogout = () => {
       const { history } = this.props
-      clearUserSession()
       history.replace('/')
    }
    render() {

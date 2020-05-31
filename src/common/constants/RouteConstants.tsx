@@ -10,3 +10,9 @@ export const PROJECT_MANAGEMENT_PLATFORM_PROJECTS =
    '/project-management-platform/dashboard/project'
 export const PROJECT_MANAGEMENT_PLATFORM_TASKS =
    '/project-management-platform/dashboard/project/tasks'
+
+// login             - /login/v1/ -get
+//createProject      -/project/v1/ -post
+//getProjects        -/projects/v1/ -get
+//addTask            -/task/v1/  -post
+//getTasks           -

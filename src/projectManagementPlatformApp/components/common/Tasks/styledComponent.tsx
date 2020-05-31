@@ -3,6 +3,7 @@ import { Colors } from '../../../../themes/Colors'
 const TasksPageWrapper = styled.div`
    display: flex;
    flex-direction: column;
+   background-color: ${Colors.whiteTwo};
 `
 const PaginationWrapper = styled.div<{ backgroundColor: boolean }>``
 const ProjectTaskHeader = styled.div`

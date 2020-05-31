@@ -10,14 +10,10 @@ import TaskCard from '../TaskCard'
 import { TasksListWrapper, TasksListHeader } from './styledComponent'
 
 @observer
-class TasksList extends React.Component<{ taskStore: any }> {
-   componentWillUnmount() {
-      const { taskStore } = this.props
-      taskStore.clearStore()
-   }
+class TasksList extends React.Component<{ tasksData: any }> {
    render() {
-      const { taskStore } = this.props
-      const data = taskStore.renderedTasksList.map((eachTask, index) => (
+      const { tasksData } = this.props
+      const data = tasksData.map((eachTask, index) => (
          <TaskCard
             key={eachTask.id}
             bgColor={index % 2 === 0 ? Colors.lightBlueGrey24 : Colors.white}

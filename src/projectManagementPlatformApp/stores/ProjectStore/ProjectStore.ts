@@ -14,8 +14,8 @@ class ProjectStore {
    @observable workflowsAPIError
    @observable createProjectAPIError
    @observable isAdmin
-   @observable projectsLimitPerPage = 10
-   @observable totalProjects = 0
+   @observable projectsLimitPerPage
+   @observable totalProjects
    @observable totalPaginationLimit
    @observable currentPageNumber
    @observable workflows
@@ -76,6 +76,7 @@ class ProjectStore {
             this.setWorkflowAPIError(error)
          })
    }
+
    @action.bound
    createProjectAPI(onSuccess) {
       const createProjectPromise = this.projectsService.createProjectAPI()
@@ -97,7 +98,7 @@ class ProjectStore {
    }
    @action.bound
    setCreateProjectAPIResponse(response) {
-      //this.onAddWorkflows(response)
+      this.onAddWorkflows(response)
    }
    @action.bound
    setWorkflowAPIStatus(apiStatus) {

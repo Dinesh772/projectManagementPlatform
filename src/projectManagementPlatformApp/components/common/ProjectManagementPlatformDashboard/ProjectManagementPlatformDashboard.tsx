@@ -6,6 +6,7 @@ import { action, observable } from 'mobx'
 import CookieConsent from 'react-cookie-consent'
 
 import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
+import i18n from '../../../../i18n/strings.json'
 import MemberDashboard from '../../memberComponents/MemberDashboard'
 import AdminDashboard from '../../adminComponents/AdminDashboard'
 
@@ -76,7 +77,7 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
             <CookieConsent
                location='bottom'
                buttonText='I understand'
-               cookieName='ShoppingApp'
+               cookieName={i18n.projectTitle}
                style={{ background: '#2B373B' }}
                buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
                expires={150}

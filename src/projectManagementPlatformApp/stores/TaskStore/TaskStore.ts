@@ -76,10 +76,7 @@ class TaskStore {
    setCreateTaskAPIResponse(response) {
       this.getTasksAPI()
    }
-   @computed
-   get currentPageIndex() {
-      return this.currentPageNumber - 1
-   }
+
    @action.bound
    onInitializeArrayElements(length) {
       const array = this.tasksList
@@ -123,6 +120,10 @@ class TaskStore {
          this.currentPageNumber = value
          this.getTasksAPI()
       }
+   }
+   @computed
+   get currentPageIndex() {
+      return this.currentPageNumber - 1
    }
    @computed
    get renderedTasksList() {
