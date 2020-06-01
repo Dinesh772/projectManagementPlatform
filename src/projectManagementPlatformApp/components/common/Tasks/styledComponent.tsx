@@ -33,6 +33,28 @@ const CreateTaskWrapper = styled.div<{ hide: any }>`
    height: 100vh;
    background-color: ${props => (props.hide ? Colors.black60 : 'inherit')};
 `
+export const TransitionConfirmationWrapper = styled.div<{ hide: any }>`
+   display: ${props => (props.hide ? 'flex' : 'none')};
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   z-index: 20;
+   top: 0;
+   width: 100%;
+   height: 100vh;
+   background-color: ${props => (props.hide ? Colors.black60 : 'inherit')};
+`
+const TaskInfoWrapper = styled.div<{ hide: any }>`
+   display: ${props => (props.hide ? 'flex' : 'none')};
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   z-index: 20;
+   top: 0;
+   width: 100%;
+   height: 100vh;
+   background-color: ${Colors.black60};
+`
 const ProfileCardWrapper = styled.div<{ hide: boolean }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    flex-direction: column;
@@ -55,5 +77,6 @@ export {
    CreateTaskWrapper,
    ProjectTaskHeader,
    TasksWrapper,
-   ProfileCardWrapper
+   ProfileCardWrapper,
+   TaskInfoWrapper
 }

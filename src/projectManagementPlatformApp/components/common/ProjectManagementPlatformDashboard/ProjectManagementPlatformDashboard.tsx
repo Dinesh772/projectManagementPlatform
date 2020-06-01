@@ -69,10 +69,7 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
                onRetryClick={this.doNetworkCalls}
                renderSuccessUI={this.renderSuccessUI}
             />
-            <ProfileCardWrapper
-               hide={this.isProfileClicked}
-               onClick={this.handleProfile}
-            >
+            <ProfileCardWrapper hide={this.isProfileClicked}>
                <ProfileCard
                   handleProfile={this.handleProfile}
                   handleLogout={this.handleLogout}

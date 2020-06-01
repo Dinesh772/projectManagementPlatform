@@ -4,7 +4,6 @@ import { observable } from 'mobx'
 import { inject, observer } from 'mobx-react'
 import { History } from 'history'
 import { withRouter } from 'react-router-dom'
-import CookieConsent from 'react-cookie-consent'
 
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
@@ -25,29 +24,42 @@ import {
    CreateTaskWrapper,
    ProjectTaskHeader,
    TasksWrapper,
-   ProfileCardWrapper
+   ProfileCardWrapper,
+   TaskInfoWrapper,
+   TransitionConfirmationWrapper
 } from './styledComponent'
+import TaskInfo from '../TaskInfo'
+import TransitionChange from '../TransitionChange'
 
 type PropsType = {
    projectStore: any
    taskStore: any
    history: History
    authStore: any
+   match: any
 }
 @inject('projectStore', 'taskStore', 'authStore')
 @observer
 class Tasks extends React.Component<PropsType> {
    @observable isCreateClicked = false
    @observable isProfileClicked = false
+   @observable isTaskInfoClicked = false
+   @observable taskObject = {}
+   @observable isStatusChangeTriggred = false
 
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
       if (!this.isCreateClicked) {
-         this.doNetworkCalls()
+         let id = this.props.match.params.id
+         this.doNetworkCalls(id)
       }
    }
-   componentWillMount() {
-      this.doNetworkCalls()
+   handleStatusChange = () => {
+      this.isStatusChangeTriggred = !this.isStatusChangeTriggred
+   }
+   componentDidMount() {
+      let id = this.props.match.params.id
+      this.doNetworkCalls(id)
    }
    handleBackButton = () => {
       const { history } = this.props
@@ -60,6 +72,13 @@ class Tasks extends React.Component<PropsType> {
       const { taskStore } = this.props
       taskStore.clearStore()
    }
+   handleTaskInfo = (event, task) => {
+      this.isTaskInfoClicked = !this.isTaskInfoClicked
+      if (this.isTaskInfoClicked) {
+         this.taskObject = task
+      }
+   }
+
    renderSuccessUI = observer(() => {
       const { projectStore, taskStore } = this.props
       const tasksData = taskStore.renderedTasksList
@@ -86,7 +105,11 @@ class Tasks extends React.Component<PropsType> {
                />
             </ProjectTaskHeader>
             <TasksWrapper>
-               <TasksList tasksData={tasksData} />
+               <TasksList
+                  tasksData={tasksData}
+                  handleTaskInfo={this.handleTaskInfo}
+                  handleStatusChange={this.handleStatusChange}
+               />
             </TasksWrapper>
             <PaginationWrapper backgroundColor={this.isCreateClicked}>
                <Pagination
@@ -103,35 +126,31 @@ class Tasks extends React.Component<PropsType> {
                   projectsData={projectStore.projectsList}
                />
             </CreateTaskWrapper>
-            <CookieConsent
-               location='bottom'
-               buttonText='I understand'
-               cookieName='ShoppingApp'
-               style={{ background: '#2B373B' }}
-               buttonStyle={{ color: '#4e503b', fontSize: '13px' }}
-               expires={150}
-            >
-               We use cookies to improve your website experience, and for
-               analytical and advertising purposes as described in our
-               <a href='https://www.makeinindia.com/cookies-policy'>
-                  <u>Cookie Policy</u>
-               </a>{' '}
-               . By continuing to use our website, you accept our use of
-               cookies. For more information, please refer to our Privacy
-               Policy.
-            </CookieConsent>
+            <TaskInfoWrapper hide={this.isTaskInfoClicked}>
+               <TaskInfo
+                  handleClose={this.handleTaskInfo}
+                  taskObject={this.taskObject}
+               />
+            </TaskInfoWrapper>
+            <TransitionConfirmationWrapper hide={this.isStatusChangeTriggred}>
+               <TransitionChange handleClose={this.handleStatusChange} />
+            </TransitionConfirmationWrapper>
          </TasksPageWrapper>
       )
    })
-   doNetworkCalls = () => {
-      const { taskStore, projectStore } = this.props
 
+   doNetworkCalls = id => {
+      const { taskStore, projectStore } = this.props
       taskStore.getTasksAPI()
       projectStore.getProjectsAPI()
    }
    handleLogout = () => {
       const { history } = this.props
       history.replace('/')
+   }
+   onRetryDoNetworkCalls = () => {
+      let id = this.props.match.params.id
+      this.doNetworkCalls(id)
    }
    render() {
       const { taskStore } = this.props
@@ -143,7 +162,7 @@ class Tasks extends React.Component<PropsType> {
                apiStatus={taskStore.tasksAPIStatus}
                renderSuccessUI={this.renderSuccessUI}
                apiError={taskStore.tasksAPIError}
-               onRetryClick={this.doNetworkCalls}
+               onRetryClick={this.onRetryDoNetworkCalls}
             />
             <ProfileCardWrapper hide={this.isProfileClicked}>
                <ProfileCard
@@ -155,4 +174,5 @@ class Tasks extends React.Component<PropsType> {
       )
    }
 }
+
 export default withRouter(Tasks)

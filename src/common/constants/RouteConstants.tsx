@@ -9,7 +9,7 @@ export const PROJECT_MANAGEMENT_PLATFORM_CREATE =
 export const PROJECT_MANAGEMENT_PLATFORM_PROJECTS =
    '/project-management-platform/dashboard/project'
 export const PROJECT_MANAGEMENT_PLATFORM_TASKS =
-   '/project-management-platform/dashboard/project/tasks'
+   '/project-management-platform/dashboard/project/tasks/:id'
 
 // login             - /login/v1/ -get
 //createProject      -/project/v1/ -post

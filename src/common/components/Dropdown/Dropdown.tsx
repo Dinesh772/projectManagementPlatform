@@ -34,3 +34,23 @@ export const Dropdown = props => (
       </ErrorMessageWrapper>
    </React.Fragment>
 )
+
+export const SimpleDropdown = props => (
+   <React.Fragment>
+      <DropDownWrapper
+         onFocus={props.handleFocus}
+         onChange={props.handleChange}
+         width={props.width}
+         disabled={props.disabled ?? false}
+      >
+         <OptionElement value='' hidden>
+            {props.placeholder}
+         </OptionElement>
+         {props.values.map(eachValue => (
+            <OptionElement value={eachValue} disabled={false}>
+               {eachValue}
+            </OptionElement>
+         ))}
+      </DropDownWrapper>
+   </React.Fragment>
+)

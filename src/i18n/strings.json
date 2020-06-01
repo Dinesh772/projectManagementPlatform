@@ -75,5 +75,12 @@
    "noTasksFound": "No Tasks found,   ",
    "loading": "Loading....",
    "somethingWentWrong": "Something went wrong.!!",
-   "selectProjectPlaceholder": "Select project"
+   "selectProjectPlaceholder": "Select project",
+   "info": "INFO",
+   "infoImageSrc": "https://library.kissclipart.com/20180904/lkq/kissclipart-info-icon-png-clipart-computer-icons-clip-art-4e4696fa545a7ace.jpg",
+   "taskDetails": "Task Details",
+   "addNewTransition": "Add New Transition",
+   "update": "UPDATE",
+   "from": "FROM",
+   "to": "TO"
 }

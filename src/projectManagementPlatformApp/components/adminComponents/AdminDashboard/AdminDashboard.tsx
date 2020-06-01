@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom'
 
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
-import { PROJECT_MANAGEMENT_PLATFORM_TASKS } from '../../../../common/constants/RouteConstants'
 
 import i18n from '../../../../i18n/strings.json'
 
@@ -47,7 +46,9 @@ class AdminDashboard extends React.Component<{
       const { history, taskStore } = this.props
 
       taskStore.getTasksAPI(value)
-      history.replace(PROJECT_MANAGEMENT_PLATFORM_TASKS)
+      history.push(
+         `/project-management-platform/dashboard/project/tasks/${value}`
+      )
    }
 
    render() {

@@ -3,6 +3,7 @@ import React from 'react'
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 
 import { EachProjectWrapper } from './styledComponent'
+
 class EachProject extends React.Component<{
    project: any
    bgColor: any

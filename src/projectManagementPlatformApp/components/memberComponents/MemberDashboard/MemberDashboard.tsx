@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom'
 
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
-import { PROJECT_MANAGEMENT_PLATFORM_TASKS } from '../../../../common/constants/RouteConstants'
 
 import Projects from '../../common/Projects'
 import Pagination from '../../common/Pagination'
@@ -18,9 +17,11 @@ class MemberDashboard extends React.Component<{
    projectStore: any
    history: History
 }> {
-   handleProjectCardTriggred = () => {
+   handleProjectCardTriggred = value => {
       const { history } = this.props
-      history.replace(PROJECT_MANAGEMENT_PLATFORM_TASKS)
+      history.push(
+         `/project-management-platform/dashboard/project/tasks/${value}`
+      )
    }
    handleDropdown = () => {
       const { projectStore } = this.props

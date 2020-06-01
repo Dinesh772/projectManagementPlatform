@@ -132,8 +132,13 @@ class CreateTask extends React.Component<{
          this.handleValidationChange()
       }
    }
+   handleClose = () => {
+      const { handleClose } = this.props
+      handleClose()
+      this.onResetAllToDefault()
+   }
    render() {
-      const { handleClose, taskStore, projectsData } = this.props
+      const { taskStore, projectsData } = this.props
       const issueValues = [
          'Task',
          'Bug',
@@ -159,7 +164,7 @@ class CreateTask extends React.Component<{
                   height={'20px'}
                   width={'20px'}
                   path={i18n.closeButtonSrc}
-                  handleClick={handleClose}
+                  handleClick={this.handleClose}
                />
             </CreateTaskHeader>
             <TaskDetails>

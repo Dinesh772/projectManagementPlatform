@@ -3,7 +3,7 @@ import { Colors } from '../../../../themes/Colors'
 
 const TaskCardWrapper = styled.div<{ bgColor: any }>`
    display: flex;
-   height: 50px;
+   height: 45px;
    width: 100%;
    justify-content: space-around;
    align-items: center;
@@ -12,6 +12,21 @@ const TaskCardWrapper = styled.div<{ bgColor: any }>`
    cursor: pointer;
 `
 const DropdownWrapper = styled.div`
-   width: 300px;
+   width: 200px;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 `
-export { TaskCardWrapper, DropdownWrapper }
+const DropdownWrapperParent = styled.div`
+   width: 300px;
+   height: 100%;
+`
+const InfoWrapper = styled.div`
+   width: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-left: 30px;
+`
+export { TaskCardWrapper, DropdownWrapper, DropdownWrapperParent, InfoWrapper }

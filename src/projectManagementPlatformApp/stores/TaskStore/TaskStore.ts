@@ -7,6 +7,8 @@ class TaskStore {
    @observable tasksList
    @observable tasksAPIStatus
    @observable createTaskAPIStatus
+   @observable changeStatusAPIStatus
+   @observable changeStatusAPIError
    @observable createTaskAPIError
    @observable tasksAPIError
    @observable tasksLimitPerPage
@@ -14,7 +16,8 @@ class TaskStore {
    @observable totalPaginationLimit
    @observable currentPageNumber
    @observable workflows
-   @observable projectId = 0
+   @observable projectId
+   @observable offset
    taskService
    constructor(taskService) {
       this.init()
@@ -31,6 +34,8 @@ class TaskStore {
       this.currentPageNumber = 1
       this.workflows = []
       this.totalPaginationLimit = 0
+      this.projectId = 0
+      this.offset = 0
    }
    @action.bound
    clearStore() {
@@ -42,12 +47,10 @@ class TaskStore {
          this.tasksList[this.currentPageIndex] === undefined ||
          this.tasksList[this.currentPageIndex].length === 0
       ) {
-         let projectId = this.projectId
-         if (id !== undefined) {
+         if (this.projectId === 0) {
             this.projectId = id
-            projectId = id
          }
-         const tasksPromise = this.taskService.getTasksAPI(projectId)
+         const tasksPromise = this.taskService.getTasksAPI(this.projectId)
          return bindPromiseWithOnSuccess(tasksPromise)
             .to(this.setTasksAPIStatus, response => {
                this.setTasksAPIResponse(response)
@@ -57,6 +60,7 @@ class TaskStore {
             })
       }
    }
+
    @action.bound
    createTaskAPI(taskDetailsObject, onSuccess, onFailure) {
       const createTaslPromise = this.taskService.createTaskAPI()
@@ -70,6 +74,30 @@ class TaskStore {
             onFailure()
          })
    }
+
+   @action.bound
+   changeTaskStatusAPI() {
+      const changeTaskPromise = this.taskService.changeTaskStatusAPI()
+      return bindPromiseWithOnSuccess(changeTaskPromise)
+         .to(this.setCreateTaskAPIStatus, response => {
+            this.setChangeTaskStatusAPIResponse(response)
+         })
+         .catch(error => {
+            this.setChangeTaskStatusAPIError(error)
+         })
+   }
+
+   @action.bound
+   setChangeTaskStatusAPIStatus(apiStatus) {
+      this.changeStatusAPIStatus = apiStatus
+   }
+   @action.bound
+   setChangeTaskStatusAPIError(error) {
+      this.changeStatusAPIError = error
+   }
+   @action.bound
+   setChangeTaskStatusAPIResponse(response) {}
+
    @action.bound
    setCreateTaskAPIStatus(apiStatus) {
       this.createTaskAPIStatus = apiStatus
@@ -80,7 +108,7 @@ class TaskStore {
    }
    @action.bound
    setCreateTaskAPIResponse(response) {
-      this.getTasksAPI(this.projectId)
+      this.getTasksAPI(5)
    }
 
    @action.bound
@@ -118,13 +146,13 @@ class TaskStore {
    handlePaginationButtons(value) {
       if (value === '<') {
          this.currentPageNumber = this.currentPageNumber - 1
-         this.getTasksAPI(this.projectId)
+         this.getTasksAPI(value)
       } else if (value === '>') {
          this.currentPageNumber = this.currentPageNumber + 1
-         this.getTasksAPI(this.projectId)
+         this.getTasksAPI(value)
       } else {
          this.currentPageNumber = value
-         this.getTasksAPI(this.projectId)
+         this.getTasksAPI(value)
       }
    }
    @computed

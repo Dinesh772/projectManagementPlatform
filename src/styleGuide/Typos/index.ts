@@ -59,13 +59,15 @@ export const Typo24DarkBlueGreyHKGroteskMedium = styled.h2`
 `
 export const Typo16HKGroteskMedium = styled.p`
    height: 24px;
-   width: 300px;
+   width: 350px;
+
    font-family: 'HKGroteskRegular';
    font-size: 16px;
    font-weight: 600;
    font-stretch: normal;
    font-style: normal;
    line-height: 1.2;
+   text-align: center;
    letter-spacing: normal;
    color: ${Colors.darkBlueGrey};
    @media (min-width: 350px) {
@@ -88,7 +90,8 @@ export const Typo26BrightBlueHKGroteskRegular = styled.h2`
 `
 export const Typo18HKGroteskRegular = styled.p`
    height: 24px;
-   width: 300px;
+   width: 270px;
+   text-align: center;
    @media (min-width: 300px) {
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -125,4 +128,16 @@ export const Typo14SteelHKGroteskRegular = styled.p`
    line-height: 1.71;
    letter-spacing: normal;
    color: ${Colors.lightBlueGrey};
+`
+export const Typo16HKGroteskMedium100 = styled.p`
+   height: 24px;
+   width: 50px;
+   font-family: 'HKGroteskRegular';
+   font-size: 16px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.2;
+   letter-spacing: normal;
+   color: ${Colors.darkBlueGrey};
 `
