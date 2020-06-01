@@ -22,6 +22,7 @@ import {
    ProjectsWrapper,
    PaginationWrapper
 } from './styledComponent'
+import NoDataView from '../../../../common/components/NoDataView'
 @observer
 class AdminDashboard extends React.Component<{
    projectStore: any
@@ -31,21 +32,31 @@ class AdminDashboard extends React.Component<{
    @observable isCreateClicked = false
    @observable isProjectCardClicked = false
    handleClick = () => {
+      const { projectStore } = this.props
       this.isCreateClicked = !this.isCreateClicked
+      if (this.isCreateClicked) {
+         projectStore.getWorkflowsAPI()
+      }
    }
    handleDropdown = () => {
       const { projectStore } = this.props
       projectStore.getWorkflowsAPI()
    }
 
-   handleProjectCardTriggred = () => {
-      const { history } = this.props
+   handleProjectCardTriggred = value => {
+      const { history, taskStore } = this.props
+
+      taskStore.getTasksAPI(value)
       history.replace(PROJECT_MANAGEMENT_PLATFORM_TASKS)
    }
 
    render() {
       const { projectStore } = this.props
-      const { createProjectAPIStatus, createProjectAPI } = projectStore
+      const {
+         createProjectAPIStatus,
+         createProjectAPI,
+         workflowsAPIStatus
+      } = projectStore
       return (
          <AdminWrapper>
             <AdminHeader backgroundColor={this.isCreateClicked}>
@@ -59,24 +70,35 @@ class AdminDashboard extends React.Component<{
                   width={'80px'}
                />
             </AdminHeader>
-            <ProjectsWrapper backgroundColor={this.isCreateClicked}>
-               <Projects
-                  projectStore={projectStore}
-                  handleProjectClick={this.handleProjectCardTriggred}
-               />
-            </ProjectsWrapper>
-            <PaginationWrapper backgroundColor={this.isCreateClicked}>
-               <Pagination
-                  hide={projectStore.totalPaginationLimit <= 1}
-                  store={projectStore}
-               />
-            </PaginationWrapper>
+            {projectStore.totalProjectsCount !== 0 ? (
+               <React.Fragment>
+                  <ProjectsWrapper backgroundColor={this.isCreateClicked}>
+                     <Projects
+                        projectStore={projectStore}
+                        handleProjectClick={this.handleProjectCardTriggred}
+                     />
+                  </ProjectsWrapper>
+                  <PaginationWrapper backgroundColor={this.isCreateClicked}>
+                     <Pagination
+                        hide={projectStore.totalPaginationLimit <= 1}
+                        currentPageNumber={projectStore.currentPageNumber}
+                        totalPages={projectStore.totalPaginationLimit}
+                        handlePaginationButtons={
+                           projectStore.handlePaginationButtons
+                        }
+                     />
+                  </PaginationWrapper>
+               </React.Fragment>
+            ) : (
+               <NoDataView text={i18n.noProjectsFoundCreateNewOne} />
+            )}
             <CreateProjectWrapper hide={this.isCreateClicked}>
                <CreateProject
                   handleClick={this.handleClick}
                   workflows={projectStore.workflows}
                   handleDropdown={this.handleDropdown}
-                  fetchingStatus={createProjectAPIStatus}
+                  workflowFetchingStatus={workflowsAPIStatus}
+                  createProjectFetchingStataus={createProjectAPIStatus}
                   createProject={createProjectAPI}
                />
             </CreateProjectWrapper>

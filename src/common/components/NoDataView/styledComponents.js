@@ -1,10 +1,17 @@
-import styled from "@emotion/styled";
-import tw from "tailwind.macro";
+import styled from '@emotion/styled'
+import tw from 'tailwind.macro'
+import { Colors } from '../../../themes/Colors'
 
 export const NoDataViewContainer = styled.div`
-  ${tw`text-center m-4`}
-`;
-
+   display: flex;
+   flex-direction: column;
+   height: 75vh;
+   width: 100%;
+   background-color: ${Colors.whiteTwo};
+   justify-content: center;
+   align-items: center;
+`
+export const ImageWrapper = styled.div``
 export const NoDataViewText = styled.p`
-  ${tw`text-xl`}
-`;
+   ${tw`text-xl`}
+`

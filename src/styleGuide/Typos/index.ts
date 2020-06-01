@@ -40,16 +40,22 @@ export const Typo12NeonRedHKGroteskRegular = styled.span`
    color: ${Colors.neonRed};
 `
 export const Typo24DarkBlueGreyHKGroteskMedium = styled.h2`
-   height: 32px;
+   height: 60px;
    font-family: 'HKGroteskRegular';
    font-size: 24px;
    font-weight: 500;
    font-stretch: normal;
    font-style: normal;
+   width: 350px;
    line-height: 1.33;
    letter-spacing: normal;
    padding: 14px;
    color: ${Colors.darkBlueGrey};
+   @media (min-width: 350px) {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+   }
 `
 export const Typo16HKGroteskMedium = styled.p`
    height: 24px;
@@ -62,6 +68,11 @@ export const Typo16HKGroteskMedium = styled.p`
    line-height: 1.2;
    letter-spacing: normal;
    color: ${Colors.darkBlueGrey};
+   @media (min-width: 350px) {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+   }
 `
 export const Typo26BrightBlueHKGroteskRegular = styled.h2`
    width: 288px;
@@ -78,6 +89,11 @@ export const Typo26BrightBlueHKGroteskRegular = styled.h2`
 export const Typo18HKGroteskRegular = styled.p`
    height: 24px;
    width: 300px;
+   @media (min-width: 300px) {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+   }
    font-family: 'HKGroteskRegular';
    font-size: 16px;
    font-weight: 500;

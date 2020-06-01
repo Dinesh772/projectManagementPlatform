@@ -9,11 +9,12 @@ class TaskStore {
    @observable createTaskAPIStatus
    @observable createTaskAPIError
    @observable tasksAPIError
-   @observable tasksLimitPerPage = 10
-   @observable totalTasks = 0
+   @observable tasksLimitPerPage
+   @observable totalTasks
    @observable totalPaginationLimit
    @observable currentPageNumber
    @observable workflows
+   @observable projectId = 0
    taskService
    constructor(taskService) {
       this.init()
@@ -36,12 +37,17 @@ class TaskStore {
       this.init()
    }
    @action.bound
-   getTasksAPI() {
+   getTasksAPI(id) {
       if (
          this.tasksList[this.currentPageIndex] === undefined ||
          this.tasksList[this.currentPageIndex].length === 0
       ) {
-         const tasksPromise = this.taskService.getTasksAPI()
+         let projectId = this.projectId
+         if (id !== undefined) {
+            this.projectId = id
+            projectId = id
+         }
+         const tasksPromise = this.taskService.getTasksAPI(projectId)
          return bindPromiseWithOnSuccess(tasksPromise)
             .to(this.setTasksAPIStatus, response => {
                this.setTasksAPIResponse(response)
@@ -74,7 +80,7 @@ class TaskStore {
    }
    @action.bound
    setCreateTaskAPIResponse(response) {
-      this.getTasksAPI()
+      this.getTasksAPI(this.projectId)
    }
 
    @action.bound
@@ -112,13 +118,13 @@ class TaskStore {
    handlePaginationButtons(value) {
       if (value === '<') {
          this.currentPageNumber = this.currentPageNumber - 1
-         this.getTasksAPI()
+         this.getTasksAPI(this.projectId)
       } else if (value === '>') {
          this.currentPageNumber = this.currentPageNumber + 1
-         this.getTasksAPI()
+         this.getTasksAPI(this.projectId)
       } else {
          this.currentPageNumber = value
-         this.getTasksAPI()
+         this.getTasksAPI(this.projectId)
       }
    }
    @computed

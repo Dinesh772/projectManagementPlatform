@@ -11,4 +11,7 @@ const TaskCardWrapper = styled.div<{ bgColor: any }>`
    background-color: ${props => props.bgColor};
    cursor: pointer;
 `
-export { TaskCardWrapper }
+const DropdownWrapper = styled.div`
+   width: 300px;
+`
+export { TaskCardWrapper, DropdownWrapper }

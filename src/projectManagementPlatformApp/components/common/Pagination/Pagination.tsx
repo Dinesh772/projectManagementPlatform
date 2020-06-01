@@ -1,56 +1,50 @@
 import React from 'react'
 import { observer } from 'mobx-react'
+import ReactPaginate from 'react-paginate'
 
-import {
-   paginationPages,
-   disableArrowControlButton
-} from '../../../utils/PaginationUtils'
-import PageNumberButton from '../../../../common/components/CommonButton/CommonButton'
-import { Colors } from '../../../../themes/Colors'
 import i18n from '../../../../i18n/strings.json'
 
 import { PaginationWrapper } from './styledComponent'
+import { observable } from 'mobx'
 @observer
-class Pagination extends React.Component<{ store: any; hide: any }> {
-   handleClick = (event, value) => {
-      const { store } = this.props
-      if (value === '<') {
-         store.handlePaginationButtons(value)
-      } else if (value === '>') {
-         store.handlePaginationButtons(value)
-      } else {
-         store.handlePaginationButtons(value)
+class Pagination extends React.Component<{
+   handlePaginationButtons: any
+   hide: any
+   currentPageNumber: any
+   totalPages: any
+}> {
+   @observable count = 0
+   handleClick = event => {
+      let selectedPage = event.selected
+      const { handlePaginationButtons } = this.props
+      this.count = this.count + 1
+      if (this.count !== 1) {
+         handlePaginationButtons(selectedPage + 1)
       }
    }
    render() {
-      const { store, hide } = this.props
-      const totalPages = store.totalPaginationLimit
-      const currentPageNumber = store.currentPageNumber
-      const pageNumbers = paginationPages(totalPages, currentPageNumber)
-      const pageButtons = pageNumbers.map(each =>
-         each !== '....' ? (
-            <PageNumberButton
-               isDisabled={disableArrowControlButton(
-                  each,
-                  currentPageNumber,
-                  totalPages
-               )}
-               buttonValue={each}
-               key={each}
-               height={'30px'}
-               handleClick={this.handleClick}
-               width={'30px'}
-               bgColor={Colors.white}
-               borderColor={Colors.lightBlueGrey}
-               textColor={Colors.darkBlueGrey}
-            />
-         ) : (
-            each
-         )
-      )
+      const { currentPageNumber, totalPages, hide } = this.props
+      const totalPageCount = totalPages
+      const currentPage = currentPageNumber
+
       return (
          <PaginationWrapper data-testid={i18n.paginationTestId} hide={hide}>
-            {pageButtons}
+            {/* {pageButtons} */}
+            <ReactPaginate
+               breakLabel={'...'}
+               pageCount={totalPageCount}
+               previousLabel={'<'}
+               nextLabel={'>'}
+               initialPage={0}
+               pageRangeDisplayed={2}
+               marginPagesDisplayed={2}
+               onPageChange={this.handleClick}
+               containerClassName={'pagination'}
+               subContainerClassName={'pages pagination'}
+               activeClassName={'active'}
+               breakClassName={'break-me'}
+               forcePage={currentPage - 1}
+            />
          </PaginationWrapper>
       )
    }

@@ -18,13 +18,15 @@ import {
    DropdownWrapper,
    CreateButtonWrapper
 } from './styledComponent'
+import { API_FETCHING, API_SUCCESS, API_INITIAL } from '@ib/api-constants'
 @observer
 class CreateProject extends React.Component<{
    handleClick: any
    workflows: any
    handleDropdown: any
-   fetchingStatus: any
    createProject: any
+   workflowFetchingStatus: any
+   createProjectFetchingStataus: any
 }> {
    @observable projectData = {
       projectName: '',
@@ -50,7 +52,7 @@ class CreateProject extends React.Component<{
    }
    handleDescriptionChange = event => {
       const value = event.target.value
-
+      console.log(value)
       this.projectData.description = value
       this.projectDescriptionHasError = false
       this.projectDescriptionErrorMessage = ''
@@ -58,14 +60,8 @@ class CreateProject extends React.Component<{
    }
    handleWorkflowDropdownChange = event => {
       const value = event.target.value
-
-      const { workflows, handleDropdown } = this.props
-      if (workflows.length === 0) {
-         handleDropdown()
-      } else {
-         this.projectData.workflowType = value.toString()
-         this.projectWorkflowError = ''
-      }
+      this.projectData.workflowType = value.toString()
+      this.projectWorkflowError = ''
       this.handleValidation()
    }
    handleProjectTypeDropdown = event => {
@@ -116,22 +112,51 @@ class CreateProject extends React.Component<{
       }
    }
    onSuccess = () => {
-      window.location.reload()
+      this.onResetAllToDefault()
+      const { handleClick } = this.props
+      handleClick()
+   }
+   onResetAllToDefault = () => {
+      this.projectData = {
+         projectName: '',
+         description: '',
+         workflowType: '',
+         projectType: ''
+      }
+      this.projectNameFieldHasError = false
+      this.projectNameErrorMessage = ''
+      this.projectDescriptionHasError = false
+      this.projectDescriptionErrorMessage = ''
+      this.projectWorkflowError = ''
+      this.projectTypeError = ''
+      this.isValidated = false
    }
    handleClose = () => {
+      this.onResetAllToDefault()
       const { handleClick } = this.props
-      window.location.reload()
+      //window.location.reload()
       handleClick()
    }
    render() {
-      const { workflows, fetchingStatus } = this.props
-      const workflowValues = workflows
+      const {
+         workflows,
+         workflowFetchingStatus,
+         createProjectFetchingStataus
+      } = this.props
+      const workflowValues = workflows || []
       const projectTypeValues = [
          i18n.classicSoftware,
          i18n.softwareProject,
          i18n.financialSoftware,
          i18n.crmSoftware
       ]
+      const workFlowsDropdownPlaceholder =
+         workflowFetchingStatus === API_SUCCESS
+            ? i18n.selectProjectPlaceholder
+            : workflowFetchingStatus === API_INITIAL || API_FETCHING
+            ? i18n.loading
+            : i18n.somethingWentWrong
+
       return (
          <CreateProjectWrapper>
             <CreateProjectHeader>
@@ -174,7 +199,10 @@ class CreateProject extends React.Component<{
                      handleChange={this.handleWorkflowDropdownChange}
                      handleFocus={this.handleWorkflowDropdownChange}
                      errorMessage={this.projectWorkflowError}
-                     placeholder={i18n.selectWorkflow}
+                     placeholder={workFlowsDropdownPlaceholder}
+                     disabled={
+                        workflowFetchingStatus === API_SUCCESS ? false : true
+                     }
                   />
                </DropdownWrapper>
                <DropdownWrapper>
@@ -193,7 +221,7 @@ class CreateProject extends React.Component<{
                      height={'40px'}
                      width={'100%'}
                      handleClick={this.handleSubmit}
-                     apiStatus={fetchingStatus}
+                     apiStatus={createProjectFetchingStataus}
                   />
                </CreateButtonWrapper>
             </ProjectDetails>

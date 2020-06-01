@@ -5,7 +5,9 @@ const DropDownWrapper = styled.select<{ width: any }>`
    border: 0.6px solid lightgray;
    padding: 3px;
    border-radius: 4px;
+   font-size: 14px;
    cursor: pointer;
+   color: ${Colors.steel};
    width: ${props => props.width ?? '100%'};
    :hover {
       outline: none;

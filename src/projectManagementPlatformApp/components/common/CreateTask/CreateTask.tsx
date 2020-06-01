@@ -97,10 +97,27 @@ class CreateTask extends React.Component<{
       }
    }
    onSuccess = () => {
-      setTimeout(() => window.location.reload(), 1000)
+      const { handleClose } = this.props
+      handleClose()
+      this.onResetAllToDefault()
    }
    onFailure = () => {
       alert(1)
+   }
+   onResetAllToDefault = () => {
+      this.createTaskDetails = {
+         project: '',
+         issueType: '',
+         title: '',
+         description: ''
+      }
+      this.isValidated = false
+      this.taskTitleFieldHasError = false
+      this.taskTitleErrorMessage = ''
+      this.taskDescriptionHasError = false
+      this.taskDescriptionErrorMessage = ''
+      this.projectHasError = ''
+      this.issueTypeError = ''
    }
    handleCreateButton = () => {
       if (this.isValidated) {

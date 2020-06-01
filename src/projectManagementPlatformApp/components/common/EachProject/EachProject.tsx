@@ -8,11 +8,18 @@ class EachProject extends React.Component<{
    bgColor: any
    handleProjectClick: any
 }> {
+   handleClick = (event, value) => {
+      const { handleProjectClick } = this.props
+      handleProjectClick(value)
+   }
    render() {
-      const { project, bgColor, handleProjectClick } = this.props
+      const { project, bgColor } = this.props
 
       return (
-         <EachProjectWrapper bgColor={bgColor} onClick={handleProjectClick}>
+         <EachProjectWrapper
+            bgColor={bgColor}
+            onClick={event => this.handleClick(event, project.id)}
+         >
             <Typo18HKGroteskRegular>{project.name}</Typo18HKGroteskRegular>
             <Typo18HKGroteskRegular>
                {project.projectType}

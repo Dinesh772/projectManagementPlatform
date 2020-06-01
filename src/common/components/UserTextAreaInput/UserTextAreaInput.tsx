@@ -15,9 +15,8 @@ export const UserTextareaInput = props => (
          hasError={props.hasError}
          onBlur={props.validate}
          data-testid={props.testId}
-      >
-         {props.value}
-      </TextareaWrapper>
+         value={props.value}
+      ></TextareaWrapper>
       <Typo12NeonRedHKGroteskRegular>
          {props.errorMessage}
       </Typo12NeonRedHKGroteskRegular>

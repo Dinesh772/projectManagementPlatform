@@ -1,6 +1,6 @@
 import tasksFixtures from '../../fixtures/taskFixtures.json'
 class TasksFixturesAPI {
-   getTasksAPI = () => {
+   getTasksAPI = id => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(tasksFixtures), 1000)
          //setTimeout(() => reject(new Error('error')), 1000)

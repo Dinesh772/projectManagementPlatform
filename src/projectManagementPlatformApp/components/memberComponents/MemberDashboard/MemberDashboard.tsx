@@ -11,6 +11,7 @@ import Projects from '../../common/Projects'
 import Pagination from '../../common/Pagination'
 
 import { MemberWrapper, MemberHeader } from './styledComponent'
+import NoDataView from '../../../../common/components/NoDataView'
 @observer
 class MemberDashboard extends React.Component<{
    taskStore: any
@@ -34,14 +35,24 @@ class MemberDashboard extends React.Component<{
                   {i18n.listOfProjects}
                </Typo26BrightBlueHKGroteskRegular>
             </MemberHeader>
-            <Projects
-               projectStore={projectStore}
-               handleProjectClick={this.handleProjectCardTriggred}
-            />
-            <Pagination
-               hide={projectStore.totalPaginationLimit <= 1}
-               store={projectStore}
-            />
+            {projectStore.totalProjectsCount !== 0 ? (
+               <React.Fragment>
+                  <Projects
+                     projectStore={projectStore}
+                     handleProjectClick={this.handleProjectCardTriggred}
+                  />
+                  <Pagination
+                     hide={projectStore.totalPaginationLimit <= 1}
+                     currentPageNumber={projectStore.currentPageNumber}
+                     totalPages={projectStore.totalPaginationLimit}
+                     handlePaginationButtons={
+                        projectStore.handlePaginationButtons
+                     }
+                  />
+               </React.Fragment>
+            ) : (
+               <NoDataView text={i18n.noProjectsFound} />
+            )}
          </MemberWrapper>
       )
    }

@@ -43,7 +43,6 @@ class Tasks extends React.Component<PropsType> {
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
       if (!this.isCreateClicked) {
-         window.location.reload()
          this.doNetworkCalls()
       }
    }
@@ -92,7 +91,9 @@ class Tasks extends React.Component<PropsType> {
             <PaginationWrapper backgroundColor={this.isCreateClicked}>
                <Pagination
                   hide={taskStore.totalPaginationLimit <= 1}
-                  store={taskStore}
+                  currentPageNumber={taskStore.currentPageNumber}
+                  totalPages={taskStore.totalPaginationLimit}
+                  handlePaginationButtons={taskStore.handlePaginationButtons}
                />
             </PaginationWrapper>
             <CreateTaskWrapper hide={this.isCreateClicked}>

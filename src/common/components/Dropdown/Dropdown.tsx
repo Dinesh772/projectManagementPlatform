@@ -16,12 +16,15 @@ export const Dropdown = props => (
          onFocus={props.handleFocus}
          onChange={props.handleChange}
          width={props.width}
+         disabled={props.disabled ?? false}
       >
          <OptionElement value='' hidden>
             {props.placeholder}
          </OptionElement>
          {props.values.map(eachValue => (
-            <OptionElement value={eachValue}>{eachValue}</OptionElement>
+            <OptionElement value={eachValue} disabled={false}>
+               {eachValue}
+            </OptionElement>
          ))}
       </DropDownWrapper>
       <ErrorMessageWrapper>

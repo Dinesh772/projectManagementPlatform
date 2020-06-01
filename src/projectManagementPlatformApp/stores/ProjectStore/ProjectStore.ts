@@ -175,5 +175,26 @@ class ProjectStore {
    get currentPageIndex() {
       return this.currentPageNumber - 1
    }
+   @computed
+   get totalProjectsCount() {
+      const projectsList = this.projectsList
+      let count = 0
+      for (let i = 0; i < projectsList.length; ++i) {
+         count += projectsList[i].length
+      }
+      return count
+   }
+   @computed
+   get totalProjectsTitleNames() {
+      const projectsList = this.projectsList
+      let projectNames: any = []
+      for (let i = 0; i < this.totalProjects; ++i) {
+         for (let j = 0; j < projectsList[i].length; ++j) {
+            let name = projectsList[i][j].name
+            projectNames.push(name)
+         }
+      }
+      return projectNames
+   }
 }
 export { ProjectStore }

@@ -54,11 +54,12 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
          <MemberDashboard projectStore={projectStore} taskStore={taskStore} />
       )
    }
-   handleProfile = (event, value) => {
+   handleProfile = event => {
       this.isProfileClicked = !this.isProfileClicked
    }
    render() {
       const { projectsAPIStatus, projectsAPIError } = this.props.projectStore
+
       return (
          <ProjectManagementDashboardWrapper>
             <Header handleProfileClick={this.handleProfile} />
@@ -68,7 +69,10 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
                onRetryClick={this.doNetworkCalls}
                renderSuccessUI={this.renderSuccessUI}
             />
-            <ProfileCardWrapper hide={this.isProfileClicked}>
+            <ProfileCardWrapper
+               hide={this.isProfileClicked}
+               onClick={this.handleProfile}
+            >
                <ProfileCard
                   handleProfile={this.handleProfile}
                   handleLogout={this.handleLogout}

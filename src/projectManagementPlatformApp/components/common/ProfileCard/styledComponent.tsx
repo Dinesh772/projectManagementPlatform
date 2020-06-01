@@ -4,8 +4,8 @@ import { Colors } from '../../../../themes/Colors'
 const ProfileCardWrapper = styled.div`
    display: flex;
    flex-direction: column;
-   width: 25%;
    height: 100%;
+   width: 320px;
    padding: 20px;
    background-color: ${Colors.whiteTwo};
 `
