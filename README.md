@@ -29,3 +29,23 @@ The build is minified and the filenames include the hashes.<br />
 Builds the app for production to the `build` folder.<br />
 
 Deploys the build folder to S3 bucket from cloud9 environment
+
+### Base Typos
+
+```
+export const BaseHKGroteskText = styled.span`
+   font-family: 'HKGroteskRegular';
+`
+
+export const BaseHKGroteskBoldText = styled(BaseHKGroteskText)`
+   font-weight: bold;
+`
+
+export const BaseHKGroteskSemiBoldText = styled(BaseHKGroteskText)`
+   font-weight: 600;
+`
+
+export const BaseHKGroteskMediumText = styled(BaseHKGroteskText)`
+   font-weight: 500;
+`
+```
