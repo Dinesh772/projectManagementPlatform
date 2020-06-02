@@ -2,7 +2,7 @@ export const apiMethods = {
    post: 'POST',
    get: 'GET',
    delete: 'DELETE',
-   put: 'PUT',
+   put: 'PUT'
 }
 
 const INVALID_URL_TOKEN = 'INVALID_URL_TOKEN'
@@ -26,7 +26,7 @@ export const resStatuses = {
    notAuthorizedException: NOT_AUTHORIZED_EXCEPTION,
    userNotFoundException: USER_NOT_FOUND_EXCEPTION,
    invalidSessionToken: INVALID_SESSION_TOKEN,
-   requestTimedOut: REQUEST_TIMED_OUT,
+   requestTimedOut: REQUEST_TIMED_OUT
 }
 
 export const statusCodes = {
@@ -35,10 +35,10 @@ export const statusCodes = {
    badRequestErrorCode: BAD_REQUEST_ERROR_CODE,
    unAuthorizedErrorCode: UNAUTHORIZED_ERROR_CODE,
    accessForbiddenErrorCode: ACCESS_FORBIDDEN_ERROR_CODE,
-   notFoundErrorCode: NOT_FOUND_ERROR_CODE,
+   notFoundErrorCode: NOT_FOUND_ERROR_CODE
 }
 
 export const apiErrorProblems = {
    networkError: 'NETWORK_ERROR',
-   timeoutError: 'TIMEOUT_ERROR',
+   timeoutError: 'TIMEOUT_ERROR'
 }

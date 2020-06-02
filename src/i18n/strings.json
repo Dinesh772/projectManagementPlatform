@@ -83,5 +83,6 @@
    "update": "UPDATE",
    "from": "FROM*",
    "to": "TO*",
-   "noTasksFoundCreateANewOne": "No Tasks found, create a new one.."
+   "noTasksFoundCreateANewOne": "No Tasks found, create a new one..",
+   "aboveAllFieldsAreRequired": "*Above all fields are required..!"
 }

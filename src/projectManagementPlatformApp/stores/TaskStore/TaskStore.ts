@@ -86,14 +86,15 @@ class TaskStore {
    }
 
    @action.bound
-   changeTaskStatusAPI() {
+   changeTaskStatusAPI(reqestObject, onSuccess) {
       const changeTaskPromise = this.taskService.changeTaskStatusAPI()
       return bindPromiseWithOnSuccess(changeTaskPromise)
-         .to(this.setCreateTaskAPIStatus, response => {
-            this.setChangeTaskStatusAPIResponse(response)
+         .to(this.setChangeTaskAPIStatus, response => {
+            this.setChangeTaskAPIResponse(response)
+            onSuccess()
          })
          .catch(error => {
-            this.setChangeTaskStatusAPIError(error)
+            this.setChangeTaskAPIError(error)
          })
    }
    @action.bound
@@ -109,7 +110,6 @@ class TaskStore {
    @action.bound
    getWorkflowsAPI() {
       if (this.workflows.length === 0) {
-         console.log('came here')
          const workflowsPromise = this.taskService.getWorkflowsAPI()
          return bindPromiseWithOnSuccess(workflowsPromise)
             .to(this.setWorkflowsAPIStatus, response => {
@@ -150,15 +150,15 @@ class TaskStore {
    }
 
    @action.bound
-   setChangeTaskStatusAPIStatus(apiStatus) {
+   setChangeTaskAPIStatus(apiStatus) {
       this.changeStatusAPIStatus = apiStatus
    }
    @action.bound
-   setChangeTaskStatusAPIError(error) {
+   setChangeTaskAPIError(error) {
       this.changeStatusAPIError = error
    }
    @action.bound
-   setChangeTaskStatusAPIResponse(response) {}
+   setChangeTaskAPIResponse(response) {}
 
    @action.bound
    setCreateTaskAPIStatus(apiStatus) {

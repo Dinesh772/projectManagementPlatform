@@ -12,11 +12,7 @@ export default {
 
 export const defaultView = () => <NoDataView />
 
-export const knobs = () => (
-   <NoDataView
-   text={text('text',i18n.noDataText)}
-   />
-)
+export const knobs = () => <NoDataView text={text('text', i18n.noDataText)} />
 
 knobs.story = {
    decorators: [withKnobs]

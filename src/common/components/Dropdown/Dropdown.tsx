@@ -37,6 +37,7 @@ export const Dropdown = props => (
 
 export const SimpleDropdown = props => (
    <React.Fragment>
+      <Typo12SteelHKGroteskSemiBold>{props.label}</Typo12SteelHKGroteskSemiBold>
       <DropDownWrapper
          onFocus={props.handleFocus}
          onChange={props.handleChange}
@@ -49,7 +50,7 @@ export const SimpleDropdown = props => (
          </OptionElement>
          {props.values.map(eachValue => (
             <OptionElement
-               disabled={eachValue === props.placeholder ? true : false}
+               disabled={eachValue === props.disableValue ? true : false}
                value={eachValue}
             >
                {eachValue}

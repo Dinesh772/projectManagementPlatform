@@ -38,6 +38,7 @@ class TaskCard extends React.Component<{
                   values={options}
                   placeholder={task.status}
                   handleChange={event => this.handleDropdownChange(event, task)}
+                  disableValue={task.status}
                />
             </DropdownWrapper>
             <InfoWrapper onClick={event => handleTaskInfo(event, task)}>

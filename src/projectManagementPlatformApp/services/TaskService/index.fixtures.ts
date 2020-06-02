@@ -17,7 +17,7 @@ class TasksFixturesAPI {
    }
    changeTaskStatusAPI = () => {
       return new Promise((resolve, reject) => {
-         resolve([])
+         setTimeout(() => resolve([]), 2000)
       })
    }
    getChecklistAPI = () => {

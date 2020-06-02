@@ -11,7 +11,10 @@ import {
    ChangeConfirmationWrapper,
    FetchingWrapper
 } from './styledComponent'
-import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
+import {
+   Typo18BoldHKGroteskRegular,
+   Typo12NeonRedHKGroteskRegular
+} from '../../../../styleGuide/Typos'
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
 import { SimpleDropdown } from '../../../../common/components/Dropdown/Dropdown'
 import { observable } from 'mobx'
@@ -19,7 +22,7 @@ import { observer } from 'mobx-react'
 import { Checkbox } from '../../../../common/components/Checkbox/Checkbox'
 
 import Loader from 'react-loader-spinner'
-import { API_FETCHING, API_SUCCESS } from '@ib/api-constants'
+import { API_SUCCESS } from '@ib/api-constants'
 import { Colors } from '../../../../themes/Colors'
 @observer
 class TransitionChange extends React.Component<{
@@ -27,10 +30,11 @@ class TransitionChange extends React.Component<{
    taskObject: any
    checklistFetchingStatus: any
    handleSubmit: any
+   apiStatus: any
 }> {
    @observable isValidated = false
    @observable checkboxesChecked = 0
-
+   @observable validationErrorMessage = ''
    handleCheckbox = event => {
       const value = event.target.checked
       if (value) {
@@ -38,21 +42,37 @@ class TransitionChange extends React.Component<{
       } else {
          this.checkboxesChecked--
       }
+      this.handleValidation()
    }
-   handleValidation = () => {}
+   handleValidation = () => {
+      const { taskObject } = this.props
+      const checklistItems = taskObject.checklist ?? []
+      if (this.checkboxesChecked < checklistItems.length) {
+         this.validationErrorMessage = i18n.aboveAllFieldsAreRequired
+      } else {
+         this.validationErrorMessage = ''
+      }
+   }
    handleSubmit = () => {
       const { handleSubmit } = this.props
+      this.checkboxesChecked = 0
+      this.validationErrorMessage = ''
       handleSubmit()
    }
    render() {
-      const { handleClose, taskObject, checklistFetchingStatus } = this.props
+      const {
+         handleClose,
+         taskObject,
+         checklistFetchingStatus,
+         apiStatus
+      } = this.props
       const fromState = taskObject.status
       const toState = taskObject.to
       const checklistItems = taskObject.checklist ?? []
       const checklists = checklistItems.map(eachItem => (
          <Checkbox text={eachItem} handleClick={this.handleCheckbox} />
       ))
-      const workflows = taskObject.workflow ?? []
+      const workflows = taskObject.workflows ?? []
       return (
          <TransitionChangeWrapper>
             <TransitionChangeHeader>
@@ -74,6 +94,7 @@ class TransitionChange extends React.Component<{
                            <SimpleDropdown
                               placeholder={fromState}
                               label={i18n.from}
+                              disableValue={fromState}
                               values={workflows}
                            />
                         </DropdownWrapper>
@@ -81,6 +102,7 @@ class TransitionChange extends React.Component<{
                            <SimpleDropdown
                               label={i18n.to}
                               placeholder={toState}
+                              disableValue={fromState}
                               values={workflows}
                            />
                         </DropdownWrapper>
@@ -111,7 +133,11 @@ class TransitionChange extends React.Component<{
                   width={'120px'}
                   buttonValue={i18n.update}
                   handleClick={this.handleSubmit}
+                  apiStatus={apiStatus}
                />
+               <Typo12NeonRedHKGroteskRegular>
+                  {this.validationErrorMessage}
+               </Typo12NeonRedHKGroteskRegular>
             </SubmitButtonWrapper>
          </TransitionChangeWrapper>
       )

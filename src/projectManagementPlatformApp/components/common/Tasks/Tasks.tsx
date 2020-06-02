@@ -77,9 +77,17 @@ class Tasks extends React.Component<PropsType> {
       const { taskStore } = this.props
       const checklist = taskStore.taskChecklist
       this.taskObject['checklist'] = checklist
+      this.taskObject['workflows'] = taskStore.workflows
    }
 
    handleTransitionChangeSubmit = () => {
+      // this.isStatusChangeTriggred = !this.isStatusChangeTriggred
+      if (!this.isCreateClicked) {
+         const { taskStore } = this.props
+         taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
+      }
+   }
+   onTransitionChangeSuccess = () => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
       toast.success(
          <React.Fragment>
@@ -121,6 +129,7 @@ class Tasks extends React.Component<PropsType> {
       const tasksData = taskStore.renderedTasksList
       const checklistFetchingStatus = taskStore.checklistAPIStatus
       const workflows = taskStore.workflows
+      const transitionChangeAPIStatus = taskStore.changeStatusAPIStatus
       return (
          <TasksPageWrapper>
             <ProjectTaskHeader>
@@ -186,6 +195,7 @@ class Tasks extends React.Component<PropsType> {
                   handleClose={this.handleStatusChange}
                   checklistFetchingStatus={checklistFetchingStatus}
                   handleSubmit={this.handleTransitionChangeSubmit}
+                  apiStatus={transitionChangeAPIStatus}
                />
             </TransitionConfirmationWrapper>
             <ToasterWrapper>

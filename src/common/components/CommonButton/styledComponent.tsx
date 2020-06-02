@@ -23,7 +23,9 @@ const Button = styled.button<{
    }
    :hover {
       outline: none;
-      transform: translateY(1.5px);
+   }
+   :disabled {
+      background-color: ${Colors.steel};
    }
 `
 export { Button }
