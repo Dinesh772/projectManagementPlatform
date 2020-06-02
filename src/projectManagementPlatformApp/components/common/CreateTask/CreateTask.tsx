@@ -207,6 +207,7 @@ class CreateTask extends React.Component<{
                   validate={this.handleValidationChange}
                   onChange={this.handleDescriptionChange}
                />
+
                <CreateButtonWrapper>
                   <CommonButton
                      buttonValue={i18n.createFinal}

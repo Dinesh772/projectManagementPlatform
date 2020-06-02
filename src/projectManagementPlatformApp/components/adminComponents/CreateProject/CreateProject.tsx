@@ -7,7 +7,10 @@ import i18n from '../../../../i18n/strings.json'
 import UserTextInputField from '../../../../common/components/UserTextInputField/UserTextInputField'
 import { UserTextareaInput } from '../../../../common/components/UserTextAreaInput/UserTextAreaInput'
 import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
-import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
+import {
+   Typo18BoldHKGroteskRegular,
+   Typo12NeonRedHKGroteskRegular
+} from '../../../../styleGuide/Typos'
 import { stringValidator } from '../../../../authentication/utils/ValidationUtils/ValidationUtils'
 import CloseButton from '../../../../common/components/Avatar/Avatar'
 
@@ -18,7 +21,12 @@ import {
    DropdownWrapper,
    CreateButtonWrapper
 } from './styledComponent'
-import { API_FETCHING, API_SUCCESS, API_INITIAL } from '@ib/api-constants'
+import {
+   API_FETCHING,
+   API_SUCCESS,
+   API_INITIAL,
+   API_FAILED
+} from '@ib/api-constants'
 @observer
 class CreateProject extends React.Component<{
    handleClick: any
@@ -223,6 +231,11 @@ class CreateProject extends React.Component<{
                      handleClick={this.handleSubmit}
                      apiStatus={createProjectFetchingStataus}
                   />
+                  <Typo12NeonRedHKGroteskRegular>
+                     {createProjectFetchingStataus === API_FAILED
+                        ? i18n.somethingWentWrong
+                        : ''}
+                  </Typo12NeonRedHKGroteskRegular>
                </CreateButtonWrapper>
             </ProjectDetails>
          </CreateProjectWrapper>

@@ -16,5 +16,6 @@ class TasksFixturesAPI {
          resolve([])
       })
    }
+   getChecklistAPI = () => {}
 }
 export default TasksFixturesAPI

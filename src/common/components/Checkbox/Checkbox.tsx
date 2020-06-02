@@ -1,5 +1,9 @@
 import React from 'react'
-
+import { Typo16HKGroteskMedium } from '../../../styleGuide/Typos'
+import { CheckboxWrapper, InputCheckbox } from './styledComponent'
 export const Checkbox = props => (
-   <input type='checkbox' onClick={props.handleClick} />
+   <CheckboxWrapper>
+      <InputCheckbox type='checkbox' onClick={props.handleClick} />
+      <p> {props.text}</p>
+   </CheckboxWrapper>
 )

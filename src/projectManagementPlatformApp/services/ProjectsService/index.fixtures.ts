@@ -15,6 +15,7 @@ class ProjectsFixtureService {
    createProjectAPI = () => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve('Success'), 1000)
+         //setTimeout(() => reject(new Error('error')), 1000)
       })
    }
 }

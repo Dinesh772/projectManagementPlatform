@@ -26,6 +26,7 @@ export const TransitionCheckboxesWrapper = styled.div`
    display: flex;
    flex-direction: column;
    height: 380px;
+   overflow: auto;
    width: 100%;
 `
 export const SubmitButtonWrapper = styled.div`
@@ -40,5 +41,7 @@ export const DropdownWrapper = styled.div`
 export const StatusWrapper = styled.div`
    display: flex;
    width: 100%;
-   height: 100%;
+
+   height: 80px;
 `
+export const ChangeConfirmationWrapper = styled.div``

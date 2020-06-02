@@ -54,8 +54,14 @@ class Tasks extends React.Component<PropsType> {
          this.doNetworkCalls(id)
       }
    }
-   handleStatusChange = () => {
+   handleStatusChange = (selectedOption, task) => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
+      if (this.isStatusChangeTriggred) {
+         let taskObject = this.taskObject
+         taskObject = task
+         taskObject['to'] = selectedOption
+         this.taskObject = taskObject
+      }
    }
    componentDidMount() {
       let id = this.props.match.params.id
@@ -133,7 +139,10 @@ class Tasks extends React.Component<PropsType> {
                />
             </TaskInfoWrapper>
             <TransitionConfirmationWrapper hide={this.isStatusChangeTriggred}>
-               <TransitionChange handleClose={this.handleStatusChange} />
+               <TransitionChange
+                  taskObject={this.taskObject}
+                  handleClose={this.handleStatusChange}
+               />
             </TransitionConfirmationWrapper>
          </TasksPageWrapper>
       )

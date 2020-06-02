@@ -47,7 +47,10 @@ export const SimpleDropdown = props => (
             {props.placeholder}
          </OptionElement>
          {props.values.map(eachValue => (
-            <OptionElement value={eachValue} disabled={false}>
+            <OptionElement
+               disabled={eachValue === props.placeholder ? true : false}
+               value={eachValue}
+            >
                {eachValue}
             </OptionElement>
          ))}

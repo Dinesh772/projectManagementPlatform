@@ -7,14 +7,46 @@ import {
    TransitionCheckboxesWrapper,
    SubmitButtonWrapper,
    DropdownWrapper,
-   StatusWrapper
+   StatusWrapper,
+   ChangeConfirmationWrapper
 } from './styledComponent'
 import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
 import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
-class TransitionChange extends React.Component<{ handleClose: any }> {
+import { observable, toJS } from 'mobx'
+import { observer } from 'mobx-react'
+import { Checkbox } from '../../../../common/components/Checkbox/Checkbox'
+@observer
+class TransitionChange extends React.Component<{
+   handleClose: any
+   taskObject: any
+}> {
+   @observable confirmTransitionChange = false
+   @observable checkboxesChecked = 0
+   handleTransitionChangeConfirmation = () => {
+      this.confirmTransitionChange = !this.confirmTransitionChange
+   }
+   handleCheckbox = event => {
+      const value = event.target.checked
+      if (value) {
+         this.checkboxesChecked++
+      } else {
+         this.checkboxesChecked--
+      }
+   }
+   handleSubmit = () => {
+      console.log(this.checkboxesChecked)
+   }
    render() {
-      const { handleClose } = this.props
+      const { handleClose, taskObject } = this.props
+      const fromState = taskObject.status
+      const toState = taskObject.to
+
+      const checklistItems = taskObject.checklist ?? []
+      const checklists = checklistItems.map(eachItem => (
+         <Checkbox text={eachItem} handleClick={this.handleCheckbox} />
+      ))
+      const workflows = taskObject.workflow ?? []
       return (
          <TransitionChangeWrapper>
             <TransitionChangeHeader>
@@ -31,18 +63,30 @@ class TransitionChange extends React.Component<{ handleClose: any }> {
             <TransitionCheckboxesWrapper>
                <StatusWrapper>
                   <DropdownWrapper>
-                     <Dropdown label={i18n.from} values={[1, 2, 3]} />
+                     <Dropdown
+                        placeholder={fromState}
+                        label={i18n.from}
+                        values={workflows}
+                     />
                   </DropdownWrapper>
                   <DropdownWrapper>
-                     <Dropdown label={i18n.to} values={[1, 2, 3]} />
+                     <Dropdown
+                        label={i18n.to}
+                        placeholder={toState}
+                        values={workflows}
+                     />
                   </DropdownWrapper>
                </StatusWrapper>
+               <ChangeConfirmationWrapper>
+                  {checklists}
+               </ChangeConfirmationWrapper>
             </TransitionCheckboxesWrapper>
             <SubmitButtonWrapper>
                <CommonButton
                   height={'40px'}
                   width={'120px'}
                   buttonValue={i18n.update}
+                  handleClick={this.handleSubmit}
                />
             </SubmitButtonWrapper>
          </TransitionChangeWrapper>

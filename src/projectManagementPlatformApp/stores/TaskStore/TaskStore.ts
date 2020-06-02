@@ -8,6 +8,9 @@ class TaskStore {
    @observable tasksAPIStatus
    @observable createTaskAPIStatus
    @observable changeStatusAPIStatus
+   @observable checklistAPIStatus
+   @observable checklistAPIError
+   @observable taskChecklist = []
    @observable changeStatusAPIError
    @observable createTaskAPIError
    @observable tasksAPIError
@@ -27,12 +30,15 @@ class TaskStore {
       this.tasksList = []
       this.tasksAPIStatus = API_INITIAL
       this.createTaskAPIStatus = API_INITIAL
+      this.checklistAPIStatus = API_INITIAL
+      this.checklistAPIError = null
       this.createTaskAPIError = null
       this.tasksAPIError = null
       this.tasksLimitPerPage = 10
       this.totalTasks = 0
       this.currentPageNumber = 1
       this.workflows = []
+      this.taskChecklist = []
       this.totalPaginationLimit = 0
       this.projectId = 0
       this.offset = 0
@@ -85,6 +91,28 @@ class TaskStore {
          .catch(error => {
             this.setChangeTaskStatusAPIError(error)
          })
+   }
+   @action.bound
+   getChecklistAPI() {
+      const checklistPromise = this.taskService.getChecklistAPI()
+      return bindPromiseWithOnSuccess(checklistPromise)
+         .to(this.setChecklistAPIStatus, response => {
+            this.setChecklistAPIResponse(response)
+         })
+         .catch(error => this.setChecklistAPIError(error))
+   }
+   @action.bound
+   setChecklistAPIStatus(apiStatus) {
+      this.checklistAPIStatus = apiStatus
+   }
+   @action.bound
+   setChecklistAPIError(error) {
+      this.checklistAPIError = error
+   }
+
+   @action.bound
+   setChecklistAPIResponse(response) {
+      console.log(response)
    }
 
    @action.bound

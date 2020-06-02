@@ -33,6 +33,7 @@ const DropdownWrapper = styled.div`
 `
 const CreateButtonWrapper = styled.div`
    display: flex;
+   flex-direction: column;
    margin-top: 20px;
    height: 100%;
    justify-content: center;

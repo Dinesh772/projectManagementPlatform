@@ -30,6 +30,7 @@ export const Typo14WhiteRubikMedium = styled.span`
 `
 export const Typo12NeonRedHKGroteskRegular = styled.span`
    height: 16px;
+
    font-family: 'HKGroteskRegular';
    font-size: 12px;
    font-weight: normal;

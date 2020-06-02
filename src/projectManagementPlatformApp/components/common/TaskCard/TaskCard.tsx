@@ -3,14 +3,14 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { BsInfoCircle } from 'react-icons/bs'
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
-import i18n from '../../../../i18n/strings.json'
+import { Colors } from '../../../../themes/Colors'
+
 import {
    TaskCardWrapper,
    DropdownWrapper,
    InfoWrapper
 } from './styledComponent'
 import { SimpleDropdown } from '../../../../common/components/Dropdown/Dropdown'
-import Avatar from '../../../../common/components/Avatar/Avatar'
 @observer
 class TaskCard extends React.Component<{
    task: any
@@ -18,13 +18,14 @@ class TaskCard extends React.Component<{
    handleTaskInfo: any
    handleStatusChange: any
 }> {
-   handleDropdownChange = () => {
+   handleDropdownChange = (event, task) => {
       const { handleStatusChange } = this.props
-      handleStatusChange()
+      const value = event.target.value
+      handleStatusChange(value, task)
    }
    render() {
       const { bgColor, task, handleTaskInfo } = this.props
-      const options = ['todo', 'sda', 'asd', 'fsfsf']
+      const options = task.workflow
       return (
          <TaskCardWrapper bgColor={bgColor}>
             <Typo18HKGroteskRegular>{task.taskTitle}</Typo18HKGroteskRegular>
@@ -34,12 +35,12 @@ class TaskCard extends React.Component<{
             <DropdownWrapper>
                <SimpleDropdown
                   values={options}
-                  placeholder={options[0]}
-                  handleChange={this.handleDropdownChange}
+                  placeholder={task.status}
+                  handleChange={event => this.handleDropdownChange(event, task)}
                />
             </DropdownWrapper>
             <InfoWrapper onClick={event => handleTaskInfo(event, task)}>
-               <BsInfoCircle />
+               <BsInfoCircle color={Colors.steel} />
             </InfoWrapper>
          </TaskCardWrapper>
       )
