@@ -17,9 +17,15 @@ class TasksList extends React.Component<{
    tasksData: any
    handleTaskInfo: any
    handleStatusChange: any
+   workflows: any
 }> {
    render() {
-      const { tasksData, handleTaskInfo, handleStatusChange } = this.props
+      const {
+         tasksData,
+         handleTaskInfo,
+         handleStatusChange,
+         workflows
+      } = this.props
       const data = tasksData.map((eachTask, index) => (
          <TaskCard
             key={eachTask.id}
@@ -27,6 +33,7 @@ class TasksList extends React.Component<{
             task={eachTask}
             handleTaskInfo={handleTaskInfo}
             handleStatusChange={handleStatusChange}
+            workflows={workflows}
          />
       ))
       return (

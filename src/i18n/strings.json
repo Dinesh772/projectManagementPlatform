@@ -81,6 +81,7 @@
    "taskDetails": "Task Details",
    "addNewTransition": "Add New Transition",
    "update": "UPDATE",
-   "from": "FROM",
-   "to": "TO"
+   "from": "FROM*",
+   "to": "TO*",
+   "noTasksFoundCreateANewOne": "No Tasks found, create a new one.."
 }

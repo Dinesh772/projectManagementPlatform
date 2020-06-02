@@ -17,6 +17,7 @@ class TaskCard extends React.Component<{
    bgColor: any
    handleTaskInfo: any
    handleStatusChange: any
+   workflows: any
 }> {
    handleDropdownChange = (event, task) => {
       const { handleStatusChange } = this.props
@@ -24,8 +25,8 @@ class TaskCard extends React.Component<{
       handleStatusChange(value, task)
    }
    render() {
-      const { bgColor, task, handleTaskInfo } = this.props
-      const options = task.workflow
+      const { bgColor, task, handleTaskInfo, workflows } = this.props
+      const options = workflows ?? []
       return (
          <TaskCardWrapper bgColor={bgColor}>
             <Typo18HKGroteskRegular>{task.taskTitle}</Typo18HKGroteskRegular>

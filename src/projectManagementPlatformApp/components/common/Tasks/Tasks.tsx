@@ -4,6 +4,10 @@ import { observable } from 'mobx'
 import { inject, observer } from 'mobx-react'
 import { History } from 'history'
 import { withRouter } from 'react-router-dom'
+import { ToastContainer, Slide } from 'react-toastify'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { BsCheckCircle } from 'react-icons/bs'
 
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
@@ -26,10 +30,13 @@ import {
    TasksWrapper,
    ProfileCardWrapper,
    TaskInfoWrapper,
-   TransitionConfirmationWrapper
+   TransitionConfirmationWrapper,
+   ToasterWrapper,
+   ToastMessage
 } from './styledComponent'
 import TaskInfo from '../TaskInfo'
 import TransitionChange from '../TransitionChange'
+import NoDataView from '../../../../common/components/NoDataView'
 
 type PropsType = {
    projectStore: any
@@ -61,7 +68,32 @@ class Tasks extends React.Component<PropsType> {
          taskObject = task
          taskObject['to'] = selectedOption
          this.taskObject = taskObject
+         const { taskStore } = this.props
+         taskStore.getChecklistAPI(selectedOption, this.onChecklistSuccess)
       }
+   }
+
+   onChecklistSuccess = () => {
+      const { taskStore } = this.props
+      const checklist = taskStore.taskChecklist
+      this.taskObject['checklist'] = checklist
+   }
+
+   handleTransitionChangeSubmit = () => {
+      this.isStatusChangeTriggred = !this.isStatusChangeTriggred
+      toast.success(
+         <React.Fragment>
+            <ToastMessage>
+               <BsCheckCircle color='white' size={20} />
+               {'   Transition updated Successfully..!'}
+            </ToastMessage>
+         </React.Fragment>,
+         {
+            position: 'bottom-center',
+            hideProgressBar: true,
+            closeButton: false
+         }
+      )
    }
    componentDidMount() {
       let id = this.props.match.params.id
@@ -84,11 +116,11 @@ class Tasks extends React.Component<PropsType> {
          this.taskObject = task
       }
    }
-
    renderSuccessUI = observer(() => {
       const { projectStore, taskStore } = this.props
       const tasksData = taskStore.renderedTasksList
-
+      const checklistFetchingStatus = taskStore.checklistAPIStatus
+      const workflows = taskStore.workflows
       return (
          <TasksPageWrapper>
             <ProjectTaskHeader>
@@ -110,21 +142,31 @@ class Tasks extends React.Component<PropsType> {
                   width={'120px'}
                />
             </ProjectTaskHeader>
-            <TasksWrapper>
-               <TasksList
-                  tasksData={tasksData}
-                  handleTaskInfo={this.handleTaskInfo}
-                  handleStatusChange={this.handleStatusChange}
-               />
-            </TasksWrapper>
-            <PaginationWrapper backgroundColor={this.isCreateClicked}>
-               <Pagination
-                  hide={taskStore.totalPaginationLimit <= 1}
-                  currentPageNumber={taskStore.currentPageNumber}
-                  totalPages={taskStore.totalPaginationLimit}
-                  handlePaginationButtons={taskStore.handlePaginationButtons}
-               />
-            </PaginationWrapper>
+
+            {taskStore.totalTasksCount > 0 ? (
+               <React.Fragment>
+                  <TasksWrapper>
+                     <TasksList
+                        tasksData={tasksData}
+                        handleTaskInfo={this.handleTaskInfo}
+                        handleStatusChange={this.handleStatusChange}
+                        workflows={workflows}
+                     />
+                  </TasksWrapper>
+                  <PaginationWrapper backgroundColor={this.isCreateClicked}>
+                     <Pagination
+                        hide={taskStore.totalPaginationLimit <= 1}
+                        currentPageNumber={taskStore.currentPageNumber}
+                        totalPages={taskStore.totalPaginationLimit}
+                        handlePaginationButtons={
+                           taskStore.handlePaginationButtons
+                        }
+                     />
+                  </PaginationWrapper>
+               </React.Fragment>
+            ) : (
+               <NoDataView text={i18n.noTasksFoundCreateANewOne} />
+            )}
             <CreateTaskWrapper hide={this.isCreateClicked}>
                <CreateTask
                   handleClose={this.handleCreateTask}
@@ -142,8 +184,13 @@ class Tasks extends React.Component<PropsType> {
                <TransitionChange
                   taskObject={this.taskObject}
                   handleClose={this.handleStatusChange}
+                  checklistFetchingStatus={checklistFetchingStatus}
+                  handleSubmit={this.handleTransitionChangeSubmit}
                />
             </TransitionConfirmationWrapper>
+            <ToasterWrapper>
+               <ToastContainer transition={Slide} autoClose={3000} />
+            </ToasterWrapper>
          </TasksPageWrapper>
       )
    })
@@ -151,6 +198,7 @@ class Tasks extends React.Component<PropsType> {
    doNetworkCalls = id => {
       const { taskStore, projectStore } = this.props
       taskStore.getTasksAPI()
+      taskStore.getWorkflowsAPI()
       projectStore.getProjectsAPI()
    }
    handleLogout = () => {

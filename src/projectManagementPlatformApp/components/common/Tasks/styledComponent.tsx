@@ -71,6 +71,16 @@ const ProfileCardWrapper = styled.div<{ hide: boolean }>`
    height: 100vh;
    transition: 0.8s all ease-in;
 `
+
+export const ToasterWrapper = styled.div`
+   position: fixed;
+   z-index: 10;
+   bottom: 0;
+   left: 50%;
+`
+export const ToastMessage = styled.div`
+   display: flex;
+`
 export {
    TasksPageWrapper,
    PaginationWrapper,

@@ -45,3 +45,10 @@ export const StatusWrapper = styled.div`
    height: 80px;
 `
 export const ChangeConfirmationWrapper = styled.div``
+export const FetchingWrapper = styled.div`
+   height: 50vh;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`

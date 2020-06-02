@@ -8,9 +8,11 @@ class TaskStore {
    @observable tasksAPIStatus
    @observable createTaskAPIStatus
    @observable changeStatusAPIStatus
+   @observable getWorkflowsAPIStatus
+   @observable getWorkflowsAPIError
    @observable checklistAPIStatus
    @observable checklistAPIError
-   @observable taskChecklist = []
+   @observable taskChecklist
    @observable changeStatusAPIError
    @observable createTaskAPIError
    @observable tasksAPIError
@@ -31,6 +33,8 @@ class TaskStore {
       this.tasksAPIStatus = API_INITIAL
       this.createTaskAPIStatus = API_INITIAL
       this.checklistAPIStatus = API_INITIAL
+      this.getWorkflowsAPIStatus = API_INITIAL
+      this.getWorkflowsAPIError = null
       this.checklistAPIError = null
       this.createTaskAPIError = null
       this.tasksAPIError = null
@@ -93,14 +97,43 @@ class TaskStore {
          })
    }
    @action.bound
-   getChecklistAPI() {
+   getChecklistAPI(requestObject, onSuccess) {
       const checklistPromise = this.taskService.getChecklistAPI()
       return bindPromiseWithOnSuccess(checklistPromise)
          .to(this.setChecklistAPIStatus, response => {
             this.setChecklistAPIResponse(response)
+            onSuccess()
          })
          .catch(error => this.setChecklistAPIError(error))
    }
+   @action.bound
+   getWorkflowsAPI() {
+      if (this.workflows.length === 0) {
+         console.log('came here')
+         const workflowsPromise = this.taskService.getWorkflowsAPI()
+         return bindPromiseWithOnSuccess(workflowsPromise)
+            .to(this.setWorkflowsAPIStatus, response => {
+               this.setWorkflowsResponse(response)
+            })
+            .catch(error => {
+               this.setWorkflowsAPIError(error)
+            })
+      }
+   }
+
+   @action.bound
+   setWorkflowsAPIStatus(apiStatus) {
+      this.getWorkflowsAPIStatus = apiStatus
+   }
+   @action.bound
+   setWorkflowsAPIError(error) {
+      this.getWorkflowsAPIError = error
+   }
+   @action.bound
+   setWorkflowsResponse(response) {
+      this.workflows = response.workflows
+   }
+
    @action.bound
    setChecklistAPIStatus(apiStatus) {
       this.checklistAPIStatus = apiStatus
@@ -112,7 +145,8 @@ class TaskStore {
 
    @action.bound
    setChecklistAPIResponse(response) {
-      console.log(response)
+      const checklist = response.checklist
+      this.taskChecklist = checklist
    }
 
    @action.bound
@@ -195,6 +229,15 @@ class TaskStore {
       } else {
          return tasksList
       }
+   }
+   @computed
+   get totalTasksCount() {
+      const tasksList = this.tasksList
+      let count = 0
+      for (let i = 0; i < tasksList.length; ++i) {
+         count += tasksList[i].length
+      }
+      return count
    }
 }
 export { TaskStore }

@@ -41,6 +41,7 @@ export const SimpleDropdown = props => (
          onFocus={props.handleFocus}
          onChange={props.handleChange}
          width={props.width}
+         onClick={props.handleClick}
          disabled={props.disabled ?? false}
       >
          <OptionElement value='' hidden>
