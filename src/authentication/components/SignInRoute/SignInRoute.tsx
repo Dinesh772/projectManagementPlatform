@@ -70,6 +70,8 @@ class SignInRoute extends React.Component<propsType> {
       event.preventDefault()
       if (this.isValidated) {
          this.doNetworkCalls()
+      } else {
+         this.onValidation()
       }
    }
    @action.bound

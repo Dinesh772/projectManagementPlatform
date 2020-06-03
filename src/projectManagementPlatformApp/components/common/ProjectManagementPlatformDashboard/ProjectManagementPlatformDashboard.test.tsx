@@ -145,86 +145,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       await projectStore.getProjectsAPI()
       getByTestId(i18n.paginationTestId)
    })
-   it('should open create project modal onClick create button', async () => {
-      const { getByText } = render(
-         <Provider
-            projectStore={projectStore}
-            taskStore={taskStore}
-            authStore={authStore}
-         >
-            <Router history={createMemoryHistory()}>
-               <ProjectManagementPlatformDashboard />
-            </Router>
-         </Provider>
-      )
-      const mockSuccessPromise = Promise.resolve(projectsData)
-      const mockProjectsAPI = jest.fn()
-      mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
-      await projectStore.getProjectsAPI()
-      fireEvent.click(getByText(i18n.create))
-      getByText(i18n.createHeading)
-      getByText(i18n.description)
-   })
-   it('should display error messages on createProject modal without entering fields', async () => {
-      const { getByText, getByTestId } = render(
-         <Provider
-            projectStore={projectStore}
-            taskStore={taskStore}
-            authStore={authStore}
-         >
-            <Router history={createMemoryHistory()}>
-               <ProjectManagementPlatformDashboard />
-            </Router>
-         </Provider>
-      )
-      const mockSuccessPromise = Promise.resolve(projectsData)
-      const mockProjectsAPI = jest.fn()
-      mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
-      await projectStore.getProjectsAPI()
-      fireEvent.click(getByText(i18n.create))
-      fireEvent.click(getByText(i18n.createFinal))
-      expect(getByTestId(i18n.createProjectNameTestId)).toBeInTheDocument()
-   })
-   it('should get loadind on create project submit button clicked', async () => {
-      const { getByText, getByTestId } = render(
-         <Provider
-            projectStore={projectStore}
-            taskStore={taskStore}
-            authStore={authStore}
-         >
-            <Router history={createMemoryHistory()}>
-               <ProjectManagementPlatformDashboard />
-            </Router>
-         </Provider>
-      )
-      const mockSuccessPromise = Promise.resolve(projectsData)
-      const mockProjectsAPI = jest.fn()
-      mockProjectsAPI.mockReturnValue(mockSuccessPromise)
 
-      projectService.productsAPI = mockProjectsAPI
-      await projectStore.getProjectsAPI()
-      fireEvent.click(getByText(i18n.create))
-      fireEvent.change(getByTestId(i18n.createProjectNameTestId), {
-         target: { value: i18n.projectName }
-      })
-      fireEvent.change(getByTestId(i18n.projectDescriptionTestId), {
-         target: { value: i18n.description }
-      })
-
-      fireEvent.click(getByText(i18n.selectWorkflow))
-
-      const mockWorkflowPromise = Promise.resolve(workflowdata)
-      const mockWorkflowAPI = jest.fn()
-      mockWorkflowAPI.mockReturnValue(mockWorkflowPromise)
-      projectService.getWorkflowsAPI = mockWorkflowAPI
-      await projectStore.getWorkflowsAPI()
-
-      fireEvent.click(getByText(i18n.selectWorkflow))
-      fireEvent.click(getByText('Todo'))
-      fireEvent.click(getByText(i18n.createHeading))
-   })
    it('should able to click pagination buttons and get data', async () => {
       const { getByText } = render(
          <Provider
@@ -242,15 +163,15 @@ describe('ProjectManagementPlatformDashboard', () => {
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
       projectService.productsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
-      fireEvent.click(getByText('>'))
+      fireEvent.click(getByText('2'))
       await projectStore.getProjectsAPI()
 
       getByText(i18n.listOfProjects)
-      fireEvent.click(getByText('>'))
+      fireEvent.click(getByText('3'))
       await projectStore.getProjectsAPI()
 
       getByText(i18n.listOfProjects)
-      fireEvent.click(getByText('>'))
+      fireEvent.click(getByText('4'))
       await projectStore.getProjectsAPI()
 
       getByText(i18n.listOfProjects)

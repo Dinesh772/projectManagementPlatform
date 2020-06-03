@@ -155,16 +155,8 @@ class ProjectStore {
    }
    @action.bound
    handlePaginationButtons(value) {
-      if (value === '<') {
-         this.currentPageNumber = this.currentPageNumber - 1
-         this.getProjectsAPI()
-      } else if (value === '>') {
-         this.currentPageNumber = this.currentPageNumber + 1
-         this.getProjectsAPI()
-      } else {
-         this.currentPageNumber = value
-         this.getProjectsAPI()
-      }
+      this.currentPageNumber = value
+      this.getProjectsAPI()
    }
    @computed
    get renderProjectsList() {

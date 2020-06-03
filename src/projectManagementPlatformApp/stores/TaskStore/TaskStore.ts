@@ -2,6 +2,7 @@ import { observable, action, computed } from 'mobx'
 import { API_INITIAL } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import TaskModel from '../models/TaskModel'
+import TransitionChecklistModel from '../models/TransitionChecklistModel'
 
 class TaskStore {
    @observable tasksList
@@ -145,8 +146,7 @@ class TaskStore {
 
    @action.bound
    setChecklistAPIResponse(response) {
-      const checklist = response.checklist
-      this.taskChecklist = checklist
+      this.onAddChecklists(response)
    }
 
    @action.bound
@@ -204,18 +204,21 @@ class TaskStore {
       const tasksList = tasks.map(eachTask => new TaskModel(eachTask))
       this.tasksList[this.currentPageIndex] = tasksList
    }
+
+   @action.bound
+   onAddChecklists(response) {
+      const checklist = response.checklists
+      const checklistMap = checklist.map(
+         eachChecklist => new TransitionChecklistModel(eachChecklist)
+      )
+      console.log(checklistMap)
+      this.taskChecklist = checklistMap
+   }
+
    @action.bound
    handlePaginationButtons(value) {
-      if (value === '<') {
-         this.currentPageNumber = this.currentPageNumber - 1
-         this.getTasksAPI(value)
-      } else if (value === '>') {
-         this.currentPageNumber = this.currentPageNumber + 1
-         this.getTasksAPI(value)
-      } else {
-         this.currentPageNumber = value
-         this.getTasksAPI(value)
-      }
+      this.currentPageNumber = value
+      this.getTasksAPI(value)
    }
    @computed
    get currentPageIndex() {

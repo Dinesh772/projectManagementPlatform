@@ -12,14 +12,14 @@ class TasksFixturesAPI {
    }
    createTaskAPI = () => {
       return new Promise((resolve, reject) => {
-         //setTimeout(() => resolve([]), 1000)
+         setTimeout(() => resolve([]), 1000)
 
-         setTimeout(() => reject(new Error('error')), 1000)
+         // setTimeout(() => reject(new Error('error')), 1000)
       })
    }
    changeTaskStatusAPI = () => {
       return new Promise((resolve, reject) => {
-         setTimeout(() => resolve([]), 2000)
+         setTimeout(() => resolve([]), 1000)
       })
    }
    getChecklistAPI = () => {

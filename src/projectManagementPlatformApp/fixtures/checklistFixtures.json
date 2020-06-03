@@ -1,8 +1,24 @@
 {
-   "checklist": [
-      "I have followed all the objectives in this task by following ELP.",
-      "I have completed the objectives as per this state.",
-      "I have maintained clean code practices.",
-      "I agree above transition changes are done by me."
+   "checklists": [
+      {
+         "name": "I have followed all the objectives in this task by following ELP.",
+         "is_mandatory": true,
+         "checklist_id": 20
+      },
+      {
+         "name": "I have completed the objectives as per this state.",
+         "is_mandatory": true,
+         "checklist_id": 30
+      },
+      {
+         "name": "I have maintained clean code practices.",
+         "is_mandatory": true,
+         "checklist_id": 40
+      },
+      {
+         "name": "I agree above transition changes are done by me.",
+         "is_mandatory": true,
+         "checklist_id": 50
+      }
    ]
 }

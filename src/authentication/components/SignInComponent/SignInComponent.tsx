@@ -101,7 +101,6 @@ class SignInComponent extends React.Component<PropsType> {
             <LoginButton
                handleClick={handleSubmit}
                buttonValue={login}
-               isDisabled={false}
                apiStatus={getSignInApiStatus}
             />
             <LoginFailure hide={getSignInApiStatus === API_FAILED}>

@@ -33,7 +33,8 @@ class TransitionChange extends React.Component<{
    taskObject: any
    checklistFetchingStatus: any
    handleSubmit: any
-   apiStatus: any
+   transitionApiStatus: any
+   networkCalls: any
 }> {
    @observable isValidated = false
    @observable checkboxesChecked = 0
@@ -43,7 +44,7 @@ class TransitionChange extends React.Component<{
       from: '',
       to: ''
    }
-
+   @observable checkedList = []
    componentWillReceiveProps(props) {
       console.log('props')
       this.states = {
@@ -85,8 +86,10 @@ class TransitionChange extends React.Component<{
    }
    handleSubmit = () => {
       const { handleSubmit } = this.props
-      this.onResetAllToDefault()
-      handleSubmit()
+      if (this.isValidated) {
+         this.onResetAllToDefault()
+         handleSubmit()
+      }
    }
    onResetAllToDefault = () => {
       this.isValidated = false
@@ -104,10 +107,11 @@ class TransitionChange extends React.Component<{
       this.handleValidation()
    }
    handleDropdownChangeToState = event => {
-      const { taskObject } = this.props
+      const { taskObject, networkCalls } = this.props
       const value = event.value
       taskObject.to = value
       this.states.to = value
+      networkCalls()
       this.handleValidation()
    }
 
@@ -117,12 +121,20 @@ class TransitionChange extends React.Component<{
       handleClose()
    }
    render() {
-      const { taskObject, checklistFetchingStatus, apiStatus } = this.props
+      const {
+         taskObject,
+         checklistFetchingStatus,
+         transitionApiStatus
+      } = this.props
       const fromPlceholder = this.states.from
       const toPlaceholder = this.states.to
       const checklistItems = taskObject.checklist ?? []
       const checklists = checklistItems.map(eachItem => (
-         <Checkbox text={eachItem} handleClick={this.handleCheckbox} />
+         <Checkbox
+            key={eachItem.id}
+            text={eachItem.name}
+            handleClick={this.handleCheckbox}
+         />
       ))
       const workflows = taskObject.workflows ?? []
 
@@ -194,7 +206,7 @@ class TransitionChange extends React.Component<{
                   width={'120px'}
                   buttonValue={i18n.update}
                   handleClick={this.handleSubmit}
-                  apiStatus={apiStatus}
+                  apiStatus={transitionApiStatus}
                />
                <Typo12NeonRedHKGroteskRegular>
                   {this.validationErrorMessage}

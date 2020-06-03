@@ -83,9 +83,12 @@ class Tasks extends React.Component<PropsType> {
    handleTransitionChangeSubmit = () => {
       // this.isStatusChangeTriggred = !this.isStatusChangeTriggred
       if (!this.isCreateClicked) {
-         const { taskStore } = this.props
-         taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
+         this.doChecklistNetworkCalls()
       }
+   }
+   doChecklistNetworkCalls = () => {
+      const { taskStore } = this.props
+      taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
    }
    onTransitionChangeSuccess = () => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
@@ -131,6 +134,7 @@ class Tasks extends React.Component<PropsType> {
       const workflows = taskStore.workflows
       const workflowsAPIStatus = taskStore.getWorkflowsAPIStatus
       const transitionChangeAPIStatus = taskStore.changeStatusAPIStatus
+      const getChecklistAPIStatus = taskStore.checklistAPIStatus
       return (
          <TasksPageWrapper>
             <ProjectTaskHeader>
@@ -198,7 +202,8 @@ class Tasks extends React.Component<PropsType> {
                   handleClose={this.handleStatusChange}
                   checklistFetchingStatus={checklistFetchingStatus}
                   handleSubmit={this.handleTransitionChangeSubmit}
-                  apiStatus={transitionChangeAPIStatus}
+                  transitionApiStatus={transitionChangeAPIStatus}
+                  networkCalls={this.doChecklistNetworkCalls}
                />
             </TransitionConfirmationWrapper>
             <ToasterWrapper>
