@@ -2,6 +2,10 @@ import React from 'react'
 
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import { BsCheckCircle } from 'react-icons/bs'
+import { MdErrorOutline } from 'react-icons/md'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
@@ -17,7 +21,8 @@ import {
    CreateTaskHeader,
    TaskDetails,
    DropdownWrapper,
-   CreateButtonWrapper
+   CreateButtonWrapper,
+   ToasterWrapper
 } from './styledComponent'
 
 @observer
@@ -99,10 +104,38 @@ class CreateTask extends React.Component<{
    onSuccess = () => {
       const { handleClose } = this.props
       handleClose()
+      toast.success(
+         <React.Fragment>
+            <ToasterWrapper>
+               <BsCheckCircle color='white' size={20} />
+               {'   Task Successfully created..!'}
+            </ToasterWrapper>
+         </React.Fragment>,
+         {
+            position: 'bottom-center',
+            hideProgressBar: true,
+            closeButton: false
+         }
+      )
       this.onResetAllToDefault()
    }
    onFailure = () => {
-      alert(1)
+      const { handleClose } = this.props
+      handleClose()
+      toast.error(
+         <React.Fragment>
+            <ToasterWrapper>
+               <MdErrorOutline color='white' size={20} />
+               {'   Something went wrong..!'}
+            </ToasterWrapper>
+         </React.Fragment>,
+         {
+            position: 'bottom-center',
+            hideProgressBar: true,
+            closeButton: false
+         }
+      )
+      this.onResetAllToDefault()
    }
    onResetAllToDefault = () => {
       this.createTaskDetails = {
@@ -215,6 +248,7 @@ class CreateTask extends React.Component<{
                      width={'100%'}
                      apiStatus={taskStore.createTaskAPIStatus}
                      handleClick={this.handleCreateButton}
+                     isDisabled={this.isValidated ? false : true}
                   />
                </CreateButtonWrapper>
             </TaskDetails>

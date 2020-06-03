@@ -12,7 +12,9 @@ class TasksFixturesAPI {
    }
    createTaskAPI = () => {
       return new Promise((resolve, reject) => {
-         setTimeout(() => resolve([]), 1000)
+         //setTimeout(() => resolve([]), 1000)
+
+         setTimeout(() => reject(new Error('error')), 1000)
       })
    }
    changeTaskStatusAPI = () => {
@@ -28,7 +30,9 @@ class TasksFixturesAPI {
    }
    getWorkflowsAPI = () => {
       return new Promise((resolve, reject) => {
-         resolve(workflowsFixtures)
+         setTimeout(() => resolve(workflowsFixtures), 2000)
+         //setTimeout(() => reject(new Error('error')), 2000)
+         //resolve(workflowsFixtures)
       })
    }
 }

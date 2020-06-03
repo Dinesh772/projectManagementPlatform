@@ -41,9 +41,9 @@ class TaskInfo extends React.Component<{ handleClose: any; taskObject: any }> {
                </TaskTitleWrapper>
                <TaskTitleWrapper>
                   <Typo12SteelHKGroteskSemiBold>
-                     {i18n.projectName}
+                     {i18n.createdBy}
                   </Typo12SteelHKGroteskSemiBold>
-                  <Text>{taskObject.projectTitle}</Text>
+                  <Text>{taskObject.createdBy}</Text>
                </TaskTitleWrapper>
                <DescriptionWrapper>
                   <Typo12SteelHKGroteskSemiBold>

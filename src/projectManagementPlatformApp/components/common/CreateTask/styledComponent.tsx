@@ -38,6 +38,9 @@ const CreateButtonWrapper = styled.div`
    height: 100%;
    justify-content: center;
 `
+export const ToasterWrapper = styled.div`
+   display: flex;
+`
 export {
    CreateTaskWrapper,
    CreateButtonWrapper,

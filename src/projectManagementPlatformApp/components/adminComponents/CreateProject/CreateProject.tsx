@@ -1,6 +1,9 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { BsCheckCircle } from 'react-icons/bs'
 
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
 import i18n from '../../../../i18n/strings.json'
@@ -19,6 +22,7 @@ import {
    CreateProjectHeader,
    ProjectDetails,
    DropdownWrapper,
+   ToasterWrapper,
    CreateButtonWrapper
 } from './styledComponent'
 import {
@@ -122,6 +126,19 @@ class CreateProject extends React.Component<{
    onSuccess = () => {
       this.onResetAllToDefault()
       const { handleClick } = this.props
+      toast.success(
+         <React.Fragment>
+            <ToasterWrapper>
+               <BsCheckCircle color='white' size={20} />
+               {'   Project created Successfully..!'}
+            </ToasterWrapper>
+         </React.Fragment>,
+         {
+            position: 'bottom-center',
+            hideProgressBar: true,
+            closeButton: false
+         }
+      )
       handleClick()
    }
    onResetAllToDefault = () => {
@@ -230,6 +247,7 @@ class CreateProject extends React.Component<{
                      width={'100%'}
                      handleClick={this.handleSubmit}
                      apiStatus={createProjectFetchingStataus}
+                     isDisabled={!this.isValidated}
                   />
                   <Typo12NeonRedHKGroteskRegular>
                      {createProjectFetchingStataus === API_FAILED

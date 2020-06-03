@@ -140,3 +140,21 @@
    border-bottom-right-radius: 3px;
    border-top-right-radius: 3px;
 }
+.dropdown {
+   width: 100%;
+   cursor: pointer;
+   padding-right: 10px;
+}
+.dropdown-placeholder {
+   color: #7e858e;
+   width: 100%;
+   padding-left: 10px;
+}
+.dropdown-placeholder:disabled {
+   cursor: not-allowed;
+}
+.dropdown-menu {
+   color: #7e858e;
+   width: 60%;
+   padding-left: 10px;
+}

@@ -3,6 +3,7 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { History } from 'history'
 import { withRouter } from 'react-router-dom'
+import { ToastContainer, Slide } from 'react-toastify'
 
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
 import CommonButton from '../../../../common/components/CommonButton/CommonButton'
@@ -19,13 +20,15 @@ import {
    AdminHeader,
    CreateProjectWrapper,
    ProjectsWrapper,
-   PaginationWrapper
+   PaginationWrapper,
+   ToasterWrapper
 } from './styledComponent'
 import NoDataView from '../../../../common/components/NoDataView'
 @observer
 class AdminDashboard extends React.Component<{
    projectStore: any
    taskStore: any
+   authStore: any
    history: History
 }> {
    @observable isCreateClicked = false
@@ -103,6 +106,9 @@ class AdminDashboard extends React.Component<{
                   createProject={createProjectAPI}
                />
             </CreateProjectWrapper>
+            <ToasterWrapper>
+               <ToastContainer transition={Slide} autoClose={3000} limit={1} />
+            </ToasterWrapper>
          </AdminWrapper>
       )
    }

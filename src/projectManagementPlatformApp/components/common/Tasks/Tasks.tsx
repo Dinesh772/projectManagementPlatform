@@ -129,6 +129,7 @@ class Tasks extends React.Component<PropsType> {
       const tasksData = taskStore.renderedTasksList
       const checklistFetchingStatus = taskStore.checklistAPIStatus
       const workflows = taskStore.workflows
+      const workflowsAPIStatus = taskStore.getWorkflowsAPIStatus
       const transitionChangeAPIStatus = taskStore.changeStatusAPIStatus
       return (
          <TasksPageWrapper>
@@ -160,6 +161,8 @@ class Tasks extends React.Component<PropsType> {
                         handleTaskInfo={this.handleTaskInfo}
                         handleStatusChange={this.handleStatusChange}
                         workflows={workflows}
+                        handleDropdownClick={this.handleWorkflowAPICall}
+                        workflowsAPIStatus={workflowsAPIStatus}
                      />
                   </TasksWrapper>
                   <PaginationWrapper backgroundColor={this.isCreateClicked}>
@@ -199,7 +202,7 @@ class Tasks extends React.Component<PropsType> {
                />
             </TransitionConfirmationWrapper>
             <ToasterWrapper>
-               <ToastContainer transition={Slide} autoClose={3000} />
+               <ToastContainer transition={Slide} autoClose={3000} limit={1} />
             </ToasterWrapper>
          </TasksPageWrapper>
       )
@@ -208,12 +211,17 @@ class Tasks extends React.Component<PropsType> {
    doNetworkCalls = id => {
       const { taskStore, projectStore } = this.props
       taskStore.getTasksAPI()
-      taskStore.getWorkflowsAPI()
+      //  taskStore.getWorkflowsAPI()
       projectStore.getProjectsAPI()
    }
+   handleWorkflowAPICall = () => {
+      const { taskStore } = this.props
+      taskStore.getWorkflowsAPI()
+   }
    handleLogout = () => {
-      const { history } = this.props
-      history.replace('/')
+      const { history, authStore } = this.props
+      authStore.clearUserSession()
+      history.push('/')
    }
    onRetryDoNetworkCalls = () => {
       let id = this.props.match.params.id

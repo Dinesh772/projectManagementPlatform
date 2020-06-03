@@ -33,6 +33,7 @@ const TextareaElement = styled.textarea`
 const DropdownWrapper = styled.div`
    margin-top: 8px;
    margin-bottom: 12px;
+   height: 50px;
 `
 const CreateWorkflowWrapper = styled.div<{ hide: any }>`
    display: ${props => (props.hide ? 'flex' : 'none')};

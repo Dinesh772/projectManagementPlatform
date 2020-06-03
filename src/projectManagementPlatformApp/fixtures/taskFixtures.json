@@ -6,7 +6,7 @@
             "projectTitle": "ut erat.",
             "description": "luctus ut, pellentesque eget,",
             "id": 1,
-            "state": "todo",
+            "state": "Completed",
             "workflows": [
                "todo",
                "in progress",
