@@ -1,12 +1,12 @@
 import React from 'react'
 import { observer } from 'mobx-react'
+import { observable } from 'mobx'
 import ReactPaginate from 'react-paginate'
 
 import i18n from '../../../../i18n/strings.json'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 
 import { PaginationWrapper } from './styledComponent'
-import { observable } from 'mobx'
-import Avatar from '../../../../Common/components/Avatar/Avatar'
 @observer
 class Pagination extends React.Component<{
    handlePaginationButtons: any
@@ -30,24 +30,19 @@ class Pagination extends React.Component<{
 
       return (
          <PaginationWrapper data-testid={i18n.paginationTestId} hide={hide}>
-            {/* {pageButtons} */}
             <ReactPaginate
                breakLabel={'...'}
                pageCount={totalPageCount}
                previousLabel={
                   <Avatar
-                     path={
-                        'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/611ee159-43c6-4622-b2df-46dbd81d2c7f.svg'
-                     }
+                     path={i18n.paginationLeftArrowUrl}
                      height={'22px'}
                      width={'15px'}
                   />
                }
                nextLabel={
                   <Avatar
-                     path={
-                        'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/aaf4eaf1-5200-47b0-b7c4-8ccf72afdb45.svg'
-                     }
+                     path={i18n.paginationRightArrowUrl}
                      height={'22px'}
                      width={'15px'}
                   />

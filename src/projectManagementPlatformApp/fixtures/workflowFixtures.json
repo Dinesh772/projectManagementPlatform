@@ -1,9 +1,25 @@
 {
    "workflows": [
-      "todo",
-      "Work in progress",
-      "To be reviewed",
-      "Issue/Backlog",
-      "Completed"
-   ]
+      {
+         "name": "todo",
+         "workflow_id": 10
+      },
+      {
+         "name": "Work in progress",
+         "workflow_id": 11
+      },
+      {
+         "name": "To be reviewed",
+         "workflow_id": 12
+      },
+      {
+         "name": "Issue/Backlog",
+         "workflow_id": 13
+      },
+      {
+         "name": "Completed",
+         "workflow_id": 14
+      }
+   ],
+   "total_count_of_workflows": 0
 }

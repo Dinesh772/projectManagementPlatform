@@ -89,7 +89,6 @@ class Tasks extends React.Component<PropsType> {
    doChecklistNetworkCalls = selectedOption => {
       const { taskStore } = this.props
       taskStore.getChecklistAPI(selectedOption, this.onChecklistSuccess)
-      // taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
    }
    onTransitionChangeSuccess = () => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
@@ -97,7 +96,7 @@ class Tasks extends React.Component<PropsType> {
          <React.Fragment>
             <ToastMessage>
                <BsCheckCircle color='white' size={20} />
-               {'   Transition updated Successfully..!'}
+               {i18n.transitionUpdatedSuccessfully}
             </ToastMessage>
          </React.Fragment>,
          {
@@ -135,7 +134,6 @@ class Tasks extends React.Component<PropsType> {
       const workflows = taskStore.workflows
       const workflowsAPIStatus = taskStore.getWorkflowsAPIStatus
       const transitionChangeAPIStatus = taskStore.changeStatusAPIStatus
-      const getChecklistAPIStatus = taskStore.checklistAPIStatus
       return (
          <TasksPageWrapper>
             <ProjectTaskHeader>
@@ -217,7 +215,7 @@ class Tasks extends React.Component<PropsType> {
    doNetworkCalls = id => {
       const { taskStore, projectStore } = this.props
       taskStore.getTasksAPI()
-      //  taskStore.getWorkflowsAPI()
+
       projectStore.getProjectsAPI()
    }
    handleWorkflowAPICall = () => {

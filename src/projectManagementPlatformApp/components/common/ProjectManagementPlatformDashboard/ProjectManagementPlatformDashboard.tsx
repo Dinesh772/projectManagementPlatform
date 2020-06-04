@@ -9,7 +9,6 @@ import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrap
 import i18n from '../../../../i18n/strings.json'
 import MemberDashboard from '../../memberComponents/MemberDashboard'
 import AdminDashboard from '../../adminComponents/AdminDashboard'
-//import Timestamp from '../../../../../node_modules/react-timestamp/dist/index'
 
 import Header from '../Header'
 import ProfileCard from '../ProfileCard'
@@ -90,19 +89,13 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
             >
                We use cookies to improve your website experience, and for
                analytical and advertising purposes as described in our
-               <a href='https://www.makeinindia.com/cookies-policy'>
+               <a href={i18n.cookieConsentUrl}>
                   <u>Cookie Policy</u>
                </a>{' '}
                . By continuing to use our website, you accept our use of
                cookies. For more information, please refer to our Privacy
                Policy.
             </CookieConsent>
-            {/* <div>
-               <Timestamp
-                  date={new Date('2020-06-02T09:42:11Z')}
-                  options={{ includeDay: false, twentyFourHour: false }}
-               />
-            </div> */}
          </ProjectManagementDashboardWrapper>
       )
    }

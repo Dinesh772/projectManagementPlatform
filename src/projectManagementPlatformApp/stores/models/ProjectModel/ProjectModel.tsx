@@ -9,13 +9,13 @@ class ProjectModel {
    @observable description
    @observable projectType
    constructor(object) {
+      this.id = object.project_id
       this.name = object.name
-      this.workflowType = object.workflowType
-      this.whoCreated = object.whoCreated
-      this.createdAt = object.createdAt
-      this.id = object.id
       this.description = object.description
-      this.projectType = object.projectType
+      this.workflowType = object.workflow_type
+      this.projectType = object.project_type
+      this.whoCreated = object.created_by
+      this.createdAt = object.created_at
    }
 }
 export { ProjectModel }

@@ -4,11 +4,15 @@ import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { History } from 'history'
 
-import i18n from '../../../i18n/strings.json'
-import SignInComponent from '../SignInComponent'
-import { SignInComponentWrapper } from './styledComponents'
-import { stringValidator } from '../../utils/ValidationUtils/ValidationUtils'
 import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../Common/constants/RouteConstants'
+import i18n from '../../../i18n/strings.json'
+
+import { stringValidator } from '../../utils/ValidationUtils/ValidationUtils'
+
+import SignInComponent from '../SignInCard'
+
+import { SignInComponentWrapper } from './styledComponents'
+
 type propsType = {
    history: History
    authStore: any
@@ -39,7 +43,7 @@ class SignInRoute extends React.Component<propsType> {
    @action.bound
    handlePassword(event) {
       const passwordValue = event.target.value
-      if (passwordValue.length !== 0) {
+      if (stringValidator(passwordValue)) {
          this.password = passwordValue
          this.passwordErrorMessage = ''
          this.isPasswordHasError = false

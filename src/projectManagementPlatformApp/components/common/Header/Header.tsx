@@ -3,6 +3,7 @@ import React from 'react'
 import Logo from '../../../../Common/components/Logo/Logo'
 import i18n from '../../../../i18n/strings.json'
 import { Typo24DarkBlueGreyHKGroteskMedium } from '../../../../styleGuide/Typos'
+import UserProfile from '../UserProfile'
 
 import {
    HeaderWrapper,
@@ -10,7 +11,6 @@ import {
    ChildWrapper,
    ProfileWrapper
 } from './styledComponent'
-import UserProfile from '../UserProfile'
 class Header extends React.Component<{
    handleProfileClick: any
 }> {

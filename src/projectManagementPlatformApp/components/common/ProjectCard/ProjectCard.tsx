@@ -4,7 +4,7 @@ import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 
 import { EachProjectWrapper } from './styledComponent'
 
-class EachProject extends React.Component<{
+class ProjectCard extends React.Component<{
    project: any
    bgColor: any
    handleProjectClick: any
@@ -33,4 +33,4 @@ class EachProject extends React.Component<{
       )
    }
 }
-export { EachProject }
+export { ProjectCard }

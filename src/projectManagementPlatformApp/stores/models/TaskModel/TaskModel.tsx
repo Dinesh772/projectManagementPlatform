@@ -11,15 +11,15 @@ class TaskModel {
    @observable checklist
    @observable createdBy
    constructor(object) {
-      this.taskTitle = object.taskTitle
-      this.projectTitle = object.projectTitle
+      this.taskTitle = object.title
+      this.projectTitle = object.project
       this.description = object.description
-      this.id = object.id
+      this.id = object.task_id
       this.status = object.state
       this.workflow = object.workflows
       this.checklist = object.checklist
-      this.createdBy = object.createdBy
-      this.createdAt = object.createdAt
+      this.createdBy = object.created_by
+      this.createdAt = object.created_at
    }
    onDescriptionChange = value => {
       this.description = value
@@ -29,8 +29,3 @@ class TaskModel {
    }
 }
 export { TaskModel }
-// Title
-// Description
-// Project - Should select from list of projects
-// Issue type - Task | Bug | Developer story | User story | Enhancement
-// Task state

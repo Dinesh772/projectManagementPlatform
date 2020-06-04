@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { observer } from 'mobx-react'
 
 import ProjectsList from '../ProjectsList'
+
 import { ProjectsWrapper, ChildWrapper } from './styledComponent'
 
 @observer

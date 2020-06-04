@@ -1,8 +1,23 @@
 import React from 'react'
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
+import Loader from 'react-loader-spinner'
+import { API_SUCCESS, API_FETCHING } from '@ib/api-constants'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
+
 import CloseButton from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
+import {
+   Typo18BoldHKGroteskRegular,
+   Typo12NeonRedHKGroteskRegular,
+   Typo12SteelHKGroteskSemiBold
+} from '../../../../styleGuide/Typos'
+import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
+import { Checkbox } from '../../../../Common/components/Checkbox/Checkbox'
+import { Colors } from '../../../../themes/Colors'
+import FailureView from '../../../../Common/components/LoadingWrapperWithFailure/FailureView'
+
 import {
    TransitionChangeWrapper,
    TransitionChangeHeader,
@@ -13,21 +28,7 @@ import {
    ChangeConfirmationWrapper,
    FetchingWrapper
 } from './styledComponent'
-import {
-   Typo18BoldHKGroteskRegular,
-   Typo12NeonRedHKGroteskRegular,
-   Typo12SteelHKGroteskSemiBold
-} from '../../../../styleGuide/Typos'
-import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
-import { observable, toJS } from 'mobx'
-import { observer } from 'mobx-react'
-import { Checkbox } from '../../../../Common/components/Checkbox/Checkbox'
 
-import Loader from 'react-loader-spinner'
-import { API_SUCCESS, API_FETCHING } from '@ib/api-constants'
-import { Colors } from '../../../../themes/Colors'
-import NoDataView from '../../../../Common/components/NoDataView'
-import FailureView from '../../../../Common/components/LoadingWrapperWithFailure/FailureView'
 @observer
 class TransitionChange extends React.Component<{
    handleClose: any
@@ -164,7 +165,8 @@ class TransitionChange extends React.Component<{
             handleClick={event => this.handleCheckbox(event, eachItem.id)}
          />
       ))
-      const workflows = taskObject.workflows ?? []
+      const workflowsObjects = taskObject.workflows ?? []
+      const workflows = workflowsObjects.map(workflow => workflow.name)
 
       return (
          <TransitionChangeWrapper>
@@ -225,10 +227,6 @@ class TransitionChange extends React.Component<{
                   />
                </FetchingWrapper>
             ) : (
-               // <div>
-               //    <p>{i18n.somethingWentWrong}</p>
-               //    <button onClick={this.doChecklistNetworkCalls}>Retry</button>
-               // </div>
                <FailureView
                   height={'300px'}
                   onRetryClick={this.doChecklistNetworkCalls}

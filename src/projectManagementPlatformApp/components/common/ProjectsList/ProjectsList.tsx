@@ -3,10 +3,11 @@ import { observer } from 'mobx-react'
 
 import { Typo16HKGroteskMedium } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
-import { ProjectsListWrapper, ProjectsListHeader } from './styledComponent'
 import { Colors } from '../../../../themes/Colors'
 
-import EachProject from '../EachProject'
+import ProjectCard from '../ProjectCard'
+
+import { ProjectsListWrapper, ProjectsListHeader } from './styledComponent'
 
 @observer
 class ProjectsList extends React.Component<{
@@ -17,7 +18,7 @@ class ProjectsList extends React.Component<{
       const projectsData = this.props.projectsData
       const { handleProjectClick } = this.props
       const listOfProjects = projectsData.map((eachProject, index) => (
-         <EachProject
+         <ProjectCard
             key={eachProject.id}
             project={eachProject}
             bgColor={index % 2 === 0 ? Colors.lightBlueGrey24 : Colors.white}

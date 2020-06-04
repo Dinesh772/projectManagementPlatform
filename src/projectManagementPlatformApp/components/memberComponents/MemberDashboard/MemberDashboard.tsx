@@ -5,12 +5,12 @@ import { withRouter } from 'react-router-dom'
 
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
+import NoDataView from '../../../../Common/components/NoDataView'
 
 import Projects from '../../common/Projects'
 import Pagination from '../../common/Pagination'
 
 import { MemberWrapper, MemberHeader } from './styledComponent'
-import NoDataView from '../../../../Common/components/NoDataView'
 @observer
 class MemberDashboard extends React.Component<{
    taskStore: any

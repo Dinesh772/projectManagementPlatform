@@ -9,6 +9,7 @@ import {
 } from '../../../styleGuide/Typos/index'
 import LoginButton from '../../../Common/components/CommonButton/CommonButton'
 import Logo from '../../../Common/components/Logo/Logo'
+
 import {
    SignInWrapper,
    IbHubsLogo,
@@ -34,7 +35,7 @@ type PropsType = {
 }
 
 @observer
-class SignInComponent extends React.Component<PropsType> {
+class SignInCard extends React.Component<PropsType> {
    render() {
       const {
          userGreetText,
@@ -114,4 +115,4 @@ class SignInComponent extends React.Component<PropsType> {
       )
    }
 }
-export { SignInComponent }
+export { SignInCard }

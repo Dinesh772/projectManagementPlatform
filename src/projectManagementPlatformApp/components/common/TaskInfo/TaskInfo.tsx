@@ -1,10 +1,12 @@
 import React from 'react'
+
 import {
    Typo18BoldHKGroteskRegular,
    Typo12SteelHKGroteskSemiBold
 } from '../../../../styleGuide/Typos'
 import CloseButton from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
+
 import {
    TaskInfoWrapper,
    TaskInfoHeader,
@@ -16,6 +18,7 @@ import {
    Description,
    DescriptionWrapper
 } from './styledComponent'
+
 class TaskInfo extends React.Component<{ handleClose: any; taskObject: any }> {
    render() {
       const { handleClose, taskObject } = this.props

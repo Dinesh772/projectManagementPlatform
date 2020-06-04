@@ -7,6 +7,7 @@ import { ToastContainer, Slide } from 'react-toastify'
 
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
 import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
+import NoDataView from '../../../../Common/components/NoDataView'
 
 import i18n from '../../../../i18n/strings.json'
 
@@ -23,7 +24,6 @@ import {
    PaginationWrapper,
    ToasterWrapper
 } from './styledComponent'
-import NoDataView from '../../../../Common/components/NoDataView'
 @observer
 class AdminDashboard extends React.Component<{
    projectStore: any

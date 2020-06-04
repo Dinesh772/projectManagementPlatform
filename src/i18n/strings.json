@@ -50,6 +50,8 @@
    "selectType": "Select type",
    "closeButtonSrc": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/79133ebe-d88d-4519-8ab0-d5b3c4746382.svg",
    "paginationTestId": "pagination",
+   "paginationLeftArrowUrl": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/611ee159-43c6-4622-b2df-46dbd81d2c7f.svg",
+   "paginationRightArrowUrl": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/aaf4eaf1-5200-47b0-b7c4-8ccf72afdb45.svg",
    "createProjectNameTestId": "createProjectName-test",
    "projectNameTestId": "project-name",
    "projectDescriptionTestId": "project-description",
@@ -85,5 +87,11 @@
    "to": "TO*",
    "noTasksFoundCreateANewOne": "No Tasks found, create a new one..",
    "aboveAllFieldsAreRequired": "*Above all fields are required..!",
-   "youCannotChangeStateToTheSameState": "*You cannot change transition to same state..!"
+   "youCannotChangeStateToTheSameState": "*You cannot change transition to same state..!",
+   "projectCreatedSuccessfully": "  Project Created Successfully..!",
+   "taskCreatedSuccessfully": "  Task Successfully created..!",
+   "transitionUpdatedSuccessfully": "Transition updated Successfully..!",
+   "chooseProject": "Choose Project",
+   "chooseIssueType": "Choose Issue Type",
+   "cookieConsentUrl": "https://www.makeinindia.com/cookies-policy"
 }

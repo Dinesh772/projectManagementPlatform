@@ -1,14 +1,18 @@
 import React from 'react'
 
 import { observer } from 'mobx-react'
-import { BsInfoCircle } from 'react-icons/bs'
-import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
-import { Colors } from '../../../../themes/Colors'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { MdErrorOutline } from 'react-icons/md'
+import { BsInfoCircle } from 'react-icons/bs'
+import { API_FETCHING, API_FAILED } from '@ib/api-constants'
+
+import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
+import Loader from '../../../../Common/components/Icons/Loader/SvgFile'
+import { Colors } from '../../../../themes/Colors'
+import i18n from '../../../../i18n/strings.json'
 
 import {
    TaskCardWrapper,
@@ -17,10 +21,7 @@ import {
    Loadingwrapper,
    ToastMessage
 } from './styledComponent'
-import { API_FETCHING, API_FAILED } from '@ib/api-constants'
-import Loader from '../../../../Common/components/Icons/Loader/SvgFile'
 
-//import { SimpleDropdown } from '../../../../common/components/Dropdown/Dropdown'
 @observer
 class TaskCard extends React.Component<{
    task: any
@@ -41,7 +42,7 @@ class TaskCard extends React.Component<{
          <React.Fragment>
             <ToastMessage>
                <MdErrorOutline color='white' size={20} />
-               {'Something went wrong'}
+               {i18n.somethingWentWrong}
             </ToastMessage>
          </React.Fragment>,
          {
@@ -61,7 +62,7 @@ class TaskCard extends React.Component<{
          handleDropdownClick,
          workflowsAPIStatus
       } = this.props
-      const options = workflows ?? []
+      const options = workflows.map(workflow => workflow.name) ?? []
       if (workflowsAPIStatus === API_FAILED) {
          this.handleDropdownFailure()
       }
@@ -71,7 +72,6 @@ class TaskCard extends React.Component<{
             : task.status === options.slice(-1)[0]
             ? true
             : false
-      console.log('-->', task.status === options.slice(-1)[0] ? true : false)
       return (
          <TaskCardWrapper bgColor={bgColor}>
             <Typo18HKGroteskRegular>{task.taskTitle}</Typo18HKGroteskRegular>

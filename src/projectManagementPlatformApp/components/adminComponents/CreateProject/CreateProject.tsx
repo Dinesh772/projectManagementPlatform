@@ -5,6 +5,13 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { BsCheckCircle } from 'react-icons/bs'
 
+import {
+   API_FETCHING,
+   API_SUCCESS,
+   API_INITIAL,
+   API_FAILED
+} from '@ib/api-constants'
+
 import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 import i18n from '../../../../i18n/strings.json'
 import UserTextInputField from '../../../../Common/components/UserTextInputField/UserTextInputField'
@@ -25,12 +32,7 @@ import {
    ToasterWrapper,
    CreateButtonWrapper
 } from './styledComponent'
-import {
-   API_FETCHING,
-   API_SUCCESS,
-   API_INITIAL,
-   API_FAILED
-} from '@ib/api-constants'
+
 @observer
 class CreateProject extends React.Component<{
    handleClick: any
@@ -43,7 +45,7 @@ class CreateProject extends React.Component<{
    @observable projectData = {
       projectName: '',
       description: '',
-      workflowType: '',
+      workflowType: 0,
       projectType: ''
    }
    @observable projectNameFieldHasError = false
@@ -72,7 +74,16 @@ class CreateProject extends React.Component<{
    }
    handleWorkflowDropdownChange = event => {
       const value = event.target.value
-      this.projectData.workflowType = value.toString()
+      const { workflows } = this.props
+      let selectedId
+      for (let i = 0; i < workflows.length; ++i) {
+         if (workflows[i].name === value) {
+            selectedId = workflows[i].workflowId
+            break
+         }
+      }
+      this.projectData.workflowType = selectedId
+
       this.projectWorkflowError = ''
       this.handleValidation()
    }
@@ -97,7 +108,7 @@ class CreateProject extends React.Component<{
       if (!stringValidator(projectData.projectType)) {
          this.projectTypeError = i18n.thisFieldIsRequired
       }
-      if (!stringValidator(projectData.workflowType)) {
+      if (projectData.workflowType === 0) {
          this.projectWorkflowError = i18n.thisFieldIsRequired
       }
       if (
@@ -106,7 +117,7 @@ class CreateProject extends React.Component<{
       ) {
          if (
             stringValidator(projectData.projectType) &&
-            stringValidator(projectData.workflowType)
+            projectData.workflowType !== 0
          ) {
             this.isValidated = true
          }
@@ -118,7 +129,14 @@ class CreateProject extends React.Component<{
 
       if (this.isValidated) {
          const { createProject } = this.props
-         createProject(this.onSuccess)
+         const projectData = this.projectData
+         const projectObject = {
+            name: projectData.projectName,
+            description: projectData.description,
+            project_type: projectData.projectType,
+            workflow_type: projectData.workflowType
+         }
+         createProject(projectObject, this.onSuccess)
       } else {
          this.handleValidation()
       }
@@ -130,7 +148,7 @@ class CreateProject extends React.Component<{
          <React.Fragment>
             <ToasterWrapper>
                <BsCheckCircle color='white' size={20} />
-               {'   Project created Successfully..!'}
+               {i18n.projectCreatedSuccessfully}
             </ToasterWrapper>
          </React.Fragment>,
          {
@@ -145,7 +163,7 @@ class CreateProject extends React.Component<{
       this.projectData = {
          projectName: '',
          description: '',
-         workflowType: '',
+         workflowType: 0,
          projectType: ''
       }
       this.projectNameFieldHasError = false
@@ -159,7 +177,6 @@ class CreateProject extends React.Component<{
    handleClose = () => {
       this.onResetAllToDefault()
       const { handleClick } = this.props
-      //window.location.reload()
       handleClick()
    }
    render() {
@@ -168,7 +185,7 @@ class CreateProject extends React.Component<{
          workflowFetchingStatus,
          createProjectFetchingStataus
       } = this.props
-      const workflowValues = workflows || []
+      const workflowValues = workflows.map(workflow => workflow.name) || []
       const projectTypeValues = [
          i18n.classicSoftware,
          i18n.softwareProject,

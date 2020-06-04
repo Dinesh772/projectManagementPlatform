@@ -41,11 +41,12 @@ class AuthStore {
    }
    @action.bound
    setSignInAPIStatus(apiStatus) {
+      console.log(apiStatus)
       this.getSignInApiStatus = apiStatus
    }
    @action.bound
    setSignInAPIResponse(response) {
-      const accessToken = response[0].access_token
+      const accessToken = response.access_token
       setAccessToken(accessToken)
    }
    @action.bound

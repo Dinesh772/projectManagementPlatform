@@ -4,6 +4,7 @@ import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import { API_INITIAL } from '@ib/api-constants'
 
 import ProjectModel from '../models/ProjectModel'
+import WorkflowModel from '../models/WorkflowModel'
 
 class ProjectStore {
    @observable projectsList
@@ -19,6 +20,7 @@ class ProjectStore {
    @observable totalPaginationLimit
    @observable currentPageNumber
    @observable workflows
+   @observable offset
 
    projectsService
    constructor(projectsService) {
@@ -40,6 +42,7 @@ class ProjectStore {
       this.totalPaginationLimit = 0
       this.currentPageNumber = 1
       this.workflows = []
+      this.offset = 0
    }
    @action.bound
    clearStore() {
@@ -52,7 +55,8 @@ class ProjectStore {
          this.projectsList[this.currentPageIndex].length === 0
       ) {
          const projectsPromise = this.projectsService.getProjectsAPI(
-            this.currentPageIndex
+            this.projectsLimitPerPage,
+            this.offset
          )
          return bindPromiseWithOnSuccess(projectsPromise)
             .to(this.setProjectsAPIStatus, response => {
@@ -78,7 +82,7 @@ class ProjectStore {
    }
 
    @action.bound
-   createProjectAPI(onSuccess) {
+   createProjectAPI(requestObject, onSuccess) {
       const createProjectPromise = this.projectsService.createProjectAPI()
       return bindPromiseWithOnSuccess(createProjectPromise)
          .to(this.setCreateProjectAPIStatus, response => {
@@ -89,16 +93,18 @@ class ProjectStore {
    }
    @action.bound
    setCreateProjectAPIStatus(apiStatus) {
+      console.log('--->', apiStatus)
       this.createProjectAPIStatus = apiStatus
    }
 
    @action.bound
    setCreateProjectAPIError(error) {
+      console.log('-->', error)
       this.createProjectAPIError = error
    }
    @action.bound
    setCreateProjectAPIResponse(response) {
-      this.onAddWorkflows(response)
+      // this.onAddWorkflows(response)
    }
    @action.bound
    setWorkflowAPIStatus(apiStatus) {
@@ -111,11 +117,12 @@ class ProjectStore {
    }
    @action.bound
    setWorkflowAPIResponse(response) {
-      this.onAddWorkflows(response)
+      this.onAddWorkflows(response.workflows)
    }
 
    @action.bound
    setProjectsAPIStatus(apiStatus) {
+      console.log(apiStatus)
       this.projectsAPIStatus = apiStatus
    }
 
@@ -125,11 +132,12 @@ class ProjectStore {
    }
    @action.bound
    setProjectsAPIResponse(response) {
-      this.totalProjects = response.totalProjects
+      this.totalProjects = response.total_projects_count
       if (this.projectsList.length === 0) {
          this.onInitializeArrayElements(this.totalProjects)
       }
-      const totalPages = response.totalProjects / this.projectsLimitPerPage
+      const totalPages =
+         response.total_projects_count / this.projectsLimitPerPage
       this.totalPaginationLimit = totalPages
       this.onAddProject(response.projects[this.currentPageIndex])
    }
@@ -143,7 +151,7 @@ class ProjectStore {
    }
    @action.bound
    onAddWorkflows(response) {
-      const workflows = response.workflows
+      const workflows = response.map(workflow => new WorkflowModel(workflow))
       this.workflows = workflows
    }
    @action.bound

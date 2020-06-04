@@ -108,7 +108,7 @@ class CreateTask extends React.Component<{
          <React.Fragment>
             <ToasterWrapper>
                <BsCheckCircle color='white' size={20} />
-               {'   Task Successfully created..!'}
+               {i18n.taskCreatedSuccessfully}
             </ToasterWrapper>
          </React.Fragment>,
          {
@@ -126,7 +126,7 @@ class CreateTask extends React.Component<{
          <React.Fragment>
             <ToasterWrapper>
                <MdErrorOutline color='white' size={20} />
-               {'   Something went wrong..!'}
+               {i18n.somethingWentWrong}
             </ToasterWrapper>
          </React.Fragment>,
          {
@@ -206,7 +206,7 @@ class CreateTask extends React.Component<{
                      values={projectsNames}
                      handleFocus={this.handleProjectChange}
                      label={i18n.selectProject}
-                     placeholder={'choose project'}
+                     placeholder={i18n.chooseProject}
                      errorMessage={this.projectHasError}
                      handleChange={this.handleProjectChange}
                   />
@@ -216,7 +216,7 @@ class CreateTask extends React.Component<{
                      values={issueValues}
                      label={i18n.issueType}
                      handleFocus={this.handleIssueTypeChange}
-                     placeholder={'choose project'}
+                     placeholder={i18n.chooseIssueType}
                      errorMessage={this.issueTypeError}
                      handleChange={this.handleIssueTypeChange}
                   />
