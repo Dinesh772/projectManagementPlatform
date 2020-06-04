@@ -1,7 +1,7 @@
 import { create } from 'apisauce'
 
-import { apiMethods } from '../../../common/constants/APIConstants'
-import { networkCallWithApisauce } from '../../../common/utils/APIUtils'
+import { apiMethods } from '../../../Common/constants/APIConstants'
+import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
 import endPoints from '../endPoints'
 
 const BASE_URL = 'https://5ea1a14db9f5ca00166c1f27.mockapi.io/api/'

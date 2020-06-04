@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Avatar from '../../../../common/components/Avatar/Avatar'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
 import { Typo16HKGroteskMedium } from '../../../../styleGuide/Typos'
 

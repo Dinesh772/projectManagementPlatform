@@ -5,17 +5,17 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { BsCheckCircle } from 'react-icons/bs'
 
-import CommonButton from '../../../../common/components/CommonButton/CommonButton'
+import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 import i18n from '../../../../i18n/strings.json'
-import UserTextInputField from '../../../../common/components/UserTextInputField/UserTextInputField'
-import { UserTextareaInput } from '../../../../common/components/UserTextAreaInput/UserTextAreaInput'
-import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
+import UserTextInputField from '../../../../Common/components/UserTextInputField/UserTextInputField'
+import { UserTextareaInput } from '../../../../Common/components/UserTextAreaInput/UserTextAreaInput'
+import { Dropdown } from '../../../../Common/components/Dropdown/Dropdown'
 import {
    Typo18BoldHKGroteskRegular,
    Typo12NeonRedHKGroteskRegular
 } from '../../../../styleGuide/Typos'
-import { stringValidator } from '../../../../authentication/utils/ValidationUtils/ValidationUtils'
-import CloseButton from '../../../../common/components/Avatar/Avatar'
+import { stringValidator } from '../../../../Authentication/utils/ValidationUtils/ValidationUtils'
+import CloseButton from '../../../../Common/components/Avatar/Avatar'
 
 import {
    CreateProjectWrapper,

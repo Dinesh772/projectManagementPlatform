@@ -1,9 +1,9 @@
 import React from 'react'
 
-import CommonButton from '../../../../common/components/CommonButton/CommonButton'
+import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 import i18n from '../../../../i18n/strings.json'
 import { Colors } from '../../../../themes/Colors'
-import Avatar from '../../../../common/components/Avatar/Avatar'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 
 import Logout from '../Logout/Logout'

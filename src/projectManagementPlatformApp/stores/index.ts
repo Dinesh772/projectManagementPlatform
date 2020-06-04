@@ -1,5 +1,5 @@
-import { AuthStore } from '../../authentication/stores/AuthStore/AuthStore'
-import AuthApi from '../../authentication/services/AuthService/index'
+import { AuthStore } from '../../Authentication/stores/AuthStore/AuthStore'
+import AuthApi from '../../Authentication/services/AuthService/index'
 import ProjectStore from './ProjectStore'
 import ProjectsService from '../services/ProjectsService/index.fixtures'
 import TaskStore from './TaskStore'

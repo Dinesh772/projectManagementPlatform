@@ -18,7 +18,7 @@ import {
    ToastMessage
 } from './styledComponent'
 import { API_FETCHING, API_FAILED } from '@ib/api-constants'
-import Loader from '../../../../common/components/Icons/Loader/SvgFile'
+import Loader from '../../../../Common/components/Icons/Loader/SvgFile'
 
 //import { SimpleDropdown } from '../../../../common/components/Dropdown/Dropdown'
 @observer

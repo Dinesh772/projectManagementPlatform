@@ -5,7 +5,7 @@ import { History } from 'history'
 import { action, observable } from 'mobx'
 import CookieConsent from 'react-cookie-consent'
 
-import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
+import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
 import i18n from '../../../../i18n/strings.json'
 import MemberDashboard from '../../memberComponents/MemberDashboard'
 import AdminDashboard from '../../adminComponents/AdminDashboard'

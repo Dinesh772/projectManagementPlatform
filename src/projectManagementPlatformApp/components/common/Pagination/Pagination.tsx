@@ -6,7 +6,7 @@ import i18n from '../../../../i18n/strings.json'
 
 import { PaginationWrapper } from './styledComponent'
 import { observable } from 'mobx'
-import Avatar from '../../../../common/components/Avatar/Avatar'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 @observer
 class Pagination extends React.Component<{
    handlePaginationButtons: any

@@ -2,13 +2,13 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { API_FAILED } from '@ib/api-constants'
 
-import UserTextInputField from '../../../common/components/UserTextInputField/UserTextInputField'
+import UserTextInputField from '../../../Common/components/UserTextInputField/UserTextInputField'
 import {
    Typo26DarkBlueGreyRubikRegular,
    Typo12NeonRedHKGroteskRegular
 } from '../../../styleGuide/Typos/index'
-import LoginButton from '../../../common/components/CommonButton/CommonButton'
-import Logo from '../../../common/components/Logo/Logo'
+import LoginButton from '../../../Common/components/CommonButton/CommonButton'
+import Logo from '../../../Common/components/Logo/Logo'
 import {
    SignInWrapper,
    IbHubsLogo,

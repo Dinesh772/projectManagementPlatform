@@ -8,7 +8,7 @@ import i18n from '../../../i18n/strings.json'
 import SignInComponent from '../SignInComponent'
 import { SignInComponentWrapper } from './styledComponents'
 import { stringValidator } from '../../utils/ValidationUtils/ValidationUtils'
-import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../common/constants/RouteConstants'
+import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../Common/constants/RouteConstants'
 type propsType = {
    history: History
    authStore: any

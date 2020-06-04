@@ -10,7 +10,7 @@ import Projects from '../../common/Projects'
 import Pagination from '../../common/Pagination'
 
 import { MemberWrapper, MemberHeader } from './styledComponent'
-import NoDataView from '../../../../common/components/NoDataView'
+import NoDataView from '../../../../Common/components/NoDataView'
 @observer
 class MemberDashboard extends React.Component<{
    taskStore: any

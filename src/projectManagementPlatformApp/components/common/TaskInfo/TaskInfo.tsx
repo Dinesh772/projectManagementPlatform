@@ -3,7 +3,7 @@ import {
    Typo18BoldHKGroteskRegular,
    Typo12SteelHKGroteskSemiBold
 } from '../../../../styleGuide/Typos'
-import CloseButton from '../../../../common/components/Avatar/Avatar'
+import CloseButton from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
 import {
    TaskInfoWrapper,

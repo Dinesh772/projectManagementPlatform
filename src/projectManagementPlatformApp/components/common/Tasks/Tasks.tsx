@@ -9,10 +9,10 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { BsCheckCircle } from 'react-icons/bs'
 
-import CommonButton from '../../../../common/components/CommonButton/CommonButton'
+import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
-import LoadingWrapperWithFailure from '../../../../common/components/LoadingWrapperWithFailure'
-import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../common/constants/RouteConstants'
+import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
+import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/RouteConstants'
 import { Colors } from '../../../../themes/Colors'
 import i18n from '../../../../i18n/strings.json'
 
@@ -36,7 +36,7 @@ import {
 } from './styledComponent'
 import TaskInfo from '../TaskInfo'
 import TransitionChange from '../TransitionChange'
-import NoDataView from '../../../../common/components/NoDataView'
+import NoDataView from '../../../../Common/components/NoDataView'
 
 type PropsType = {
    projectStore: any

@@ -1,7 +1,7 @@
 import React from 'react'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import CloseButton from '../../../../common/components/Avatar/Avatar'
+import CloseButton from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
 import {
    TransitionChangeWrapper,
@@ -18,16 +18,16 @@ import {
    Typo12NeonRedHKGroteskRegular,
    Typo12SteelHKGroteskSemiBold
 } from '../../../../styleGuide/Typos'
-import CommonButton from '../../../../common/components/CommonButton/CommonButton'
+import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 import { observable, toJS } from 'mobx'
 import { observer } from 'mobx-react'
-import { Checkbox } from '../../../../common/components/Checkbox/Checkbox'
+import { Checkbox } from '../../../../Common/components/Checkbox/Checkbox'
 
 import Loader from 'react-loader-spinner'
 import { API_SUCCESS, API_FETCHING } from '@ib/api-constants'
 import { Colors } from '../../../../themes/Colors'
-import NoDataView from '../../../../common/components/NoDataView'
-import FailureView from '../../../../common/components/LoadingWrapperWithFailure/FailureView'
+import NoDataView from '../../../../Common/components/NoDataView'
+import FailureView from '../../../../Common/components/LoadingWrapperWithFailure/FailureView'
 @observer
 class TransitionChange extends React.Component<{
    handleClose: any

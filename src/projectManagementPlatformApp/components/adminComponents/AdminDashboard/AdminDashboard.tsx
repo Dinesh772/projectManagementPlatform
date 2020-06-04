@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { ToastContainer, Slide } from 'react-toastify'
 
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
-import CommonButton from '../../../../common/components/CommonButton/CommonButton'
+import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 
 import i18n from '../../../../i18n/strings.json'
 
@@ -23,7 +23,7 @@ import {
    PaginationWrapper,
    ToasterWrapper
 } from './styledComponent'
-import NoDataView from '../../../../common/components/NoDataView'
+import NoDataView from '../../../../Common/components/NoDataView'
 @observer
 class AdminDashboard extends React.Component<{
    projectStore: any

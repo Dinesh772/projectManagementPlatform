@@ -9,12 +9,12 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import { Typo18BoldHKGroteskRegular } from '../../../../styleGuide/Typos'
 import i18n from '../../../../i18n/strings.json'
-import CloseButton from '../../../../common/components/Avatar/Avatar'
-import { Dropdown } from '../../../../common/components/Dropdown/Dropdown'
-import { UserTextareaInput } from '../../../../common/components/UserTextAreaInput/UserTextAreaInput'
-import UserTextInputField from '../../../../common/components/UserTextInputField/UserTextInputField'
-import CommonButton from '../../../../common/components/CommonButton/CommonButton'
-import { stringValidator } from '../../../../authentication/utils/ValidationUtils/ValidationUtils'
+import CloseButton from '../../../../Common/components/Avatar/Avatar'
+import { Dropdown } from '../../../../Common/components/Dropdown/Dropdown'
+import { UserTextareaInput } from '../../../../Common/components/UserTextAreaInput/UserTextAreaInput'
+import UserTextInputField from '../../../../Common/components/UserTextInputField/UserTextInputField'
+import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
+import { stringValidator } from '../../../../Authentication/utils/ValidationUtils/ValidationUtils'
 
 import {
    CreateTaskWrapper,
