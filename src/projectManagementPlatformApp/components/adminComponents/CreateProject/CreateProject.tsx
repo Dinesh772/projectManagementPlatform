@@ -134,7 +134,8 @@ class CreateProject extends React.Component<{
             name: projectData.projectName,
             description: projectData.description,
             project_type: projectData.projectType,
-            workflow_type: projectData.workflowType
+            workflow_type: projectData.workflowType,
+            assigned_to: []
          }
          createProject(projectObject, this.onSuccess)
       } else {
@@ -188,7 +189,6 @@ class CreateProject extends React.Component<{
       const workflowValues = workflows.map(workflow => workflow.name) || []
       const projectTypeValues = [
          i18n.classicSoftware,
-         i18n.softwareProject,
          i18n.financialSoftware,
          i18n.crmSoftware
       ]

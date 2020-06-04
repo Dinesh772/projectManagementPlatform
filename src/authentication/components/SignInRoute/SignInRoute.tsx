@@ -99,7 +99,7 @@ class SignInRoute extends React.Component<propsType> {
    }
    @action.bound
    onLoginFailure(error) {
-      this.loginFailureErrorMessage = error.message
+      this.loginFailureErrorMessage = error
    }
 
    render() {

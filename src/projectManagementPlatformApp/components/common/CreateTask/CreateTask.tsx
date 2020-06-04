@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { observer } from 'mobx-react'
-import { observable } from 'mobx'
-import { BsCheckCircle } from 'react-icons/bs'
+import { observable, toJS } from 'mobx'
+import { BsCheckCircle, BsConeStriped } from 'react-icons/bs'
 import { MdErrorOutline } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -32,7 +32,7 @@ class CreateTask extends React.Component<{
    taskStore: any
 }> {
    @observable createTaskDetails = {
-      project: '',
+      project: 0,
       issueType: '',
       title: '',
       description: ''
@@ -46,7 +46,19 @@ class CreateTask extends React.Component<{
    @observable issueTypeError = ''
    handleProjectChange = event => {
       const value = event.target.value
-      this.createTaskDetails.project = value
+      const { projectsData } = this.props
+      let projectId = 0
+
+      for (let i = 0; i < projectsData.length; ++i) {
+         for (let j = 0; j < projectsData[i].length; ++j) {
+            if (projectsData[i][j].name === value) {
+               projectId = projectsData[i][i].id
+               break
+            }
+         }
+      }
+      console.log(toJS(projectId))
+      this.createTaskDetails.project = projectId
       this.projectHasError = ''
       this.handleValidationChange()
    }
@@ -83,7 +95,7 @@ class CreateTask extends React.Component<{
          this.taskDescriptionErrorMessage = i18n.thisFieldIsRequired
          this.isValidated = false
       }
-      if (!stringValidator(createTaskDetails.project)) {
+      if (createTaskDetails.project === 0) {
          this.projectHasError = i18n.thisFieldIsRequired
       }
       if (!stringValidator(createTaskDetails.issueType)) {
@@ -91,7 +103,7 @@ class CreateTask extends React.Component<{
       }
       if (
          stringValidator(createTaskDetails.title) &&
-         stringValidator(createTaskDetails.project)
+         createTaskDetails.project !== 0
       ) {
          if (
             stringValidator(createTaskDetails.description) &&
@@ -139,7 +151,7 @@ class CreateTask extends React.Component<{
    }
    onResetAllToDefault = () => {
       this.createTaskDetails = {
-         project: '',
+         project: 0,
          issueType: '',
          title: '',
          description: ''
@@ -155,12 +167,14 @@ class CreateTask extends React.Component<{
    handleCreateButton = () => {
       if (this.isValidated) {
          const { taskStore } = this.props
-
-         taskStore.createTaskAPI(
-            this.createTaskDetails,
-            this.onSuccess,
-            this.onFailure
-         )
+         const { createTaskDetails } = this
+         const createObject = {
+            project: createTaskDetails.project,
+            title: createTaskDetails.title,
+            description: createTaskDetails.description,
+            issue_type: createTaskDetails.issueType
+         }
+         taskStore.createTaskAPI(createObject, this.onSuccess, this.onFailure)
       } else {
          this.handleValidationChange()
       }
@@ -175,10 +189,8 @@ class CreateTask extends React.Component<{
       const issueValues = [
          'Task',
          'Bug',
-         'Developer',
-         'story',
-         'User',
-         'story',
+         'Developer story',
+         'User story',
          'Enhancement'
       ]
       let projectsNames

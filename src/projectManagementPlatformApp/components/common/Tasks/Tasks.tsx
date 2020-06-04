@@ -214,8 +214,7 @@ class Tasks extends React.Component<PropsType> {
 
    doNetworkCalls = id => {
       const { taskStore, projectStore } = this.props
-      taskStore.getTasksAPI()
-
+      taskStore.getTasksAPI(id)
       projectStore.getProjectsAPI()
    }
    handleWorkflowAPICall = () => {

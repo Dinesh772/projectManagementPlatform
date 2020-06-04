@@ -58,10 +58,13 @@ class TaskStore {
          this.tasksList[this.currentPageIndex] === undefined ||
          this.tasksList[this.currentPageIndex].length === 0
       ) {
-         if (this.projectId === 0) {
-            this.projectId = id
-         }
-         const tasksPromise = this.taskService.getTasksAPI(this.projectId)
+         this.projectId = id
+
+         const tasksPromise = this.taskService.getTasksAPI(
+            this.projectId,
+            this.tasksLimitPerPage,
+            this.offset
+         )
          return bindPromiseWithOnSuccess(tasksPromise)
             .to(this.setTasksAPIStatus, response => {
                this.setTasksAPIResponse(response)
@@ -74,7 +77,9 @@ class TaskStore {
 
    @action.bound
    createTaskAPI(taskDetailsObject, onSuccess, onFailure) {
-      const createTaslPromise = this.taskService.createTaskAPI()
+      const createTaslPromise = this.taskService.createTaskAPI(
+         taskDetailsObject
+      )
       return bindPromiseWithOnSuccess(createTaslPromise)
          .to(this.setCreateTaskAPIStatus, response => {
             this.setCreateTaskAPIResponse(response)
@@ -166,11 +171,12 @@ class TaskStore {
    }
    @action.bound
    setCreateTaskAPIError(error) {
+      console.log(error)
       this.createTaskAPIError = error
    }
    @action.bound
    setCreateTaskAPIResponse(response) {
-      this.getTasksAPI(5)
+      // this.getTasksAPI(5)
    }
 
    @action.bound
@@ -191,18 +197,19 @@ class TaskStore {
    }
    @action.bound
    setTasksAPIResponse(response) {
-      this.totalTasks = response.totalTasks
+      console.log(response)
+      this.totalTasks = response.total_count_of_tasks
       if (this.tasksList.length === 0) {
          this.onInitializeArrayElements(this.totalTasks)
       }
-      const totalPages = response.totalTasks / this.tasksLimitPerPage
+      const totalPages = response.total_count_of_tasks / this.tasksLimitPerPage
       this.totalPaginationLimit = totalPages
-      this.onAddTasks(response.tasks[this.currentPageIndex])
+      this.onAddTasks(response.tasks)
    }
    @action.bound
    onAddTasks(tasks) {
       const tasksList = tasks.map(eachTask => new TaskModel(eachTask))
-      this.tasksList[this.currentPageIndex] = tasksList
+      this.tasksList = tasksList
    }
 
    @action.bound
@@ -211,7 +218,6 @@ class TaskStore {
       const checklistMap = checklist.map(
          eachChecklist => new TransitionChecklistModel(eachChecklist)
       )
-      console.log(checklistMap)
       this.taskChecklist = checklistMap
    }
 

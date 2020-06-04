@@ -5,6 +5,7 @@ import { API_INITIAL } from '@ib/api-constants'
 
 import ProjectModel from '../models/ProjectModel'
 import WorkflowModel from '../models/WorkflowModel'
+import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
 class ProjectStore {
    @observable projectsList
@@ -83,7 +84,10 @@ class ProjectStore {
 
    @action.bound
    createProjectAPI(requestObject, onSuccess) {
-      const createProjectPromise = this.projectsService.createProjectAPI()
+      console.log('-->', requestObject)
+      const createProjectPromise = this.projectsService.createProjectAPI(
+         requestObject
+      )
       return bindPromiseWithOnSuccess(createProjectPromise)
          .to(this.setCreateProjectAPIStatus, response => {
             this.setCreateProjectAPIResponse(response)
@@ -99,11 +103,13 @@ class ProjectStore {
 
    @action.bound
    setCreateProjectAPIError(error) {
-      console.log('-->', error)
+      console.log(error)
+      //console.log('-->', getUserDisplayableErrorMessage(error))
       this.createProjectAPIError = error
    }
    @action.bound
    setCreateProjectAPIResponse(response) {
+      console.log(response)
       // this.onAddWorkflows(response)
    }
    @action.bound
@@ -122,7 +128,6 @@ class ProjectStore {
 
    @action.bound
    setProjectsAPIStatus(apiStatus) {
-      console.log(apiStatus)
       this.projectsAPIStatus = apiStatus
    }
 
@@ -132,14 +137,14 @@ class ProjectStore {
    }
    @action.bound
    setProjectsAPIResponse(response) {
-      this.totalProjects = response.total_projects_count
+      this.totalProjects = response.total_count_of_projects
       if (this.projectsList.length === 0) {
          this.onInitializeArrayElements(this.totalProjects)
       }
       const totalPages =
-         response.total_projects_count / this.projectsLimitPerPage
+         response.total_count_of_projects / this.projectsLimitPerPage
       this.totalPaginationLimit = totalPages
-      this.onAddProject(response.projects[this.currentPageIndex])
+      this.onAddProject(response.projects)
    }
    @action.bound
    onInitializeArrayElements(length) {

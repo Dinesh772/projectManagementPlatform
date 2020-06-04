@@ -3,9 +3,8 @@ import { create } from 'apisauce'
 import { apiMethods } from '../../../Common/constants/APIConstants'
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
 import endPoints from '../endPoints'
+import { BASE_URL } from '../../../Common/constants/RouteConstants'
 
-const BASE_URL =
-   'https://virtserver.swaggerhub.com/Ib-Hubs8/project_management_portal/1.0.0'
 const workflowEndpoint = endPoints.workflows
 const createProjectEndpoint = endPoints.createProject
 class ProjectsApi {

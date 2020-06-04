@@ -3,9 +3,7 @@ import { create } from 'apisauce'
 import { apiMethods } from '../../../Common/constants/APIConstants'
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
 import endPoints from '../endPoints'
-
-const BASE_URL = 'https://5ea1a14db9f5ca00166c1f27.mockapi.io/api/'
-const endPoint = endPoints.projects
+import { BASE_URL } from '../../../Common/constants/RouteConstants'
 
 class TasksAPI {
    api
@@ -14,12 +12,21 @@ class TasksAPI {
          baseURL: BASE_URL
       })
    }
-   getTasksAPI = requestObject => {
+   getTasksAPI = (id, limit, offset) => {
       return networkCallWithApisauce(
          this.api,
-         endPoint,
-         requestObject,
+         `/project/tasks/${id}/v1/?limit=${limit}&offset=${offset}`,
+         {},
          apiMethods.get
+      )
+   }
+   createTaskAPI = requestObject => {
+      console.log('==><>', requestObject)
+      return networkCallWithApisauce(
+         this.api,
+         '/task/v1/',
+         requestObject,
+         apiMethods.post
       )
    }
 }

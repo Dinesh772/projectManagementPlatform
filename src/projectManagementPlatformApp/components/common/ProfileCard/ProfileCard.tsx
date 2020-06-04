@@ -1,6 +1,7 @@
 import React from 'react'
 
 import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
+
 import i18n from '../../../../i18n/strings.json'
 import { Colors } from '../../../../themes/Colors'
 import Avatar from '../../../../Common/components/Avatar/Avatar'

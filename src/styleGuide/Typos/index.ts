@@ -52,7 +52,7 @@ export const Typo24DarkBlueGreyHKGroteskMedium = styled.h2`
    letter-spacing: normal;
    padding: 14px;
    color: ${Colors.darkBlueGrey};
-   @media (min-width: 350px) {
+   @media (max-width: 350px) {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
-
+import Timestamp from '../../../../../node_modules/react-timestamp/dist/index'
 import { EachProjectWrapper } from './styledComponent'
 
 class ProjectCard extends React.Component<{
@@ -25,7 +25,12 @@ class ProjectCard extends React.Component<{
             <Typo18HKGroteskRegular>
                {project.projectType}
             </Typo18HKGroteskRegular>
-            <Typo18HKGroteskRegular>{project.createdAt}</Typo18HKGroteskRegular>
+            <Typo18HKGroteskRegular>
+               <Timestamp
+                  date={new Date(project.createdAt)}
+                  options={{ includeDay: false, twentyFourHour: false }}
+               />
+            </Typo18HKGroteskRegular>
             <Typo18HKGroteskRegular>
                {project.whoCreated}
             </Typo18HKGroteskRegular>
