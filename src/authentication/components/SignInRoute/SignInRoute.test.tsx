@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, getByText } from '@testing-library/react'
 import { Provider } from 'mobx-react'
 import { createMemoryHistory } from 'history'
 import { Router, Route, withRouter } from 'react-router-dom'
@@ -34,38 +34,38 @@ describe('SignInRoute component tests', () => {
       expect(getByText(i18n.passwordLabel)).toBeVisible()
       expect(getByText(i18n.login)).toBeVisible()
    })
-   // it('should show username error message onLogin click', () => {
-   //    const { getByRole, getByText } = render(
-   //       <Router history={createMemoryHistory()}>
-   //          <SignInRoute authStore={authStore} />
-   //       </Router>
-   //    )
-   //    const loginButton = getByText(i18n.login)
+   it('should show username error message onLogin click', () => {
+      const { getByRole, getByText } = render(
+         <Router history={createMemoryHistory()}>
+            <SignInRoute authStore={authStore} />
+         </Router>
+      )
+      const loginButton = getByText(i18n.login)
 
-   //    fireEvent.click(loginButton)
-   //    expect(getByText(i18n.invalidUsernameErrorText)).toBeVisible()
-   // })
-   // it('should test password error message onClick login without entering password', () => {
-   //    const { getByTestId, getByRole, getByText } = render(
-   //       <Router history={createMemoryHistory()}>
-   //          <SignInRoute authStore={authStore} />
-   //       </Router>
-   //    )
-   //    const loginButton = getByRole('button', { name: i18n.login })
-   //    const username = 'test-user'
-   //    const usernameField = getByTestId(i18n.usernameTestId)
+      fireEvent.click(loginButton)
+      expect(getByText(i18n.invalidUsernameErrorText)).toBeVisible()
+   })
+   it('should test password error message onClick login without entering password', () => {
+      const { getByTestId, getByRole, getByText } = render(
+         <Router history={createMemoryHistory()}>
+            <SignInRoute authStore={authStore} />
+         </Router>
+      )
+      const loginButton = getByRole('button', { name: i18n.login })
+      const username = 'test-user'
+      const usernameField = getByTestId(i18n.usernameTestId)
 
-   //    fireEvent.change(usernameField, { target: { value: username } })
-   //    fireEvent.click(loginButton)
-   //    getByText(i18n.invalidPasswordErrorText)
-   // })
+      fireEvent.change(usernameField, { target: { value: username } })
+      fireEvent.click(loginButton)
+      getByText(i18n.invalidPasswordErrorText)
+   })
    // it('should test fetching state onClick login', async () => {
-   //    const { getByTestId, getByRole, getByLabelText } = render(
+   //    const { getByTestId, getAllByText, getByRole, getByLabelText } = render(
    //       <Router history={createMemoryHistory()}>
    //          <SignInRoute authStore={authStore} />
    //       </Router>
    //    )
-   //    const loginButton = getByRole('button', { name: i18n.login })
+   //    const loginButton = getAllByText('LOGIN') //getByRole('button', { name: i18n.login })
    //    const username = 'test-user'
    //    const password = 'test-password'
    //    const usernameField = getByTestId(i18n.usernameTestId)
@@ -78,7 +78,7 @@ describe('SignInRoute component tests', () => {
 
    //    fireEvent.change(usernameField, { target: { value: username } })
    //    fireEvent.change(passwordField, { target: { value: password } })
-   //    fireEvent.click(loginButton)
+   //    fireEvent.click(getByRole('button', { name: i18n.login }))
    //    getByLabelText('audio-loading')
    // })
 
