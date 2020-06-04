@@ -25,12 +25,12 @@ export const TransitionChangeHeader = styled.div`
 export const TransitionCheckboxesWrapper = styled.div`
    display: flex;
    flex-direction: column;
-   height: 350px;
+   height: 375px;
    overflow: auto;
    width: 100%;
 `
-export const SubmitButtonWrapper = styled.div`
-   display: flex;
+export const SubmitButtonWrapper = styled.div<{ hide: any }>`
+   display: ${props => (props.hide ? 'flex' : 'none')};
    flex-direction: column;
    align-items: center;
 
@@ -51,7 +51,7 @@ export const StatusWrapper = styled.div`
 `
 export const ChangeConfirmationWrapper = styled.div``
 export const FetchingWrapper = styled.div`
-   height: 50vh;
+   height: 49vh;
    width: 100%;
    display: flex;
    justify-content: center;

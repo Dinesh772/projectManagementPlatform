@@ -8,10 +8,10 @@ export const LoadingViewContainer = styled.div`
    min-height:90vh;
 `
 
-export const FailureViewContainer = styled.div`
+export const FailureViewContainer = styled.div<{ height: any }>`
    ${tw`flex flex-col justify-center items-center `}
-   background-color:${Colors.whiteTwo};
-   min-height:90vh;
+   background-color:inherit;
+   min-height: ${props => props.height ?? '90vh'};
 `
 
 export const FailureViewMessage = styled.p`

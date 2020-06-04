@@ -80,15 +80,16 @@ class Tasks extends React.Component<PropsType> {
       this.taskObject['workflows'] = taskStore.workflows
    }
 
-   handleTransitionChangeSubmit = () => {
-      // this.isStatusChangeTriggred = !this.isStatusChangeTriggred
+   handleTransitionChangeSubmit = selectedOption => {
       if (!this.isCreateClicked) {
-         this.doChecklistNetworkCalls()
+         const { taskStore } = this.props
+         taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
       }
    }
-   doChecklistNetworkCalls = () => {
+   doChecklistNetworkCalls = selectedOption => {
       const { taskStore } = this.props
-      taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
+      taskStore.getChecklistAPI(selectedOption, this.onChecklistSuccess)
+      // taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
    }
    onTransitionChangeSuccess = () => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred

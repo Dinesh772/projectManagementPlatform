@@ -12,7 +12,7 @@
       },
       {
          "name": "I have maintained clean code practices.",
-         "is_mandatory": true,
+         "is_mandatory": false,
          "checklist_id": 40
       },
       {

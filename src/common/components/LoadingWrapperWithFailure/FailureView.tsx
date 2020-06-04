@@ -12,12 +12,13 @@ import i18n from '../../../i18n/strings.json'
 class FailureView extends React.Component<{
    onRetryClick: any
    errorMessage: any
+   height?: any
 }> {
    render() {
       const { onRetryClick, errorMessage } = this.props
 
       return (
-         <FailureViewContainer>
+         <FailureViewContainer height={this.props.height}>
             <Logo
                src={i18n.somethingWentWrongSrc}
                height={'280px'}
