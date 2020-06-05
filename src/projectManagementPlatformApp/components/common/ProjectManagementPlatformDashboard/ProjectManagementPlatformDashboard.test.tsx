@@ -7,13 +7,13 @@ import i18n from '../../../../i18n/strings.json'
 import ProjectManagementPlatformDashboard from '.'
 import ProjectsFixtureService from '../../../services/ProjectsService/index.fixtures'
 import ProjectStore from '../../../stores/ProjectStore'
-import AuthApi from '../../../../authentication/services/AuthService'
-import AuthStore from '../../../../authentication/stores/AuthStore'
+import AuthApi from '../../../../Authentication/services/AuthService'
+import AuthStore from '../../../../Authentication/stores/AuthStore'
 import projectsData from '../../../fixtures/projectFixtures.json'
 import {
    PROJECT_MANAGEMENT_PLATFORM_DASHBOARD,
    PROJECT_MANAGEMENT_PLATFORM_TASKS
-} from '../../../../common/constants/RouteConstants'
+} from '../../../../Common/constants/RouteConstants'
 import workflowdata from '../../../fixtures/workflowFixtures.json'
 import TasksFixturesAPI from '../../../services/TaskService/index.fixtures'
 import TaskStore from '../../../stores/TaskStore'

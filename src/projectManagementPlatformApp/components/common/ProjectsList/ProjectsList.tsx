@@ -30,6 +30,10 @@ class ProjectsList extends React.Component<{
             <ProjectsListHeader>
                <Typo16HKGroteskMedium>{i18n.projectName}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium>{i18n.type}</Typo16HKGroteskMedium>
+               <Typo16HKGroteskMedium>
+                  {i18n.workflowType.slice(0, -1)}
+               </Typo16HKGroteskMedium>
+
                <Typo16HKGroteskMedium>{i18n.createdAt}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium>{i18n.createdBy}</Typo16HKGroteskMedium>
             </ProjectsListHeader>

@@ -60,7 +60,7 @@ export const Typo24DarkBlueGreyHKGroteskMedium = styled.h2`
 `
 export const Typo16HKGroteskMedium = styled.p`
    height: 24px;
-   width: 350px;
+   width: 270px;
 
    font-family: 'HKGroteskRegular';
    font-size: 16px;

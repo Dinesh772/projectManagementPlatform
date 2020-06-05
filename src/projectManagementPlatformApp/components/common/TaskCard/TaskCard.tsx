@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { MdErrorOutline } from 'react-icons/md'
 import { BsInfoCircle } from 'react-icons/bs'
 import { API_FETCHING, API_FAILED } from '@ib/api-constants'
+import Timestamp from '../../../../../node_modules/react-timestamp/dist/index'
 
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 import Loader from '../../../../Common/components/Icons/Loader/SvgFile'
@@ -33,9 +34,16 @@ class TaskCard extends React.Component<{
    workflowsAPIStatus: any
 }> {
    handleDropdownChange = (event, task) => {
-      const { handleStatusChange } = this.props
+      const { handleStatusChange, workflows } = this.props
+      console.log('task===>', task.id)
       const value = event.value
-      handleStatusChange(value, task)
+      console.log(workflows)
+      const toState = workflows.filter(task =>
+         task.name === value ? task.stateId : null
+      )
+      console.log('id_+_+-->', toState[0].stateId)
+      const toStateId = toState[0].stateId
+      handleStatusChange(value, task, toStateId)
    }
    handleDropdownFailure = () => {
       toast.error(
@@ -62,6 +70,7 @@ class TaskCard extends React.Component<{
          handleDropdownClick,
          workflowsAPIStatus
       } = this.props
+
       const options = workflows.map(workflow => workflow.name) ?? []
       if (workflowsAPIStatus === API_FAILED) {
          this.handleDropdownFailure()
@@ -76,7 +85,12 @@ class TaskCard extends React.Component<{
          <TaskCardWrapper bgColor={bgColor}>
             <Typo18HKGroteskRegular>{task.taskTitle}</Typo18HKGroteskRegular>
             <Typo18HKGroteskRegular>{task.description}</Typo18HKGroteskRegular>
-            <Typo18HKGroteskRegular>{task.createdAt}</Typo18HKGroteskRegular>
+            <Typo18HKGroteskRegular>
+               <Timestamp
+                  date={new Date(task.createdAt)}
+                  options={{ includeDay: false, twentyFourHour: false }}
+               />
+            </Typo18HKGroteskRegular>
 
             <DropdownWrapper>
                <Dropdown
@@ -84,7 +98,7 @@ class TaskCard extends React.Component<{
                   options={options}
                   placeholder={task.status}
                   onChange={event => this.handleDropdownChange(event, task)}
-                  onFocus={handleDropdownClick}
+                  onFocus={event => handleDropdownClick(event, task.id)}
                   placeholderClassName='dropdown-placeholder'
                   menuClassName='dropdown-menu'
                   disabled={disable}

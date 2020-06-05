@@ -48,6 +48,7 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
    @action.bound
    renderSuccessUI() {
       const { projectStore, taskStore, authStore } = this.props
+      console.log(authStore.isAdmin)
       return projectStore.isAdmin ? (
          <AdminDashboard
             projectStore={projectStore}

@@ -3,6 +3,7 @@ import { API_INITIAL } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import TaskModel from '../models/TaskModel'
 import TransitionChecklistModel from '../models/TransitionChecklistModel'
+import StatesModel from '../models/StatesModel'
 
 class TaskStore {
    @observable tasksList
@@ -104,8 +105,11 @@ class TaskStore {
          })
    }
    @action.bound
-   getChecklistAPI(requestObject, onSuccess) {
-      const checklistPromise = this.taskService.getChecklistAPI()
+   getChecklistAPI(requestObject, taskId, onSuccess) {
+      const checklistPromise = this.taskService.getChecklistAPI(
+         requestObject,
+         taskId
+      )
       return bindPromiseWithOnSuccess(checklistPromise)
          .to(this.setChecklistAPIStatus, response => {
             this.setChecklistAPIResponse(response)
@@ -114,9 +118,9 @@ class TaskStore {
          .catch(error => this.setChecklistAPIError(error))
    }
    @action.bound
-   getWorkflowsAPI() {
+   getWorkflowsAPI(id) {
       if (this.workflows.length === 0) {
-         const workflowsPromise = this.taskService.getWorkflowsAPI()
+         const workflowsPromise = this.taskService.getWorkflowsAPI(id)
          return bindPromiseWithOnSuccess(workflowsPromise)
             .to(this.setWorkflowsAPIStatus, response => {
                this.setWorkflowsResponse(response)
@@ -137,21 +141,28 @@ class TaskStore {
    }
    @action.bound
    setWorkflowsResponse(response) {
-      this.workflows = response.workflows
+      // this.workflows = response.workflows
+      this.onAddStates(response.to_states)
    }
-
+   @action.bound
+   onAddStates(response) {
+      const states = response.map(state => new StatesModel(state))
+      this.workflows = states
+   }
    @action.bound
    setChecklistAPIStatus(apiStatus) {
       this.checklistAPIStatus = apiStatus
    }
    @action.bound
    setChecklistAPIError(error) {
+      console.log(error)
       this.checklistAPIError = error
    }
 
    @action.bound
    setChecklistAPIResponse(response) {
-      this.onAddChecklists(response)
+      // this.onAddChecklists(response)
+      console.log('response.....', response)
    }
 
    @action.bound
@@ -208,8 +219,10 @@ class TaskStore {
    }
    @action.bound
    onAddTasks(tasks) {
+      console.log('-->', tasks)
       const tasksList = tasks.map(eachTask => new TaskModel(eachTask))
       this.tasksList = tasksList
+      console.log('<><><>', this.tasksList)
    }
 
    @action.bound
@@ -234,7 +247,7 @@ class TaskStore {
    get renderedTasksList() {
       const { tasksList, currentPageIndex } = this
       if (tasksList.length > 0) {
-         return tasksList[currentPageIndex]
+         return tasksList
       } else {
          return tasksList
       }
@@ -244,7 +257,7 @@ class TaskStore {
       const tasksList = this.tasksList
       let count = 0
       for (let i = 0; i < tasksList.length; ++i) {
-         count += tasksList[i].length
+         count++
       }
       return count
    }

@@ -11,6 +11,7 @@ import i18n from '../../../../i18n/strings.json'
 import TaskCard from '../TaskCard'
 
 import { TasksListWrapper, TasksListHeader } from './styledComponent'
+import { toJS } from 'mobx'
 
 @observer
 class TasksList extends React.Component<{
@@ -30,6 +31,7 @@ class TasksList extends React.Component<{
          handleDropdownClick,
          workflowsAPIStatus
       } = this.props
+      console.log('taskData=====>', toJS(tasksData))
       const data = tasksData.map((eachTask, index) => (
          <TaskCard
             key={eachTask.id}

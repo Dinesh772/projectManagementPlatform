@@ -10,10 +10,12 @@ import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 class AuthStore {
    @observable getSignInApiStatus
    @observable getSignInError
+   @observable isAdmin
    authService
    constructor(authService) {
       this.init()
       this.authService = authService
+      this.isAdmin = null
    }
    @action.bound
    init() {
@@ -48,6 +50,8 @@ class AuthStore {
    @action.bound
    setSignInAPIResponse(response) {
       const accessToken = response.access_token
+      this.isAdmin = response.is_admin
+      console.log('isAdmin==', this.isAdmin, response)
       setAccessToken(accessToken)
    }
    @action.bound

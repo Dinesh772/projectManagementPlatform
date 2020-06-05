@@ -21,12 +21,28 @@ class TasksAPI {
       )
    }
    createTaskAPI = requestObject => {
-      console.log('==><>', requestObject)
       return networkCallWithApisauce(
          this.api,
          '/task/v1/',
          requestObject,
          apiMethods.post
+      )
+   }
+   getWorkflowsAPI = id => {
+      return networkCallWithApisauce(
+         this.api,
+         `/states/${id}/v1/`,
+         {},
+         apiMethods.get
+      )
+   }
+   getChecklistAPI = (requestObject, id) => {
+      console.log('stateAPI--->', id, requestObject)
+      return networkCallWithApisauce(
+         this.api,
+         `/transition/${id}/v1/`,
+         requestObject,
+         apiMethods.get
       )
    }
 }

@@ -53,6 +53,8 @@ class Tasks extends React.Component<PropsType> {
    @observable isTaskInfoClicked = false
    @observable taskObject = {}
    @observable isStatusChangeTriggred = false
+   @observable checklistRequestObject = {}
+   @observable transitionChangeTaskId = 0
 
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
@@ -61,7 +63,7 @@ class Tasks extends React.Component<PropsType> {
          this.doNetworkCalls(id)
       }
    }
-   handleStatusChange = (selectedOption, task) => {
+   handleStatusChange = (selectedOption, task, toStateId) => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
       if (this.isStatusChangeTriggred) {
          let taskObject = this.taskObject
@@ -69,7 +71,12 @@ class Tasks extends React.Component<PropsType> {
          taskObject['to'] = selectedOption
          this.taskObject = taskObject
          const { taskStore } = this.props
-         taskStore.getChecklistAPI(selectedOption, this.onChecklistSuccess)
+         const requestObject = {
+            to_state: toStateId
+         }
+         this.checklistRequestObject = requestObject
+         this.transitionChangeTaskId = task.id
+         this.doChecklistNetworkCalls()
       }
    }
 
@@ -86,9 +93,13 @@ class Tasks extends React.Component<PropsType> {
          taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
       }
    }
-   doChecklistNetworkCalls = selectedOption => {
+   doChecklistNetworkCalls = () => {
       const { taskStore } = this.props
-      taskStore.getChecklistAPI(selectedOption, this.onChecklistSuccess)
+      taskStore.getChecklistAPI(
+         this.checklistRequestObject,
+         this.transitionChangeTaskId,
+         this.onChecklistSuccess
+      )
    }
    onTransitionChangeSuccess = () => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
@@ -217,9 +228,9 @@ class Tasks extends React.Component<PropsType> {
       taskStore.getTasksAPI(id)
       projectStore.getProjectsAPI()
    }
-   handleWorkflowAPICall = () => {
+   handleWorkflowAPICall = (event, taskId) => {
       const { taskStore } = this.props
-      taskStore.getWorkflowsAPI()
+      taskStore.getWorkflowsAPI(taskId)
    }
    handleLogout = () => {
       const { history, authStore } = this.props

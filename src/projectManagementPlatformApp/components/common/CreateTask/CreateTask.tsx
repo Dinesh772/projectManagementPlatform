@@ -52,7 +52,7 @@ class CreateTask extends React.Component<{
       for (let i = 0; i < projectsData.length; ++i) {
          for (let j = 0; j < projectsData[i].length; ++j) {
             if (projectsData[i][j].name === value) {
-               projectId = projectsData[i][i].id
+               projectId = projectsData[i][j].id
                break
             }
          }

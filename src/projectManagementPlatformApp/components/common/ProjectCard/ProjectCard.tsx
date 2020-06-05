@@ -26,6 +26,10 @@ class ProjectCard extends React.Component<{
                {project.projectType}
             </Typo18HKGroteskRegular>
             <Typo18HKGroteskRegular>
+               {project.workflowType}
+            </Typo18HKGroteskRegular>
+
+            <Typo18HKGroteskRegular>
                <Timestamp
                   date={new Date(project.createdAt)}
                   options={{ includeDay: false, twentyFourHour: false }}

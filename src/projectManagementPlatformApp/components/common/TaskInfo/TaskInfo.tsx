@@ -58,7 +58,7 @@ class TaskInfo extends React.Component<{ handleClose: any; taskObject: any }> {
                   <Typo12SteelHKGroteskSemiBold>
                      {i18n.status}
                   </Typo12SteelHKGroteskSemiBold>
-                  <Text>{taskObject.workflow}</Text>
+                  <Text>{taskObject.status}</Text>
                </StatusWrapper>
                <CreatedAtWrapper>
                   <Typo12SteelHKGroteskSemiBold>
