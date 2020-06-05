@@ -8,20 +8,20 @@ import StatesModel from '../models/StatesModel'
 class TaskStore {
    @observable tasksList
    @observable tasksAPIStatus
+   @observable checklistAPIStatus
    @observable createTaskAPIStatus
    @observable changeStatusAPIStatus
    @observable getWorkflowsAPIStatus
    @observable getWorkflowsAPIError
-   @observable checklistAPIStatus
-   @observable checklistAPIError
-   @observable taskChecklist
    @observable changeStatusAPIError
    @observable createTaskAPIError
+   @observable checklistAPIError
    @observable tasksAPIError
-   @observable tasksLimitPerPage
+   @observable taskChecklist
    @observable totalTasks
    @observable totalPaginationLimit
    @observable currentPageNumber
+   @observable tasksLimitPerPage
    @observable workflows
    @observable projectId
    @observable offset

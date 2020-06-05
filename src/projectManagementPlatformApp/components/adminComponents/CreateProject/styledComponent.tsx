@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
 
-const CreateProjectWrapper = styled.div`
+export const CreateProjectWrapper = styled.div`
    display: flex;
    flex-direction: column;
    width: 30%;
@@ -12,7 +12,7 @@ const CreateProjectWrapper = styled.div`
    padding-right: 30px;
    background-color: ${Colors.white};
 `
-const CreateProjectHeader = styled.div`
+export const CreateProjectHeader = styled.div`
    display: flex;
    height: 40px;
    justify-content: space-between;
@@ -22,25 +22,25 @@ const CreateProjectHeader = styled.div`
    padding-bottom: 15px;
    border-bottom: 0.8px solid ${Colors.lightBlueGrey};
 `
-const ProjectDetails = styled.form`
+export const ProjectDetails = styled.form`
    display: flex;
    flex-direction: column;
    padding: 10px;
 `
-const TextareaElement = styled.textarea`
+export const TextareaElement = styled.textarea`
    border: 1px solid black;
 `
-const DropdownWrapper = styled.div`
+export const DropdownWrapper = styled.div`
    margin-top: 8px;
    margin-bottom: 12px;
    height: 50px;
 `
-const CreateWorkflowWrapper = styled.div<{ hide: any }>`
+export const CreateWorkflowWrapper = styled.div<{ hide: any }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    background-color: ${props =>
       props.hide ? Colors.black60 : Colors.whiteTwo};
 `
-const CreateButtonWrapper = styled.div`
+export const CreateButtonWrapper = styled.div`
    display: flex;
    flex-direction: column;
    margin-top: 20px;
@@ -48,16 +48,6 @@ const CreateButtonWrapper = styled.div`
    justify-content: center;
    align-items: center;
 `
-const ToasterWrapper = styled.div`
+export const ToasterWrapper = styled.div`
    display: flex;
 `
-export {
-   CreateProjectWrapper,
-   CreateProjectHeader,
-   ProjectDetails,
-   TextareaElement,
-   DropdownWrapper,
-   CreateWorkflowWrapper,
-   CreateButtonWrapper,
-   ToasterWrapper
-}

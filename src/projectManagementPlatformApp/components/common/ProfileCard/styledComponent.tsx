@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
 
-const ProfileCardWrapper = styled.div`
+export const ProfileCardWrapper = styled.div`
    display: flex;
    flex-direction: column;
    height: 100%;
@@ -9,21 +9,20 @@ const ProfileCardWrapper = styled.div`
    padding: 20px;
    background-color: ${Colors.whiteTwo};
 `
-const AvatarWrapper = styled.div`
+export const AvatarWrapper = styled.div`
    display: flex;
    width: 100%;
    margin-top: 40px;
    justify-content: center;
    height: 100%;
 `
-const ProfileDetails = styled.div`
+export const ProfileDetails = styled.div`
    display: flex;
    flex-direction: column;
    width: 100%;
    height: 100%;
 `
-const LogoutWrapper = styled.div`
+export const LogoutWrapper = styled.div`
    display: flex;
    justify-content: center;
 `
-export { ProfileCardWrapper, AvatarWrapper, ProfileDetails, LogoutWrapper }

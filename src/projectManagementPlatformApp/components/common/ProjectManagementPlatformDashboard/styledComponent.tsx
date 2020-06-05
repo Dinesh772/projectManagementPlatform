@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
-const ProjectManagementDashboardWrapper = styled.div`
+export const ProjectManagementDashboardWrapper = styled.div`
    display: flex;
    flex-direction: column;
    position: relative;
@@ -8,11 +8,11 @@ const ProjectManagementDashboardWrapper = styled.div`
    min-height: 100vh;
    width: 100%;
 `
-const ProjectsWrapper = styled.div`
+export const ProjectsWrapper = styled.div`
    min-height: 80vh;
    width: 100%;
 `
-const ProfileCardWrapper = styled.div<{ hide: boolean }>`
+export const ProfileCardWrapper = styled.div<{ hide: boolean }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    flex-direction: column;
    justify-content: flex-end;
@@ -28,8 +28,3 @@ const ProfileCardWrapper = styled.div<{ hide: boolean }>`
    height: 100vh;
    transition: 0.8s all ease-in;
 `
-export {
-   ProjectManagementDashboardWrapper,
-   ProjectsWrapper,
-   ProfileCardWrapper
-}

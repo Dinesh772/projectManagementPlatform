@@ -7,33 +7,26 @@ class TasksFixturesAPI {
    getTasksAPI = id => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(tasksFixtures), 1000)
-         //setTimeout(() => reject(new Error('error')), 1000)
       })
    }
    createTaskAPI = () => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve([]), 1000)
-
-         // setTimeout(() => reject(new Error('error')), 1000)
       })
    }
    changeTaskStatusAPI = () => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve([]), 1000)
-         //setTimeout(() => reject(new Error('error')), 1000)
       })
    }
    getChecklistAPI = () => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(checklistFixtures), 1000)
-         //setTimeout(() => reject(new Error('error')), 1000)
       })
    }
    getWorkflowsAPI = () => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(workflowsFixtures), 2000)
-         //setTimeout(() => reject(new Error('error')), 2000)
-         //resolve(workflowsFixtures)
       })
    }
 }

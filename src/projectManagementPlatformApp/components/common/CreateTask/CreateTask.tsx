@@ -105,22 +105,6 @@ class CreateTask extends React.Component<{
    }
    handleValidationChange = () => {
       const { createTaskDetails } = this
-      // if (!stringValidator(createTaskDetails.title)) {
-      //    this.taskTitleErrorMessage = i18n.thisFieldIsRequired
-      //    this.taskTitleFieldHasError = true
-      //    this.isValidated = false
-      // }
-      // if (!stringValidator(createTaskDetails.description)) {
-      //    this.taskDescriptionHasError = true
-      //    this.taskDescriptionErrorMessage = i18n.thisFieldIsRequired
-      //    this.isValidated = false
-      // }
-      // if (createTaskDetails.project === 0) {
-      //    this.projectHasError = i18n.thisFieldIsRequired
-      // }
-      // if (!stringValidator(createTaskDetails.issueType)) {
-      //    this.issueTypeError = i18n.thisFieldIsRequired
-      // }
       if (
          stringValidator(createTaskDetails.title) &&
          createTaskDetails.project !== 0

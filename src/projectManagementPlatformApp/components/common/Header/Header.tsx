@@ -11,6 +11,7 @@ import {
    ChildWrapper,
    ProfileWrapper
 } from './styledComponent'
+
 class Header extends React.Component<{
    handleProfileClick: any
 }> {

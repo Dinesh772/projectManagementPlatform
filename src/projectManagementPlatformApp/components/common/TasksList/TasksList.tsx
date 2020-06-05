@@ -11,7 +11,6 @@ import i18n from '../../../../i18n/strings.json'
 import TaskCard from '../TaskCard'
 
 import { TasksListWrapper, TasksListHeader } from './styledComponent'
-import { toJS } from 'mobx'
 
 @observer
 class TasksList extends React.Component<{

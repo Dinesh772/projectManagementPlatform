@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
 
-const TaskCardWrapper = styled.div<{ bgColor: any }>`
+export const TaskCardWrapper = styled.div<{ bgColor: any }>`
    display: flex;
    height: 45px;
    width: 100%;
@@ -11,20 +11,20 @@ const TaskCardWrapper = styled.div<{ bgColor: any }>`
    background-color: ${props => props.bgColor};
    cursor: pointer;
 `
-const DropdownWrapper = styled.div`
+export const DropdownWrapper = styled.div`
    width: 200px;
    height: 100%;
    display: flex;
    align-items: center;
    justify-content: center;
 `
-const DropdownWrapperParent = styled.div`
+export const DropdownWrapperParent = styled.div`
    width: 300px;
    height: 100%;
    display: flex;
    justify-content: center;
 `
-const InfoWrapper = styled.div`
+export const InfoWrapper = styled.div`
    width: 100px;
    display: flex;
    justify-content: center;
@@ -60,5 +60,3 @@ export const TextWrapper = styled.p`
    letter-spacing: normal;
    color: ${Colors.darkBlueGrey};
 `
-
-export { TaskCardWrapper, DropdownWrapper, DropdownWrapperParent, InfoWrapper }

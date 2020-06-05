@@ -15,11 +15,15 @@ import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrap
 
 import { Colors } from '../../../../themes/Colors'
 import i18n from '../../../../i18n/strings.json'
+import NoDataView from '../../../../Common/components/NoDataView'
+import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/RouteConstants'
 
 import TasksList from '../TasksList'
 import Pagination from '../Pagination'
 import CreateTask from '../CreateTask'
 import Header from '../Header'
+import TaskInfo from '../TaskInfo'
+import TransitionChange from '../TransitionChange'
 import ProfileCard from '../ProfileCard'
 
 import {
@@ -34,10 +38,6 @@ import {
    ToasterWrapper,
    ToastMessage
 } from './styledComponent'
-import TaskInfo from '../TaskInfo'
-import TransitionChange from '../TransitionChange'
-import NoDataView from '../../../../Common/components/NoDataView'
-import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/RouteConstants'
 
 type PropsType = {
    projectStore: any
@@ -246,7 +246,7 @@ class Tasks extends React.Component<PropsType> {
       const { taskStore } = this.props
 
       return (
-         <div>
+         <React.Fragment>
             <Header handleProfileClick={this.handleProfile} />
             <LoadingWrapperWithFailure
                apiStatus={taskStore.tasksAPIStatus}
@@ -260,7 +260,7 @@ class Tasks extends React.Component<PropsType> {
                   handleLogout={this.handleLogout}
                />
             </ProfileCardWrapper>
-         </div>
+         </React.Fragment>
       )
    }
 }

@@ -95,8 +95,8 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
                analytical and advertising purposes as described in our
                <a href={i18n.cookieConsentUrl}>
                   <u>Cookie Policy</u>
-               </a>{' '}
-               . By continuing to use our website, you accept our use of
+               </a>
+               {'  '}. By continuing to use our website, you accept our use of
                cookies. For more information, please refer to our Privacy
                Policy.
             </CookieConsent>

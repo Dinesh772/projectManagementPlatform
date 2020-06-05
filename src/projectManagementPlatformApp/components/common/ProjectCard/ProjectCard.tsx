@@ -2,13 +2,13 @@ import React from 'react'
 
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 import Timestamp from '../../../../../node_modules/react-timestamp/dist/index'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
 import {
    EachProjectWrapper,
    CreatedByWrapper,
    TextWrapper
 } from './styledComponent'
-import Avatar from '../../../../Common/components/Avatar/Avatar'
 
 class ProjectCard extends React.Component<{
    project: any

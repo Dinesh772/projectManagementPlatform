@@ -6,6 +6,7 @@ import i18n from '../../../../i18n/strings.json'
 import { Colors } from '../../../../themes/Colors'
 import Avatar from '../../../../Common/components/Avatar/Avatar'
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
+import { getAdmin } from '../../../../Common/utils/StorageUtils'
 
 import Logout from '../Logout/Logout'
 
@@ -15,7 +16,6 @@ import {
    ProfileDetails,
    LogoutWrapper
 } from './styledComponent'
-import { getAdmin } from '../../../../Common/utils/StorageUtils'
 
 class ProfileCard extends React.Component<{
    handleProfile: any

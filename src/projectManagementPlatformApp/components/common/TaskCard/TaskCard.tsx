@@ -14,6 +14,7 @@ import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 import Loader from '../../../../Common/components/Icons/Loader/SvgFile'
 import { Colors } from '../../../../themes/Colors'
 import i18n from '../../../../i18n/strings.json'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 
 import {
    TaskCardWrapper,
@@ -24,7 +25,6 @@ import {
    CreatedByWrapper,
    TextWrapper
 } from './styledComponent'
-import Avatar from '../../../../Common/components/Avatar/Avatar'
 
 @observer
 class TaskCard extends React.Component<{

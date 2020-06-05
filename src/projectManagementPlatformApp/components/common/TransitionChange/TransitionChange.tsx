@@ -13,7 +13,7 @@ import {
    Typo12NeonRedHKGroteskRegular,
    Typo12SteelHKGroteskSemiBold
 } from '../../../../styleGuide/Typos'
-import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
+import UpdateButton from '../../../../Common/components/CommonButton/CommonButton'
 import { Checkbox } from '../../../../Common/components/Checkbox/Checkbox'
 import { Colors } from '../../../../themes/Colors'
 import FailureView from '../../../../Common/components/LoadingWrapperWithFailure/FailureView'
@@ -50,7 +50,6 @@ class TransitionChange extends React.Component<{
    }
    @observable checkedList = []
    componentWillReceiveProps(props) {
-     
       this.onResetAllToDefault()
       this.states = {
          from: this.props.taskObject.status,
@@ -83,7 +82,7 @@ class TransitionChange extends React.Component<{
    handleValidation = () => {
       const result: any = []
       const { checkedFieldIds, mandatoryFieldIds } = this
-     
+
       for (let i = 0; i < checkedFieldIds.length; ++i) {
          if (mandatoryFieldIds.includes(checkedFieldIds[i])) {
             result.push(checkedFieldIds[i])
@@ -236,7 +235,7 @@ class TransitionChange extends React.Component<{
             <SubmitButtonWrapper
                hide={checklistFetchingStatus === API_SUCCESS ? true : false}
             >
-               <CommonButton
+               <UpdateButton
                   isDisabled={!this.isValidated}
                   height={'40px'}
                   width={'120px'}

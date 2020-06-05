@@ -14,7 +14,6 @@ class ProjectStore {
    @observable projectsAPIError
    @observable workflowsAPIError
    @observable createProjectAPIError
-   @observable isAdmin
    @observable projectsLimitPerPage
    @observable totalProjects
    @observable totalPaginationLimit
@@ -36,7 +35,6 @@ class ProjectStore {
       this.projectsAPIError = null
       this.workflowsAPIError = null
       this.createProjectAPIError = null
-      this.isAdmin = true
       this.projectsLimitPerPage = 10
       this.totalProjects = 0
       this.totalPaginationLimit = 0
@@ -155,7 +153,6 @@ class ProjectStore {
    }
    @action.bound
    onAddProject(projects) {
-      console.log(projects)
       const projectsList = projects.map(
          eachProject => new ProjectModel(eachProject)
       )

@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { ToastContainer, Slide } from 'react-toastify'
 
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
-import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
+import CreateProjectButton from '../../../../Common/components/CommonButton/CommonButton'
 import NoDataView from '../../../../Common/components/NoDataView'
 
 import i18n from '../../../../i18n/strings.json'
@@ -66,7 +66,7 @@ class AdminDashboard extends React.Component<{
                <Typo26BrightBlueHKGroteskRegular>
                   {i18n.listOfProjects}
                </Typo26BrightBlueHKGroteskRegular>
-               <CommonButton
+               <CreateProjectButton
                   buttonValue={i18n.create}
                   handleClick={this.handleClick}
                   height={'30px'}

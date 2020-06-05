@@ -1,22 +1,16 @@
 import React from 'react'
 
 import AdminDashboard from './AdminDashboard'
-import { Router, Route, withRouter } from 'react-router-dom'
-import { Provider } from 'mobx-react'
-import {
-   render,
-   fireEvent,
-   waitFor,
-   getAllByText
-} from '@testing-library/react'
+import { Router } from 'react-router-dom'
+import { render, fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 import i18n from '../../../../i18n/strings.json'
 import ProjectsFixtureService from '../../../services/ProjectsService/index.fixtures'
 import projectsData from '../../../fixtures/projectFixtures.json'
 
 import ProjectStore from '../../../stores/ProjectStore'
-import AuthApi from '../../../../authentication/services/AuthService'
-import AuthStore from '../../../../authentication/stores/AuthStore'
+import AuthApi from '../../../../Authentication/services/AuthService'
+import AuthStore from '../../../../Authentication/stores/AuthStore'
 import TasksFixturesAPI from '../../../services/TaskService/index.fixtures'
 import TaskStore from '../../../stores/TaskStore'
 describe('Admin component tests', () => {
@@ -66,7 +60,7 @@ describe('Admin component tests', () => {
       getAllByText(i18n.type)
       getAllByText(i18n.createdAt)
       getAllByText(i18n.createdBy)
-      getAllByText('Chastity Hutchinson')
+      getAllByText('Ganesh karedla')
    })
    it('should open create project modal onClick create project', () => {
       const { getByText, getAllByText } = render(

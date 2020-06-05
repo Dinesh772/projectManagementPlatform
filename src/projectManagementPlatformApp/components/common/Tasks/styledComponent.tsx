@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
-const TasksPageWrapper = styled.div`
+export const TasksPageWrapper = styled.div`
    display: flex;
    flex-direction: column;
    background-color: ${Colors.whiteTwo};
 `
-const PaginationWrapper = styled.div<{ backgroundColor: boolean }>``
-const ProjectTaskHeader = styled.div`
+export const PaginationWrapper = styled.div<{ backgroundColor: boolean }>``
+export const ProjectTaskHeader = styled.div`
    display: flex;
    width: 100%;
    justify-content: space-between;
@@ -15,14 +15,14 @@ const ProjectTaskHeader = styled.div`
    padding-top: 30px;
    padding-bottom: 30px;
 `
-const TasksWrapper = styled.div`
+export const TasksWrapper = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100%;
    height: 500px;
 `
-const CreateTaskWrapper = styled.div<{ hide: any }>`
+export const CreateTaskWrapper = styled.div<{ hide: any }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    justify-content: center;
    align-items: center;
@@ -44,7 +44,7 @@ export const TransitionConfirmationWrapper = styled.div<{ hide: any }>`
    height: 100vh;
    background-color: ${props => (props.hide ? Colors.black60 : 'inherit')};
 `
-const TaskInfoWrapper = styled.div<{ hide: any }>`
+export const TaskInfoWrapper = styled.div<{ hide: any }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    justify-content: center;
    align-items: center;
@@ -55,7 +55,7 @@ const TaskInfoWrapper = styled.div<{ hide: any }>`
    height: 100vh;
    background-color: ${Colors.black60};
 `
-const ProfileCardWrapper = styled.div<{ hide: boolean }>`
+export const ProfileCardWrapper = styled.div<{ hide: boolean }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    flex-direction: column;
    justify-content: flex-end;
@@ -81,12 +81,3 @@ export const ToasterWrapper = styled.div`
 export const ToastMessage = styled.div`
    display: flex;
 `
-export {
-   TasksPageWrapper,
-   PaginationWrapper,
-   CreateTaskWrapper,
-   ProjectTaskHeader,
-   TasksWrapper,
-   ProfileCardWrapper,
-   TaskInfoWrapper
-}

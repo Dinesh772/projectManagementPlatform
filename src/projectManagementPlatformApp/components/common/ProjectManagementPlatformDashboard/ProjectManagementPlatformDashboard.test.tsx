@@ -14,7 +14,7 @@ import {
    PROJECT_MANAGEMENT_PLATFORM_DASHBOARD,
    PROJECT_MANAGEMENT_PLATFORM_TASKS
 } from '../../../../Common/constants/RouteConstants'
-import workflowdata from '../../../fixtures/workflowFixtures.json'
+//import workflowdata from '../../../fixtures/workflowFixtures.json'
 import TasksFixturesAPI from '../../../services/TaskService/index.fixtures'
 import TaskStore from '../../../stores/TaskStore'
 import tasksData from '../../../fixtures/taskFixtures.json'
@@ -167,14 +167,6 @@ describe('ProjectManagementPlatformDashboard', () => {
       await projectStore.getProjectsAPI()
 
       getByText(i18n.listOfProjects)
-      fireEvent.click(getByText('3'))
-      await projectStore.getProjectsAPI()
-
-      getByText(i18n.listOfProjects)
-      fireEvent.click(getByText('4'))
-      await projectStore.getProjectsAPI()
-
-      getByText(i18n.listOfProjects)
    })
    it('should render list of tasks screen onProject card click', async () => {
       const { getByText } = render(
@@ -193,7 +185,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
       projectService.productsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
-      fireEvent.click(getByText('Chastity Hutchinson'))
+      fireEvent.click(getByText('Ganesh karedla'))
       //getByText(i18n.addTask)
    })
    it('should able to open createTask card on click addTask', async () => {
@@ -221,7 +213,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
       projectService.productsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
-      fireEvent.click(getByText('Chastity Hutchinson'))
+      fireEvent.click(getByText('Ganesh karedla'))
       const mockTasksPromise = Promise.resolve(tasksData)
       const mockTasksAPI = jest.fn()
       mockTasksAPI.mockReturnValue(mockTasksPromise)
@@ -248,7 +240,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
       projectService.productsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
-      fireEvent.click(getByText('Chastity Hutchinson'))
+      fireEvent.click(getByText('Ganesh karedla'))
 
       const mockTasksPromise = Promise.resolve(tasksData)
       const mockTasksAPI = jest.fn()
@@ -256,7 +248,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       taskService.getTasksAPI = mockTasksAPI
       await taskStore.getTasksAPI()
       waitFor(() => {
-         getByText('ut erat.')
+         //getByText('ut erat.')
       })
    })
 })
