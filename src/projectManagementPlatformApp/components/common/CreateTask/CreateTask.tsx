@@ -46,61 +46,81 @@ class CreateTask extends React.Component<{
    @observable issueTypeError = ''
    handleProjectChange = event => {
       const value = event.target.value
-      const { projectsData } = this.props
-      let projectId = 0
-
-      for (let i = 0; i < projectsData.length; ++i) {
-         for (let j = 0; j < projectsData[i].length; ++j) {
-            if (projectsData[i][j].name === value) {
-               projectId = projectsData[i][j].id
-               break
+      if (stringValidator(value)) {
+         const { projectsData } = this.props
+         let projectId = 0
+         for (let i = 0; i < projectsData.length; ++i) {
+            for (let j = 0; j < projectsData[i].length; ++j) {
+               if (projectsData[i][j].name === value) {
+                  projectId = projectsData[i][j].id
+                  break
+               }
             }
          }
+         this.createTaskDetails.project = projectId
+         this.projectHasError = ''
+         this.handleValidationChange()
+      } else {
+         this.projectHasError = i18n.thisFieldIsRequired
+         this.isValidated = false
       }
-
-      this.createTaskDetails.project = projectId
-      this.projectHasError = ''
-      this.handleValidationChange()
    }
 
    handleIssueTypeChange = event => {
       const value = event.target.value
-      this.createTaskDetails.issueType = value
-      this.issueTypeError = ''
-      this.handleValidationChange()
+      if (stringValidator(value)) {
+         this.createTaskDetails.issueType = value
+         this.issueTypeError = ''
+         this.handleValidationChange()
+      } else {
+         this.isValidated = false
+         this.issueTypeError = i18n.thisFieldIsRequired
+      }
    }
    hadleTitleChange = event => {
       const value = event.target.value
-      this.createTaskDetails.title = value
-      this.taskTitleFieldHasError = false
-      this.taskTitleErrorMessage = ''
-      this.handleValidationChange()
-   }
-   handleDescriptionChange = event => {
-      const value = event.target.value
-      this.createTaskDetails.description = value
-      this.taskDescriptionHasError = false
-      this.taskDescriptionErrorMessage = ''
-      this.handleValidationChange()
-   }
-   handleValidationChange = () => {
-      const { createTaskDetails } = this
-      if (!stringValidator(createTaskDetails.title)) {
+      if (stringValidator(value)) {
+         this.createTaskDetails.title = value
+         this.taskTitleFieldHasError = false
+         this.taskTitleErrorMessage = ''
+         this.handleValidationChange()
+      } else {
          this.taskTitleErrorMessage = i18n.thisFieldIsRequired
          this.taskTitleFieldHasError = true
          this.isValidated = false
       }
-      if (!stringValidator(createTaskDetails.description)) {
+   }
+   handleDescriptionChange = event => {
+      const value = event.target.value
+      if (stringValidator(value)) {
+         this.createTaskDetails.description = value
+         this.taskDescriptionHasError = false
+         this.taskDescriptionErrorMessage = ''
+         this.handleValidationChange()
+      } else {
          this.taskDescriptionHasError = true
          this.taskDescriptionErrorMessage = i18n.thisFieldIsRequired
          this.isValidated = false
       }
-      if (createTaskDetails.project === 0) {
-         this.projectHasError = i18n.thisFieldIsRequired
-      }
-      if (!stringValidator(createTaskDetails.issueType)) {
-         this.issueTypeError = i18n.thisFieldIsRequired
-      }
+   }
+   handleValidationChange = () => {
+      const { createTaskDetails } = this
+      // if (!stringValidator(createTaskDetails.title)) {
+      //    this.taskTitleErrorMessage = i18n.thisFieldIsRequired
+      //    this.taskTitleFieldHasError = true
+      //    this.isValidated = false
+      // }
+      // if (!stringValidator(createTaskDetails.description)) {
+      //    this.taskDescriptionHasError = true
+      //    this.taskDescriptionErrorMessage = i18n.thisFieldIsRequired
+      //    this.isValidated = false
+      // }
+      // if (createTaskDetails.project === 0) {
+      //    this.projectHasError = i18n.thisFieldIsRequired
+      // }
+      // if (!stringValidator(createTaskDetails.issueType)) {
+      //    this.issueTypeError = i18n.thisFieldIsRequired
+      // }
       if (
          stringValidator(createTaskDetails.title) &&
          createTaskDetails.project !== 0
@@ -241,7 +261,7 @@ class CreateTask extends React.Component<{
                   hasError={this.taskTitleFieldHasError}
                   errorMessage={this.taskTitleErrorMessage}
                   onChange={this.hadleTitleChange}
-                  validate={this.handleValidationChange}
+                  validate={this.hadleTitleChange}
                />
                <UserTextareaInput
                   label={i18n.description}
@@ -250,7 +270,7 @@ class CreateTask extends React.Component<{
                   errorMessage={this.taskDescriptionErrorMessage}
                   value={this.createTaskDetails.description}
                   testId={i18n.projectDescriptionTestId}
-                  validate={this.handleValidationChange}
+                  validate={this.handleDescriptionChange}
                   onChange={this.handleDescriptionChange}
                />
 

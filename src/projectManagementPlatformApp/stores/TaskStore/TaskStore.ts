@@ -155,11 +155,13 @@ class TaskStore {
    }
    @action.bound
    setChecklistAPIError(error) {
+      console.log(error)
       this.checklistAPIError = error
    }
 
    @action.bound
    setChecklistAPIResponse(response) {
+      console.log(response)
       // this.onAddChecklists(response)
    }
 

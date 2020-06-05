@@ -57,60 +57,63 @@ class CreateProject extends React.Component<{
    @observable isValidated = false
    handleTitleChange = event => {
       const value = event.target.value
-
-      this.projectData.projectName = value
-      this.projectNameErrorMessage = ''
-      this.projectNameFieldHasError = false
-
-      this.handleValidation()
-   }
-   handleDescriptionChange = event => {
-      const value = event.target.value
-
-      this.projectData.description = value
-      this.projectDescriptionHasError = false
-      this.projectDescriptionErrorMessage = ''
-      this.handleValidation()
-   }
-   handleWorkflowDropdownChange = event => {
-      const value = event.target.value
-      const { workflows } = this.props
-      let selectedId
-      for (let i = 0; i < workflows.length; ++i) {
-         if (workflows[i].name === value) {
-            selectedId = workflows[i].workflowId
-            break
-         }
-      }
-      this.projectData.workflowType = selectedId
-
-      this.projectWorkflowError = ''
-      this.handleValidation()
-   }
-   handleProjectTypeDropdown = event => {
-      const value = event.target.value
-      this.projectData.projectType = value.toString()
-      this.projectTypeError = ''
-      this.handleValidation()
-   }
-   handleValidation = () => {
-      const { projectData } = this
-      if (!stringValidator(projectData.projectName)) {
+      if (stringValidator(value)) {
+         this.projectData.projectName = value
+         this.projectNameErrorMessage = ''
+         this.projectNameFieldHasError = false
+         this.handleValidation()
+      } else {
          this.projectNameErrorMessage = i18n.thisFieldIsRequired
          this.projectNameFieldHasError = true
          this.isValidated = false
       }
-      if (!stringValidator(projectData.description)) {
+   }
+   handleDescriptionChange = event => {
+      const value = event.target.value
+      if (stringValidator(value)) {
+         this.projectData.description = value
+         this.projectDescriptionHasError = false
+         this.projectDescriptionErrorMessage = ''
+         this.handleValidation()
+      } else {
          this.projectDescriptionHasError = true
          this.projectDescriptionErrorMessage = i18n.thisFieldIsRequired
          this.isValidated = false
       }
-      if (!stringValidator(projectData.projectType)) {
-         this.projectTypeError = i18n.thisFieldIsRequired
-      }
-      if (projectData.workflowType === 0) {
+   }
+   handleWorkflowDropdownChange = event => {
+      const value = event.target.value
+      if (stringValidator(value)) {
+         const { workflows } = this.props
+         let selectedId
+         for (let i = 0; i < workflows.length; ++i) {
+            if (workflows[i].name === value) {
+               selectedId = workflows[i].workflowId
+               break
+            }
+         }
+         this.projectData.workflowType = selectedId
+
+         this.projectWorkflowError = ''
+         this.handleValidation()
+      } else {
          this.projectWorkflowError = i18n.thisFieldIsRequired
+         this.isValidated = false
       }
+   }
+   handleProjectTypeDropdown = event => {
+      const value = event.target.value
+      if (stringValidator(value)) {
+         this.projectData.projectType = value.toString()
+         this.projectTypeError = ''
+         this.handleValidation()
+      } else {
+         this.projectTypeError = i18n.thisFieldIsRequired
+         this.isValidated = false
+      }
+   }
+   handleValidation = () => {
+      const { projectData } = this
       if (
          stringValidator(projectData.projectName) &&
          stringValidator(projectData.description)
@@ -180,6 +183,7 @@ class CreateProject extends React.Component<{
       const { handleClick } = this.props
       handleClick()
    }
+
    render() {
       const {
          workflows,
@@ -218,7 +222,7 @@ class CreateProject extends React.Component<{
                   onChange={this.handleTitleChange}
                   hasError={this.projectNameFieldHasError}
                   errorMessage={this.projectNameErrorMessage}
-                  validate={this.handleValidation}
+                  validate={this.handleTitleChange}
                   value={this.projectData.projectName}
                   testId={i18n.createProjectNameTestId}
                   width={'100%'}
@@ -230,7 +234,7 @@ class CreateProject extends React.Component<{
                   onChange={this.handleDescriptionChange}
                   hasError={this.projectDescriptionHasError}
                   errorMessage={this.projectDescriptionErrorMessage}
-                  validate={this.handleValidation}
+                  validate={this.handleDescriptionChange}
                   value={this.projectData.description}
                   testId={i18n.projectDescriptionTestId}
                />
@@ -254,7 +258,7 @@ class CreateProject extends React.Component<{
                      handleChange={this.handleProjectTypeDropdown}
                      errorMessage={this.projectTypeError}
                      placeholder={i18n.selectType}
-                     handleFocus={this.handleValidation}
+                     handleFocus={this.handleProjectTypeDropdown}
                   />
                </DropdownWrapper>
                <CreateButtonWrapper>

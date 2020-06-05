@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
 
-const AdminWrapper = styled.div`
+export const AdminWrapper = styled.div`
    min-height: 80vh;
    width: 100%;
 `
-const AdminHeader = styled.div<{ backgroundColor: boolean }>`
+export const AdminHeader = styled.div<{ backgroundColor: boolean }>`
    display: flex;
    width: 100%;
    justify-content: space-between;
@@ -14,7 +14,7 @@ const AdminHeader = styled.div<{ backgroundColor: boolean }>`
    padding-top: 30px;
    padding-bottom: 30px;
 `
-const CreateProjectWrapper = styled.div<{ hide: any }>`
+export const CreateProjectWrapper = styled.div<{ hide: any }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    justify-content: center;
    align-items: center;
@@ -25,9 +25,9 @@ const CreateProjectWrapper = styled.div<{ hide: any }>`
    height: 100vh;
    background-color: ${props => (props.hide ? Colors.black60 : 'inherit')};
 `
-const ProjectsWrapper = styled.div<{ backgroundColor: boolean }>``
-const PaginationWrapper = styled.div<{ backgroundColor: boolean }>``
-const ProjectTaskHeader = styled.div`
+export const ProjectsWrapper = styled.div<{ backgroundColor: boolean }>``
+export const PaginationWrapper = styled.div<{ backgroundColor: boolean }>``
+export const ProjectTaskHeader = styled.div`
    display: flex;
    width: 100%;
    justify-content: space-between;
@@ -36,14 +36,14 @@ const ProjectTaskHeader = styled.div`
    padding-top: 30px;
    padding-bottom: 30px;
 `
-const TasksWrapper = styled.div`
+export const TasksWrapper = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100%;
    height: 500px;
 `
-const CreateTaskWrapper = styled.div<{ hide: any }>`
+export const CreateTaskWrapper = styled.div<{ hide: any }>`
    display: ${props => (props.hide ? 'flex' : 'none')};
    justify-content: center;
    align-items: center;
@@ -54,20 +54,9 @@ const CreateTaskWrapper = styled.div<{ hide: any }>`
    height: 100vh;
    background-color: ${props => (props.hide ? Colors.black60 : 'inherit')};
 `
-const ToasterWrapper = styled.div`
+export const ToasterWrapper = styled.div`
    position: fixed;
    z-index: 10;
    bottom: 0;
    left: 40%;
 `
-export {
-   AdminWrapper,
-   AdminHeader,
-   CreateProjectWrapper,
-   ProjectsWrapper,
-   PaginationWrapper,
-   ProjectTaskHeader,
-   TasksWrapper,
-   CreateTaskWrapper,
-   ToasterWrapper
-}

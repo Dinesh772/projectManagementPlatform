@@ -2,7 +2,13 @@ import React from 'react'
 
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 import Timestamp from '../../../../../node_modules/react-timestamp/dist/index'
-import { EachProjectWrapper } from './styledComponent'
+import i18n from '../../../../i18n/strings.json'
+import {
+   EachProjectWrapper,
+   CreatedByWrapper,
+   TextWrapper
+} from './styledComponent'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 
 class ProjectCard extends React.Component<{
    project: any
@@ -35,9 +41,14 @@ class ProjectCard extends React.Component<{
                   options={{ includeDay: false, twentyFourHour: false }}
                />
             </Typo18HKGroteskRegular>
-            <Typo18HKGroteskRegular>
-               {project.whoCreated}
-            </Typo18HKGroteskRegular>
+            <CreatedByWrapper>
+               <Avatar
+                  path={i18n.avatarImageSrc}
+                  height={'32px'}
+                  width={'32px'}
+               />
+               <TextWrapper>{project.whoCreated}</TextWrapper>
+            </CreatedByWrapper>
          </EachProjectWrapper>
       )
    }

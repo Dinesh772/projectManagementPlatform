@@ -1,557 +1,95 @@
 {
    "projects": [
-      [
-         {
-            "name": "Chastity Hutchinson",
-            "workflow_type": 94,
-            "created_by": "Cherokee Gardner",
-            "created_at": "07/07/19",
-            "project_id": 82,
-            "description": "nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque",
-            "project_type": "ornare, facilisis"
-         },
-         {
-            "name": "Leandra Adkins",
-            "workflow_type": 4,
-            "created_by": "Risa Tucker",
-            "created_at": "03/07/21",
-            "project_id": 7,
-            "description": "sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus",
-            "project_type": "auctor,"
-         },
-         {
-            "name": "Shelby Mayo",
-            "workflow_type": 3,
-            "created_by": "Chantale Black",
-            "created_at": "08/12/20",
-            "project_id": 75,
-            "description": "nec mauris blandit mattis. Cras eget nisi dictum augue malesuada",
-            "project_type": "hendrerit"
-         },
-         {
-            "name": "Mara Battle",
-            "workflow_type": 76,
-            "created_by": "Brielle Bailey",
-            "created_at": "03/27/20",
-            "project_id": 83,
-            "description": "rproject_idiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam",
-            "project_type": "ad litora"
-         },
-         {
-            "name": "Kendall Ingram",
-            "workflow_type": 1,
-            "created_by": "Barrett Casey",
-            "created_at": "09/11/19",
-            "project_id": 12,
-            "description": "ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis",
-            "project_type": "egestas, urna"
-         },
-         {
-            "name": "Erin May",
-            "workflow_type": 73,
-            "created_by": "Xyla Talley",
-            "created_at": "01/12/21",
-            "project_id": 9,
-            "description": "iaculis enim, sit amet ornare lectus justo eu arcu. Morbi",
-            "project_type": "lacus"
-         },
-         {
-            "name": "Ignacia Simon",
-            "workflow_type": 31,
-            "created_by": "Amaya Aguirre",
-            "created_at": "02/23/20",
-            "project_id": 94,
-            "description": "et risus. Quisque libero lacus, varius et, euismod et, commodo",
-            "project_type": "volutpat."
-         },
-         {
-            "name": "Miriam Lamb",
-            "workflow_type": 43,
-            "created_by": "Dakota Phelps",
-            "created_at": "10/15/19",
-            "project_id": 14,
-            "description": "fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed,",
-            "project_type": "in sodales"
-         },
-         {
-            "name": "Erica Graham",
-            "workflow_type": 99,
-            "created_by": "Candace Christensen",
-            "created_at": "07/15/19",
-            "project_id": 19,
-            "description": "elit erat vitae risus. Duis a mi fringilla mi lacinia",
-            "project_type": "ac mattis"
-         },
-         {
-            "name": "Xaviera William",
-            "workflow_type": 80,
-            "created_by": "Latifah Bright",
-            "created_at": "12/26/19",
-            "project_id": 60,
-            "description": "molestie pharetra nibh. Aliquam ornare, libero at auctor ullamcorper, nisl",
-            "project_type": "pulvinar"
-         }
-      ],
-      [
-         {
-            "name": "Shay Clarke",
-            "workflow_type": 33,
-            "created_by": "Rooney Reed",
-            "created_at": "10/14/20",
-            "project_id": 90,
-            "description": "Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros.",
-            "project_type": "risus,"
-         },
-         {
-            "name": "Medge Henry",
-            "workflow_type": 99,
-            "created_by": "Tanek Hebert",
-            "created_at": "02/24/21",
-            "project_id": 10,
-            "description": "neque. In ornare sagittis felis. Donec tempor, est ac mattis",
-            "project_type": "egestas blandit."
-         },
-         {
-            "name": "Olympia Bray",
-            "workflow_type": 4,
-            "created_by": "Beatrice Ortiz",
-            "created_at": "03/13/21",
-            "project_id": 54,
-            "description": "vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non",
-            "project_type": "scelerisque"
-         },
-         {
-            "name": "Skyler Mayo",
-            "workflow_type": 55,
-            "created_by": "Trevor Wise",
-            "created_at": "06/01/20",
-            "project_id": 62,
-            "description": "eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce",
-            "project_type": "blandit"
-         },
-         {
-            "name": "Rinah James",
-            "workflow_type": 54,
-            "created_by": "Vincent Porter",
-            "created_at": "07/09/20",
-            "project_id": 64,
-            "description": "dictum mi, ac mattis velit justo nec ante. Maecenas mi",
-            "project_type": "quis,"
-         },
-         {
-            "name": "Carissa Barlow",
-            "workflow_type": 17,
-            "created_by": "Thane Ross",
-            "created_at": "09/06/20",
-            "project_id": 568,
-            "description": "eget nisi dictum augue malesuada malesuada. Integer project_id magna et",
-            "project_type": "sodales."
-         },
-         {
-            "name": "Rebecca Contreras",
-            "workflow_type": 92,
-            "created_by": "Rhona Hobbs",
-            "created_at": "01/22/21",
-            "project_id": 91,
-            "description": "Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut",
-            "project_type": "a nunc."
-         },
-         {
-            "name": "Adria Gilmore",
-            "workflow_type": 58,
-            "created_by": "Cedric Davenport",
-            "created_at": "08/26/20",
-            "project_id": 56,
-            "description": "Nulla semper tellus project_id nunc interdum feugiat. Sed nec metus",
-            "project_type": "at,"
-         },
-         {
-            "name": "Hiroko Mccray",
-            "workflow_type": 98,
-            "created_by": "Tamekah Long",
-            "created_at": "04/29/21",
-            "project_id": 98,
-            "description": "ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis",
-            "project_type": "tellus."
-         },
-         {
-            "name": "Iris Salazar",
-            "workflow_type": 48,
-            "created_by": "Dante Poole",
-            "created_at": "04/07/20",
-            "project_id": 86,
-            "description": "Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat velit.",
-            "project_type": "nec, eleifend"
-         }
-      ],
-      [
-         {
-            "name": "Isabelle Jimenez",
-            "workflow_type": 26,
-            "created_by": "Louis Weiss",
-            "created_at": "03/03/21",
-            "project_id": 36,
-            "description": "pede. Praesent eu dui. Cum sociis natoque penatibus et magnis",
-            "project_type": "placerat velit."
-         },
-         {
-            "name": "Whitney Lester",
-            "workflow_type": 88,
-            "created_by": "Peter Gomez",
-            "created_at": "05/16/20",
-            "project_id": 45,
-            "description": "a purus. Duis elementum, dui quis accumsan convallis, ante lectus",
-            "project_type": "Quisque porttitor"
-         },
-         {
-            "name": "Serina Rosario",
-            "workflow_type": 27,
-            "created_by": "Murphy Burgess",
-            "created_at": "04/15/21",
-            "project_id": 29,
-            "description": "purus gravproject_ida sagittis. Duis gravproject_ida. Praesent eu nulla at sem",
-            "project_type": "urna,"
-         },
-         {
-            "name": "Nadine Brewer",
-            "workflow_type": 82,
-            "created_by": "Aristotle Hutchinson",
-            "created_at": "01/01/21",
-            "project_id": 24,
-            "description": "urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac",
-            "project_type": "Nam tempor"
-         },
-         {
-            "name": "Sheila Pugh",
-            "workflow_type": 13,
-            "created_by": "Patrick Goodwin",
-            "created_at": "05/13/20",
-            "project_id": 5,
-            "description": "eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in",
-            "project_type": "morbi"
-         },
-         {
-            "name": "Deanna Wilkins",
-            "workflow_type": 15,
-            "created_by": "Lucy Golden",
-            "created_at": "06/28/19",
-            "project_id": 93,
-            "description": "odio vel est tempor bibendum. Donec felis orci, adipiscing non,",
-            "project_type": "urna"
-         },
-         {
-            "name": "Hedwig Pena",
-            "workflow_type": 7,
-            "created_by": "Jacqueline Acevedo",
-            "created_at": "03/22/21",
-            "project_id": 8,
-            "description": "at lacus. Quisque purus sapien, gravproject_ida non, sollicitudin a, malesuada",
-            "project_type": "ante"
-         },
-         {
-            "name": "Julie Hess",
-            "workflow_type": 28,
-            "created_by": "Susan Branch",
-            "created_at": "06/27/20",
-            "project_id": 83,
-            "description": "sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo",
-            "project_type": "Aliquam"
-         },
-         {
-            "name": "Ramona Guerra",
-            "workflow_type": 99,
-            "created_by": "Armando Contreras",
-            "created_at": "01/30/21",
-            "project_id": 79,
-            "description": "lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus.",
-            "project_type": "lorem"
-         },
-         {
-            "name": "Brielle Casey",
-            "workflow_type": 67,
-            "created_by": "Zephr Stout",
-            "created_at": "03/11/21",
-            "project_id": 97,
-            "description": "lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed",
-            "project_type": "nec,"
-         }
-      ],
-      [
-         {
-            "name": "Julie Hess",
-            "workflow_type": 28,
-            "created_by": "Susan Branch",
-            "created_at": "06/27/20",
-            "project_id": 863,
-            "description": "sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo",
-            "project_type": "Aliquam"
-         },
-         {
-            "name": "Isabelle Jimenez",
-            "workflow_type": 265,
-            "created_by": "Louis Weiss",
-            "created_at": "03/03/21",
-            "project_id": 365,
-            "description": "pede. Praesent eu dui. Cum sociis natoque penatibus et magnis",
-            "project_type": "placerat velit."
-         },
-         {
-            "name": "Whitney Lester",
-            "workflow_type": 88,
-            "created_by": "Peter Gomez",
-            "created_at": "05/16/20",
-            "project_id": 405,
-            "description": "a purus. Duis elementum, dui quis accumsan convallis, ante lectus",
-            "project_type": "Quisque porttitor"
-         },
-         {
-            "name": "Serina Rosario",
-            "workflow_type": 27,
-            "created_by": "Murphy Burgess",
-            "created_at": "04/15/21",
-            "project_id": 289,
-            "description": "purus gravproject_ida sagittis. Duis gravproject_ida. Praesent eu nulla at sem",
-            "project_type": "urna,"
-         },
-         {
-            "name": "Ramona Guerra",
-            "workflow_type": 99,
-            "created_by": "Armando Contreras",
-            "created_at": "01/30/21",
-            "project_id": 793,
-            "description": "lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus.",
-            "project_type": "lorem"
-         },
-         {
-            "name": "Brielle Casey",
-            "workflow_type": 67,
-            "created_by": "Zephr Stout",
-            "created_at": "03/11/21",
-            "project_id": 971,
-            "description": "lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed",
-            "project_type": "nec,"
-         },
-         {
-            "name": "Nadine Brewer",
-            "workflow_type": 82,
-            "created_by": "Aristotle Hutchinson",
-            "created_at": "01/01/21",
-            "project_id": 204,
-            "description": "urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac",
-            "project_type": "Nam tempor"
-         },
-         {
-            "name": "Sheila Pugh",
-            "workflow_type": 13,
-            "created_by": "Patrick Goodwin",
-            "created_at": "05/13/20",
-            "project_id": 567,
-            "description": "eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in",
-            "project_type": "morbi"
-         },
-         {
-            "name": "Deanna Wilkins",
-            "workflow_type": 15,
-            "created_by": "Lucy Golden",
-            "created_at": "06/28/19",
-            "project_id": 983,
-            "description": "odio vel est tempor bibendum. Donec felis orci, adipiscing non,",
-            "project_type": "urna"
-         },
-         {
-            "name": "Hedwig Pena",
-            "workflow_type": 7,
-            "created_by": "Jacqueline Acevedo",
-            "created_at": "03/22/21",
-            "project_id": 869,
-            "description": "at lacus. Quisque purus sapien, gravproject_ida non, sollicitudin a, malesuada",
-            "project_type": "ante"
-         }
-      ],
-      [
-         {
-            "name": "New Page sChastity Hutchinson",
-            "workflow_type": 94,
-            "created_by": "Cherokee Gardner",
-            "created_at": "07/07/19",
-            "project_id": 8202,
-            "description": "nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque",
-            "project_type": "ornare, facilisis"
-         },
-         {
-            "name": "Leandra Adkins",
-            "workflow_type": 4,
-            "created_by": "Risa Tucker",
-            "created_at": "03/07/21",
-            "project_id": 7000,
-            "description": "sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus",
-            "project_type": "auctor,"
-         },
-         {
-            "name": "Shelby Mayo",
-            "workflow_type": 3,
-            "created_by": "Chantale Black",
-            "created_at": "08/12/20",
-            "project_id": 7500,
-            "description": "nec mauris blandit mattis. Cras eget nisi dictum augue malesuada",
-            "project_type": "hendrerit"
-         },
-         {
-            "name": "Mara Battle",
-            "workflow_type": 76,
-            "created_by": "Brielle Bailey",
-            "created_at": "03/27/20",
-            "project_id": 83002,
-            "description": "rproject_idiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam",
-            "project_type": "ad litora"
-         },
-         {
-            "name": "Kendall Ingram",
-            "workflow_type": 1,
-            "created_by": "Barrett Casey",
-            "created_at": "09/11/19",
-            "project_id": 12852,
-            "description": "ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis",
-            "project_type": "egestas, urna"
-         },
-         {
-            "name": "Erin May",
-            "workflow_type": 73,
-            "created_by": "Xyla Talley",
-            "created_at": "01/12/21",
-            "project_id": 95410,
-            "description": "iaculis enim, sit amet ornare lectus justo eu arcu. Morbi",
-            "project_type": "lacus"
-         },
-         {
-            "name": "Ignacia Simon",
-            "workflow_type": 31,
-            "created_by": "Amaya Aguirre",
-            "created_at": "02/23/20",
-            "project_id": 95424,
-            "description": "et risus. Quisque libero lacus, varius et, euismod et, commodo",
-            "project_type": "volutpat."
-         },
-         {
-            "name": "Miriam Lamb",
-            "workflow_type": 43,
-            "created_by": "Dakota Phelps",
-            "created_at": "10/15/19",
-            "project_id": 1564,
-            "description": "fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed,",
-            "project_type": "in sodales"
-         },
-         {
-            "name": "Erica Graham",
-            "workflow_type": 99,
-            "created_by": "Candace Christensen",
-            "created_at": "07/15/19",
-            "project_id": 1529,
-            "description": "elit erat vitae risus. Duis a mi fringilla mi lacinia",
-            "project_type": "ac mattis"
-         },
-         {
-            "name": "Xaviera William",
-            "workflow_type": 80,
-            "created_by": "Latifah Bright",
-            "created_at": "12/26/19",
-            "project_id": 69670,
-            "description": "molestie pharetra nibh. Aliquam ornare, libero at auctor ullamcorper, nisl",
-            "project_type": "pulvinar"
-         }
-      ],
-      [
-         {
-            "name": " Chuck Julie Hess",
-            "workflow_type": 28,
-            "created_by": "Susan Branch",
-            "created_at": "06/27/20",
-            "project_id": 8653,
-            "description": "sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo",
-            "project_type": "Aliquam"
-         },
-         {
-            "name": "Isabelle Jimenez",
-            "workflow_type": 265,
-            "created_by": "Louis Weiss",
-            "created_at": "03/03/21",
-            "project_id": 3675,
-            "description": "pede. Praesent eu dui. Cum sociis natoque penatibus et magnis",
-            "project_type": "placerat velit."
-         },
-         {
-            "name": "Whitney Lester",
-            "workflow_type": 88,
-            "created_by": "Peter Gomez",
-            "created_at": "05/16/20",
-            "project_id": 4075,
-            "description": "a purus. Duis elementum, dui quis accumsan convallis, ante lectus",
-            "project_type": "Quisque porttitor"
-         },
-         {
-            "name": "Serina Rosario",
-            "workflow_type": 27,
-            "created_by": "Murphy Burgess",
-            "created_at": "04/15/21",
-            "project_id": 7289,
-            "description": "purus gravproject_ida sagittis. Duis gravproject_ida. Praesent eu nulla at sem",
-            "project_type": "urna,"
-         },
-         {
-            "name": "Ramona Guerra",
-            "workflow_type": 99,
-            "created_by": "Armando Contreras",
-            "created_at": "01/30/21",
-            "project_id": 7903,
-            "description": "lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus.",
-            "project_type": "lorem"
-         },
-         {
-            "name": "Brielle Casey",
-            "workflow_type": 67,
-            "created_by": "Zephr Stout",
-            "created_at": "03/11/21",
-            "project_id": 9761,
-            "description": "lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed",
-            "project_type": "nec,"
-         },
-         {
-            "name": "Nadine Brewer",
-            "workflow_type": 82,
-            "created_by": "Aristotle Hutchinson",
-            "created_at": "01/01/21",
-            "project_id": 2094,
-            "description": "urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac",
-            "project_type": "Nam tempor"
-         },
-         {
-            "name": "SSSSF Sheila Pugh",
-            "workflow_type": 13,
-            "created_by": "Patrick Goodwin",
-            "created_at": "05/13/20",
-            "project_id": 5647,
-            "description": "eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in",
-            "project_type": "morbi"
-         },
-         {
-            "name": "Adass Deanna Wilkins",
-            "workflow_type": 15,
-            "created_by": "Lucy Golden",
-            "created_at": "06/28/19",
-            "project_id": 9863,
-            "description": "odio vel est tempor bibendum. Donec felis orci, adipiscing non,",
-            "project_type": "urna"
-         },
-         {
-            "name": "Add Hedwig Pena",
-            "workflow_type": 7,
-            "created_by": "Jacqueline Acevedo",
-            "created_at": "03/22/21",
-            "project_id": 867899,
-            "description": "at lacus. Quisque purus sapien, gravproject_ida non, sollicitudin a, malesuada",
-            "project_type": "ante"
-         }
-      ]
+      {
+         "name": "Ganesh karedla",
+         "project_id": 1,
+         "description": "front-end developer",
+         "workflow_type": "workflow_type_1",
+         "project_type": "Classic Software",
+         "created_by": "hi",
+         "created_at": "2020-06-04 20:34:24"
+      },
+      {
+         "name": "Project management platform",
+         "project_id": 2,
+         "description": "This project is used to manage  the projects between the project lead and the team member in this the admin can create project and assign that project to only specific member to whom he want to assign",
+         "workflow_type": "workflow_type_2",
+         "project_type": "Classic Software",
+         "created_by": "hi",
+         "created_at": "2020-06-04 22:03:48"
+      },
+      {
+         "name": "project 3",
+         "project_id": 3,
+         "description": "project 3",
+         "workflow_type": "workflow_type_2",
+         "project_type": "CRM",
+         "created_by": "hi",
+         "created_at": "2020-06-05 10:34:40"
+      },
+      {
+         "name": "project 4",
+         "project_id": 6,
+         "description": "asd",
+         "workflow_type": "workflow_type_3",
+         "project_type": "Classic Software",
+         "created_by": "hi",
+         "created_at": "2020-06-05 14:53:36"
+      },
+      {
+         "name": "project 5",
+         "project_id": 7,
+         "description": "zd",
+         "workflow_type": "workflow_type_2",
+         "project_type": "Classic Software",
+         "created_by": "hi",
+         "created_at": "2020-06-05 14:54:37"
+      },
+      {
+         "name": "project 4",
+         "project_id": 8,
+         "description": "project 4",
+         "workflow_type": "workflow_type_2",
+         "project_type": "Financial",
+         "created_by": "hi",
+         "created_at": "2020-06-05 14:56:10"
+      },
+      {
+         "name": "project 5",
+         "project_id": 9,
+         "description": "sad",
+         "workflow_type": "workflow_type_3",
+         "project_type": "CRM",
+         "created_by": "hi",
+         "created_at": "2020-06-05 14:57:27"
+      },
+      {
+         "name": "project 6",
+         "project_id": 10,
+         "description": "asd",
+         "workflow_type": "workflow_type_2",
+         "project_type": "Financial",
+         "created_by": "hi",
+         "created_at": "2020-06-05 14:57:40"
+      },
+      {
+         "name": "project 7",
+         "project_id": 11,
+         "description": "asd",
+         "workflow_type": "workflow_type_3",
+         "project_type": "Classic Software",
+         "created_by": "hi",
+         "created_at": "2020-06-05 14:57:53"
+      },
+      {
+         "name": "project 8",
+         "project_id": 12,
+         "description": "project 8",
+         "workflow_type": "workflow_type_1",
+         "project_type": "Financial",
+         "created_by": "hi",
+         "created_at": "2020-06-05 14:58:15"
+      }
    ],
-   "total_count_of_projects": 60
+   "total_count_of_projects": 18
 }

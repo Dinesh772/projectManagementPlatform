@@ -20,8 +20,11 @@ import {
    DropdownWrapper,
    InfoWrapper,
    Loadingwrapper,
-   ToastMessage
+   ToastMessage,
+   CreatedByWrapper,
+   TextWrapper
 } from './styledComponent'
+import Avatar from '../../../../Common/components/Avatar/Avatar'
 
 @observer
 class TaskCard extends React.Component<{
@@ -85,7 +88,14 @@ class TaskCard extends React.Component<{
          <TaskCardWrapper bgColor={bgColor}>
             <Typo18HKGroteskRegular>{task.taskTitle}</Typo18HKGroteskRegular>
             <Typo18HKGroteskRegular>{task.description}</Typo18HKGroteskRegular>
-            <Typo18HKGroteskRegular>{task.createdBy}</Typo18HKGroteskRegular>
+            <CreatedByWrapper>
+               <Avatar
+                  path={i18n.avatarImageSrc}
+                  height={'32px'}
+                  width={'32px'}
+               />
+               <TextWrapper>{task.createdBy}</TextWrapper>
+            </CreatedByWrapper>
 
             <Typo18HKGroteskRegular>
                <Timestamp
