@@ -155,14 +155,12 @@ class TaskStore {
    }
    @action.bound
    setChecklistAPIError(error) {
-      console.log(error)
       this.checklistAPIError = error
    }
 
    @action.bound
    setChecklistAPIResponse(response) {
       // this.onAddChecklists(response)
-      console.log('response.....', response)
    }
 
    @action.bound
@@ -182,13 +180,10 @@ class TaskStore {
    }
    @action.bound
    setCreateTaskAPIError(error) {
-      console.log(error)
       this.createTaskAPIError = error
    }
    @action.bound
-   setCreateTaskAPIResponse(response) {
-      // this.getTasksAPI(5)
-   }
+   setCreateTaskAPIResponse(response) {}
 
    @action.bound
    onInitializeArrayElements(length) {
@@ -208,7 +203,6 @@ class TaskStore {
    }
    @action.bound
    setTasksAPIResponse(response) {
-      console.log(response)
       this.totalTasks = response.total_count_of_tasks
       if (this.tasksList.length === 0) {
          this.onInitializeArrayElements(this.totalTasks)
@@ -219,10 +213,8 @@ class TaskStore {
    }
    @action.bound
    onAddTasks(tasks) {
-      console.log('-->', tasks)
       const tasksList = tasks.map(eachTask => new TaskModel(eachTask))
       this.tasksList = tasksList
-      console.log('<><><>', this.tasksList)
    }
 
    @action.bound
@@ -245,7 +237,7 @@ class TaskStore {
    }
    @computed
    get renderedTasksList() {
-      const { tasksList, currentPageIndex } = this
+      const { tasksList } = this
       if (tasksList.length > 0) {
          return tasksList
       } else {

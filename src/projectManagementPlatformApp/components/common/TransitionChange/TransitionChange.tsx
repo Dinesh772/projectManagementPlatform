@@ -50,7 +50,7 @@ class TransitionChange extends React.Component<{
    }
    @observable checkedList = []
    componentWillReceiveProps(props) {
-      console.log('props')
+     
       this.onResetAllToDefault()
       this.states = {
          from: this.props.taskObject.status,
@@ -83,7 +83,7 @@ class TransitionChange extends React.Component<{
    handleValidation = () => {
       const result: any = []
       const { checkedFieldIds, mandatoryFieldIds } = this
-      console.log(checkedFieldIds, mandatoryFieldIds)
+     
       for (let i = 0; i < checkedFieldIds.length; ++i) {
          if (mandatoryFieldIds.includes(checkedFieldIds[i])) {
             result.push(checkedFieldIds[i])

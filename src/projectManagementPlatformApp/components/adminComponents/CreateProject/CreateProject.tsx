@@ -66,7 +66,7 @@ class CreateProject extends React.Component<{
    }
    handleDescriptionChange = event => {
       const value = event.target.value
-      console.log(value)
+
       this.projectData.description = value
       this.projectDescriptionHasError = false
       this.projectDescriptionErrorMessage = ''

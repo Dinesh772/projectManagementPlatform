@@ -27,6 +27,7 @@ class MemberDashboard extends React.Component<{
       const { projectStore } = this.props
       projectStore.getWorkflowsAPI()
    }
+
    render() {
       const { projectStore } = this.props
       return (
@@ -52,7 +53,7 @@ class MemberDashboard extends React.Component<{
                   />
                </React.Fragment>
             ) : (
-               <NoDataView text={i18n.noProjectsFound} />
+               <NoDataView text={i18n.noProjectsFoundCreateNewOne} />
             )}
          </MemberWrapper>
       )

@@ -11,10 +11,4 @@ export const PROJECT_MANAGEMENT_PLATFORM_PROJECTS =
 export const PROJECT_MANAGEMENT_PLATFORM_TASKS =
    '/project-management-platform/dashboard/project/tasks/:id'
 export const BASE_URL =
-   'https://7ea3008c7106.ngrok.io/api/project_management_portal'
-
-// login             - /login/v1/ -get
-//createProject      -/project/v1/ -post
-//getProjects        -/projects/v1/ -get
-//addTask            -/task/v1/  -post
-//getTasks           -
+   'https://faabf9950e23.ngrok.io/api/project_management_portal'

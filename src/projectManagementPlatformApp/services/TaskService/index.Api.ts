@@ -37,12 +37,19 @@ class TasksAPI {
       )
    }
    getChecklistAPI = (requestObject, id) => {
-      console.log('stateAPI--->', id, requestObject)
       return networkCallWithApisauce(
          this.api,
          `/transition/${id}/v1/`,
          requestObject,
          apiMethods.get
+      )
+   }
+   changeTaskStatusAPI = () => {
+      return networkCallWithApisauce(
+         this.api,
+         endPoints.createTransition,
+         {},
+         apiMethods.post
       )
    }
 }

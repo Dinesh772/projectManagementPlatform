@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
+
 export const TaskInfoWrapper = styled.div`
    display: flex;
    flex-direction: column;
@@ -17,8 +18,8 @@ export const TaskInfoHeader = styled.div`
    justify-content: space-between;
    background-color: ${Colors.white};
    color: ${Colors.steel};
-   padding: 10px;
-   padding-bottom: 40px;
+   margin-top: 20px;
+   padding-bottom: 15px;
    border-bottom: 0.8px solid ${Colors.lightBlueGrey};
 `
 export const TaskDetails = styled.div`

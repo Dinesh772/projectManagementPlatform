@@ -12,7 +12,7 @@ import { BsCheckCircle } from 'react-icons/bs'
 import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
 import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
-import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/RouteConstants'
+
 import { Colors } from '../../../../themes/Colors'
 import i18n from '../../../../i18n/strings.json'
 
@@ -37,6 +37,7 @@ import {
 import TaskInfo from '../TaskInfo'
 import TransitionChange from '../TransitionChange'
 import NoDataView from '../../../../Common/components/NoDataView'
+import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/RouteConstants'
 
 type PropsType = {
    projectStore: any
@@ -58,7 +59,7 @@ class Tasks extends React.Component<PropsType> {
 
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
-      if (!this.isCreateClicked) {
+      if (this.isCreateClicked) {
          let id = this.props.match.params.id
          this.doNetworkCalls(id)
       }
@@ -70,7 +71,6 @@ class Tasks extends React.Component<PropsType> {
          taskObject = task
          taskObject['to'] = selectedOption
          this.taskObject = taskObject
-         const { taskStore } = this.props
          const requestObject = {
             to_state: toStateId
          }
@@ -129,8 +129,9 @@ class Tasks extends React.Component<PropsType> {
       this.isProfileClicked = !this.isProfileClicked
    }
    componentWillUnmount() {
-      const { taskStore } = this.props
+      const { taskStore, projectStore } = this.props
       taskStore.clearStore()
+      projectStore.clearStore()
    }
    handleTaskInfo = (event, task) => {
       this.isTaskInfoClicked = !this.isTaskInfoClicked

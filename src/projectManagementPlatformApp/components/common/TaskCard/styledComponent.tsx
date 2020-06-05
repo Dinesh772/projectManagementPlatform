@@ -5,7 +5,7 @@ const TaskCardWrapper = styled.div<{ bgColor: any }>`
    display: flex;
    height: 45px;
    width: 100%;
-   justify-content: space-around;
+   justify-content: space-between;
    align-items: center;
    border: 1px solid ${Colors.lightBlueGrey};
    background-color: ${props => props.bgColor};
@@ -21,9 +21,11 @@ const DropdownWrapper = styled.div`
 const DropdownWrapperParent = styled.div`
    width: 300px;
    height: 100%;
+   display: flex;
+   justify-content: center;
 `
 const InfoWrapper = styled.div`
-   width: 50px;
+   width: 100px;
    display: flex;
    justify-content: center;
    align-items: center;

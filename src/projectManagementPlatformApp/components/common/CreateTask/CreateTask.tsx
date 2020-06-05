@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { observer } from 'mobx-react'
-import { observable, toJS } from 'mobx'
-import { BsCheckCircle, BsConeStriped } from 'react-icons/bs'
+import { observable } from 'mobx'
+import { BsCheckCircle } from 'react-icons/bs'
 import { MdErrorOutline } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -57,7 +57,7 @@ class CreateTask extends React.Component<{
             }
          }
       }
-      console.log(toJS(projectId))
+
       this.createTaskDetails.project = projectId
       this.projectHasError = ''
       this.handleValidationChange()
@@ -129,6 +129,7 @@ class CreateTask extends React.Component<{
             closeButton: false
          }
       )
+
       this.onResetAllToDefault()
    }
    onFailure = () => {

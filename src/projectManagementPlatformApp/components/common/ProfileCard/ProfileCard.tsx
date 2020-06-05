@@ -15,6 +15,7 @@ import {
    ProfileDetails,
    LogoutWrapper
 } from './styledComponent'
+import { getAdmin } from '../../../../Common/utils/StorageUtils'
 
 class ProfileCard extends React.Component<{
    handleProfile: any
@@ -22,6 +23,12 @@ class ProfileCard extends React.Component<{
 }> {
    render() {
       const { handleProfile, handleLogout } = this.props
+      let account
+      if (getAdmin() === 'true') {
+         account = 'Admin'
+      } else {
+         account = 'User'
+      }
       return (
          <ProfileCardWrapper>
             <CommonButton
@@ -48,7 +55,7 @@ class ProfileCard extends React.Component<{
                   <b>{i18n.userId}</b>: {i18n.mockUsername}
                </Typo18HKGroteskRegular>
                <Typo18HKGroteskRegular>
-                  <b>{i18n.accountType}</b>: {i18n.admin}
+                  <b>{i18n.accountType}</b>: {account}
                </Typo18HKGroteskRegular>
             </ProfileDetails>
             <LogoutWrapper>

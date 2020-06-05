@@ -4,18 +4,20 @@ import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import {
    setAccessToken,
    getAccessToken,
-   clearUserSession
+   clearUserSession,
+   setAdmin,
+   getAdmin,
+   clearAdmin
 } from '../../../Common/utils/StorageUtils'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 class AuthStore {
    @observable getSignInApiStatus
    @observable getSignInError
-   @observable isAdmin
+
    authService
    constructor(authService) {
       this.init()
       this.authService = authService
-      this.isAdmin = null
    }
    @action.bound
    init() {
@@ -44,21 +46,26 @@ class AuthStore {
    }
    @action.bound
    setSignInAPIStatus(apiStatus) {
-      console.log(apiStatus)
       this.getSignInApiStatus = apiStatus
    }
    @action.bound
    setSignInAPIResponse(response) {
       const accessToken = response.access_token
-      this.isAdmin = response.is_admin
-      console.log('isAdmin==', this.isAdmin, response)
+      const isAdmin = response.is_admin
+      setAdmin(isAdmin)
       setAccessToken(accessToken)
    }
    @action.bound
    clearUserSession() {
       clearUserSession()
+      clearAdmin()
       this.clearStore()
    }
+   @computed
+   get isAdmin() {
+      return getAdmin()
+   }
+
    @computed
    get accessToken() {
       if (getAccessToken() !== undefined) {

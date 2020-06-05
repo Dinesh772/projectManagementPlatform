@@ -5,7 +5,6 @@ import { API_INITIAL } from '@ib/api-constants'
 
 import ProjectModel from '../models/ProjectModel'
 import WorkflowModel from '../models/WorkflowModel'
-import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
 
 class ProjectStore {
    @observable projectsList
@@ -84,7 +83,6 @@ class ProjectStore {
 
    @action.bound
    createProjectAPI(requestObject, onSuccess) {
-      console.log('-->', requestObject)
       const createProjectPromise = this.projectsService.createProjectAPI(
          requestObject
       )
@@ -97,21 +95,15 @@ class ProjectStore {
    }
    @action.bound
    setCreateProjectAPIStatus(apiStatus) {
-      console.log('--->', apiStatus)
       this.createProjectAPIStatus = apiStatus
    }
 
    @action.bound
    setCreateProjectAPIError(error) {
-      console.log(error)
-      //console.log('-->', getUserDisplayableErrorMessage(error))
       this.createProjectAPIError = error
    }
    @action.bound
-   setCreateProjectAPIResponse(response) {
-      console.log(response)
-      // this.onAddWorkflows(response)
-   }
+   setCreateProjectAPIResponse(response) {}
    @action.bound
    setWorkflowAPIStatus(apiStatus) {
       this.workflowsAPIStatus = apiStatus
@@ -141,8 +133,10 @@ class ProjectStore {
       if (this.projectsList.length === 0) {
          this.onInitializeArrayElements(this.totalProjects)
       }
-      const totalPages =
+      const totalPages = Math.ceil(
          response.total_count_of_projects / this.projectsLimitPerPage
+      )
+      this.offset += this.projectsLimitPerPage
       this.totalPaginationLimit = totalPages
       this.onAddProject(response.projects)
    }
@@ -161,6 +155,7 @@ class ProjectStore {
    }
    @action.bound
    onAddProject(projects) {
+      console.log(projects)
       const projectsList = projects.map(
          eachProject => new ProjectModel(eachProject)
       )

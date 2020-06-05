@@ -92,6 +92,7 @@ export const Typo26BrightBlueHKGroteskRegular = styled.h2`
 export const Typo18HKGroteskRegular = styled.p`
    height: 24px;
    width: 270px;
+
    text-align: center;
    @media (min-width: 300px) {
       text-overflow: ellipsis;

@@ -47,7 +47,6 @@ class AdminDashboard extends React.Component<{
 
    handleProjectCardTriggred = value => {
       const { history, taskStore } = this.props
-
       taskStore.getTasksAPI(value)
       history.push(
          `/project-management-platform/dashboard/project/tasks/${value}`

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../themes/Colors'
 
-const SignInComponentWrapper = styled.div`
+export const SignInComponentWrapper = styled.div`
    display: flex;
    width: 100%;
    height: 100vh;
@@ -9,4 +9,3 @@ const SignInComponentWrapper = styled.div`
    align-items: center;
    background-color: ${Colors.iceBlue};
 `
-export { SignInComponentWrapper }

@@ -31,7 +31,7 @@ class TasksList extends React.Component<{
          handleDropdownClick,
          workflowsAPIStatus
       } = this.props
-      console.log('taskData=====>', toJS(tasksData))
+
       const data = tasksData.map((eachTask, index) => (
          <TaskCard
             key={eachTask.id}
@@ -49,7 +49,9 @@ class TasksList extends React.Component<{
             <TasksListHeader>
                <Typo16HKGroteskMedium>{i18n.listOfTasks}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium>{i18n.summary}</Typo16HKGroteskMedium>
+               <Typo16HKGroteskMedium>{i18n.createdBy}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium>{i18n.createdAt}</Typo16HKGroteskMedium>
+
                <Typo16HKGroteskMedium>{i18n.status}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium100>{i18n.info}</Typo16HKGroteskMedium100>
             </TasksListHeader>

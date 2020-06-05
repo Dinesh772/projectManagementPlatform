@@ -3,7 +3,8 @@ import React from 'react'
 import {
    NoDataViewContainer,
    NoDataViewText,
-   ImageWrapper
+   ImageWrapper,
+   Text
 } from './styledComponents'
 import i18n from '../../../i18n/strings.json'
 import Avatar from '../Avatar/Avatar'
@@ -22,9 +23,7 @@ class NoDataView extends React.Component {
                />
             </ImageWrapper>
             <NoDataViewText>
-               <Typo24DarkBlueGreyHKGroteskMedium>
-                  {this.props.text ?? i18n.noDataText}
-               </Typo24DarkBlueGreyHKGroteskMedium>
+               <Text>{this.props.text ?? i18n.noDataText}</Text>
             </NoDataViewText>
          </NoDataViewContainer>
       )

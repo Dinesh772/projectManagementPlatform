@@ -23,3 +23,15 @@ export function setAccessToken(accessToken) {
 export function clearUserSession() {
    Cookie.remove(ACCESS_TOKEN, { path: '/' })
 }
+
+export const IS_ADMIN = 'isAdmin'
+
+export function setAdmin(value) {
+   return setCookie(IS_ADMIN, value)
+}
+export function clearAdmin() {
+   Cookie.remove(IS_ADMIN, { path: '/' })
+}
+export function getAdmin() {
+   return getCookie(IS_ADMIN)
+}

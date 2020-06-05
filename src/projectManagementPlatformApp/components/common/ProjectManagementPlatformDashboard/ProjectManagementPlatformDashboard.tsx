@@ -39,7 +39,10 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
    componentDidMount() {
       this.doNetworkCalls()
    }
-
+   componentWillUnmount() {
+      const { projectStore } = this.props
+      projectStore.clearStore()
+   }
    @action.bound
    doNetworkCalls() {
       const { projectStore } = this.props
@@ -48,8 +51,8 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
    @action.bound
    renderSuccessUI() {
       const { projectStore, taskStore, authStore } = this.props
-      console.log(authStore.isAdmin)
-      return projectStore.isAdmin ? (
+
+      return authStore.isAdmin === 'true' ? (
          <AdminDashboard
             projectStore={projectStore}
             taskStore={taskStore}

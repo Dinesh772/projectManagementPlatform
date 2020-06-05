@@ -18,8 +18,8 @@ const CreateProjectHeader = styled.div`
    justify-content: space-between;
    background-color: ${Colors.white};
    color: ${Colors.steel};
-   padding: 10px;
-   padding-bottom: 40px;
+   margin-top: 20px;
+   padding-bottom: 15px;
    border-bottom: 0.8px solid ${Colors.lightBlueGrey};
 `
 const ProjectDetails = styled.form`

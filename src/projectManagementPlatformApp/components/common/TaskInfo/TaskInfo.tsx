@@ -4,6 +4,8 @@ import {
    Typo18BoldHKGroteskRegular,
    Typo12SteelHKGroteskSemiBold
 } from '../../../../styleGuide/Typos'
+import Timestamp from '../../../../../node_modules/react-timestamp/dist/index'
+
 import CloseButton from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
 
@@ -64,7 +66,12 @@ class TaskInfo extends React.Component<{ handleClose: any; taskObject: any }> {
                   <Typo12SteelHKGroteskSemiBold>
                      {i18n.createdAt}
                   </Typo12SteelHKGroteskSemiBold>
-                  <Text>{taskObject.createdAt}</Text>
+                  <Text>
+                     <Timestamp
+                        date={new Date(taskObject.createdAt)}
+                        options={{ includeDay: false, twentyFourHour: false }}
+                     />
+                  </Text>
                </CreatedAtWrapper>
             </TaskDetails>
          </TaskInfoWrapper>

@@ -35,13 +35,13 @@ class TaskCard extends React.Component<{
 }> {
    handleDropdownChange = (event, task) => {
       const { handleStatusChange, workflows } = this.props
-      console.log('task===>', task.id)
+
       const value = event.value
-      console.log(workflows)
+
       const toState = workflows.filter(task =>
          task.name === value ? task.stateId : null
       )
-      console.log('id_+_+-->', toState[0].stateId)
+
       const toStateId = toState[0].stateId
       handleStatusChange(value, task, toStateId)
    }
@@ -85,6 +85,8 @@ class TaskCard extends React.Component<{
          <TaskCardWrapper bgColor={bgColor}>
             <Typo18HKGroteskRegular>{task.taskTitle}</Typo18HKGroteskRegular>
             <Typo18HKGroteskRegular>{task.description}</Typo18HKGroteskRegular>
+            <Typo18HKGroteskRegular>{task.createdBy}</Typo18HKGroteskRegular>
+
             <Typo18HKGroteskRegular>
                <Timestamp
                   date={new Date(task.createdAt)}

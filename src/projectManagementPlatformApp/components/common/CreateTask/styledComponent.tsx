@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../../../themes/Colors'
 
-const CreateTaskWrapper = styled.div`
+export const CreateTaskWrapper = styled.div`
    display: flex;
    flex-direction: column;
    width: 30%;
@@ -12,26 +12,26 @@ const CreateTaskWrapper = styled.div`
    padding-right: 30px;
    background-color: ${Colors.white};
 `
-const CreateTaskHeader = styled.div`
+export const CreateTaskHeader = styled.div`
    display: flex;
-   height: 40px;
+   height: 100%;
    justify-content: space-between;
    background-color: ${Colors.white};
    color: ${Colors.steel};
-   padding: 10px;
-   padding-bottom: 40px;
+   margin-top: 20px;
+   padding-bottom: 15px;
    border-bottom: 0.8px solid ${Colors.lightBlueGrey};
 `
-const TaskDetails = styled.form`
+export const TaskDetails = styled.form`
    display: flex;
    flex-direction: column;
    padding: 10px;
 `
-const DropdownWrapper = styled.div`
+export const DropdownWrapper = styled.div`
    margin-top: 8px;
    margin-bottom: 6px;
 `
-const CreateButtonWrapper = styled.div`
+export const CreateButtonWrapper = styled.div`
    display: flex;
    flex-direction: column;
    margin-top: 20px;
@@ -41,10 +41,3 @@ const CreateButtonWrapper = styled.div`
 export const ToasterWrapper = styled.div`
    display: flex;
 `
-export {
-   CreateTaskWrapper,
-   CreateButtonWrapper,
-   CreateTaskHeader,
-   TaskDetails,
-   DropdownWrapper
-}
