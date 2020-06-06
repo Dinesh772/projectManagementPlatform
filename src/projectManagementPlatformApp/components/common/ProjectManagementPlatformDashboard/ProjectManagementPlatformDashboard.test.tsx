@@ -14,7 +14,7 @@ import {
    PROJECT_MANAGEMENT_PLATFORM_DASHBOARD,
    PROJECT_MANAGEMENT_PLATFORM_TASKS
 } from '../../../../Common/constants/RouteConstants'
-//import workflowdata from '../../../fixtures/workflowFixtures.json'
+
 import TasksFixturesAPI from '../../../services/TaskService/index.fixtures'
 import TaskStore from '../../../stores/TaskStore'
 import tasksData from '../../../fixtures/taskFixtures.json'

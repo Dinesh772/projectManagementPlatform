@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, waitFor, getByText } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import { Provider } from 'mobx-react'
 import { createMemoryHistory } from 'history'
 import { Router, Route, withRouter } from 'react-router-dom'
@@ -35,7 +35,7 @@ describe('SignInRoute component tests', () => {
       expect(getByText(i18n.login)).toBeVisible()
    })
    it('should show username error message onLogin click', () => {
-      const { getByRole, getByText } = render(
+      const { getByText } = render(
          <Router history={createMemoryHistory()}>
             <SignInRoute authStore={authStore} />
          </Router>
@@ -59,28 +59,6 @@ describe('SignInRoute component tests', () => {
       fireEvent.click(loginButton)
       getByText(i18n.invalidPasswordErrorText)
    })
-   // it('should test fetching state onClick login', async () => {
-   //    const { getByTestId, getAllByText, getByRole, getByLabelText } = render(
-   //       <Router history={createMemoryHistory()}>
-   //          <SignInRoute authStore={authStore} />
-   //       </Router>
-   //    )
-   //    const loginButton = getAllByText('LOGIN') //getByRole('button', { name: i18n.login })
-   //    const username = 'test-user'
-   //    const password = 'test-password'
-   //    const usernameField = getByTestId(i18n.usernameTestId)
-   //    const passwordField = getByTestId(i18n.passwordTestId)
-
-   //    const mockLoadingPromise = new Promise(function(resolve, reject) {})
-   //    const mockSignInAPI = jest.fn()
-   //    mockSignInAPI.mockReturnValue(mockLoadingPromise)
-   //    authApi.signInAPI = mockSignInAPI
-
-   //    fireEvent.change(usernameField, { target: { value: username } })
-   //    fireEvent.change(passwordField, { target: { value: password } })
-   //    fireEvent.click(getByRole('button', { name: i18n.login }))
-   //    getByLabelText('audio-loading')
-   // })
 
    it('should test login failure state', async () => {
       const { getByRole, getByTestId, getByText } = render(

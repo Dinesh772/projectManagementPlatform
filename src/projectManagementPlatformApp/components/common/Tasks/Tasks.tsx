@@ -59,10 +59,6 @@ class Tasks extends React.Component<PropsType> {
 
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
-      if (!this.isCreateClicked) {
-         let id = this.props.match.params.id
-         this.doNetworkCalls(id)
-      }
    }
    handleStatusChange = (selectedOption, task, toStateId) => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred

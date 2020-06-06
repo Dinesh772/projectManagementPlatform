@@ -4,7 +4,6 @@ import { apiMethods } from '../../../Common/constants/APIConstants'
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
 import endPoints from '../endPoints'
 import { BASE_URL } from '../../../Common/constants/RouteConstants'
-import { toJS } from 'mobx'
 
 class TasksAPI {
    api
