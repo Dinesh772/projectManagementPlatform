@@ -57,8 +57,8 @@ class CreateProject extends React.Component<{
    @observable isValidated = false
    handleTitleChange = event => {
       const value = event.target.value
+      this.projectData.projectName = value
       if (stringValidator(value)) {
-         this.projectData.projectName = value
          this.projectNameErrorMessage = ''
          this.projectNameFieldHasError = false
          this.handleValidation()
@@ -70,8 +70,8 @@ class CreateProject extends React.Component<{
    }
    handleDescriptionChange = event => {
       const value = event.target.value
+      this.projectData.description = value
       if (stringValidator(value)) {
-         this.projectData.description = value
          this.projectDescriptionHasError = false
          this.projectDescriptionErrorMessage = ''
          this.handleValidation()
@@ -162,6 +162,7 @@ class CreateProject extends React.Component<{
          }
       )
       handleClick()
+      setTimeout(() => window.location.reload(), 500)
    }
    onResetAllToDefault = () => {
       this.projectData = {

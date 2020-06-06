@@ -59,7 +59,7 @@ class Tasks extends React.Component<PropsType> {
 
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
-      if (this.isCreateClicked) {
+      if (!this.isCreateClicked) {
          let id = this.props.match.params.id
          this.doNetworkCalls(id)
       }
@@ -199,6 +199,7 @@ class Tasks extends React.Component<PropsType> {
                   handleClose={this.handleCreateTask}
                   taskStore={taskStore}
                   projectsData={projectStore.projectsList}
+                  totalProjects={projectStore.totalProjectsList}
                />
             </CreateTaskWrapper>
             <TaskInfoWrapper hide={this.isTaskInfoClicked}>
@@ -229,6 +230,7 @@ class Tasks extends React.Component<PropsType> {
       taskStore.getTasksAPI(id)
       projectStore.getProjectsAPI()
    }
+
    handleWorkflowAPICall = (event, taskId) => {
       const { taskStore } = this.props
       taskStore.getWorkflowsAPI(taskId)

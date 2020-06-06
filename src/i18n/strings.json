@@ -1,6 +1,6 @@
 {
    "userGreetText": "Hi there,",
-   "pleaseSignIn": "please sign up",
+   "pleaseSignIn": "please sign in",
    "usernameLabel": "USERNAME",
    "passwordLabel": "PASSWORD",
    "invalidUsernameErrorText": "Invalid Username",
@@ -94,5 +94,10 @@
    "transitionUpdatedSuccessfully": "Transition updated Successfully..!",
    "chooseProject": "Choose Project",
    "chooseIssueType": "Choose Issue Type",
-   "cookieConsentUrl": "https://www.makeinindia.com/cookies-policy"
+   "cookieConsentUrl": "https://www.makeinindia.com/cookies-policy",
+   "enumTask": "Task",
+   "enumBug": "Bug",
+   "enumDeveloperStory": "Developer story",
+   "enumUserStory": "User story",
+   "enumEnhancement": "Enhancement"
 }

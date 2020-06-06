@@ -9,7 +9,7 @@ import i18n from '../../../i18n/strings.json'
 
 import { stringValidator } from '../../utils/ValidationUtils/ValidationUtils'
 
-import SignInComponent from '../SignInCard'
+import SignInCard from '../SignInCard'
 
 import { SignInComponentWrapper } from './styledComponents'
 
@@ -31,40 +31,34 @@ class SignInRoute extends React.Component<propsType> {
    @action.bound
    handleUsername(event) {
       const usernameValue = event.target.value
+      this.username = usernameValue
       if (usernameValue.length !== 0) {
-         this.username = usernameValue
          this.usernameErrorMessage = ''
          this.isUsernameHasError = false
-      } else {
-         this.username = usernameValue
          this.onValidation()
+      } else {
+         this.usernameErrorMessage = i18n.invalidUsernameErrorText
+         this.isUsernameHasError = true
+         this.isValidated = false
       }
    }
    @action.bound
    handlePassword(event) {
       const passwordValue = event.target.value
+      this.password = passwordValue
       if (stringValidator(passwordValue)) {
-         this.password = passwordValue
          this.passwordErrorMessage = ''
          this.isPasswordHasError = false
-      } else {
-         this.password = passwordValue
          this.onValidation()
+      } else {
+         this.passwordErrorMessage = i18n.invalidPasswordErrorText
+         this.isPasswordHasError = true
+         this.isValidated = false
       }
    }
    @action.bound
    onValidation() {
       const { username, password } = this
-      if (!stringValidator(username)) {
-         this.usernameErrorMessage = i18n.invalidUsernameErrorText
-         this.isUsernameHasError = true
-         this.isValidated = false
-      }
-      if (!stringValidator(password)) {
-         this.passwordErrorMessage = i18n.invalidPasswordErrorText
-         this.isPasswordHasError = true
-         this.isValidated = false
-      }
       if (stringValidator(username) && stringValidator(password)) {
          this.isValidated = true
       }
@@ -75,7 +69,15 @@ class SignInRoute extends React.Component<propsType> {
       if (this.isValidated) {
          this.doNetworkCalls()
       } else {
-         this.onValidation()
+         if (!stringValidator(this.username)) {
+            this.usernameErrorMessage = i18n.invalidUsernameErrorText
+            this.isUsernameHasError = true
+            this.isValidated = false
+         } else if (!stringValidator(this.password)) {
+            this.passwordErrorMessage = i18n.invalidPasswordErrorText
+            this.isPasswordHasError = true
+            this.isValidated = false
+         }
       }
    }
    @action.bound
@@ -122,7 +124,7 @@ class SignInRoute extends React.Component<propsType> {
       }
       return (
          <SignInComponentWrapper>
-            <SignInComponent
+            <SignInCard
                username={username}
                password={password}
                handleUsername={handleUsername}

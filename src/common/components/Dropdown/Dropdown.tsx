@@ -22,7 +22,7 @@ export const Dropdown = props => (
             {props.placeholder}
          </OptionElement>
          {props.values.map(eachValue => (
-            <OptionElement key={eachValue} value={eachValue} disabled={false}>
+            <OptionElement value={eachValue} disabled={false}>
                {eachValue}
             </OptionElement>
          ))}

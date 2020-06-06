@@ -141,7 +141,6 @@ class TaskStore {
    }
    @action.bound
    setWorkflowsResponse(response) {
-      // this.workflows = response.workflows
       this.onAddStates(response.to_states)
    }
    @action.bound
@@ -230,6 +229,8 @@ class TaskStore {
 
    @action.bound
    handlePaginationButtons(value) {
+      this.offset = value * this.tasksLimitPerPage - this.tasksLimitPerPage
+
       this.currentPageNumber = value
       this.getTasksAPI(value)
    }

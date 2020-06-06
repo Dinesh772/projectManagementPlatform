@@ -53,7 +53,7 @@ class MemberDashboard extends React.Component<{
                   />
                </React.Fragment>
             ) : (
-               <NoDataView text={i18n.noProjectsFoundCreateNewOne} />
+               <NoDataView text={i18n.noProjectsFound} />
             )}
          </MemberWrapper>
       )

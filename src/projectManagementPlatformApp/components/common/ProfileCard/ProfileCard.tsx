@@ -1,9 +1,6 @@
 import React from 'react'
 
-import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
-
 import i18n from '../../../../i18n/strings.json'
-import { Colors } from '../../../../themes/Colors'
 import Avatar from '../../../../Common/components/Avatar/Avatar'
 import { Typo18HKGroteskRegular } from '../../../../styleGuide/Typos'
 import { getAdmin } from '../../../../Common/utils/StorageUtils'
@@ -31,13 +28,11 @@ class ProfileCard extends React.Component<{
       }
       return (
          <ProfileCardWrapper>
-            <CommonButton
-               buttonValue={i18n.close}
+            <Avatar
+               path={i18n.closeButtonSrc}
                handleClick={handleProfile}
                height={'30px'}
-               width={'80px'}
-               color={Colors.darkBlueGrey}
-               bgColor={Colors.steel}
+               width={'30px'}
             />
             <AvatarWrapper>
                <Avatar

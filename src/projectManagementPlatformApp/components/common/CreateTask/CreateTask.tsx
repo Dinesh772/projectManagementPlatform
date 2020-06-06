@@ -30,6 +30,7 @@ class CreateTask extends React.Component<{
    handleClose: any
    projectsData: any
    taskStore: any
+   totalProjects: any
 }> {
    @observable createTaskDetails = {
       project: 0,
@@ -47,17 +48,16 @@ class CreateTask extends React.Component<{
    handleProjectChange = event => {
       const value = event.target.value
       if (stringValidator(value)) {
-         const { projectsData } = this.props
+         const { totalProjects } = this.props
          let projectId = 0
-         for (let i = 0; i < projectsData.length; ++i) {
-            for (let j = 0; j < projectsData[i].length; ++j) {
-               if (projectsData[i][j].name === value) {
-                  projectId = projectsData[i][j].id
-                  break
-               }
+         for (let i = 0; i < totalProjects.length; ++i) {
+            if (totalProjects[i].name === value) {
+               projectId = totalProjects[i].id
+               break
             }
          }
          this.createTaskDetails.project = projectId
+
          this.projectHasError = ''
          this.handleValidationChange()
       } else {
@@ -79,8 +79,8 @@ class CreateTask extends React.Component<{
    }
    hadleTitleChange = event => {
       const value = event.target.value
+      this.createTaskDetails.title = value
       if (stringValidator(value)) {
-         this.createTaskDetails.title = value
          this.taskTitleFieldHasError = false
          this.taskTitleErrorMessage = ''
          this.handleValidationChange()
@@ -92,8 +92,8 @@ class CreateTask extends React.Component<{
    }
    handleDescriptionChange = event => {
       const value = event.target.value
+      this.createTaskDetails.description = value
       if (stringValidator(value)) {
-         this.createTaskDetails.description = value
          this.taskDescriptionHasError = false
          this.taskDescriptionErrorMessage = ''
          this.handleValidationChange()
@@ -135,6 +135,7 @@ class CreateTask extends React.Component<{
       )
 
       this.onResetAllToDefault()
+      setTimeout(() => window.location.reload(), 500)
    }
    onFailure = () => {
       const { handleClose } = this.props
@@ -190,17 +191,18 @@ class CreateTask extends React.Component<{
       this.onResetAllToDefault()
    }
    render() {
-      const { taskStore, projectsData } = this.props
+      const { taskStore, totalProjects } = this.props
       const issueValues = [
-         'Task',
-         'Bug',
-         'Developer story',
-         'User story',
-         'Enhancement'
+         i18n.enumTask,
+         i18n.enumBug,
+         i18n.enumDeveloperStory,
+         i18n.enumUserStory,
+         i18n.enumEnhancement
       ]
+
       let projectsNames
-      if (projectsData[0] !== undefined) {
-         projectsNames = projectsData[0].map(each => each.name)
+      if (totalProjects !== undefined) {
+         projectsNames = totalProjects.map(each => each.name)
       } else {
          projectsNames = []
       }

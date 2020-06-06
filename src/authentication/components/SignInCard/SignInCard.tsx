@@ -56,7 +56,6 @@ class SignInCard extends React.Component<PropsType> {
          handleUsername,
          handlePassword,
          usernameErrorMessage,
-         validate,
          passwordErrorMessage,
          isPasswordHasError,
          isUsernameHasError,
@@ -83,7 +82,7 @@ class SignInCard extends React.Component<PropsType> {
                   hasError={isUsernameHasError}
                   value={username}
                   onChange={handleUsername}
-                  validate={validate}
+                  validate={handleUsername}
                   testId={usernameTestId}
                />
             </UsernameWrapper>
@@ -95,7 +94,7 @@ class SignInCard extends React.Component<PropsType> {
                   type={passwordType}
                   hasError={isPasswordHasError}
                   onChange={handlePassword}
-                  validate={validate}
+                  validate={handlePassword}
                   testId={passwordTestId}
                />
             </PasswordWrapper>

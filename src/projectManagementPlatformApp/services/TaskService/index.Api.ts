@@ -38,7 +38,6 @@ class TasksAPI {
       )
    }
    getChecklistAPI = (requestObject, id) => {
-      console.log(toJS(requestObject), id)
       return networkCallWithApisauce(
          this.api,
          `/transition/${id}/v1/`,
