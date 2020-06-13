@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import { History } from 'history'
 
-import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../Common/constants/RouteConstants'
+//import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../Common/constants/RouteConstants'
 import i18n from '../../../i18n/strings.json'
 
 import { stringValidator } from '../../utils/ValidationUtils/ValidationUtils'
@@ -12,6 +12,7 @@ import { stringValidator } from '../../utils/ValidationUtils/ValidationUtils'
 import SignInCard from '../SignInCard'
 
 import { SignInComponentWrapper } from './styledComponents'
+import { GoToHomePage } from '../../utils/NavigationUtils'
 
 type propsType = {
    history: History
@@ -96,8 +97,9 @@ class SignInRoute extends React.Component<propsType> {
    @action.bound
    onLoginSuccess() {
       const { history } = this.props
-      const path = PROJECT_MANAGEMENT_PLATFORM_DASHBOARD
-      history.push(path)
+      // const path = PROJECT_MANAGEMENT_PLATFORM_DASHBOARD
+      // history.replace(path)
+      GoToHomePage(history)
    }
    @action.bound
    onLoginFailure(error) {

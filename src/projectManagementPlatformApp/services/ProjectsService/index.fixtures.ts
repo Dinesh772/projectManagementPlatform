@@ -1,7 +1,7 @@
 import projectsResponse from '../../fixtures/projectFixtures.json'
 import workflowFixtures from '../../fixtures/workflowFixtures.json'
 class ProjectsFixtureService {
-   getProjectsAPI = index => {
+   getProjectsAPI = (limit, offset) => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(projectsResponse), 1000)
       })
