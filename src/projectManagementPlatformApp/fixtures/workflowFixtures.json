@@ -1,7 +1,7 @@
 {
-   "workflows": [
+   "to_states": [
       {
-         "name": "todo",
+         "name": "Todo",
          "workflow_id": 10
       },
       {

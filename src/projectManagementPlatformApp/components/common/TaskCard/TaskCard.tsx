@@ -41,11 +41,9 @@ class TaskCard extends React.Component<{
 
       const value = event.value
 
-      const toState = workflows.filter(task =>
-         task.name === value ? task.stateId : null
-      )
+      const toState = workflows.find(task => task.name === value)
 
-      const toStateId = toState[0].stateId
+      const toStateId = toState.workflowId
       handleStatusChange(value, task, toStateId)
    }
    handleDropdownFailure = () => {

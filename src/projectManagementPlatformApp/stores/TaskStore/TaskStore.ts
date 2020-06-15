@@ -160,8 +160,8 @@ class TaskStore {
 
    @action.bound
    setChecklistAPIResponse(response) {
-      console.log(response)
-      // this.onAddChecklists(response)
+      // console.log(response)
+      this.onAddChecklists(response)
    }
 
    @action.bound

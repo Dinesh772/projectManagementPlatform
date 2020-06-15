@@ -8,6 +8,7 @@ import { ToastContainer, Slide } from 'react-toastify'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { BsCheckCircle } from 'react-icons/bs'
+import { getLoadingStatus } from '@ib/api-utils'
 
 import CommonButton from '../../../../Common/components/CommonButton/CommonButton'
 import { Typo26BrightBlueHKGroteskRegular } from '../../../../styleGuide/Typos'
@@ -97,6 +98,7 @@ class Tasks extends React.Component<PropsType> {
          this.onChecklistSuccess
       )
    }
+
    onTransitionChangeSuccess = () => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
       toast.success(
@@ -241,13 +243,18 @@ class Tasks extends React.Component<PropsType> {
       this.doNetworkCalls(id)
    }
    render() {
-      const { taskStore } = this.props
+      const { taskStore, projectStore } = this.props
+
+      const apiStatus = getLoadingStatus(
+         projectStore.projectsAPIStatus,
+         taskStore.tasksAPIStatus
+      )
 
       return (
          <React.Fragment>
             <Header handleProfileClick={this.handleProfile} />
             <LoadingWrapperWithFailure
-               apiStatus={taskStore.tasksAPIStatus}
+               apiStatus={apiStatus}
                renderSuccessUI={this.renderSuccessUI}
                apiError={taskStore.tasksAPIError}
                onRetryClick={this.onRetryDoNetworkCalls}

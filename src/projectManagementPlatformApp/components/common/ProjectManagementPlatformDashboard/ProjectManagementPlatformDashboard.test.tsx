@@ -248,7 +248,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       taskService.getTasksAPI = mockTasksAPI
       await taskStore.getTasksAPI()
       waitFor(() => {
-         //getByText('ut erat.')
+         getByText('about')
       })
    })
 })

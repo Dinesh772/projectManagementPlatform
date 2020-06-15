@@ -19,12 +19,12 @@ class TasksFixturesAPI {
          setTimeout(() => resolve([]), 1000)
       })
    }
-   getChecklistAPI = () => {
+   getChecklistAPI = (requestObject, id) => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(checklistFixtures), 1000)
       })
    }
-   getWorkflowsAPI = () => {
+   getWorkflowsAPI = id => {
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(workflowsFixtures), 2000)
       })
