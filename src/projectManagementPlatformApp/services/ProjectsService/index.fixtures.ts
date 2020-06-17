@@ -12,7 +12,7 @@ class ProjectsFixtureService {
    }
    getWorkflowsAPI = () => {
       return new Promise((resolve, reject) => {
-         setTimeout(() => resolve(workflowFixtures), 2000)
+         resolve(workflowFixtures)
       })
    }
    createProjectAPI = () => {

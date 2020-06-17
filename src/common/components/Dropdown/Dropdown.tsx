@@ -17,6 +17,7 @@ export const Dropdown = props => (
          onChange={props.handleChange}
          width={props.width}
          disabled={props.disabled ?? false}
+         data-testid={props.testId}
       >
          <OptionElement value='' hidden>
             {props.placeholder}

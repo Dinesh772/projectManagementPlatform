@@ -215,6 +215,7 @@ class CreateProject extends React.Component<{
                   width={'20px'}
                   path={i18n.closeButtonSrc}
                   handleClick={this.handleClose}
+                  testId={'close'}
                />
             </CreateProjectHeader>
             <ProjectDetails>
@@ -250,6 +251,7 @@ class CreateProject extends React.Component<{
                      disabled={
                         workflowFetchingStatus === API_SUCCESS ? false : true
                      }
+                     testId={'workflow-dropdown'}
                   />
                </DropdownWrapper>
                <DropdownWrapper>
@@ -260,6 +262,7 @@ class CreateProject extends React.Component<{
                      errorMessage={this.projectTypeError}
                      placeholder={i18n.selectType}
                      handleFocus={this.handleProjectTypeDropdown}
+                     testId={'project-type'}
                   />
                </DropdownWrapper>
                <CreateButtonWrapper>

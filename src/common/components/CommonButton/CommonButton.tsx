@@ -16,6 +16,7 @@ const CommonButton = props => (
       height={props.height}
       borderColor={props.borderColor}
       textColor={props.textColor}
+      data-testid={props.testId}
    >
       {props.apiStatus === API_FETCHING ? (
          <Loader

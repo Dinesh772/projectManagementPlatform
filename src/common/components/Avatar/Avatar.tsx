@@ -7,6 +7,7 @@ const Avatar = props => (
       src={props.path}
       alt={props.altText}
       onClick={props.handleClick}
+      data-testid={props.testId}
    />
 )
 export default Avatar

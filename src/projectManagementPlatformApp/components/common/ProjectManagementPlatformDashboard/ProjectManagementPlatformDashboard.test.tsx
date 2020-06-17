@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, withRouter } from 'react-router-dom'
 import { Provider } from 'mobx-react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, getByTestId } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 import i18n from '../../../../i18n/strings.json'
 import ProjectManagementPlatformDashboard from '.'
@@ -121,9 +121,9 @@ describe('ProjectManagementPlatformDashboard', () => {
       const mockSuccessPromise = Promise.resolve(projectsData)
       const mockProjectsAPI = jest.fn()
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
+      projectService.getProjectsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
-      expect(projectStore.productsList).not.toEqual([])
+      expect(projectStore.projectsList).not.toEqual([])
       getByText(i18n.listOfProjects)
    })
    it('should test pagination to the user', async () => {
@@ -141,7 +141,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       const mockSuccessPromise = Promise.resolve(projectsData)
       const mockProjectsAPI = jest.fn()
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
+      projectService.getProjectsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
       getByTestId(i18n.paginationTestId)
    })
@@ -161,7 +161,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       const mockSuccessPromise = Promise.resolve(projectsData)
       const mockProjectsAPI = jest.fn()
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
+      projectService.getProjectsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
       fireEvent.click(getByText('2'))
       await projectStore.getProjectsAPI()
@@ -183,7 +183,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       const mockSuccessPromise = Promise.resolve(projectsData)
       const mockProjectsAPI = jest.fn()
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
+      projectService.getProjectsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
       fireEvent.click(getByText('Ganesh karedla'))
       //getByText(i18n.addTask)
@@ -211,7 +211,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       const mockSuccessPromise = Promise.resolve(projectsData)
       const mockProjectsAPI = jest.fn()
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
+      projectService.getProjectsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
       fireEvent.click(getByText('Ganesh karedla'))
       const mockTasksPromise = Promise.resolve(tasksData)
@@ -238,7 +238,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       const mockSuccessPromise = Promise.resolve(projectsData)
       const mockProjectsAPI = jest.fn()
       mockProjectsAPI.mockReturnValue(mockSuccessPromise)
-      projectService.productsAPI = mockProjectsAPI
+      projectService.getProjectsAPI = mockProjectsAPI
       await projectStore.getProjectsAPI()
       fireEvent.click(getByText('Ganesh karedla'))
 
@@ -250,5 +250,43 @@ describe('ProjectManagementPlatformDashboard', () => {
       waitFor(() => {
          getByText('about')
       })
+   })
+   it('should display list of transition states on status clicked', async () => {
+      const { getByText, debug, getByTestId, getAllByText } = render(
+         <Provider
+            projectStore={projectStore}
+            taskStore={taskStore}
+            authStore={authStore}
+         >
+            <Router history={createMemoryHistory()}>
+               <ProjectManagementPlatformDashboard />
+            </Router>
+         </Provider>
+      )
+      const mockSuccessPromise = Promise.resolve(projectsData)
+      const mockProjectsAPI = jest.fn()
+      mockProjectsAPI.mockReturnValue(mockSuccessPromise)
+      projectService.getProjectsAPI = mockProjectsAPI
+      await projectStore.getProjectsAPI()
+      fireEvent.click(getByText('Ganesh karedla'))
+
+      const mockTasksPromise = Promise.resolve({
+         tasks: tasksData.tasks[0],
+         total_count_of_tasks: 1
+      })
+      const mockTasksAPI = jest.fn()
+      mockTasksAPI.mockReturnValue(mockTasksPromise)
+      taskService.getTasksAPI = mockTasksAPI
+      await taskStore.getTasksAPI()
+
+      waitFor(() => {
+         getByText('about')
+         getByText('List of Tasks')
+         // fireEvent.click(getByTestId('status'))
+         // fireEvent.click(getByText('To be reviewed'))
+         // fireEvent.change(getByTestId('status'), { target: { value: 'TODO' } })
+      })
+      // fireEvent.click(getByTestId('status'))
+      //expect(getByText('Add New Transition')).not.toBeInTheDocument()
    })
 })

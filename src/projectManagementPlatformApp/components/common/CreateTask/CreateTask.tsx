@@ -206,6 +206,7 @@ class CreateTask extends React.Component<{
       } else {
          projectsNames = []
       }
+
       return (
          <CreateTaskWrapper>
             <CreateTaskHeader>
@@ -228,6 +229,7 @@ class CreateTask extends React.Component<{
                      placeholder={i18n.chooseProject}
                      errorMessage={this.projectHasError}
                      handleChange={this.handleProjectChange}
+                     testId='project-dropdown'
                   />
                </DropdownWrapper>
                <DropdownWrapper>
@@ -238,6 +240,7 @@ class CreateTask extends React.Component<{
                      placeholder={i18n.chooseIssueType}
                      errorMessage={this.issueTypeError}
                      handleChange={this.handleIssueTypeChange}
+                     testId='issue-dropdown'
                   />
                </DropdownWrapper>
                <UserTextInputField
@@ -248,6 +251,7 @@ class CreateTask extends React.Component<{
                   errorMessage={this.taskTitleErrorMessage}
                   onChange={this.hadleTitleChange}
                   validate={this.hadleTitleChange}
+                  testId='task-title'
                />
                <UserTextareaInput
                   label={i18n.description}

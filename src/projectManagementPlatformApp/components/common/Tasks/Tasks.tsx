@@ -163,6 +163,7 @@ class Tasks extends React.Component<PropsType> {
                   handleClick={this.handleCreateTask}
                   height={'30px'}
                   width={'120px'}
+                  testId={'addTask'}
                />
             </ProjectTaskHeader>
 

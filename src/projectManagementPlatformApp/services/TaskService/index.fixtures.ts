@@ -2,7 +2,7 @@ import tasksFixtures from '../../fixtures/taskFixtures.json'
 
 import checklistFixtures from '../../fixtures/checklistFixtures.json'
 
-import workflowsFixtures from '../../fixtures/workflowFixtures.json'
+import toStatesFixtures from '../../fixtures/toStatesFixtures.json'
 class TasksFixturesAPI {
    getTasksAPI = id => {
       return new Promise((resolve, reject) => {
@@ -26,7 +26,7 @@ class TasksFixturesAPI {
    }
    getWorkflowsAPI = id => {
       return new Promise((resolve, reject) => {
-         setTimeout(() => resolve(workflowsFixtures), 2000)
+         resolve(toStatesFixtures)
       })
    }
 }

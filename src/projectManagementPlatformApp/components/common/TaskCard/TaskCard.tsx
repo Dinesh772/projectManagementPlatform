@@ -111,6 +111,7 @@ class TaskCard extends React.Component<{
                   onFocus={event => handleDropdownClick(event, task.id)}
                   placeholderClassName='dropdown-placeholder'
                   menuClassName='dropdown-menu'
+                  data-testid='status'
                   disabled={disable}
                />
                <Loadingwrapper hide={workflowsAPIStatus === API_FETCHING}>
