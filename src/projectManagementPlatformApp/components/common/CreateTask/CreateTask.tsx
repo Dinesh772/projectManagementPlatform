@@ -218,6 +218,7 @@ class CreateTask extends React.Component<{
                   width={'20px'}
                   path={i18n.closeButtonSrc}
                   handleClick={this.handleClose}
+                  testId={'close'}
                />
             </CreateTaskHeader>
             <TaskDetails>
@@ -272,6 +273,7 @@ class CreateTask extends React.Component<{
                      apiStatus={taskStore.createTaskAPIStatus}
                      handleClick={this.handleCreateButton}
                      isDisabled={this.isValidated ? false : true}
+                     testId={'submit'}
                   />
                </CreateButtonWrapper>
             </TaskDetails>

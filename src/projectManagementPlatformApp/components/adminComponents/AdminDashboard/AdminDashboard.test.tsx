@@ -2,19 +2,17 @@ import React from 'react'
 
 import AdminDashboard from './AdminDashboard'
 import { Router } from 'react-router-dom'
-import { render, fireEvent, getByRole } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 import i18n from '../../../../i18n/strings.json'
 import ProjectsFixtureService from '../../../services/ProjectsService/index.fixtures'
 import projectsData from '../../../fixtures/projectFixtures.json'
-import workflowsData from '../../../fixtures/workflowFixtures.json'
 
 import ProjectStore from '../../../stores/ProjectStore'
 import AuthApi from '../../../../Authentication/services/AuthService'
 import AuthStore from '../../../../Authentication/stores/AuthStore'
 import TasksFixturesAPI from '../../../services/TaskService/index.fixtures'
 import TaskStore from '../../../stores/TaskStore'
-import { debug } from 'console'
 describe('Admin component tests', () => {
    let projectStore
    let projectService
@@ -109,7 +107,7 @@ describe('Admin component tests', () => {
       debug()
    })
    it('should able to create a project', async () => {
-      const { getByText, debug, getByTestId, getByRole } = render(
+      const { getByText, getByTestId } = render(
          <Router history={createMemoryHistory()}>
             <AdminDashboard
                projectStore={projectStore}

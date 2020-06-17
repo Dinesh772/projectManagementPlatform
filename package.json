@@ -135,7 +135,8 @@
          "!src/Common/components/NoDataView/NoDataView.stories.js",
          "!src/Common/components/UserTextInputField/UserTextInputField.stories.js",
          "!src/Common/components/Icons/Loader/index.js",
-         "!src/Common/components/SvgComponent/index.js"
+         "!src/Common/components/SvgComponent/index.js",
+         "!src/Common/utils/AuthAPIUtils.js"
       ]
    }
 }
