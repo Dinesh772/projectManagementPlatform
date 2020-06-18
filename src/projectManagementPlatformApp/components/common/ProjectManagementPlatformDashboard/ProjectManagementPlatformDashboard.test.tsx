@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, withRouter } from 'react-router-dom'
 import { Provider } from 'mobx-react'
-import { render, fireEvent, waitFor, getByTestId } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
 import i18n from '../../../../i18n/strings.json'
 import ProjectManagementPlatformDashboard from '.'
@@ -252,7 +252,7 @@ describe('ProjectManagementPlatformDashboard', () => {
       })
    })
    it('should display list of transition states on status clicked', async () => {
-      const { getByText, debug, getByTestId, getAllByText } = render(
+      const { getByText } = render(
          <Provider
             projectStore={projectStore}
             taskStore={taskStore}
