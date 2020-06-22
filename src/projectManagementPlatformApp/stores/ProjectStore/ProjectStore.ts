@@ -5,27 +5,42 @@ import { API_INITIAL } from '@ib/api-constants'
 
 import ProjectModel from '../models/ProjectModel'
 import WorkflowModel from '../models/WorkflowModel'
+import ProjectsFixtureService from '../../services/ProjectsService/index.fixtures'
+import ProjectsApi from '../../services/ProjectsService/index.Api'
 
+export type ProjectModelType = {
+   name: string
+   workflowType: string
+   whoCreated: string
+   createdAt: string
+   id: number
+   description: String
+   projectType: String
+}
+export type WorkflowType = {
+   name: string
+   workflowId: number
+}
 class ProjectStore {
-   @observable projectsList
-   @observable projectsAPIStatus
-   @observable workflowsAPIStatus
-   @observable createProjectAPIStatus
+   @observable projectsList!: Array<Array<ProjectModelType>>
+   @observable projectsAPIStatus!: number
+   @observable workflowsAPIStatus!: number
+   @observable createProjectAPIStatus!: number
    @observable projectsAPIError
    @observable workflowsAPIError
    @observable createProjectAPIError
-   @observable projectsLimitPerPage
-   @observable totalProjects
+   @observable projectsLimitPerPage!: number
+   @observable totalProjects!: number
    @observable totalProjectsList
-   @observable totalProjectsAPIStatus
+   @observable totalProjectsAPIStatus!: number
    @observable totalProjectsAPIError
-   @observable totalPaginationLimit
-   @observable currentPageNumber
-   @observable workflows
-   @observable offset
+   @observable totalPaginationLimit!: number
+   @observable currentPageNumber!: number
+   @observable workflows!: Array<Array<WorkflowType>>
+   @observable offset!: number
 
    projectsService
-   constructor(projectsService) {
+   constructor(projectsService: ProjectsFixtureService | ProjectsApi) {
       this.projectsService = projectsService
       this.init()
    }
@@ -97,7 +112,7 @@ class ProjectStore {
    }
 
    @action.bound
-   createProjectAPI(requestObject, onSuccess) {
+   createProjectAPI(requestObject, onSuccess: Function) {
       const createProjectPromise = this.projectsService.createProjectAPI(
          requestObject
       )
@@ -109,7 +124,7 @@ class ProjectStore {
          .catch(error => this.setCreateProjectAPIError(error))
    }
    @action.bound
-   setCreateProjectAPIStatus(apiStatus) {
+   setCreateProjectAPIStatus(apiStatus: number) {
       this.createProjectAPIStatus = apiStatus
    }
    @action.bound
@@ -140,7 +155,7 @@ class ProjectStore {
    }
 
    @action.bound
-   setWorkflowAPIStatus(apiStatus) {
+   setWorkflowAPIStatus(apiStatus: number) {
       this.workflowsAPIStatus = apiStatus
    }
 
@@ -154,7 +169,7 @@ class ProjectStore {
    }
 
    @action.bound
-   setProjectsAPIStatus(apiStatus) {
+   setProjectsAPIStatus(apiStatus: number) {
       this.projectsAPIStatus = apiStatus
    }
 
@@ -179,8 +194,9 @@ class ProjectStore {
    @action.bound
    onInitializeArrayElements(length) {
       const array = this.projectsList
+      const emptyArray: Array<ProjectModelType> = []
       for (let i = 0; i < length; ++i) {
-         array.push([])
+         array.push(emptyArray)
       }
       this.projectsList = array
    }

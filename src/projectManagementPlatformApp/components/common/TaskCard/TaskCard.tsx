@@ -15,6 +15,10 @@ import Loader from '../../../../Common/components/Icons/Loader/SvgFile'
 import { Colors } from '../../../../themes/Colors'
 import i18n from '../../../../i18n/strings.json'
 import Avatar from '../../../../Common/components/Avatar/Avatar'
+import {
+   TaskModelType,
+   WorkflowType
+} from '../../../stores/TaskStore/TaskStore'
 
 import {
    TaskCardWrapper,
@@ -26,23 +30,21 @@ import {
    TextWrapper
 } from './styledComponent'
 
+type TaskCardPropTypes = {
+   task: TaskModelType
+   bgColor: string
+   handleTaskInfo: Function
+   handleStatusChange: Function
+   workflows: Array<WorkflowType> | any
+   handleDropdownClick: Function
+   workflowsAPIStatus: number
+}
 @observer
-class TaskCard extends React.Component<{
-   task: any
-   bgColor: any
-   handleTaskInfo: any
-   handleStatusChange: any
-   workflows: any
-   handleDropdownClick: any
-   workflowsAPIStatus: any
-}> {
-   handleDropdownChange = (event, task) => {
+class TaskCard extends React.Component<TaskCardPropTypes> {
+   handleDropdownChange = (event: any, task: TaskModelType) => {
       const { handleStatusChange, workflows } = this.props
-
       const value = event.value
-
       const toState = workflows.find(task => task.name === value)
-
       const toStateId = toState.workflowId
       handleStatusChange(value, task, toStateId)
    }

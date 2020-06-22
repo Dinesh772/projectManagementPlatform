@@ -13,24 +13,25 @@ import SignInCard from '../SignInCard'
 
 import { SignInComponentWrapper } from './styledComponents'
 import { GoToHomePage } from '../../utils/NavigationUtils'
+import AuthStore from '../../stores/AuthStore'
 
 type propsType = {
    history: History
-   authStore: any
+   authStore: AuthStore
 }
 @inject('authStore')
 @observer
 class SignInRoute extends React.Component<propsType> {
-   @observable username = ''
-   @observable password = ''
-   @observable isUsernameHasError = false
-   @observable isPasswordHasError = false
-   @observable usernameErrorMessage = ''
-   @observable passwordErrorMessage = ''
-   @observable loginFailureErrorMessage = ''
-   @observable isValidated = false
+   @observable username: string = ''
+   @observable password: string = ''
+   @observable isUsernameHasError: boolean = false
+   @observable isPasswordHasError: boolean = false
+   @observable usernameErrorMessage: string = ''
+   @observable passwordErrorMessage: string = ''
+   @observable loginFailureErrorMessage: string = ''
+   @observable isValidated: boolean = false
    @action.bound
-   handleUsername(event) {
+   handleUsername(event: React.ChangeEvent<HTMLInputElement>) {
       const usernameValue = event.target.value
       this.username = usernameValue
       if (usernameValue.length !== 0) {
@@ -44,7 +45,7 @@ class SignInRoute extends React.Component<propsType> {
       }
    }
    @action.bound
-   handlePassword(event) {
+   handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
       const passwordValue = event.target.value
       this.password = passwordValue
       if (stringValidator(passwordValue)) {
@@ -102,7 +103,7 @@ class SignInRoute extends React.Component<propsType> {
       GoToHomePage(history)
    }
    @action.bound
-   onLoginFailure(error) {
+   onLoginFailure(error: string) {
       this.loginFailureErrorMessage = error
    }
 

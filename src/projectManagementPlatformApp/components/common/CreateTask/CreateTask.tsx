@@ -24,14 +24,17 @@ import {
    CreateButtonWrapper,
    ToasterWrapper
 } from './styledComponent'
+import TaskStore from '../../../stores/TaskStore'
+
+type CreateTaskProps = {
+   handleClose: Function
+   projectsData: any
+   taskStore: TaskStore
+   totalProjects: any
+}
 
 @observer
-class CreateTask extends React.Component<{
-   handleClose: any
-   projectsData: any
-   taskStore: any
-   totalProjects: any
-}> {
+class CreateTask extends React.Component<CreateTaskProps> {
    @observable createTaskDetails = {
       project: 0,
       issueType: '',

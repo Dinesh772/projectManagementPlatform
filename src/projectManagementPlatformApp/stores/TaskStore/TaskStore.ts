@@ -4,29 +4,51 @@ import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 import TaskModel from '../models/TaskModel'
 import TransitionChecklistModel from '../models/TransitionChecklistModel'
 import StatesModel from '../models/StatesModel'
+import TasksFixturesAPI from '../../services/TaskService/index.fixtures'
+import TasksAPI from '../../services/TaskService/index.Api'
 
+export type WorkflowType = {
+   name: string
+   workflowId: number
+}
+export type ChecklistType = {
+   name: string
+   id: number
+   isMandatory: boolean
+}
+export type TaskModelType = {
+   taskTitle: string
+   projectTitle: string
+   description: string
+   id: number
+   workflow: Array<WorkflowType>
+   createdAt: string
+   status: string
+   checklist: Array<ChecklistType>
+   createdBy: string
+}
 class TaskStore {
-   @observable tasksList
-   @observable tasksAPIStatus
-   @observable checklistAPIStatus
-   @observable createTaskAPIStatus
-   @observable changeStatusAPIStatus
-   @observable getWorkflowsAPIStatus
+   @observable tasksList!: Array<Array<TaskModelType>>
+   @observable tasksAPIStatus!: number
+   @observable checklistAPIStatus!: number
+   @observable createTaskAPIStatus!: number
+   @observable changeStatusAPIStatus!: number
+   @observable getWorkflowsAPIStatus!: number
    @observable getWorkflowsAPIError
    @observable changeStatusAPIError
    @observable createTaskAPIError
    @observable checklistAPIError
    @observable tasksAPIError
-   @observable taskChecklist
-   @observable totalTasks
-   @observable totalPaginationLimit
-   @observable currentPageNumber
-   @observable tasksLimitPerPage
-   @observable workflows
-   @observable projectId
-   @observable offset
+   @observable taskChecklist!: Array<ChecklistType>
+   @observable totalTasks!: number
+   @observable totalPaginationLimit!: number
+   @observable currentPageNumber!: number
+   @observable tasksLimitPerPage!: number
+   @observable workflows!: Array<WorkflowType>
+   @observable projectId!: number
+   @observable offset!: number
    taskService
-   constructor(taskService) {
+   constructor(taskService: TasksFixturesAPI | TasksAPI) {
       this.init()
       this.taskService = taskService
    }
@@ -54,7 +76,7 @@ class TaskStore {
       this.init()
    }
    @action.bound
-   getTasksAPI(id) {
+   getTasksAPI(id: number) {
       if (
          this.tasksList[this.currentPageIndex] === undefined ||
          this.tasksList[this.currentPageIndex].length === 0
@@ -77,7 +99,7 @@ class TaskStore {
    }
 
    @action.bound
-   createTaskAPI(taskDetailsObject, onSuccess, onFailure) {
+   createTaskAPI(taskDetailsObject, onSuccess: Function, onFailure: Function) {
       const createTaslPromise = this.taskService.createTaskAPI(
          taskDetailsObject
       )
@@ -93,7 +115,7 @@ class TaskStore {
    }
 
    @action.bound
-   changeTaskStatusAPI(reqestObject, onSuccess) {
+   changeTaskStatusAPI(requestObject, onSuccess: Function) {
       const changeTaskPromise = this.taskService.changeTaskStatusAPI()
       return bindPromiseWithOnSuccess(changeTaskPromise)
          .to(this.setChangeTaskAPIStatus, response => {
@@ -105,7 +127,7 @@ class TaskStore {
          })
    }
    @action.bound
-   getChecklistAPI(requestObject, taskId, onSuccess) {
+   getChecklistAPI(requestObject, taskId: number, onSuccess: Function) {
       const checklistPromise = this.taskService.getChecklistAPI(
          requestObject,
          taskId
@@ -118,7 +140,7 @@ class TaskStore {
          .catch(error => this.setChecklistAPIError(error))
    }
    @action.bound
-   getWorkflowsAPI(id) {
+   getWorkflowsAPI(id: string) {
       if (this.workflows.length === 0) {
          const workflowsPromise = this.taskService.getWorkflowsAPI(id)
          return bindPromiseWithOnSuccess(workflowsPromise)
@@ -132,7 +154,7 @@ class TaskStore {
    }
 
    @action.bound
-   setWorkflowsAPIStatus(apiStatus) {
+   setWorkflowsAPIStatus(apiStatus: number) {
       this.getWorkflowsAPIStatus = apiStatus
    }
    @action.bound
@@ -149,7 +171,7 @@ class TaskStore {
       this.workflows = states
    }
    @action.bound
-   setChecklistAPIStatus(apiStatus) {
+   setChecklistAPIStatus(apiStatus: number) {
       this.checklistAPIStatus = apiStatus
    }
    @action.bound
@@ -165,7 +187,7 @@ class TaskStore {
    }
 
    @action.bound
-   setChangeTaskAPIStatus(apiStatus) {
+   setChangeTaskAPIStatus(apiStatus: number) {
       this.changeStatusAPIStatus = apiStatus
    }
    @action.bound
@@ -176,7 +198,7 @@ class TaskStore {
    setChangeTaskAPIResponse(response) {}
 
    @action.bound
-   setCreateTaskAPIStatus(apiStatus) {
+   setCreateTaskAPIStatus(apiStatus: number) {
       this.createTaskAPIStatus = apiStatus
    }
    @action.bound
@@ -187,15 +209,16 @@ class TaskStore {
    setCreateTaskAPIResponse(response) {}
 
    @action.bound
-   onInitializeArrayElements(length) {
+   onInitializeArrayElements(length: number) {
       const array = this.tasksList
+      const emptyArray: Array<TaskModelType> = []
       for (let i = 0; i < length; ++i) {
-         array.push([])
+         array.push(emptyArray)
       }
       this.tasksList = array
    }
    @action.bound
-   setTasksAPIStatus(apiStatus) {
+   setTasksAPIStatus(apiStatus: number) {
       this.tasksAPIStatus = apiStatus
    }
    @action.bound

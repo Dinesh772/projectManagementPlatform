@@ -24,13 +24,18 @@ import {
    PaginationWrapper,
    ToasterWrapper
 } from './styledComponent'
-@observer
-class AdminDashboard extends React.Component<{
-   projectStore: any
-   taskStore: any
-   authStore: any
+import ProjectStore from '../../../stores/ProjectStore'
+import TaskStore from '../../../stores/TaskStore'
+import AuthStore from '../../../../Authentication/stores/AuthStore'
+
+type AdminDashboardProps = {
+   projectStore: ProjectStore
+   taskStore: TaskStore
+   authStore: AuthStore
    history: History
-}> {
+}
+@observer
+class AdminDashboard extends React.Component<AdminDashboardProps> {
    @observable isCreateClicked = false
    @observable isProjectCardClicked = false
    handleClick = () => {

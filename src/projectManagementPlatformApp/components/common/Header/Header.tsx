@@ -12,9 +12,10 @@ import {
    ProfileWrapper
 } from './styledComponent'
 
-class Header extends React.Component<{
+type HeaderPropTypes = {
    handleProfileClick: any
-}> {
+}
+class Header extends React.Component<HeaderPropTypes> {
    render() {
       const { handleProfileClick } = this.props
       return (

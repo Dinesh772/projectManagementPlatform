@@ -16,6 +16,9 @@ import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrap
 
 import { Colors } from '../../../../themes/Colors'
 import i18n from '../../../../i18n/strings.json'
+import ProjectStore from '../../../stores/ProjectStore'
+import TaskStore from '../../../stores/TaskStore'
+import AuthStore from '../../../../Authentication/stores/AuthStore'
 import NoDataView from '../../../../Common/components/NoDataView'
 import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/RouteConstants'
 
@@ -41,10 +44,10 @@ import {
 } from './styledComponent'
 
 type PropsType = {
-   projectStore: any
-   taskStore: any
+   projectStore: ProjectStore
+   taskStore: TaskStore
    history: History
-   authStore: any
+   authStore: AuthStore
    match: any
 }
 @inject('projectStore', 'taskStore', 'authStore')

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { Colors } from '../../themes/Colors'
+import { css } from '@emotion/core'
 
 export const Typo12SteelHKGroteskSemiBold = styled.label`
    color: ${Colors.steel};
@@ -136,6 +137,16 @@ export const Typo16HKGroteskMedium100 = styled.p`
    width: 50px;
    font-family: 'HKGroteskRegular';
    font-size: 16px;
+   font-weight: 600;
+   font-stretch: normal;
+   font-style: normal;
+   line-height: 1.2;
+   letter-spacing: normal;
+   color: ${Colors.darkBlueGrey};
+`
+export const Typo18BoldHKGroteskRegularButtonText = css`
+   font-family: 'HKGroteskRegular';
+   font-size: 18px;
    font-weight: 600;
    font-stretch: normal;
    font-style: normal;

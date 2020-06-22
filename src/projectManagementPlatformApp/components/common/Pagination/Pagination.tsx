@@ -7,6 +7,13 @@ import i18n from '../../../../i18n/strings.json'
 import Avatar from '../../../../Common/components/Avatar/Avatar'
 
 import { PaginationWrapper } from './styledComponent'
+
+type PaginationProps = {
+   handlePaginationButtons: Function
+   hide: Boolean
+   currentPageNumber: Number
+   totalPages: Number
+}
 @observer
 class Pagination extends React.Component<{
    handlePaginationButtons: any

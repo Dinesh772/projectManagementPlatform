@@ -9,12 +9,14 @@ import {
    CreatedByWrapper,
    TextWrapper
 } from './styledComponent'
+import { ProjectModelType } from '../../../stores/ProjectStore/ProjectStore'
 
-class ProjectCard extends React.Component<{
-   project: any
-   bgColor: any
-   handleProjectClick: any
-}> {
+type ProjectCardPropsTYpe = {
+   project: ProjectModelType
+   bgColor: String
+   handleProjectClick: Function
+}
+class ProjectCard extends React.Component<ProjectCardPropsTYpe> {
    handleClick = (event, value) => {
       const { handleProjectClick } = this.props
       handleProjectClick(value)

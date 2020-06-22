@@ -33,15 +33,16 @@ import {
    CreateButtonWrapper
 } from './styledComponent'
 
-@observer
-class CreateProject extends React.Component<{
-   handleClick: any
+type CreateProjectProps = {
+   handleClick: Function
    workflows: any
-   handleDropdown: any
-   createProject: any
-   workflowFetchingStatus: any
-   createProjectFetchingStataus: any
-}> {
+   handleDropdown: Function
+   createProject: Function
+   workflowFetchingStatus: Number
+   createProjectFetchingStataus: Number
+}
+@observer
+class CreateProject extends React.Component<CreateProjectProps> {
    @observable projectData = {
       projectName: '',
       description: '',

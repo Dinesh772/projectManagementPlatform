@@ -8,12 +8,13 @@ import { Colors } from '../../../../themes/Colors'
 import ProjectCard from '../ProjectCard'
 
 import { ProjectsListWrapper, ProjectsListHeader } from './styledComponent'
-
+import { ProjectModelType } from '../../../stores/ProjectStore/ProjectStore'
+type ProjectsProps = {
+   projectsData: Array<ProjectModelType>
+   handleProjectClick: Function
+}
 @observer
-class ProjectsList extends React.Component<{
-   projectsData: any
-   handleProjectClick: any
-}> {
+class ProjectsList extends React.Component<ProjectsProps> {
    render() {
       const projectsData = this.props.projectsData
       const { handleProjectClick } = this.props

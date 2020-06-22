@@ -6,7 +6,10 @@ import { action, observable } from 'mobx'
 import CookieConsent from 'react-cookie-consent'
 
 import LoadingWrapperWithFailure from '../../../../Common/components/LoadingWrapperWithFailure'
+import AuthStore from '../../../../Authentication/stores/AuthStore'
+import ProjectStore from '../../../stores/ProjectStore'
 import i18n from '../../../../i18n/strings.json'
+import TaskStore from '../../../stores/TaskStore'
 import MemberDashboard from '../../memberComponents/MemberDashboard'
 import AdminDashboard from '../../adminComponents/AdminDashboard'
 
@@ -19,10 +22,10 @@ import {
 } from './styledComponent'
 
 type propsType = {
-   authStore: any
+   authStore: AuthStore
    history: History
-   projectStore: any
-   taskStore: any
+   projectStore: ProjectStore
+   taskStore: TaskStore
 }
 
 @inject('authStore', 'projectStore', 'taskStore')

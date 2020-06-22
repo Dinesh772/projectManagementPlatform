@@ -14,10 +14,11 @@ import {
    LogoutWrapper
 } from './styledComponent'
 
-class ProfileCard extends React.Component<{
-   handleProfile: any
-   handleLogout: any
-}> {
+type ProfileCardProps = {
+   handleProfile: Function
+   handleLogout: Function
+}
+class ProfileCard extends React.Component<ProfileCardProps> {
    render() {
       const { handleProfile, handleLogout } = this.props
       let account

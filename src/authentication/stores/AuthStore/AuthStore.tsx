@@ -10,12 +10,14 @@ import {
    clearAdmin
 } from '../../../Common/utils/StorageUtils'
 import { getUserDisplayableErrorMessage } from '../../../Common/utils/APIUtils'
+import AuthFixtures from '../../services/AuthService/index.fixtures'
+import AuthApi from '../../services/AuthService'
 class AuthStore {
-   @observable getSignInApiStatus
+   @observable getSignInApiStatus!: number
    @observable getSignInError
 
    authService
-   constructor(authService) {
+   constructor(authService: AuthFixtures | AuthApi) {
       this.init()
       this.authService = authService
    }
@@ -28,7 +30,11 @@ class AuthStore {
    clearStore() {
       this.init()
    }
-   getSignInAPI = (requestObject, onSuccess, onFailure) => {
+   getSignInAPI = (
+      requestObject: { username: string; password: string },
+      onSuccess: Function,
+      onFailure: Function
+   ) => {
       const tokenPromise = this.authService.signInAPI(requestObject)
       return bindPromiseWithOnSuccess(tokenPromise)
          .to(this.setSignInAPIStatus, response => {
@@ -45,7 +51,7 @@ class AuthStore {
       this.getSignInError = getUserDisplayableErrorMessage(error)
    }
    @action.bound
-   setSignInAPIStatus(apiStatus) {
+   setSignInAPIStatus(apiStatus: number) {
       this.getSignInApiStatus = apiStatus
    }
    @action.bound

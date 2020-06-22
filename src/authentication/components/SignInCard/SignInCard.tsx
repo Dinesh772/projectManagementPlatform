@@ -29,8 +29,8 @@ type PropsType = {
    isUsernameHasError: boolean
    validate: Function
    i18n: any
-   getSignInApiStatus: any
-   handleSubmit: any
+   getSignInApiStatus: number
+   handleSubmit: Function
    loginApiFailureMessage: string
 }
 
