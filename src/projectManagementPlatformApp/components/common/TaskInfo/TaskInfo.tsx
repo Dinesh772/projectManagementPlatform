@@ -8,7 +8,7 @@ import Timestamp from '../../../../../node_modules/react-timestamp/dist/index'
 
 import CloseButton from '../../../../Common/components/Avatar/Avatar'
 import i18n from '../../../../i18n/strings.json'
-
+import { TaskModelType } from '../../../stores/TaskStore/TaskStore'
 import {
    TaskInfoWrapper,
    TaskInfoHeader,
@@ -21,7 +21,11 @@ import {
    DescriptionWrapper
 } from './styledComponent'
 
-class TaskInfo extends React.Component<{ handleClose: any; taskObject: any }> {
+type TaskInfoProps = {
+   handleClose: Function
+   taskObject: any
+}
+class TaskInfo extends React.Component<TaskInfoProps> {
    render() {
       const { handleClose, taskObject } = this.props
       return (

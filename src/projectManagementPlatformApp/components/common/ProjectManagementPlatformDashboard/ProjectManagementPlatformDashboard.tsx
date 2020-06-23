@@ -31,7 +31,7 @@ type propsType = {
 @inject('authStore', 'projectStore', 'taskStore')
 @observer
 class ProjectManagementPlatformDashboard extends React.Component<propsType> {
-   @observable isProfileClicked = false
+   @observable isProfileClicked: boolean = false
    @action.bound
    handleLogout() {
       const { clearUserSession } = this.props.authStore
@@ -65,7 +65,7 @@ class ProjectManagementPlatformDashboard extends React.Component<propsType> {
          <MemberDashboard projectStore={projectStore} taskStore={taskStore} />
       )
    }
-   handleProfile = event => {
+   handleProfile = () => {
       this.isProfileClicked = !this.isProfileClicked
    }
    render() {

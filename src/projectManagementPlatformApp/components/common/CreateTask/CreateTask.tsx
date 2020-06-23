@@ -25,30 +25,36 @@ import {
    ToasterWrapper
 } from './styledComponent'
 import TaskStore from '../../../stores/TaskStore'
+import { ProjectModelType } from '../../../stores/ProjectStore/ProjectStore'
 
 type CreateTaskProps = {
    handleClose: Function
-   projectsData: any
+   projectsData: Array<Array<ProjectModelType>>
    taskStore: TaskStore
-   totalProjects: any
+   totalProjects: Array<ProjectModelType>
 }
-
+type CreateTaskDetailsType = {
+   project: number
+   issueType: string
+   title: string
+   description: string
+}
 @observer
 class CreateTask extends React.Component<CreateTaskProps> {
-   @observable createTaskDetails = {
+   @observable createTaskDetails: CreateTaskDetailsType = {
       project: 0,
       issueType: '',
       title: '',
       description: ''
    }
-   @observable isValidated = false
-   @observable taskTitleFieldHasError = false
-   @observable taskTitleErrorMessage = ''
-   @observable taskDescriptionHasError = false
-   @observable taskDescriptionErrorMessage = ''
-   @observable projectHasError = ''
-   @observable issueTypeError = ''
-   handleProjectChange = event => {
+   @observable isValidated: boolean = false
+   @observable taskTitleFieldHasError: boolean = false
+   @observable taskTitleErrorMessage: string = ''
+   @observable taskDescriptionHasError: boolean = false
+   @observable taskDescriptionErrorMessage: string = ''
+   @observable projectHasError: string = ''
+   @observable issueTypeError: string = ''
+   handleProjectChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value
       if (stringValidator(value)) {
          const { totalProjects } = this.props
@@ -69,7 +75,7 @@ class CreateTask extends React.Component<CreateTaskProps> {
       }
    }
 
-   handleIssueTypeChange = event => {
+   handleIssueTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value
       if (stringValidator(value)) {
          this.createTaskDetails.issueType = value
@@ -80,7 +86,7 @@ class CreateTask extends React.Component<CreateTaskProps> {
          this.issueTypeError = i18n.thisFieldIsRequired
       }
    }
-   hadleTitleChange = event => {
+   hadleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value
       this.createTaskDetails.title = value
       if (stringValidator(value)) {
@@ -93,7 +99,9 @@ class CreateTask extends React.Component<CreateTaskProps> {
          this.isValidated = false
       }
    }
-   handleDescriptionChange = event => {
+   handleDescriptionChange = (
+      event: React.ChangeEvent<HTMLTextAreaElement>
+   ) => {
       const value = event.target.value
       this.createTaskDetails.description = value
       if (stringValidator(value)) {

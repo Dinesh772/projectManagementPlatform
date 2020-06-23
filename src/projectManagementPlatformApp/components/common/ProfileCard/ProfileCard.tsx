@@ -21,7 +21,7 @@ type ProfileCardProps = {
 class ProfileCard extends React.Component<ProfileCardProps> {
    render() {
       const { handleProfile, handleLogout } = this.props
-      let account
+      let account: string
       if (getAdmin() === 'true') {
          account = 'Admin'
       } else {

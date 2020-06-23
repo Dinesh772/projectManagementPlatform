@@ -36,8 +36,8 @@ type AdminDashboardProps = {
 }
 @observer
 class AdminDashboard extends React.Component<AdminDashboardProps> {
-   @observable isCreateClicked = false
-   @observable isProjectCardClicked = false
+   @observable isCreateClicked: boolean = false
+   @observable isProjectCardClicked: boolean = false
    handleClick = () => {
       const { projectStore } = this.props
       this.isCreateClicked = !this.isCreateClicked
@@ -50,7 +50,7 @@ class AdminDashboard extends React.Component<AdminDashboardProps> {
       projectStore.getWorkflowsAPI()
    }
 
-   handleProjectCardTriggred = value => {
+   handleProjectCardTriggred = (value: number) => {
       const { history, taskStore } = this.props
       taskStore.getTasksAPI(value)
       history.push(

@@ -29,26 +29,31 @@ import {
    FetchingWrapper
 } from './styledComponent'
 
-@observer
-class TransitionChange extends React.Component<{
-   handleClose: any
+type TransitionChangePropTypes = {
+   handleClose: Function
    taskObject: any
-   checklistFetchingStatus: any
-   handleSubmit: any
-   transitionApiStatus: any
-   networkCalls: any
-}> {
-   @observable isValidated = false
-   @observable checkboxesChecked = 0
-   @observable validationErrorMessage = ''
-   @observable changeStateErrorMessage = ''
-   @observable mandatoryFieldIds = []
-   @observable checkedFieldIds = []
-   @observable states = {
+   checklistFetchingStatus: number
+   handleSubmit: Function
+   transitionApiStatus: number
+   networkCalls: Function
+}
+type statesType = {
+   from: string
+   to: string
+}
+@observer
+class TransitionChange extends React.Component<TransitionChangePropTypes> {
+   @observable isValidated: boolean = false
+   @observable checkboxesChecked: number = 0
+   @observable validationErrorMessage: string = ''
+   @observable changeStateErrorMessage: string = ''
+   @observable mandatoryFieldIds: Array<[]> = []
+   @observable checkedFieldIds: Array<[]> = []
+   @observable states: statesType = {
       from: '',
       to: ''
    }
-   @observable checkedList = []
+   @observable checkedList: Array<[]> = []
    componentWillReceiveProps(props) {
       this.onResetAllToDefault()
       this.states = {

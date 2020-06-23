@@ -11,16 +11,19 @@ import i18n from '../../../../i18n/strings.json'
 import TaskCard from '../TaskCard'
 
 import { TasksListWrapper, TasksListHeader } from './styledComponent'
+import { WorkflowType } from '../../../stores/TaskStore/TaskStore'
+
+type TaskListPropTypes = {
+   tasksData: any
+   handleTaskInfo: Function
+   handleStatusChange: Function
+   workflows: Array<WorkflowType>
+   handleDropdownClick: Function
+   workflowsAPIStatus: number
+}
 
 @observer
-class TasksList extends React.Component<{
-   tasksData: any
-   handleTaskInfo: any
-   handleStatusChange: any
-   workflows: any
-   handleDropdownClick: any
-   workflowsAPIStatus: any
-}> {
+class TasksList extends React.Component<TaskListPropTypes> {
    render() {
       const {
          tasksData,
@@ -50,7 +53,6 @@ class TasksList extends React.Component<{
                <Typo16HKGroteskMedium>{i18n.summary}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium>{i18n.createdBy}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium>{i18n.createdAt}</Typo16HKGroteskMedium>
-
                <Typo16HKGroteskMedium>{i18n.status}</Typo16HKGroteskMedium>
                <Typo16HKGroteskMedium100>{i18n.info}</Typo16HKGroteskMedium100>
             </TasksListHeader>

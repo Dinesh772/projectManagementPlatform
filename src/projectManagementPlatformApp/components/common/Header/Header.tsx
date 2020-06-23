@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 
 import Logo from '../../../../Common/components/Logo/Logo'
 import i18n from '../../../../i18n/strings.json'

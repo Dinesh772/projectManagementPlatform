@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { toast } from 'react-toastify'
@@ -41,22 +41,28 @@ type CreateProjectProps = {
    workflowFetchingStatus: Number
    createProjectFetchingStataus: Number
 }
+type ProjectDataType = {
+   projectName: string
+   description: string
+   workflowType: number
+   projectType: string
+}
 @observer
 class CreateProject extends React.Component<CreateProjectProps> {
-   @observable projectData = {
+   @observable projectData: ProjectDataType = {
       projectName: '',
       description: '',
       workflowType: 0,
       projectType: ''
    }
-   @observable projectNameFieldHasError = false
-   @observable projectNameErrorMessage = ''
-   @observable projectDescriptionHasError = false
-   @observable projectDescriptionErrorMessage = ''
-   @observable projectWorkflowError = ''
-   @observable projectTypeError = ''
-   @observable isValidated = false
-   handleTitleChange = event => {
+   @observable projectNameFieldHasError: boolean = false
+   @observable projectNameErrorMessage: string = ''
+   @observable projectDescriptionHasError: boolean = false
+   @observable projectDescriptionErrorMessage: string = ''
+   @observable projectWorkflowError: string = ''
+   @observable projectTypeError: string = ''
+   @observable isValidated: boolean = false
+   handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value
       this.projectData.projectName = value
       if (stringValidator(value)) {
@@ -69,7 +75,7 @@ class CreateProject extends React.Component<CreateProjectProps> {
          this.isValidated = false
       }
    }
-   handleDescriptionChange = event => {
+   handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value
       this.projectData.description = value
       if (stringValidator(value)) {
@@ -82,7 +88,9 @@ class CreateProject extends React.Component<CreateProjectProps> {
          this.isValidated = false
       }
    }
-   handleWorkflowDropdownChange = event => {
+   handleWorkflowDropdownChange = (
+      event: React.ChangeEvent<HTMLSelectElement>
+   ) => {
       const value = event.target.value
       if (stringValidator(value)) {
          const { workflows } = this.props
@@ -102,7 +110,9 @@ class CreateProject extends React.Component<CreateProjectProps> {
          this.isValidated = false
       }
    }
-   handleProjectTypeDropdown = event => {
+   handleProjectTypeDropdown = (
+      event: React.ChangeEvent<HTMLSelectElement>
+   ) => {
       const value = event.target.value
       if (stringValidator(value)) {
          this.projectData.projectType = value.toString()
@@ -128,7 +138,7 @@ class CreateProject extends React.Component<CreateProjectProps> {
       }
    }
 
-   handleSubmit = event => {
+   handleSubmit = (event: MouseEvent) => {
       event.preventDefault()
 
       if (this.isValidated) {

@@ -53,18 +53,22 @@ type PropsType = {
 @inject('projectStore', 'taskStore', 'authStore')
 @observer
 class Tasks extends React.Component<PropsType> {
-   @observable isCreateClicked = false
-   @observable isProfileClicked = false
-   @observable isTaskInfoClicked = false
+   @observable isCreateClicked: boolean = false
+   @observable isProfileClicked: boolean = false
+   @observable isTaskInfoClicked: boolean = false
    @observable taskObject = {}
-   @observable isStatusChangeTriggred = false
+   @observable isStatusChangeTriggred: boolean = false
    @observable checklistRequestObject = {}
-   @observable transitionChangeTaskId = 0
+   @observable transitionChangeTaskId: number = 0
 
    handleCreateTask = () => {
       this.isCreateClicked = !this.isCreateClicked
    }
-   handleStatusChange = (selectedOption, task, toStateId) => {
+   handleStatusChange = (
+      selectedOption: string,
+      task: any,
+      toStateId: number
+   ) => {
       this.isStatusChangeTriggred = !this.isStatusChangeTriggred
       if (this.isStatusChangeTriggred) {
          let taskObject = this.taskObject
@@ -87,7 +91,7 @@ class Tasks extends React.Component<PropsType> {
       this.taskObject['workflows'] = taskStore.workflows
    }
 
-   handleTransitionChangeSubmit = selectedOption => {
+   handleTransitionChangeSubmit = (selectedOption: string) => {
       if (!this.isCreateClicked) {
          const { taskStore } = this.props
          taskStore.changeTaskStatusAPI({}, this.onTransitionChangeSuccess)
@@ -134,7 +138,7 @@ class Tasks extends React.Component<PropsType> {
       taskStore.clearStore()
       projectStore.clearStore()
    }
-   handleTaskInfo = (event, task) => {
+   handleTaskInfo = (event: MouseEvent, task: any) => {
       this.isTaskInfoClicked = !this.isTaskInfoClicked
       if (this.isTaskInfoClicked) {
          this.taskObject = task
@@ -227,13 +231,13 @@ class Tasks extends React.Component<PropsType> {
       )
    })
 
-   doNetworkCalls = id => {
+   doNetworkCalls = (id: number) => {
       const { taskStore, projectStore } = this.props
       taskStore.getTasksAPI(id)
       projectStore.getProjectsAPI()
    }
 
-   handleWorkflowAPICall = (event, taskId) => {
+   handleWorkflowAPICall = (event: MouseEvent, taskId: string) => {
       const { taskStore } = this.props
       taskStore.getWorkflowsAPI(taskId)
    }

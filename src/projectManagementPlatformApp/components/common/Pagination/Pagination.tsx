@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import ReactPaginate from 'react-paginate'
@@ -10,19 +10,14 @@ import { PaginationWrapper } from './styledComponent'
 
 type PaginationProps = {
    handlePaginationButtons: Function
-   hide: Boolean
-   currentPageNumber: Number
-   totalPages: Number
+   hide: boolean
+   currentPageNumber: number
+   totalPages: number
 }
 @observer
-class Pagination extends React.Component<{
-   handlePaginationButtons: any
-   hide: any
-   currentPageNumber: any
-   totalPages: any
-}> {
+class Pagination extends React.Component<PaginationProps> {
    @observable count = 0
-   handleClick = event => {
+   handleClick = (event: any) => {
       let selectedPage = event.selected
       const { handlePaginationButtons } = this.props
       this.count = this.count + 1
