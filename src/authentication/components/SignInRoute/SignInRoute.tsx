@@ -30,6 +30,18 @@ class SignInRoute extends React.Component<propsType> {
    @observable passwordErrorMessage: string = ''
    @observable loginFailureErrorMessage: string = ''
    @observable isValidated: boolean = false
+   signInRef: React.RefObject<SignInCard> = React.createRef()
+
+   componentDidMount = () => {
+      console.log(this.signInRef.current?.usernameRef)
+      if (
+         this.signInRef.current &&
+         this.signInRef.current.usernameRef.current
+      ) {
+         return this.signInRef.current.usernameRef.current.focus()
+      }
+   }
+
    @action.bound
    handleUsername(event: React.ChangeEvent<HTMLInputElement>) {
       const usernameValue = event.target.value
@@ -128,6 +140,7 @@ class SignInRoute extends React.Component<propsType> {
       return (
          <SignInComponentWrapper>
             <SignInCard
+               ref={this.signInRef}
                username={username}
                password={password}
                handleUsername={handleUsername}

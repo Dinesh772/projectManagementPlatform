@@ -3,7 +3,7 @@ import { create } from 'apisauce'
 import { apiMethods } from '../../../Common/constants/APIConstants'
 import { networkCallWithApisauce } from '../../../Common/utils/APIUtils'
 import endPoints from '../endPoints'
-import { BASE_URL } from '../../../Common/constants/RouteConstants'
+import { BASE_URL } from '../../../Common/constants/EnvironmentConstants'
 
 const workflowEndpoint = endPoints.workflows
 const createProjectEndpoint = endPoints.createProject

@@ -3,7 +3,7 @@ import { create } from 'apisauce'
 import { apiMethods } from '../../../Common/constants/APIConstants'
 import { networkCallWithApisauce } from '../../../Common/utils/AuthAPIUtils'
 import endPoints from '../endPoints'
-import { BASE_URL } from '../../../Common/constants/RouteConstants'
+import { BASE_URL } from '../../../Common/constants/EnvironmentConstants'
 
 const AUTH_URL = BASE_URL
 const endPoint = endPoints.login

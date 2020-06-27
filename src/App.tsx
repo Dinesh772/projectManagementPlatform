@@ -6,7 +6,7 @@ import SignInRoute from './Authentication/components/SignInRoute'
 import { Provider } from 'mobx-react'
 import stores from './ProjectManagementPlatformApp/stores/index'
 import projectManagementPlatformRoutes from './ProjectManagementPlatformApp/routes/projectManagementPlatformRoutes'
-import { PROJECT_MANAGEMENT_PLATFORM_TASKS } from './Common/constants/RouteConstants'
+import { PROJECT_MANAGEMENT_PLATFORM_TASKS } from './Common/constants/EnvironmentConstants'
 import Tasks from './ProjectManagementPlatformApp/components/common/Tasks'
 
 class App extends React.Component {

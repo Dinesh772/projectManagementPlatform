@@ -20,7 +20,7 @@ import ProjectStore from '../../../stores/ProjectStore'
 import TaskStore from '../../../stores/TaskStore'
 import AuthStore from '../../../../Authentication/stores/AuthStore'
 import NoDataView from '../../../../Common/components/NoDataView'
-import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/RouteConstants'
+import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../../../Common/constants/EnvironmentConstants'
 
 import TasksList from '../TasksList'
 import Pagination from '../Pagination'

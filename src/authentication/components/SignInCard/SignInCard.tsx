@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { RefObject } from 'react'
 import { observer } from 'mobx-react'
 import { API_FAILED } from '@ib/api-constants'
 
@@ -17,6 +17,7 @@ import {
    PasswordWrapper,
    LoginFailure
 } from './styledComponents'
+import { observable } from 'mobx'
 
 type PropsType = {
    username: string
@@ -36,6 +37,9 @@ type PropsType = {
 
 @observer
 class SignInCard extends React.Component<PropsType> {
+   usernameRef: React.RefObject<HTMLInputElement> = React.createRef()
+   passwordRef: React.RefObject<HTMLInputElement> = React.createRef()
+
    render() {
       const {
          userGreetText,
@@ -77,6 +81,7 @@ class SignInCard extends React.Component<PropsType> {
 
             <UsernameWrapper>
                <UserTextInputField
+                  setRef={this.usernameRef}
                   labelText={usernameLabel}
                   errorMessage={usernameErrorMessage}
                   hasError={isUsernameHasError}
@@ -88,6 +93,7 @@ class SignInCard extends React.Component<PropsType> {
             </UsernameWrapper>
             <PasswordWrapper>
                <UserTextInputField
+                  setRef={this.passwordRef}
                   labelText={passwordLabel}
                   errorMessage={passwordErrorMessage}
                   value={password}

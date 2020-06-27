@@ -13,7 +13,7 @@ import projectsData from '../../../fixtures/projectFixtures.json'
 import {
    PROJECT_MANAGEMENT_PLATFORM_DASHBOARD,
    PROJECT_MANAGEMENT_PLATFORM_TASKS
-} from '../../../../Common/constants/RouteConstants'
+} from '../../../../Common/constants/EnvironmentConstants'
 
 import TasksFixturesAPI from '../../../services/TaskService/index.fixtures'
 import TaskStore from '../../../stores/TaskStore'

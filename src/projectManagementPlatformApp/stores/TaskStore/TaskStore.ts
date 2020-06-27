@@ -34,7 +34,7 @@ class TaskStore {
    @observable createTaskAPIStatus!: number
    @observable changeStatusAPIStatus!: number
    @observable getWorkflowsAPIStatus!: number
-   @observable getWorkflowsAPIError
+   @observable getWorkflowsAPIError!: Error | null
    @observable changeStatusAPIError
    @observable createTaskAPIError
    @observable checklistAPIError
