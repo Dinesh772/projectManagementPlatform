@@ -277,5 +277,4 @@ class Tasks extends React.Component<PropsType> {
       )
    }
 }
-
 export default withRouter(Tasks)

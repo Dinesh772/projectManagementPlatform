@@ -13,13 +13,12 @@ export const PROJECT_MANAGEMENT_PLATFORM_TASKS =
 export const BASE_URL =
    'https://2a3a7dfc77f6.ngrok.io/api/project_management_portal'
 const envVariables = process.env
-
 const Config = {}
-
 Object.keys(envVariables).forEach(variable => {
    if (variable.includes('REACT_APP')) {
       const envKey = variable.replace('REACT_APP_', '')
       Config[envKey] = envVariables[variable]
    }
 })
+console.log(Config)
 export default Config

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import ProtectedRoute from '../../Authentication/routes/authenticationRoutes'
-import ProjectManagementPlatform from '../components/common/ProjectManagementPlatformDashboard/index'
 import { PROJECT_MANAGEMENT_PLATFORM_DASHBOARD } from '../../Common/constants/EnvironmentConstants'
+const ProjectManagementPlatform = lazy(() =>
+   import('../components/common/ProjectManagementPlatformDashboard/index')
+)
 
 const projectManagementPlatformRoutes = (
    <ProtectedRoute

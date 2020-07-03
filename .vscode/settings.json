@@ -1,5 +1,13 @@
 {
   "npm-intellisense.importQuotes": "\"",
   "typescript.preferences.quoteStyle": "double",
-  "javascript.preferences.quoteStyle": "double"
+  "javascript.preferences.quoteStyle": "double",
+  "cSpell.words": [
+    "apisauce",
+    "browserslist",
+    "esnext",
+    "mobx",
+    "storysource",
+    "tailwindcss"
+  ]
 }

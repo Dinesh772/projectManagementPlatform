@@ -82,7 +82,6 @@ class TaskStore {
          this.tasksList[this.currentPageIndex].length === 0
       ) {
          this.projectId = id
-
          const tasksPromise = this.taskService.getTasksAPI(
             this.projectId,
             this.tasksLimitPerPage,
@@ -100,10 +99,10 @@ class TaskStore {
 
    @action.bound
    createTaskAPI(taskDetailsObject, onSuccess: Function, onFailure: Function) {
-      const createTaslPromise = this.taskService.createTaskAPI(
+      const createTaskPromise = this.taskService.createTaskAPI(
          taskDetailsObject
       )
-      return bindPromiseWithOnSuccess(createTaslPromise)
+      return bindPromiseWithOnSuccess(createTaskPromise)
          .to(this.setCreateTaskAPIStatus, response => {
             this.setCreateTaskAPIResponse(response)
             onSuccess()
@@ -270,6 +269,7 @@ class TaskStore {
          return tasksList
       }
    }
+
    @computed
    get totalTasksCount() {
       const tasksList = this.tasksList
